@@ -4,6 +4,13 @@ Project Koios is a knowledge management and content generation system for techni
 
 The system is organized around local knowledge objects: notes, references, source files, tasks, workflows, generated artifacts, and provenance records.
 
+## Status
+
+Project Koios is currently in early development.
+
+The current implementation is a Python package with FastAPI spikes in `dev/`. Stable code will be promoted into `src/python/projectkoios/` after the application boundaries are tested.
+
+
 ## Installation
 
 From the repository root:
@@ -30,6 +37,7 @@ uvicorn projectkoios.api.main:app -reload
 ```
 
 Check the server
+
 ```
 curl http://127.0.0.1:8000/health
 ```
@@ -40,7 +48,11 @@ curl http://127.0.0.1:8000/health
 projectkoios/
 ├── pyproject.toml
 ├── README.md
+├── LICENSE
+├── docs/
+│   └── architecture.md
 ├── dev/
+│   └── spike_fastapi_app_boundary/
 ├── tests/
 └── src/
     └── python/
@@ -58,6 +70,7 @@ projectkoios/
 
 `projectkoios` is the top-level namespace for the whole knowledge management system.
 
+
 | Namespace | Purpose |
 |---|---|
 | `projectkoios.core` | Generic infrastructure used across the system: configuration, paths, IDs, serialization, validation, and shared utilities. |
@@ -74,3 +87,20 @@ projectkoios/
 | `dev/` | Scratch space for experiments, spikes, temporary scripts, exploratory notebooks, and design notes that are not yet stable enough for `src/`. |
 | `tests/` | Python tests for the source package. |
 
+## Development Checks
+
+Run these checks before promoting spike code into `src/python/projectkoios/`.
+
+| Tool | Purpose | Command |
+|---|---|---|
+| `ruff` | Linting, import checks, formatting, and simple bug patterns. | `python -m ruff check .` |
+| `pytest` | Runtime behavior tests. | `python -m pytest -vv` |
+| `mypy` | Static type checking. | `python -m mypy .` |
+
+For the current FastAPI spike:
+
+| Tool | Command |
+|---|---|
+| `ruff` | `python -m ruff check dev/spike_fastapi_app_boundary` |
+| `pytest` | `python -m pytest -vv dev/spike_fastapi_app_boundary` |
+| `mypy` | `python -m mypy dev/spike_fastapi_app_boundary` |
