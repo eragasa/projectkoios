@@ -1,9 +1,19 @@
 # Project Koios Architecture
 
-Project Koios is a knowledge management and content generation system for technical and scientific workflows. It is organized around local knowledge objects, workflow objects, source artifacts, generated outputs, and provenance records.
+## Vision
+==Project Koios is a knowledge management and content generation system for technical and scientific workflows. It is organized around local knowledge objects, workflow objects, source artifacts, generated outputs, and provenance records.==
 
-Project Koios is not defined by a single interface. The FastAPI service, web interface, command-line tools, notebooks, and future local services are adapters over the same knowledge-management system.
+It helps a researcher, lecturer, and builder ask useful questions of their own technical materials, generate new content from grounded sources, and preserve the path from source objects to outputs.  
+# not Vision
+Project Koios is not defined by a single interface. The FastAPI service, web interface, command-line tools, notebooks, and future local services are adapters over the same knowledge-management system.==
 
+Project Koios is a local-first technical knowledge system for turning notes, source code, references, workflows, and generated artifacts into inspectable computational context.  
+  
+It helps a researcher, lecturer, and builder ask useful questions of their own technical materials, generate new content from grounded sources, and preserve the path from source objects to outputs.  
+  
+Project Koios is not just a web app, search tool, notebook collection, or LLM wrapper. It is a system for organizing technical work as connected objects: repositories, notes, references, tasks, computations, outputs, and provenance records.  
+  
+The first practical target is a RAG-supported LLM coder for local Python repositories. Later targets include scientific notes, references, workflows, teaching materials, and generated artifacts.
 ## Architecture Status
 
 Project Koios distinguishes between the current repository architecture and the planned system architecture.
@@ -687,3 +697,47 @@ projectkoios.api
 ```
 
 The primary design constraint is that the knowledge system remains inspectable, local-first, and portable across interfaces.
+
+## Data Transfer Objects
+
+Project Koios uses explicit data-transfer objects between layers.
+
+Pydantic models are used at external boundaries. Dataclasses are used for internal domain and application objects.
+
+| Layer | Object type | Purpose |
+|---|---|---|
+| `projectkoios.api.models` | Pydantic models | HTTP request and response schemas, validation, serialization, and OpenAPI documentation. |
+| `projectkoios.search.models` | Dataclasses | Internal search queries, hits, ranking inputs, and retrieval results. |
+| `projectkoios.repositories.models` | Dataclasses | Repository files and source metadata. |
+| `projectkoios.chunking.models` | Dataclasses | Text/code chunks and chunk offsets. |
+| `projectkoios.rag.models` | Dataclasses | Retrieved context, prompt inputs, and prompt outputs. |
+| `projectkoios.llm.models` | Dataclasses or Pydantic models | Internal LLM requests/responses; Pydantic only when validating provider JSON boundaries. |
+
+The API layer translates between HTTP-facing Pydantic models and internal dataclass models.
+
+```text
+HTTP JSON
+    ↓
+Pydantic API model
+    ↓
+conversion function
+    ↓
+dataclass domain model
+    ↓
+service
+    ↓
+dataclass result
+    ↓
+conversion function
+    ↓
+Pydantic API response
+    ↓
+HTTP JSON
+```
+
+
+|                                 |     |
+| ------------------------------- | --- |
+| [[architecture.repositories]]   |     |
+| [[architecture.rag]]            |     |
+| [[architecture.rag.repository]] |     |

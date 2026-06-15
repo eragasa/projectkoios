@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>architecture</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="architecture_files/libs/clipboard/clipboard.min.js"></script>
+<script src="architecture_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="architecture_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="architecture_files/libs/quarto-html/popper.min.js"></script>
+<script src="architecture_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="architecture_files/libs/quarto-html/anchor.min.js"></script>
+<link href="architecture_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="architecture_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="architecture_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="architecture_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="architecture_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="project-koios-architecture" class="level1">
+<h1>Project Koios Architecture</h1>
+<p>Project Koios is a knowledge management and content generation system for technical and scientific workflows. It is organized around local knowledge objects, workflow objects, source artifacts, generated outputs, and provenance records.</p>
+<p>Project Koios is not defined by a single interface. The FastAPI service, web interface, command-line tools, notebooks, and future local services are adapters over the same knowledge-management system.</p>
+<section id="architecture-status" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-status">Architecture Status</h2>
+<p>Project Koios distinguishes between the current repository architecture and the planned system architecture.</p>
+<p>The current architecture is intentionally small enough to run, test, and understand immediately.</p>
+<p>The planned architecture describes the expansion path after the Python package, API boundary, and search model stabilize.</p>
+</section>
+<section id="current-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="current-architecture">Current Architecture</h2>
+<p>The current repository is a Python package repository.</p>
+<pre class="text"><code>projectkoios/
+├── pyproject.toml
+├── README.md
+├── docs/
+│   └── architecture.md
+├── dev/
+├── tests/
+└── src/
+    └── python/
+        └── projectkoios/
+            ├── __init__.py
+            ├── core/
+            ├── vault/
+            ├── search/
+            ├── references/
+            ├── workflow/
+            └── api/</code></pre>
+<p>The current implementation uses Python as the primary implementation language.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>Current status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Python package</td>
+<td>Primary implementation layer.</td>
+</tr>
+<tr class="even">
+<td>FastAPI API</td>
+<td>Initial interface for health checks and search.</td>
+</tr>
+<tr class="odd">
+<td>SQLite / FTS</td>
+<td>Planned next step for local search storage.</td>
+</tr>
+<tr class="even">
+<td>TypeScript web UI</td>
+<td>Not yet implemented.</td>
+</tr>
+<tr class="odd">
+<td>Rust infrastructure</td>
+<td>Not yet implemented.</td>
+</tr>
+</tbody>
+</table>
+<p>The current design rule is:</p>
+<pre class="text"><code>Project Koios is a Python package first.
+FastAPI is an adapter, not the system.</code></pre>
+</section>
+<section id="current-namespace-layout" class="level2">
+<h2 class="anchored" data-anchor-id="current-namespace-layout">Current Namespace Layout</h2>
+<p><code>projectkoios</code> is the top-level namespace for the knowledge management system.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 84%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Namespace</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>projectkoios.core</code></td>
+<td>Generic infrastructure used across the system: configuration, paths, IDs, serialization, validation, and shared utilities.</td>
+</tr>
+<tr class="even">
+<td><code>projectkoios.vault</code></td>
+<td>Local Obsidian / Markdown knowledge-base management: vault scanning, front matter parsing, Markdown parsing, links, tags, and note metadata.</td>
+</tr>
+<tr class="odd">
+<td><code>projectkoios.search</code></td>
+<td>Indexing, full-text search, vector search, ranking, chunking, and retrieval.</td>
+</tr>
+<tr class="even">
+<td><code>projectkoios.references</code></td>
+<td>Reference management: BibTeX records, PDFs, citation keys, source metadata, and reference ingestion.</td>
+</tr>
+<tr class="odd">
+<td><code>projectkoios.workflow</code></td>
+<td>Tasks, states, process objects, workflow graphs, provenance, and generated artifacts.</td>
+</tr>
+<tr class="even">
+<td><code>projectkoios.api</code></td>
+<td>FastAPI interface over the Project Koios system.</td>
+</tr>
+</tbody>
+</table>
+<p>The Python package avoids a flat structure such as:</p>
+<pre class="text"><code>projectkoios/
+├── main.py
+├── models.py
+└── search.py</code></pre>
+<p>That layout makes the web API appear to be the system. The API lives inside <code>projectkoios.api</code>, while stable application logic lives in the domain packages.</p>
+</section>
+<section id="current-python-package-layout" class="level2">
+<h2 class="anchored" data-anchor-id="current-python-package-layout">Current Python Package Layout</h2>
+<pre class="text"><code>src/python/projectkoios/
+├── __init__.py
+├── core/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── ids.py
+│   └── paths.py
+├── vault/
+│   ├── __init__.py
+│   ├── scanner.py
+│   ├── markdown.py
+│   └── frontmatter.py
+├── search/
+│   ├── __init__.py
+│   ├── commands.py
+│   ├── documents.py
+│   ├── engine.py
+│   └── results.py
+├── references/
+│   ├── __init__.py
+│   ├── bibtex.py
+│   └── schemas.py
+├── workflow/
+│   ├── __init__.py
+│   ├── tasks.py
+│   ├── states.py
+│   └── provenance.py
+└── api/
+    ├── __init__.py
+    ├── main.py
+    ├── models.py
+    └── routes/
+        ├── __init__.py
+        ├── health.py
+        └── search.py</code></pre>
+</section>
+<section id="current-api-boundary" class="level2">
+<h2 class="anchored" data-anchor-id="current-api-boundary">Current API Boundary</h2>
+<p>FastAPI is a thin adapter over the Project Koios application services.</p>
+<p>The API layer performs the following sequence:</p>
+<pre class="text"><code>HTTP JSON request
+    ↓
+validate request
+    ↓
+convert to application command
+    ↓
+call application service
+    ↓
+convert result to response model
+    ↓
+HTTP JSON response</code></pre>
+<p>The API layer does not own search logic, vault parsing, workflow semantics, reference ingestion, or provenance rules.</p>
+<p>A route has this shape:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/search"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search(request: SearchRequest) <span class="op">-&gt;</span> <span class="bu">list</span>[SearchResult]:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    command <span class="op">=</span> request_to_command(request)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    hits <span class="op">=</span> search_service.search(command)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [hit_to_response(hit) <span class="cf">for</span> hit <span class="kw">in</span> hits]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The search engine is usable from:</p>
+<pre class="text"><code>CLI
+notebooks
+tests
+local scripts
+future desktop app
+future service in another language</code></pre>
+<p>The portability test is:</p>
+<pre class="text"><code>Can search run without importing FastAPI?</code></pre>
+<p>If yes, the boundary is healthy.</p>
+</section>
+<section id="pydantic-boundary" class="level2">
+<h2 class="anchored" data-anchor-id="pydantic-boundary">Pydantic Boundary</h2>
+<p>Pydantic is used at system boundaries, especially API request and response models.</p>
+<p>Pydantic is used for:</p>
+<pre class="text"><code>API input models
+API output models
+configuration models
+validation-heavy schemas
+OpenAPI schema generation</code></pre>
+<p>Dataclasses and ordinary classes are used for internal domain objects.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Object type</th>
+<th>Preferred implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>API request/response</td>
+<td>Pydantic model</td>
+</tr>
+<tr class="even">
+<td>Configuration schema</td>
+<td>Pydantic model</td>
+</tr>
+<tr class="odd">
+<td>Parsed note</td>
+<td>Dataclass</td>
+</tr>
+<tr class="even">
+<td>Search command</td>
+<td>Dataclass</td>
+</tr>
+<tr class="odd">
+<td>Search hit</td>
+<td>Dataclass</td>
+</tr>
+<tr class="even">
+<td>Workflow state</td>
+<td>Dataclass or domain class</td>
+</tr>
+<tr class="odd">
+<td>Search engine</td>
+<td>Ordinary class</td>
+</tr>
+<tr class="even">
+<td>Vault scanner</td>
+<td>Ordinary class</td>
+</tr>
+<tr class="odd">
+<td>Indexer</td>
+<td>Ordinary class</td>
+</tr>
+</tbody>
+</table>
+<p>Example internal search command:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span>(frozen<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SearchCommand:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    query: <span class="bu">str</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    limit: <span class="bu">int</span> <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    object_types: <span class="bu">tuple</span>[<span class="bu">str</span>, ...] <span class="op">=</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Example internal search hit:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span>(frozen<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SearchHit:</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    document_id: <span class="bu">str</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    chunk_id: <span class="bu">str</span> <span class="op">|</span> <span class="va">None</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    title: <span class="bu">str</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    path: <span class="bu">str</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    object_type: <span class="bu">str</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    snippet: <span class="bu">str</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    score: <span class="bu">float</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    metadata: <span class="bu">dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Example API model:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, Field</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SearchRequest(BaseModel):</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    query: <span class="bu">str</span> <span class="op">=</span> Field(min_length<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    limit: <span class="bu">int</span> <span class="op">=</span> Field(default<span class="op">=</span><span class="dv">20</span>, ge<span class="op">=</span><span class="dv">1</span>, le<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    object_types: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The conversion layer is explicit.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> request_to_command(request: SearchRequest) <span class="op">-&gt;</span> SearchCommand:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> SearchCommand(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        query<span class="op">=</span>request.query,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        limit<span class="op">=</span>request.limit,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        object_types<span class="op">=</span><span class="bu">tuple</span>(request.object_types <span class="kw">or</span> ()),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="current-search-target" class="level2">
+<h2 class="anchored" data-anchor-id="current-search-target">Current Search Target</h2>
+<p>The first useful search implementation is local, explicit, and inspectable.</p>
+<pre class="text"><code>vault path
+    ↓
+scan Markdown files
+    ↓
+extract document records
+    ↓
+insert into SQLite
+    ↓
+query SQLite FTS5
+    ↓
+return search hits</code></pre>
+<p>The initial search stack is:</p>
+<pre class="text"><code>local files
+SQLite
+SQLite FTS5
+Markdown scanner
+section-aware chunks</code></pre>
+<p>The first API target is:</p>
+<pre class="text"><code>GET /health
+POST /search</code></pre>
+</section>
+<section id="planned-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="planned-architecture">Planned Architecture</h2>
+<p>The planned architecture is a local-first multi-layer system.</p>
+<pre class="text"><code>projectkoios/
+├── README.md
+├── docs/
+│   └── architecture.md
+├── python/
+│   ├── pyproject.toml
+│   ├── README.md
+│   ├── dev/
+│   ├── tests/
+│   └── src/
+│       └── python/
+│           └── projectkoios/
+├── web/
+│   ├── package.json
+│   ├── index.html
+│   └── src/
+└── rust/
+    ├── Cargo.toml
+    └── crates/</code></pre>
+<p>The planned architecture is implemented incrementally as concrete needs appear.</p>
+<p>The planned system layers are:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 77%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th style="text-align: right;">Primary language</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Python layer</td>
+<td style="text-align: right;">Python</td>
+<td>Scientific workflows, LLM orchestration, API adapters, notebooks, content generation, search prototypes.</td>
+</tr>
+<tr class="even">
+<td>TypeScript layer</td>
+<td style="text-align: right;">TypeScript</td>
+<td>Human interface: search UI, note browser, workflow dashboard, review tools, artifact preview.</td>
+</tr>
+<tr class="odd">
+<td>Rust layer</td>
+<td style="text-align: right;">Rust</td>
+<td>Fast local infrastructure: file scanning, indexing, chunking, hashing, search daemon, portable CLI binaries.</td>
+</tr>
+</tbody>
+</table>
+<p>The intended evolution is:</p>
+<pre class="text"><code>Python first
+    ↓
+TypeScript interface
+    ↓
+Rust infrastructure where needed</code></pre>
+</section>
+<section id="planned-search-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="planned-search-architecture">Planned Search Architecture</h2>
+<p>Search is layered.</p>
+<pre class="text"><code>keyword search
+    ↓
+metadata filtering
+    ↓
+semantic search
+    ↓
+ranking
+    ↓
+context assembly</code></pre>
+<p>The search system indexes workflow objects, not only text files.</p>
+<p>Searchable objects include:</p>
+<pre class="text"><code>notes
+sections
+references
+PDF metadata
+source files
+code blocks
+equations
+tasks
+workflow states
+generated artifacts
+figures
+provenance records</code></pre>
+<p>The search implementation evolves through the following stages:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 93%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Stage</th>
+<th>Capability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>Markdown file scanner and document table.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>SQLite FTS5 keyword search.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>Section-aware chunking.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>Metadata filters using front matter, paths, tags, and object types.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>Vector embeddings and semantic retrieval.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td>Hybrid ranking.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td>Graph-aware ranking using links, references, courses, and workflows.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td>RAG context assembly with provenance.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="typescript-layer" class="level2">
+<h2 class="anchored" data-anchor-id="typescript-layer">TypeScript Layer</h2>
+<p>The TypeScript layer owns the human interface.</p>
+<p>It includes:</p>
+<pre class="text"><code>search UI
+note browser
+workflow dashboard
+artifact preview
+source/result inspection
+manual curation tools
+settings UI
+review tools</code></pre>
+<p>It does not own canonical knowledge-management logic.</p>
+<p>TypeScript is not the source of truth for:</p>
+<pre class="text"><code>vault parsing rules
+citation logic
+search ranking
+workflow state semantics
+scientific computation
+LLM prompt assembly
+provenance semantics</code></pre>
+<p>A practical frontend layout is:</p>
+<pre class="text"><code>web/
+├── package.json
+├── index.html
+└── src/
+    ├── main.tsx
+    ├── api/
+    ├── components/
+    ├── pages/
+    ├── types/
+    └── state/</code></pre>
+<p>The frontend interacts through stable API contracts.</p>
+<p>Example TypeScript DTOs:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">export type</span> SearchRequest <span class="op">=</span> {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  query<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  limit<span class="op">?:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  object_types<span class="op">?:</span> <span class="dt">string</span>[] <span class="op">|</span> <span class="dt">null</span><span class="op">;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="im">export type</span> SearchResult <span class="op">=</span> {</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  document_id<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  chunk_id<span class="op">:</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">null</span><span class="op">;</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  title<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  path<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  object_type<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  snippet<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  score<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  metadata<span class="op">:</span> <span class="bu">Record</span><span class="op">&lt;</span><span class="dt">string</span><span class="op">,</span> <span class="dt">unknown</span><span class="op">&gt;;</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The browser UI calls the Python API through HTTP or WebSocket initially.</p>
+<pre class="text"><code>TypeScript UI
+    ↓ HTTP / WebSocket
+Python FastAPI adapter
+    ↓ application services
+Project Koios domain layer
+    ↓ storage / index
+SQLite / files / vector index</code></pre>
+</section>
+<section id="rust-layer" class="level2">
+<h2 class="anchored" data-anchor-id="rust-layer">Rust Layer</h2>
+<p>Rust is introduced when the Python implementation proves the model and a performance-critical subsystem becomes clear.</p>
+<p>Rust targets include:</p>
+<pre class="text"><code>fast vault scanner
+file watcher
+Markdown chunker
+content hashing
+deduplication
+SQLite/FTS indexer
+local search daemon
+portable CLI binaries
+parallel ingestion</code></pre>
+<p>The useful boundary is:</p>
+<pre class="text"><code>Python asks:
+    search("Bloch boundary conditions")
+
+Rust handles:
+    scan files
+    parse chunks
+    search index
+    rank candidates
+    return structured hits</code></pre>
+<p>Python remains responsible for:</p>
+<pre class="text"><code>LLM orchestration
+prompt assembly
+citation formatting
+artifact generation
+notebooks
+scientific computation
+FastAPI response conversion</code></pre>
+</section>
+<section id="storage-layer" class="level2">
+<h2 class="anchored" data-anchor-id="storage-layer">Storage Layer</h2>
+<p>Initial storage is simple and local.</p>
+<pre class="text"><code>local files
+SQLite
+SQLite FTS5</code></pre>
+<p>Later storage additions include:</p>
+<pre class="text"><code>vector index
+content hashes
+artifact registry
+provenance graph
+reference database</code></pre>
+<p>Storage responsibilities:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Storage object</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Markdown files</td>
+<td>Human-readable source notes.</td>
+</tr>
+<tr class="even">
+<td>SQLite documents table</td>
+<td>Indexed document metadata and body text.</td>
+</tr>
+<tr class="odd">
+<td>SQLite FTS5 table</td>
+<td>Keyword search.</td>
+</tr>
+<tr class="even">
+<td>Chunk table</td>
+<td>Section-aware retrieval.</td>
+</tr>
+<tr class="odd">
+<td>Embedding table or vector database</td>
+<td>Semantic search.</td>
+</tr>
+<tr class="even">
+<td>Link table</td>
+<td>Backlinks, graph traversal, and ranking.</td>
+</tr>
+<tr class="odd">
+<td>Provenance table</td>
+<td>Artifact generation and workflow traceability.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="development-flow" class="level2">
+<h2 class="anchored" data-anchor-id="development-flow">Development Flow</h2>
+<p>Code moves through stages.</p>
+<pre class="text"><code>dev/ experiment
+    ↓
+tests/ specify expected behavior
+    ↓
+src/python/projectkoios/ implement stable package code</code></pre>
+<p>The application does not import from <code>dev/</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dev/</code></td>
+<td>Scratch space for experiments, spikes, temporary scripts, exploratory notebooks, and design notes that are not yet stable enough for <code>src/</code>.</td>
+</tr>
+<tr class="even">
+<td><code>dev/api/</code></td>
+<td>FastAPI route experiments, request/response sketches, and temporary server tests.</td>
+</tr>
+<tr class="odd">
+<td><code>dev/search/</code></td>
+<td>Search experiments: FTS, vector indexing, ranking, chunking, and query prototypes.</td>
+</tr>
+<tr class="even">
+<td><code>dev/vault/</code></td>
+<td>Vault scanner experiments, Markdown parsing tests, front matter extraction, link extraction, and file traversal scripts.</td>
+</tr>
+<tr class="odd">
+<td><code>dev/references/</code></td>
+<td>BibTeX, PDF, citation-key, and reference-ingestion experiments.</td>
+</tr>
+<tr class="even">
+<td><code>dev/workflow/</code></td>
+<td>Task/state/process/provenance experiments before formalizing them into package code.</td>
+</tr>
+<tr class="odd">
+<td><code>tests/</code></td>
+<td>Python tests for stable source code under <code>src/python/projectkoios/</code>.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="interface-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="interface-strategy">Interface Strategy</h2>
+<p>Project Koios supports multiple interfaces over the same application services.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 77%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Interface</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FastAPI</td>
+<td>HTTP API for frontend, local tools, and automation.</td>
+</tr>
+<tr class="even">
+<td>CLI</td>
+<td>Direct local use, indexing, debugging, and scripts.</td>
+</tr>
+<tr class="odd">
+<td>Notebooks</td>
+<td>Scientific modeling, teaching workflows, and exploratory computation.</td>
+</tr>
+<tr class="even">
+<td>Web UI</td>
+<td>Search, review, browsing, and workflow control.</td>
+</tr>
+<tr class="odd">
+<td>Future desktop shell</td>
+<td>Local-first app interface if needed.</td>
+</tr>
+</tbody>
+</table>
+<p>The same domain services power all interfaces.</p>
+<pre class="text"><code>CLI
+Web API
+notebook
+desktop UI
+    ↓
+application services
+    ↓
+domain objects
+    ↓
+storage / index</code></pre>
+</section>
+<section id="portability-rule" class="level2">
+<h2 class="anchored" data-anchor-id="portability-rule">Portability Rule</h2>
+<p>The system is portable by construction.</p>
+<p>The API layer can be ported to another language when the system obeys these rules:</p>
+<pre class="text"><code>Keep FastAPI thin.
+Keep Pydantic at the boundary.
+Keep domain objects independent of the web framework.
+Keep storage formats explicit.
+Keep application services callable without HTTP.
+Keep TypeScript as UI, not domain authority.
+Introduce Rust only behind stable internal interfaces.</code></pre>
+<p>The main portability risk is letting framework objects become the domain model.</p>
+<p>Avoid this:</p>
+<pre class="text"><code>FastAPI route
+    owns search semantics
+    owns workflow semantics
+    owns storage details</code></pre>
+<p>Prefer this:</p>
+<pre class="text"><code>FastAPI route
+    validates request
+    calls service
+    returns response</code></pre>
+</section>
+<section id="initial-build-target" class="level2">
+<h2 class="anchored" data-anchor-id="initial-build-target">Initial Build Target</h2>
+<p>The first useful Project Koios build is:</p>
+<pre class="text"><code>Python package
+FastAPI health endpoint
+FastAPI search endpoint
+Markdown scanner
+SQLite document table
+SQLite FTS5 index
+basic search results</code></pre>
+<p>Minimum working API:</p>
+<pre class="text"><code>GET /health
+POST /search</code></pre>
+<p>Minimum working internal flow:</p>
+<pre class="text"><code>vault path
+    ↓
+scan Markdown files
+    ↓
+extract document records
+    ↓
+insert into SQLite
+    ↓
+query SQLite FTS5
+    ↓
+return search hits</code></pre>
+</section>
+<section id="architecture-summary" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-summary">Architecture Summary</h2>
+<p>Project Koios evolves as:</p>
+<pre class="text"><code>Python first
+    establish object model, API, search semantics, workflow semantics
+
+TypeScript next
+    make search, browsing, review, and workflow interaction usable
+
+Rust later
+    accelerate file scanning, indexing, hashing, and local search infrastructure</code></pre>
+<p>The architectural center is not a framework. The center is the Project Koios namespace and its domain model.</p>
+<pre class="text"><code>projectkoios.core
+projectkoios.vault
+projectkoios.search
+projectkoios.references
+projectkoios.workflow
+projectkoios.api</code></pre>
+<p>The primary design constraint is that the knowledge system remains inspectable, local-first, and portable across interfaces.</p>
+</section>
+<section id="data-transfer-objects" class="level2">
+<h2 class="anchored" data-anchor-id="data-transfer-objects">Data Transfer Objects</h2>
+<p>Project Koios uses explicit data-transfer objects between layers.</p>
+<p>Pydantic models are used at external boundaries. Dataclasses are used for internal domain and application objects.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>Object type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>projectkoios.api.models</code></td>
+<td>Pydantic models</td>
+<td>HTTP request and response schemas, validation, serialization, and OpenAPI documentation.</td>
+</tr>
+<tr class="even">
+<td><code>projectkoios.search.models</code></td>
+<td>Dataclasses</td>
+<td>Internal search queries, hits, ranking inputs, and retrieval results.</td>
+</tr>
+<tr class="odd">
+<td><code>projectkoios.repositories.models</code></td>
+<td>Dataclasses</td>
+<td>Repository files and source metadata.</td>
+</tr>
+<tr class="even">
+<td><code>projectkoios.chunking.models</code></td>
+<td>Dataclasses</td>
+<td>Text/code chunks and chunk offsets.</td>
+</tr>
+<tr class="odd">
+<td><code>projectkoios.rag.models</code></td>
+<td>Dataclasses</td>
+<td>Retrieved context, prompt inputs, and prompt outputs.</td>
+</tr>
+<tr class="even">
+<td><code>projectkoios.llm.models</code></td>
+<td>Dataclasses or Pydantic models</td>
+<td>Internal LLM requests/responses; Pydantic only when validating provider JSON boundaries.</td>
+</tr>
+</tbody>
+</table>
+<p>The API layer translates between HTTP-facing Pydantic models and internal dataclass models.</p>
+<pre class="text"><code>HTTP JSON
+    ↓
+Pydantic API model
+    ↓
+conversion function
+    ↓
+dataclass domain model
+    ↓
+service
+    ↓
+dataclass result
+    ↓
+conversion function
+    ↓
+Pydantic API response
+    ↓
+HTTP JSON</code></pre>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
