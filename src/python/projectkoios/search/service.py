@@ -1,35 +1,32 @@
 # src/python/projectkoios/search/service.py
 
-from projectkoios.api.models import SearchRequest, SearchResult
+from __future__ import annotations
+
+from collections.abc import Iterable
+
+from projectkoios.chunking import TextChunk
+from projectkoios.search.memory_search_index import MemorySearchIndex
+from projectkoios.search.models import ChunkSearchResult
+from projectkoios.search.protocols import SearchIndex
 
 
 class SearchService:
-    """
-    Application service for search operations.
+    def __init__(
+        self,
+        search_index: SearchIndex | None = None,
+    ) -> None:
+        self.search_index = search_index or MemorySearchIndex()
 
-    At this stage, SearchService uses in-memory placeholder data. The purpose
-    is to stabilize the API boundary before adding vault scanning, SQLite FTS,
-    vector search, or ranking logic.
-    """
+    def add_chunks(self, chunks: Iterable[TextChunk]) -> None:
+        self.search_index.add_chunks(chunks)
 
-    def search(self, request: SearchRequest) -> list[SearchResult]:
-        """
-        Return search results for the given request.
-
-        This is currently a minimal in-memory implementation.
-        """
-
-        results = [
-            SearchResult(
-                title="Particle in a Box",
-                path="knowledge/quantum/particle_in_a_box.md",
-                snippet=(
-                    "The particle in a box is the canonical Dirichlet "
-                    "boundary condition problem."
-                ),
-                score=1.0,
-                object_type="note",
-            )
-        ]
-
-        return results[: request.limit]
+    def search(
+        self,
+        query: str,
+        *,
+        limit: int = 10,
+    ) -> list[ChunkSearchResult]:
+        return self.search_index.search(
+            query=query,
+            limit=limit,
+        )
