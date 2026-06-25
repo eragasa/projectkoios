@@ -2,17 +2,12 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable
 from typing import Protocol
 
-from projectkoios.chunking import TextChunk
 from projectkoios.search.models import ChunkSearchResult
 
 
-class SearchIndex(Protocol):
-    def add_chunks(self, chunks: Iterable[TextChunk]) -> None:
-        ...
-
+class ChunkSearchIndex(Protocol):
     def search(
         self,
         query: str,

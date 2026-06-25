@@ -3,8 +3,7 @@
 from pathlib import Path
 
 from projectkoios.chunking import TextChunk
-from projectkoios.search import MemorySearchIndex
-
+from projectkoios.indexing import InMemoryChunkIndex
 
 def make_chunk(
     text: str,
@@ -28,7 +27,7 @@ def make_chunk(
 
 
 def test__add_chunks__stores_chunks() -> None:
-    index = MemorySearchIndex()
+    index = InMemoryChunkIndex()
 
     chunk = make_chunk("app = FastAPI()\n")
 
@@ -41,7 +40,7 @@ def test__add_chunks__stores_chunks() -> None:
 
 
 def test__search__returns_matching_chunks() -> None:
-    index = MemorySearchIndex()
+    index = InMemoryChunkIndex()
 
     matching_chunk = make_chunk("app = FastAPI()\n")
     non_matching_chunk = make_chunk("def unrelated(): pass\n")
@@ -55,7 +54,7 @@ def test__search__returns_matching_chunks() -> None:
 
 
 def test__search__is_case_insensitive() -> None:
-    index = MemorySearchIndex()
+    index = InMemoryChunkIndex()
 
     chunk = make_chunk("app = FastAPI()\n")
 
@@ -68,7 +67,7 @@ def test__search__is_case_insensitive() -> None:
 
 
 def test__search__returns_empty_list_when_no_match() -> None:
-    index = MemorySearchIndex()
+    index = InMemoryChunkIndex()
 
     chunk = make_chunk("app = FastAPI()\n")
 
@@ -80,7 +79,7 @@ def test__search__returns_empty_list_when_no_match() -> None:
 
 
 def test__search__respects_limit() -> None:
-    index = MemorySearchIndex()
+    index = InMemoryChunkIndex()
 
     chunks = [
         make_chunk(
@@ -99,7 +98,7 @@ def test__search__respects_limit() -> None:
 
 
 def test__search__preserves_chunk_provenance() -> None:
-    index = MemorySearchIndex()
+    index = InMemoryChunkIndex()
 
     chunk = make_chunk(
         "app = FastAPI()\n",
@@ -128,7 +127,7 @@ def test__search__preserves_chunk_provenance() -> None:
 
 
 def test__search__orders_results_by_score() -> None:
-    index = MemorySearchIndex()
+    index = InMemoryChunkIndex()
 
     lower_score_chunk = make_chunk(
         "FastAPI app\n",
@@ -149,7 +148,7 @@ def test__search__orders_results_by_score() -> None:
 
 
 def test__search__returns_empty_list_for_empty_query() -> None:
-    index = MemorySearchIndex()
+    index = InMemoryChunkIndex()
 
     chunk = make_chunk("app = FastAPI()\n")
 
@@ -161,7 +160,7 @@ def test__search__returns_empty_list_for_empty_query() -> None:
 
 
 def test__search__returns_empty_list_for_non_positive_limit() -> None:
-    index = MemorySearchIndex()
+    index = InMemoryChunkIndex()
 
     chunk = make_chunk("app = FastAPI()\n")
 

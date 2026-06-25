@@ -2,23 +2,16 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable
-
-from projectkoios.chunking import TextChunk
-from projectkoios.search.memory_search_index import MemorySearchIndex
 from projectkoios.search.models import ChunkSearchResult
-from projectkoios.search.protocols import SearchIndex
+from projectkoios.search.protocols import ChunkSearchIndex
 
 
 class SearchService:
     def __init__(
         self,
-        search_index: SearchIndex | None = None,
+        search_index: ChunkSearchIndex,
     ) -> None:
-        self.search_index = search_index or MemorySearchIndex()
-
-    def add_chunks(self, chunks: Iterable[TextChunk]) -> None:
-        self.search_index.add_chunks(chunks)
+        self.search_index = search_index
 
     def search(
         self,

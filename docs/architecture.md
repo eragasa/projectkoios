@@ -1,19 +1,19 @@
 # Project Koios Architecture
 
 ## Vision
-==Project Koios is a knowledge management and content generation system for technical and scientific workflows. It is organized around local knowledge objects, workflow objects, source artifacts, generated outputs, and provenance records.==
 
-It helps a researcher, lecturer, and builder ask useful questions of their own technical materials, generate new content from grounded sources, and preserve the path from source objects to outputs.  
-# not Vision
-Project Koios is not defined by a single interface. The FastAPI service, web interface, command-line tools, notebooks, and future local services are adapters over the same knowledge-management system.==
+Project Koios is a local-first technical knowledge system for research, teaching, software development, technical writing, and generated artifacts.
 
-Project Koios is a local-first technical knowledge system for turning notes, source code, references, workflows, and generated artifacts into inspectable computational context.  
-  
-It helps a researcher, lecturer, and builder ask useful questions of their own technical materials, generate new content from grounded sources, and preserve the path from source objects to outputs.  
-  
-Project Koios is not just a web app, search tool, notebook collection, or LLM wrapper. It is a system for organizing technical work as connected objects: repositories, notes, references, tasks, computations, outputs, and provenance records.  
-  
-The first practical target is a RAG-supported LLM coder for local Python repositories. Later targets include scientific notes, references, workflows, teaching materials, and generated artifacts.
+It organizes technical work as connected objects: source materials, knowledge objects, workflow records, computations, generated outputs, and provenance records. The system exists so that work developed in one context can be found, checked, extended, revised, published, or reused in another context without reconstructing the path from memory.
+
+Project Koios exposes this system through multiple interfaces. FastAPI provides an HTTP interface. Command-line tools support direct local operations. Notebooks support scientific and exploratory workflows. A web interface can support browsing, search, review, and artifact inspection. Future local services can expose the same underlying object model through additional protocols.
+
+LLMs operate inside this architecture as assistive components. They support retrieval, synthesis, drafting, coding, and review. Their outputs remain tied to source objects, retrieval context, and provenance records.
+
+The current practical target is a RAG-supported LLM coding workflow for local Python repositories. Later targets include scientific notes, references, teaching materials, workflows, generated artifacts, and public outputs.
+
+Project Koios keeps the human in control by making source material, intermediate objects, generated outputs, and provenance inspectable.
+
 ## Architecture Status
 
 Project Koios distinguishes between the current repository architecture and the planned system architecture.

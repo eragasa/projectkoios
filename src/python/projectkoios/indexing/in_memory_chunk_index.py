@@ -1,4 +1,4 @@
-# src/python/projectkoios/search/memory_search_index.py
+# src/python/projectkoios/indexing/in_memory_chunk_index.py
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from projectkoios.chunking import TextChunk
 from projectkoios.search.models import ChunkSearchResult
 
 
-class MemorySearchIndex:
+class InMemoryChunkIndex:
     def __init__(self) -> None:
         self._chunks: list[TextChunk] = []
 
@@ -47,7 +47,10 @@ class MemorySearchIndex:
                 )
             )
 
-        results.sort(key=lambda result: result.score, reverse=True)
+        results.sort(
+            key=lambda result: result.score,
+            reverse=True,
+        )
 
         return results[:limit]
 

@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from projectkoios.api.config import ProjectKoiosAppConfiguration
 from projectkoios.api.routers.core import create_core_router
 from projectkoios.api.routers.search import create_search_router
+from projectkoios.indexing import InMemoryChunkIndex
 from projectkoios.search.service import SearchService
 from projectkoios.vault.service import VaultService
 
@@ -18,7 +19,9 @@ class ProjectKoiosApp:
     ) -> None:
         self.configuration = configuration or ProjectKoiosAppConfiguration()
 
-        self.search_service = search_service or SearchService()
+        self.search_service = search_service or SearchService(
+            search_index=InMemoryChunkIndex(),
+        )
         self.vault_service = vault_service or VaultService(
             configuration=self.configuration.vault,
         )
@@ -39,7 +42,7 @@ class ProjectKoiosApp:
 
         for router in routers:
             self.app.include_router(router)
-    
+
     @classmethod
     def create_app(
         cls,
@@ -47,4 +50,4 @@ class ProjectKoiosApp:
     ) -> FastAPI:
         projectkoios_app = cls(configuration=configuration)
         return projectkoios_app.app
-
+    
