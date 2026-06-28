@@ -9,7 +9,6 @@ from projectkoios.indexing import InMemoryChunkIndex
 from projectkoios.search.service import SearchService
 from projectkoios.vault.service import VaultService
 
-
 # Runtime composition layer.
 #
 # This module wires together concrete services for the current prototype

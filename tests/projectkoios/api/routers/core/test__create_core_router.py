@@ -1,4 +1,4 @@
-# test//spike_fastapi_app_boundary/test__CoreRouter.py
+# tests/projectkoios/api/routers/core/test__create_core_router.py
 
 """
 Tests for the core router factory.

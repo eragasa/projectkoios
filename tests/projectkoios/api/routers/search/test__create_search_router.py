@@ -5,7 +5,6 @@ from pathlib import Path
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-
 from projectkoios.api.routers.search import create_search_router
 from projectkoios.chunking import TextChunk
 from projectkoios.search.models import ChunkSearchResult

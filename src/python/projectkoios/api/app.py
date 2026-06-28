@@ -8,7 +8,6 @@ from __future__ import annotations
 # routers, but it should not construct domain services directly.
 #
 # This keeps the API layer easier to extract later into `projectkoios-api`.
-
 from fastapi import FastAPI
 
 from projectkoios.api.config import ProjectKoiosAppConfiguration

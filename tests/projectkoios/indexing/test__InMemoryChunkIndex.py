@@ -5,6 +5,7 @@ from pathlib import Path
 from projectkoios.chunking import TextChunk
 from projectkoios.indexing import InMemoryChunkIndex
 
+
 def make_chunk(
     text: str,
     *,

@@ -1,4 +1,4 @@
-# dev/spike_fastapi_app_boundary/routers/core.py
+# src/python/projectkoios/api/routers/core.py
 from fastapi import APIRouter
 
 

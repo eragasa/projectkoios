@@ -1,5 +1,6 @@
-# dev/spike_fastapi_app_boundary/models.py
+# src/python/projectkoios/api/models.py
 from pydantic import BaseModel, Field
+
 
 class SearchRequest(BaseModel):
     query: str = Field(min_length=1)
