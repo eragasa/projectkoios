@@ -8,11 +8,7 @@ license = "MIT"
 authors = [
     { name = "Eugene Ragasa", email = "eugene@projectkoios.com" },
 ]
-dependencies = [
-    "fastapi>=0.115",
-    "uvicorn[standard]>=0.34",
-    "pydantic>=2.0",
-]
+dependencies = []
 
 [build-system]
 requires = ["setuptools>=61.0.0"]
@@ -20,6 +16,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src/python"]
+namespaces = true
 
 [project.optional-dependencies]
 dev = [
@@ -52,6 +49,11 @@ select = [
     "UP",
     "B",
 ]
+
+[tool.mypy]
+mypy_path = "src/python"
+namespace_packages = true
+explicit_package_bases = true
 
 [tool.ruff.format]
 quote-style = "double"
