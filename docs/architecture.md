@@ -180,19 +180,23 @@ If yes, the boundary is healthy.
 
 ## Pydantic Boundary
 
-Pydantic is used at system boundaries, especially API request and response models.
+Project Koios uses Pydantic at system boundaries.
 
-Pydantic is used for:
+The main boundary is the API layer. FastAPI receives external JSON, validates it with Pydantic models, and returns Pydantic response models. This is useful for request validation, response serialization, and OpenAPI schema generation.
 
-```text
-API input models
-API output models
-configuration models
-validation-heavy schemas
-OpenAPI schema generation
-```
+Pydantic is appropriate for:
 
-Dataclasses and ordinary classes are used for internal domain objects.
+- API input models
+- API output models
+- configuration models
+- validation-heavy schemas
+- OpenAPI schema generation
+- structured external inputs
+
+
+Pydantic should not become the internal Project Koios domain model.
+
+Internal application objects should prefer dataclasses or ordinary classes. These objects represent concepts inside the system, not external request or response formats.
 
 | Object type          | Preferred implementation  |
 | -------------------- | ------------------------- |
@@ -205,6 +209,12 @@ Dataclasses and ordinary classes are used for internal domain objects.
 | Search engine        | Ordinary class            |
 | Vault scanner        | Ordinary class            |
 | Indexer              | Ordinary class            |
+
+The rules are:
+
+- Pydantic validates boundary data.
+- Dataclasses represent internal state.
+- Ordinary classes implement behavior.
 
 Example internal search command:
 
@@ -237,7 +247,7 @@ class SearchHit:
     metadata: dict
 ```
 
-Example API model:
+Example API request model:
 
 ```python
 from pydantic import BaseModel, Field
@@ -249,7 +259,7 @@ class SearchRequest(BaseModel):
     object_types: list[str] | None = None
 ```
 
-The conversion layer is explicit.
+The API layer explicitly converts boundary models into internal command objects.
 
 ```python
 def request_to_command(request: SearchRequest) -> SearchCommand:
@@ -260,9 +270,33 @@ def request_to_command(request: SearchRequest) -> SearchCommand:
     )
 ```
 
+The intended flow is:
+
+```text
+HTTP JSON
+    ↓
+Pydantic API model
+    ↓
+conversion function
+    ↓
+internal dataclass command
+    ↓
+application service
+    ↓
+internal dataclass result
+    ↓
+Pydantic API response model
+    ↓
+HTTP JSON response
+```
+
+This keeps FastAPI and Pydantic as adapters. They should not define the internal architecture.
+
 ## Current Search Target
 
-The first useful search implementation is local, explicit, and inspectable.
+The first useful search implementation should be local, explicit, and inspectable.
+
+The initial flow is:
 
 ```text
 vault path
@@ -294,6 +328,8 @@ The first API target is:
 GET /health
 POST /search
 ```
+
+The search system should remain usable without FastAPI. The API exposes search; it does not own search.
 
 ## Planned Architecture
 

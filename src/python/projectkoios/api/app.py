@@ -1,30 +1,30 @@
 # src/python/projectkoios/api/app.py
 
+from __future__ import annotations
+
+# FastAPI application adapter.
+#
+# This module should stay thin. It creates the FastAPI app and registers
+# routers, but it should not construct domain services directly.
+#
+# This keeps the API layer easier to extract later into `projectkoios-api`.
+
 from fastapi import FastAPI
 
 from projectkoios.api.config import ProjectKoiosAppConfiguration
 from projectkoios.api.routers.core import create_core_router
 from projectkoios.api.routers.search import create_search_router
-from projectkoios.indexing import InMemoryChunkIndex
-from projectkoios.search.service import SearchService
-from projectkoios.vault.service import VaultService
+from projectkoios.runtime import ProjectKoiosServices, create_services
 
 
 class ProjectKoiosApp:
     def __init__(
         self,
         configuration: ProjectKoiosAppConfiguration | None = None,
-        search_service: SearchService | None = None,
-        vault_service: VaultService | None = None,
+        services: ProjectKoiosServices | None = None,
     ) -> None:
         self.configuration = configuration or ProjectKoiosAppConfiguration()
-
-        self.search_service = search_service or SearchService(
-            search_index=InMemoryChunkIndex(),
-        )
-        self.vault_service = vault_service or VaultService(
-            configuration=self.configuration.vault,
-        )
+        self.services = services or create_services(self.configuration)
 
         self.app = FastAPI(
             title=self.configuration.title,
@@ -35,19 +35,17 @@ class ProjectKoiosApp:
         self.register_routes()
 
     def register_routes(self) -> None:
-        routers = [
-            create_core_router(),
-            create_search_router(self.search_service),
-        ]
-
-        for router in routers:
-            self.app.include_router(router)
+        self.app.include_router(create_core_router())
+        self.app.include_router(create_search_router(self.services.search))
 
     @classmethod
     def create_app(
         cls,
         configuration: ProjectKoiosAppConfiguration | None = None,
+        services: ProjectKoiosServices | None = None,
     ) -> FastAPI:
-        projectkoios_app = cls(configuration=configuration)
+        projectkoios_app = cls(
+            configuration=configuration,
+            services=services,
+        )
         return projectkoios_app.app
-    
