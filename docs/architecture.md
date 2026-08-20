@@ -777,3 +777,4 @@ HTTP JSON
 | [[architecture.repositories]]   |     |
 | [[architecture.rag]]            |     |
 | [[architecture.rag.repository]] |     |
+| [[architecture.web]]            |     |
