@@ -12,7 +12,29 @@ LLMs operate inside this architecture as assistive components. They support retr
 
 The current practical target is a RAG-supported LLM coding workflow for local Python repositories. Later targets include scientific notes, references, teaching materials, workflows, generated artifacts, and public outputs.
 
-Project Koios keeps the human in control by making source material, intermediate objects, generated outputs, and provenance inspectable.
+## Harness Routing
+
+Harness routing and role split are defined in
+`projectkoios-bootstrap/docs/agent-charter.md`.
+
+This document does not define agent roles or routing rules. It only describes
+Project Koios product architecture.
+
+Project Koios keeps the human in control by making source material,
+intermediate objects, generated outputs, and provenance inspectable.
+
+## Agents Incubation
+
+`projectkoios.agents` is an incubation namespace for persistent agent workspace
+state.
+
+It currently models:
+- `AgentWorkspace` — the filesystem-backed workspace data object
+- `AgentWorkspaceAction` — the action object that writes workspace records
+
+The workspace model is intentionally small and filesystem-oriented. It is a
+local application concern, not a replacement for harness routing or workspace
+maps.
 
 ## Architecture Status
 
@@ -39,6 +61,7 @@ projectkoios/
         └── projectkoios/
             ├── __init__.py
             ├── core/
+            ├── agents/
             ├── vault/
             ├── search/
             ├── references/
@@ -70,6 +93,7 @@ FastAPI is an adapter, not the system.
 | Namespace                 | Purpose                                                                                                                                      |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `projectkoios.core`       | Generic infrastructure used across the system: configuration, paths, IDs, serialization, validation, and shared utilities.                   |
+| `projectkoios.agents`     | Incubation namespace for agent workspaces, agent-local actions, and persistent session state.                                                  |
 | `projectkoios.vault`      | Local Obsidian / Markdown knowledge-base management: vault scanning, front matter parsing, Markdown parsing, links, tags, and note metadata. |
 | `projectkoios.search`     | Indexing, full-text search, vector search, ranking, chunking, and retrieval.                                                                 |
 | `projectkoios.references` | Reference management: BibTeX records, PDFs, citation keys, source metadata, and reference ingestion.                                         |
@@ -97,6 +121,10 @@ src/python/projectkoios/
 │   ├── config.py
 │   ├── ids.py
 │   └── paths.py
+├── agents/
+│   ├── __init__.py
+│   ├── actions.py
+│   └── workspace.py
 ├── vault/
 │   ├── __init__.py
 │   ├── scanner.py
@@ -743,6 +771,7 @@ Pydantic models are used at external boundaries. Dataclasses are used for intern
 | Layer | Object type | Purpose |
 |---|---|---|
 | `projectkoios.api.models` | Pydantic models | HTTP request and response schemas, validation, serialization, and OpenAPI documentation. |
+| `projectkoios.agents.*` | Dataclasses | Agent workspace records, workspace actions, session state, and handoff artifacts. |
 | `projectkoios.search.models` | Dataclasses | Internal search queries, hits, ranking inputs, and retrieval results. |
 | `projectkoios.repositories.models` | Dataclasses | Repository files and source metadata. |
 | `projectkoios.chunking.models` | Dataclasses | Text/code chunks and chunk offsets. |
@@ -774,6 +803,7 @@ HTTP JSON
 
 |                                 |     |
 | ------------------------------- | --- |
+| [[architecture.agents]]         |     |
 | [[architecture.repositories]]   |     |
 | [[architecture.rag]]            |     |
 | [[architecture.rag.repository]] |     |

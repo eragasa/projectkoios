@@ -7,6 +7,9 @@ extracted to separate repos (`projectkoios-agent` first). `projectkoios-core` is
 deferred. The current `src/python/projectkoios/` layout is provisional — it does
 not match the planned subpackage structure in `docs/architecture.md`.
 
+Harness routing and role split live in `projectkoios-bootstrap/docs/agent-charter.md`.
+This repo only owns product architecture and durable domain docs.
+
 ## Setup
 
 ```bash
@@ -26,10 +29,11 @@ pip install -e ".[dev]"
 ## Package layout gotchas
 
 - Source root is **`src/python/projectkoios/`** (two levels deep)
-- Current subpackages (`api/`, `chunking/`, `indexing/`, `repositories/`,
-  `runtime/`, `search/`, `vault/`) are **tentative** — expect reorganization
-  into `core/`, `vault/`, `search/`, `references/`, `workflow/`, `api/` per
-  `docs/architecture.md`, or extraction to separate repos per `ADR20260626`
+- Current subpackages (`agents/`, `api/`, `chunking/`, `indexing/`,
+  `repositories/`, `runtime/`, `search/`, `vault/`) are **tentative** — expect
+  reorganization into `core/`, `vault/`, `search/`, `references/`,
+  `workflow/`, `api/` per `docs/architecture.md`, or extraction to separate
+  repos per `ADR20260626`
 - `core/` package does not exist yet
 
 ## Architecture rules
