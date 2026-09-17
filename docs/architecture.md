@@ -12,13 +12,14 @@ LLMs operate inside this architecture as assistive components. They support retr
 
 The current practical target is a RAG-supported LLM coding workflow for local Python repositories. Later targets include scientific notes, references, teaching materials, workflows, generated artifacts, and public outputs.
 
-## Harness Routing
+The proposed longer-term scientific direction and its authority limits are described in the [Project Koios Scientific Platform Thesis](architecture.scientific-platform-thesis.md).
 
-Harness routing and role split are defined in
-`projectkoios-bootstrap/docs/agent-charter.md`.
+## Repository Routing
 
-This document does not define agent roles or routing rules. It only describes
-Project Koios product architecture.
+Repository discovery and operational coordination are documented in
+`projectkoios-bootstrap/maps/repositories.md`.
+
+This document does not define session-routing rules. It describes Project Koios product architecture and records cross-repository architectural direction.
 
 Project Koios keeps the human in control by making source material,
 intermediate objects, generated outputs, and provenance inspectable.

@@ -8,13 +8,20 @@ It organizes notes, references, code, computational workflows, and generated art
 
 | Repository | Role |
 |---|---|
-| `projectkoios-agent` | Local-first LLM harness and agent runtime |
-| `projectkoios-vault` | Obsidian vault indexing, validation, and transformations |
-| `projectkoios-ingest` | PDF, BibTeX, Markdown, and reference ingestion |
-| `projectkoios-schemas` | Shared artifact, provenance, note, and workflow schemas |
-| `projectkoios-cli` | Top-level `projectkoios` command |
-| `physkit` | Pedagogical physics code |
-| `msekit` | Research materials-science code |
+| `projectkoios` | Product architecture and cross-repository decisions |
+| `projectkoios-bootstrap` | Multi-repository operational coordination |
+| `projectkoios-agent` | Deferred reusable agent-domain components |
+| `projectkoios-api` | HTTP API and runtime boundary |
+| `projectkoios-courses` | Course modeling and authoring |
+| `projectkoios-ingestion` | Source ingestion and document processing |
+| `projectkoios-obsidian` | Obsidian integration and vault management |
+| `projectkoios-references` | Reference and citation management |
+| `projectkoios-research` | Research-portfolio identity and external-project relationships |
+| `projectkoios-search` | Search and indexing |
+| `projectkoios-web` | Browser interface |
+| `projectkoios-workflow` | Reusable workflow execution |
+
+The operational repository map is maintained in `projectkoios-bootstrap/maps/repositories.md`. Scientific and pedagogical applications such as `physkit`, `msekit`, `ksdft2effmass`, and `dacp2transport` retain their independent ownership and authority.
 
 ## Design commitments
 

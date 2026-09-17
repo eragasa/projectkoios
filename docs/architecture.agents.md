@@ -30,4 +30,4 @@ Keep these objects small and filesystem-oriented until the design stabilizes.
   incubation.
 - The design remains simple enough to extract later if it becomes shared
   across repos.
-- The workspace model does not replace `maps/` or `docs/agent-charter.md`.
+- The workspace model does not replace the repository map in `projectkoios-bootstrap/maps/repositories.md`.

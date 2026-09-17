@@ -7,7 +7,7 @@ extracted to separate repos (`projectkoios-agent` first). `projectkoios-core` is
 deferred. The current `src/python/projectkoios/` layout is provisional — it does
 not match the planned subpackage structure in `docs/architecture.md`.
 
-Harness routing and role split live in `projectkoios-bootstrap/docs/agent-charter.md`.
+Repository routing is documented in `projectkoios-bootstrap/maps/repositories.md`.
 This repo only owns product architecture and durable domain docs.
 
 ## Setup
