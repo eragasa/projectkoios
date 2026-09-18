@@ -25,6 +25,12 @@ Project Koios must avoid turning generated notes or assessments into apparent
 source evidence. Retrieval failure must also remain distinguishable from a
 scientific judgment that a source is irrelevant or a claim is false.
 
+The accepted
+[reference authority and projection architecture](adr.20260918.reference-authority-and-projections.md)
+governs candidate and canonical reference identities, historical authority,
+collection projections, and the references-to-ingestion dependency direction.
+This proposal does not weaken or replace that decision.
+
 ## Proposed decision
 
 Project Koios will develop an evidence-first hybrid retrieval architecture
@@ -199,8 +205,10 @@ interchange need exists.
 ## Ownership
 
 - `projectkoios` owns this cross-repository architecture and parent roadmap.
-- `projectkoios-references` owns bibliographic identity, rights, acquisition
-  evidence, and reference-candidate status.
+- `projectkoios-references` owns bibliographic identity, access and rights
+  evidence, acquisition evidence, and reference-candidate status.
+  Action-specific rights decisions remain with the repository performing the
+  action and its designated human authority.
 - `projectkoios-ingestion` owns extraction, document processing, transcript
   projection, equation evidence, and derivation audits.
 - `projectkoios-search` owns retrieval-unit contracts, indexes, ranking,
