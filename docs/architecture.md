@@ -17,7 +17,9 @@ The proposed longer-term scientific direction and its authority limits are descr
 ## Repository Routing
 
 Repository discovery and operational coordination are documented in
-`projectkoios-bootstrap/maps/repositories.md`.
+`projectkoios-bootstrap/maps/repositories.md`. The bounded incubation boundary
+for Project Koios-specific Pi coordination tooling is defined by the
+[bounded bootstrap Pi harness incubation ADR](adr.20260918.bootstrap-pi-harness-incubation.md).
 
 This document does not define session-routing rules. It describes Project Koios product architecture and records cross-repository architectural direction.
 

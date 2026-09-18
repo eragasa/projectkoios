@@ -103,9 +103,13 @@ Their stable contracts and identities may be referenced from issues, but
 private paths, credentials, protected source material, and access-control
 details must not be copied into public issues.
 
-`projectkoios-bootstrap` contains repository routing and live coordination
-instructions only. It does not store roadmap state, task replicas, checkpoints,
-transcripts, or generated handoffs.
+`projectkoios-bootstrap` contains repository routing, live coordination
+instructions, and bounded source, sanitized fixtures, and tests for the
+Project Koios-specific Pi coordination harness. It does not store roadmap
+state, task replicas, runtime queues, checkpoints, transcripts, generated
+handoffs, telemetry, or other live orchestration state. Private harness
+observations belong under managed operational state and may be referenced by
+content identity from owner issues without copying private paths or content.
 
 ## Task states
 
