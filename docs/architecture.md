@@ -45,6 +45,11 @@ The current architecture is intentionally small enough to run, test, and underst
 
 The planned architecture describes the expansion path after the Python package, API boundary, and search model stabilize.
 
+Active cross-repository proposals and their parent roadmaps are listed in the
+[architecture proposal index](architecture.proposals.md). Proposed records do
+not authorize implementation or change architecture status until separately
+accepted.
+
 ## Current Architecture
 
 The current repository is a Python package repository.
