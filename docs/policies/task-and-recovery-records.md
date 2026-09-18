@@ -32,6 +32,10 @@ operator authority.
 
 Cross-repository architecture belongs in `projectkoios`. Stable component
 contracts belong in the repository that implements or enforces them.
+Component contracts use the common owner-repository location
+`docs/contracts/`, with a local `README.md` index. The cross-repository
+[`contract catalog`](../contracts/README.md) contains discovery links only; it
+does not duplicate contract bodies or component acceptance authority.
 
 Stable documents record:
 

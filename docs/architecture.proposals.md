@@ -13,7 +13,9 @@ release decision, or scientific approval.
 | Evidence-grounded scientific retrieval | [`ADR20260918`](adr.20260918.evidence-grounded-scientific-rag.md) | Proposed | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) |
 | Workflow-kernel ownership transfer | [`ADR20260918`](adr.20260918.workflow-kernel-transfer.md) | Proposed | [`WORKFLOW-TRANSFER-01`](https://github.com/eragasa/projectkoios/issues/1) |
 
-Task and fresh-session recovery rules are defined in
+Owner-repository contracts are discoverable through the
+[`Project Koios contract catalog`](contracts/README.md). Task and fresh-session
+recovery rules are defined in
 [`policies/task-and-recovery-records.md`](policies/task-and-recovery-records.md).
 Repository routing remains in
 `projectkoios-bootstrap/maps/repositories.md`.
