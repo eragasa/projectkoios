@@ -35,7 +35,9 @@ contracts belong in the repository that implements or enforces them.
 Component contracts use the common owner-repository location
 `docs/contracts/`, with a local `README.md` index. The cross-repository
 [`contract catalog`](../contracts/README.md) contains discovery links only; it
-does not duplicate contract bodies or component acceptance authority.
+does not duplicate contract bodies or component acceptance authority. Contract
+identity, pre-release versioning, lifecycle, compatibility, and conformance
+follow the shared [`contract governance policy`](contracts.md).
 
 Stable documents record:
 
