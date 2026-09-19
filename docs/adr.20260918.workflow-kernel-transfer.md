@@ -2,7 +2,13 @@
 
 ## Status
 
-Proposed
+Accepted
+
+Accepted by the Project Koios operator on 2026-09-19 as a staged, reversible
+evaluation plan. This acceptance does not accept the proposed workflow-core
+contract or authorize feasibility work, implementation, migration, production
+transfer, release,
+deprecation, or source removal.
 
 ## Context
 
@@ -33,23 +39,38 @@ reversible program identified as `WORKFLOW-TRANSFER-01`.
 The stages are:
 
 1. Retain `WORKFLOW-CPN-SHADOW-01` as immutable conformance evidence.
-2. Define and accept `WORKFLOW-CORE-01`, a Petri-independent core contract.
-3. Implement `WORKFLOW-CPN-ADAPTER-01` as a separate adapter from the core to
+2. Define the proposed `WORKFLOW-CORE-01` Petri-independent contract and its
+   executable specification examples and conformance vectors.
+3. Obtain separately authorized, non-production feasibility evidence: one
+   disposable engine-boundary spike and review by one named prospective
+   consumer owner. The spike is evidence about the boundary, not an accepted
+   adapter, core implementation, migration, or release.
+4. Resolve the contract's normative findings and separately decide whether to
+   accept its immutable specification baseline.
+5. Implement the accepted core only under separate implementation
+   authorization and verify it against the accepted conformance vectors.
+6. Implement `WORKFLOW-CPN-ADAPTER-01` as a separate adapter from the core to
    the colored-Petri-net kernel.
-4. Define at least one complete managed-project adapter without moving
+7. Define at least one complete managed-project adapter without moving
    research-domain authority into `projectkoios-workflow`.
-5. Decide identity, schema, and wire-version compatibility in
+8. Decide public schema, wire encoding, and compatibility in
    `WORKFLOW-IDENTITY-WIRE-01`.
-6. Run consumer shadow replay before proposing migration.
-7. Require separate human acceptance for production ownership transfer,
-   consumer migration, source deprecation, and source removal.
+9. Run consumer shadow replay before proposing migration.
+10. Require separate human acceptance for production ownership transfer,
+    consumer migration, source deprecation, and source removal.
 
 The dependency order is:
 
 ```text
 WORKFLOW-CPN-SHADOW-01
         ↓
-WORKFLOW-CORE-01
+WORKFLOW-CORE-SPEC-01
+        ↓
+WORKFLOW-CORE-FEASIBILITY-01
+        ↓
+WORKFLOW-CORE-ACCEPTANCE-01
+        ↓
+WORKFLOW-CORE-IMPLEMENTATION-01
         ↓
 WORKFLOW-CPN-ADAPTER-01
         ↓
@@ -64,9 +85,12 @@ KSDFT-WORKFLOW-MIGRATION-01
 WORKFLOW-TRANSFER-ACCEPTANCE-01
 ```
 
-This ordering is a transfer gate, not authorization to implement every stage.
-Only ready tasks receive detailed owner-repository issues. Downstream tasks
-remain proposed until their dependencies are accepted.
+`WORKFLOW-CORE-01` currently owns the specification work and may later be
+split into the named feasibility, acceptance, and implementation records when
+the preceding gate is ready. This ordering is a transfer gate, not
+implementation authorization. Only ready work receives a detailed
+owner-repository issue; downstream records are not created merely because they
+appear in this architecture graph.
 
 ## Ownership
 
@@ -101,12 +125,46 @@ contract. A production transfer must either accept them through an explicit
 compatibility policy or replace them through a versioned migration with replay
 and rollback evidence.
 
-## Transfer gates
+The revised core `0.2.0` identity model uses typed nominal logical identities
+for runs and requests. Outcome and audit identities are structural values
+derived from the complete bounded evaluation identity. Immutable definitions,
+snapshots, requests, artifacts, policy verdicts, and adapter results carry
+separate content-digest references. A run identity remains stable as its
+revision and current snapshot change. Core replay means field-by-field semantic
+equivalence under the same contract version and evidence; byte-equivalent
+replay is not claimed until a canonical serializer is accepted through
+`WORKFLOW-IDENTITY-WIRE-01`. The `0.2.0` target is a breaking normative revision
+of the published but unaccepted `0.1.0` proposal; it does not supersede an
+accepted baseline.
+
+The pure core validates the structure and exact binding of authority verdicts
+and adapter results but does not authenticate producers, evaluate revocation or
+expiry against an implicit clock, dereference artifact locators, or perform
+external effects. Those checks belong to explicit outer policies and
+boundaries. Presence of an evidence reference is never authorization.
+
+## Acceptance and transfer gates
+
+The ADR may be accepted as a staged evaluation plan without accepting the core
+contract or authorizing any implementation. Core-contract acceptance remains
+blocked until:
+
+- its complete normative state, transition, retry, failure, bound, authority,
+  and adapter-result semantics are reviewable;
+- executable specification examples and conformance vectors exist without
+  becoming a production implementation;
+- a separately authorized disposable adapter/consumer spike exercises the
+  proposed boundary;
+- one named prospective consumer owner reviews that evidence;
+- compatibility uncertainty is either resolved or explicitly bounded by the
+  acceptance decision; and
+- no unresolved `MUST_FIX` finding remains.
 
 Production ownership transfer remains blocked until all of the following are
 satisfied:
 
-- the Petri-independent core contract is accepted;
+- the Petri-independent core contract is accepted and an implementation is
+  separately authorized and verified against its immutable baseline;
 - the core-to-Petri adapter is independently reviewed;
 - at least one complete managed-project adapter exists;
 - identity and wire-version policies are accepted;
@@ -134,8 +192,10 @@ source excerpts, protected acquisition details, or machine-specific paths.
 ## Consequences
 
 - The current colored-Petri-net code remains a non-authoritative shadow.
-- `WORKFLOW-CORE-01` is the only immediately ready implementation-planning
-  task; later tasks are created when their dependencies are accepted.
+- `WORKFLOW-CORE-01` is the only immediately ready specification task.
+  Conformance-vector authoring and any non-production feasibility spike require
+  explicit bounded authorization; production implementation remains a later
+  gate.
 - Project Koios avoids coupling its workflow domain model to a particular
   execution formalism.
 - The source and shadow may coexist for an extended period without implying
