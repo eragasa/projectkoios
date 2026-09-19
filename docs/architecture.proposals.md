@@ -11,13 +11,13 @@ release decision, or scientific approval.
 | Program | Architecture record | ADR status | Parent roadmap |
 |---|---|---|---|
 | Evidence-grounded scientific retrieval | [`ADR20260918`](adr.20260918.evidence-grounded-scientific-rag.md) | Proposed | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) |
+| Workflow-kernel ownership transfer | [`ADR20260918`](adr.20260918.workflow-kernel-transfer.md) | Proposed | [`WORKFLOW-TRANSFER-01`](https://github.com/eragasa/projectkoios/issues/1) |
 
 ## Accepted cross-repository decisions used by active programs
 
 | Decision | Architecture record | Coordination record |
 |---|---|---|
 | Reference authority, identity, and projection direction | [Reference authority and projection architecture](adr.20260918.reference-authority-and-projections.md) | [`REFERENCES-ARCHITECTURE-01`](https://github.com/eragasa/projectkoios/issues/3) |
-| Staged workflow-kernel ownership evaluation | [Workflow-kernel transfer architecture](adr.20260918.workflow-kernel-transfer.md) | [`WORKFLOW-TRANSFER-01`](https://github.com/eragasa/projectkoios/issues/1) |
 
 Owner-repository contracts are discoverable through the
 [`Project Koios contract catalog`](contracts/README.md). Task and fresh-session
