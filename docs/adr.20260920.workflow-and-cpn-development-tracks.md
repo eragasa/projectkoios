@@ -62,6 +62,7 @@ flowchart LR
     WF2 --> CPN3
     WF3 --> CPN3
     WF4 -. promotion operations .-> CPN4
+    TRANSFER[Workflow-kernel transfer gates] --> CPN4
 ```
 
 Solid arrows are dependency gates. The dotted WF.4-to-CPN.4 arrow records a
@@ -132,12 +133,15 @@ overwrite; and replay reconstructs the same current state.
 
 ### WF.3 — Ingestion integration
 
-**Proposed formal task:**
+**Ingestion-side contract task:**
 [`INGEST-WORKFLOW-ADAPTER-01`][ingest-workflow-adapter-01]
 
-WF.3 supplies the first deployment-owned workflow adapter. It coordinates
-`projectkoios-workflow` and `projectkoios-ingestion` without either reusable
-package importing the other.
+WF.3 coordinates the first deployment-owned workflow adapter. The linked task
+owns ingestion requests, results, provenance, adapter-facing contracts, and
+synthetic fixtures; it does not own the executable composition adapter. Before
+implementation, the deployment adapter's final code owner must be recorded. It
+coordinates `projectkoios-workflow` and `projectkoios-ingestion` without either
+reusable package importing the other.
 
 The initial pilot uses two selected acquired textbook source identities without
 placing filenames, source paths, or artifact payloads in public workflow
@@ -162,8 +166,14 @@ retried without duplicating artifacts.
 
 ### WF.4 — Operator surface and activation
 
-**Proposed formal task:**
+**Workflow-contract task:**
 [`WORKFLOW-OPERATIONS-01`][workflow-operations-01]
+
+The linked task owns transport-neutral workflow commands and read-model
+semantics. It does not own HTTP representation, API authorization integration,
+or browser interaction. Implementation tasks for those concerns remain in
+`projectkoios-api` and `projectkoios-web` and are created only after the
+transport-neutral contracts are ready.
 
 WF.4 exposes read models and explicit commands through the API and laptop web
 application:
@@ -269,15 +279,26 @@ stateDiagram-v2
     AdapterValidated --> ReplayPassing: CPN.3
     ReplayPassing --> AuthorityProposed: promotion request
     AuthorityProposed --> ReplayPassing: rejected or more evidence required
-    AuthorityProposed --> EnabledForScope: explicit acceptance
+    AuthorityProposed --> TransferAccepted: scoped and transfer acceptance
+    TransferAccepted --> EnabledForScope: activate exact scope
     EnabledForScope --> ReplayPassing: rollback
 ```
 
 Authority is scoped by exact definition, adapter, workflow, and version.
-Rollback to the baseline adapter remains available.
+Rollback to the baseline adapter remains available. CPN.2, CPN.3, and scoped
+CPN.4 acceptance are necessary but not sufficient for production authority.
+Before `WORKFLOW-TRANSFER-ACCEPTANCE-01`, the copied kernel remains a
+non-authoritative shadow and cannot reach `EnabledForScope`.
+
+The separate transfer program must first accept its managed-project adapter,
+identity/wire policy, consumer replay, coexistence authority, release and
+rollback procedure, production transfer, and applicable consumer migration.
+Those decisions must cover the exact kernel and adapter version proposed for
+CPN.4.
 
 **Gate:** separate human acceptance binds the exact replay evidence, scope,
-release, and rollback plan.
+release, and rollback plan, and the applicable workflow-kernel transfer gates
+and transfer acceptance are complete.
 
 ## Engine and application boundaries
 
