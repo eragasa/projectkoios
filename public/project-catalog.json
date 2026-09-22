@@ -1,0 +1,73 @@
+{
+  "schema_version": "1",
+  "projects": [
+    {
+      "id": "projectkoios",
+      "slug": "projectkoios",
+      "name": "Project Koios",
+      "tagline": "Evidence-connected infrastructure for scientific teaching and research.",
+      "summary": "Project Koios is a local-first knowledge, modeling, and agentic workflow platform under active development. It connects notes, references, software, computational workflows, and generated artifacts through explicit schemas, provenance records, and reproducible transformations. Its public publishing surface is separated from its local, single-operator control center.",
+      "status": "active-development",
+      "topics": [
+        "scientific knowledge management",
+        "research software",
+        "provenance",
+        "workflow orchestration"
+      ],
+      "purposes": [
+        "Keep scientific and technical outputs connected to their evidence and provenance.",
+        "Support evidence-grounded teaching, manuscript development, and prospective research workflows.",
+        "Publish explicitly approved records without exposing private workspace state."
+      ],
+      "principles": [
+        "Local-first operation",
+        "Explicit provenance",
+        "Human-controlled decisions",
+        "Repository-owned authority",
+        "Bounded public claims"
+      ],
+      "capabilities": [
+        {
+          "name": "Public publishing foundation",
+          "status": "available",
+          "summary": "Presents explicitly configured public project and publication records through a public-only web and API profile."
+        },
+        {
+          "name": "Single-operator control center",
+          "status": "available",
+          "summary": "Provides a local/private interface for search, citation review, literature review, and read-only GitHubTask inspection."
+        },
+        {
+          "name": "Protected API and web verification",
+          "status": "available",
+          "summary": "The API and web repositories use required, ordered GitHubTask CI sequences before protected-branch changes are accepted."
+        },
+        {
+          "name": "Broader workflow operations",
+          "status": "in-development",
+          "summary": "Repository-wide task, workflow, artifact, and release operations remain bounded development work and are not presented as complete."
+        }
+      ],
+      "limitations": [
+        "The control profile is local/private and does not provide remote-user authentication.",
+        "Public records are editorial summaries, not claims of scientific validation.",
+        "Independent scientific applications retain their own repositories, review authority, and release lifecycles.",
+        "Capabilities not marked available remain in development or planned."
+      ],
+      "links": [
+        {
+          "label": "Project repository",
+          "url": "https://github.com/eragasa/projectkoios"
+        },
+        {
+          "label": "API repository",
+          "url": "https://github.com/eragasa/projectkoios-api"
+        },
+        {
+          "label": "Web repository",
+          "url": "https://github.com/eragasa/projectkoios-web"
+        }
+      ]
+    }
+  ]
+}
