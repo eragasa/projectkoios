@@ -57,6 +57,9 @@ def test__projectkoios_public_record__separates_capabilities_and_limits() -> (
         "tagline",
         "summary",
         "status",
+        "review",
+        "source_revisions",
+        "evidence",
         "topics",
         "purposes",
         "principles",
@@ -65,6 +68,11 @@ def test__projectkoios_public_record__separates_capabilities_and_limits() -> (
         "links",
     }
     assert project["status"] == "active-development"
+    review = cast(dict[str, object], project["review"])
+    assert review["record_version"] == "1.0.0"
+    assert review["reviewed_on"] == "2026-09-22"
+    assert len(cast(list[object], project["source_revisions"])) == 3
+    assert len(cast(list[object], project["evidence"])) == 3
     capabilities = cast(list[dict[str, object]], project["capabilities"])
     assert {capability["status"] for capability in capabilities} == {
         "available",

@@ -8,6 +8,42 @@
       "tagline": "Evidence-connected infrastructure for scientific teaching and research.",
       "summary": "Project Koios is a local-first knowledge, modeling, and agentic workflow platform under active development. It connects notes, references, software, computational workflows, and generated artifacts through explicit schemas, provenance records, and reproducible transformations. Its public publishing surface is separated from its local, single-operator control center.",
       "status": "active-development",
+      "review": {
+        "record_version": "1.0.0",
+        "reviewed_on": "2026-09-22",
+        "review_url": "https://github.com/eragasa/projectkoios/pull/6"
+      },
+      "source_revisions": [
+        {
+          "repository": "eragasa/projectkoios",
+          "revision": "fc551cf841199c219df76f672e37f2c5e494b282",
+          "url": "https://github.com/eragasa/projectkoios/commit/fc551cf841199c219df76f672e37f2c5e494b282"
+        },
+        {
+          "repository": "eragasa/projectkoios-api",
+          "revision": "c73869d43877c6a288ad56d2c5330636dd538694",
+          "url": "https://github.com/eragasa/projectkoios-api/commit/c73869d43877c6a288ad56d2c5330636dd538694"
+        },
+        {
+          "repository": "eragasa/projectkoios-web",
+          "revision": "325aebbbd96ed5bbde2d0574b2cc02f49d4a47cc",
+          "url": "https://github.com/eragasa/projectkoios-web/commit/325aebbbd96ed5bbde2d0574b2cc02f49d4a47cc"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Public overview review",
+          "url": "https://github.com/eragasa/projectkoios/pull/6"
+        },
+        {
+          "label": "API contract verification",
+          "url": "https://github.com/eragasa/projectkoios-api/actions/runs/35726287018"
+        },
+        {
+          "label": "Web acceptance verification",
+          "url": "https://github.com/eragasa/projectkoios-web/actions/runs/35726346916"
+        }
+      ],
       "topics": [
         "scientific knowledge management",
         "research software",
@@ -55,6 +91,18 @@
         "Capabilities not marked available remain in development or planned."
       ],
       "links": [
+        {
+          "label": "Architecture",
+          "url": "https://github.com/eragasa/projectkoios/blob/fc551cf841199c219df76f672e37f2c5e494b282/docs/architecture.md"
+        },
+        {
+          "label": "Roadmap",
+          "url": "https://github.com/eragasa/projectkoios/blob/fc551cf841199c219df76f672e37f2c5e494b282/ROADMAP.md"
+        },
+        {
+          "label": "Follow development",
+          "url": "https://github.com/eragasa/projectkoios/issues"
+        },
         {
           "label": "Project repository",
           "url": "https://github.com/eragasa/projectkoios"
