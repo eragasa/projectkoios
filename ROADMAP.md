@@ -4,7 +4,9 @@ Project Koios is being built through small working prototypes.
 
 The goal is not to design the final system upfront. The goal is to build useful pieces, see what patterns repeat, and only then decide what deserves to become shared infrastructure.
 
-At this stage, `projectkoios` is the mothership repo. It holds the roadmap, architecture notes, ADRs, examples, configuration ideas, and experimental code. The first separate implementation repo will be `projectkoios-agent`.
+At this stage, `projectkoios` is the mothership repo. It holds the roadmap,
+architecture notes, ADRs, examples, configuration ideas, and experimental
+code. `projectkoios-agent` is the first extracted implementation repository.
 
 `projectkoios-core` is intentionally deferred. Some of the current code may eventually become core, but the boundaries are not stable yet.
 
@@ -119,7 +121,7 @@ The main thing to avoid is pretending that early abstractions are final.
 ## Extraction rule
 
 A concept stays local if only one MVP uses it.
-[118;1:3u
+
 A concept can be considered for extraction if two MVPs use it.
 
 A concept can move toward `projectkoios-core` if three or more MVPs use it and the interface feels stable.
@@ -141,7 +143,8 @@ For now, these can live locally where they are needed.
 The near-term priorities are:
 
 1. Keep the mothership repo readable.
-2. Create `projectkoios-agent`.
+2. Keep additions to `projectkoios-agent` behind a demonstrated reusable
+   agent-domain boundary.
 3. Build the `review-note` MVP.
 4. Add a fake model backend for tests.
 5. Add one real model backend.

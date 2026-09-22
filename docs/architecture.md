@@ -26,18 +26,22 @@ This document does not define session-routing rules. It describes Project Koios 
 Project Koios keeps the human in control by making source material,
 intermediate objects, generated outputs, and provenance inspectable.
 
-## Agents Incubation
+## Agent Ownership and Incubation
 
-`projectkoios.agents` is an incubation namespace for persistent agent workspace
-state.
+The sibling `projectkoios-agent` repository supplies the singular
+`projectkoios.agent` namespace for reusable agent-domain components with
+demonstrated boundaries. The mothership's plural `projectkoios.agents`
+namespace remains an incubation area for persistent workspace state.
 
-It currently models:
-- `AgentWorkspace` — the filesystem-backed workspace data object
-- `AgentWorkspaceAction` — the action object that writes workspace records
+The incubation package currently models:
+
+- `AgentWorkspace` — the filesystem-backed workspace data object; and
+- `AgentWorkspaceAction` — the action object that writes workspace records.
 
 The workspace model is intentionally small and filesystem-oriented. It is a
 local application concern, not a replacement for harness routing or workspace
-maps.
+maps. Its extraction gates and migration checklist are documented in
+[Agents incubation and extraction boundary](architecture.agents.md).
 
 ## Architecture Status
 
