@@ -1,0 +1,80 @@
+{
+  "schema_version": "1",
+  "reviewed_on": "2026-09-22",
+  "source": {
+    "repository": "eragasa/projectkoios-courses",
+    "revision": "7bd6ce797d10381d436b89dbc12b226a95719d42",
+    "url": "https://github.com/eragasa/projectkoios-courses/blob/7bd6ce797d10381d436b89dbc12b226a95719d42/docs/migration/course-source-inventory.md"
+  },
+  "publication_boundary": [
+    "This catalog publishes course identity and migration status only.",
+    "No student submissions, grades, private feedback, credentials, proprietary course packs, textbooks, solution manuals, or unreviewed binaries are published.",
+    "A review-candidate status records default-deny sanitization work; it does not establish authorship, permission, copyright clearance, or publication approval.",
+    "Course materials remain unavailable unless a later record explicitly identifies a reviewed public artifact."
+  ],
+  "institutions": [
+    {
+      "id": "dlsu",
+      "name": "De La Salle University",
+      "courses": [
+        {"id": "dlsu.engphs1", "code": "ENGPHS1", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.instr01", "code": "INSTR01", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.lbyins1", "code": "LBYINS1", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.mtsci01", "code": "MTSCI01", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.mtsci02", "code": "MTSCI02", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.mtsci03", "code": "MTSCI03", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.phy673m", "code": "PHY673M", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.phys102a", "code": "PHYS102A", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.phys104", "code": "PHYS104", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.semphy01", "code": "SEMPHY01", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.solst01", "code": "SOLST01", "title": null, "materials_status": "inventory-only"},
+        {"id": "dlsu.solst02", "code": "SOLST02", "title": null, "materials_status": "inventory-only"}
+      ]
+    },
+    {
+      "id": "pacific",
+      "name": "University of the Pacific",
+      "courses": [
+        {"id": "pacific.ecpe223", "code": "ECPE223", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.ecpe233", "code": "ECPE233", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.ecpe293a", "code": "ECPE293A", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.ecpe293b", "code": "ECPE293B", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.engr045", "code": "ENGR045", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.engr100", "code": "ENGR100", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.engr120", "code": "ENGR120", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.engr209", "code": "ENGR209", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.engr219", "code": "ENGR219", "title": "Numerical Methods for Engineering", "materials_status": "review-candidate"},
+        {"id": "pacific.engr295", "code": "ENGR295", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.math057", "code": "MATH057", "title": "Applied Differential Equations I", "materials_status": "review-candidate"},
+        {"id": "pacific.math157", "code": "MATH157", "title": "Applied Differential Equations II", "materials_status": "review-candidate"},
+        {"id": "pacific.mech104", "code": "MECH104", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.mech175", "code": "MECH175", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.mech200", "code": "MECH200", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.mech202", "code": "MECH202", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.mech204", "code": "MECH204", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.phys161", "code": "PHYS161", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.phys181", "code": "PHYS181", "title": null, "materials_status": "inventory-only"},
+        {"id": "pacific.phys183", "code": "PHYS183", "title": null, "materials_status": "inventory-only"}
+      ]
+    },
+    {
+      "id": "uf",
+      "name": "University of Florida",
+      "courses": [
+        {"id": "uf.ema6114", "code": "EMA6114", "title": null, "materials_status": "inventory-only"},
+        {"id": "uf.ema6136", "code": "EMA6136", "title": null, "materials_status": "inventory-only"},
+        {"id": "uf.ema6313", "code": "EMA6313", "title": null, "materials_status": "inventory-only"},
+        {"id": "uf.ema6316", "code": "EMA6316", "title": null, "materials_status": "inventory-only"},
+        {"id": "uf.ema6803", "code": "EMA6803", "title": null, "materials_status": "inventory-only"},
+        {"id": "uf.ema6808", "code": "EMA6808", "title": null, "materials_status": "inventory-only"},
+        {"id": "uf.ema6938", "code": "EMA6938", "title": null, "materials_status": "inventory-only"},
+        {"id": "uf.eml6934", "code": "EML6934", "title": null, "materials_status": "inventory-only"}
+      ]
+    }
+  ],
+  "unresolved_collections": [
+    "Shared DLSU course-source groups whose course authority is unresolved.",
+    "Historical University of Florida computational-materials and heat-transport collections without established course codes.",
+    "Loose syllabus and reference candidates awaiting institution, course-identity, ownership, and rights review."
+  ]
+}

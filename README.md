@@ -25,11 +25,13 @@ The operational repository map is maintained in `projectkoios-bootstrap/maps/rep
 
 ## Public presentation
 
-The product-owned source for explicitly approved public project summaries is
-[`public/project-catalog.json`](public/project-catalog.json). The catalog starts with a
-bounded Project Koios overview and keeps available capabilities, development work, and
-limitations distinct. It is not derived from private workspace state and does not
-publish independent-project claims or releases.
+The product-owned sources for public presentation are
+[`public/project-catalog.json`](public/project-catalog.json) and
+[`public/course-catalog.json`](public/course-catalog.json). The project catalog starts
+with a bounded Project Koios overview and keeps available capabilities, development
+work, and limitations distinct. The course catalog publishes safe identity and
+migration-status metadata for identified courses while withholding all unreviewed
+materials. Neither catalog is derived from private runtime state.
 
 ## Design commitments
 
