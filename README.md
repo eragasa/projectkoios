@@ -23,6 +23,14 @@ It organizes notes, references, code, computational workflows, and generated art
 
 The operational repository map is maintained in `projectkoios-bootstrap/maps/repositories.md`. Scientific and pedagogical applications such as `physkit`, `msekit`, `ksdft2effmass`, and `dacp2transport` retain their independent ownership and authority.
 
+## Public presentation
+
+The product-owned source for explicitly approved public project summaries is
+[`public/project-catalog.json`](public/project-catalog.json). The catalog starts with a
+bounded Project Koios overview and keeps available capabilities, development work, and
+limitations distinct. It is not derived from private workspace state and does not
+publish independent-project claims or releases.
+
 ## Design commitments
 
 - Local-first workflows
