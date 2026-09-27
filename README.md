@@ -12,16 +12,25 @@ It organizes notes, references, code, computational workflows, and generated art
 | `projectkoios-bootstrap` | Multi-repository operational coordination and Project Koios-specific Pi harness incubation |
 | `projectkoios-agent` | Deferred reusable agent-domain components |
 | `projectkoios-api` | HTTP API and runtime boundary |
+| `projectkoios-applications` | Workflow/CPN-enabled cross-capability application composition |
 | `projectkoios-courses` | Course modeling and authoring |
 | `projectkoios-ingestion` | Source ingestion and document processing |
 | `projectkoios-obsidian` | Obsidian integration and vault management |
 | `projectkoios-references` | Reference and citation management |
 | `projectkoios-research` | Research-portfolio identity and external-project relationships |
 | `projectkoios-search` | Search and indexing |
+| `projectkoios-simulations` | Neutral simulation abstractions and provider integrations |
 | `projectkoios-web` | Browser interface |
-| `projectkoios-workflow` | Reusable workflow execution |
+| `projectkoios-workflow` | Generic workflow runtime, state, engine, and CPN contracts |
 
-The operational repository map is maintained in `projectkoios-bootstrap/maps/repositories.md`. Scientific and pedagogical applications such as `physkit`, `msekit`, `ksdft2effmass`, and `dacp2transport` retain their independent ownership and authority.
+The operational repository map is maintained in
+`projectkoios-bootstrap/maps/repositories.md`. The
+[application-composition ownership decision](docs/adr.20260927.application-composition-ownership.md)
+defines the shared `projectkoios.applications` owner and its reusable-component
+boundary. `projectkoios.applications.pw_dft_scf` is a capability package under
+that owner, not a standalone repository. Independently governed scientific and
+pedagogical projects such as `physkit`, `msekit`, `ksdft2effmass`, and
+`dacp2transport` retain their own ownership and authority.
 
 ## Product use cases
 
