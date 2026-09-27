@@ -1,0 +1,573 @@
+{
+  "schema_version": 1,
+  "policy_id": "projectkoios.code.python",
+  "policy_version": "0.1.0",
+  "status": "Draft",
+  "title": "Project Koios Python code policy",
+  "authority": {
+    "source_format": "json",
+    "projection_format": "markdown",
+    "source_path": "docs/policies/code/python.json",
+    "projection_path": "docs/policies/code/python.md",
+    "projection_status": "generated"
+  },
+  "purpose": "Define the default Python object model and selected implementation practices for Project Koios owner repositories.",
+  "scope": [
+    "New or materially changed Python production code owned by Project Koios repositories.",
+    "Architecture records that classify Python classes by role.",
+    "Repository-local documentation tooling implemented in Python."
+  ],
+  "exclusions": [
+    "Automatic repository-wide rewrites of conforming existing code.",
+    "Scientific acceptance or correctness of domain algorithms.",
+    "Replacement of owner-repository validation commands.",
+    "A universal runtime framework or nominal base-class hierarchy."
+  ],
+  "precedence": [
+    "Accepted contracts and architecture decisions.",
+    "The owning repository's AGENTS.md and pyproject.toml.",
+    "This Project Koios Python policy.",
+    "Selected guidance from the Google Python Style Guide."
+  ],
+  "object_model": {
+    "flow": [
+      "data_object",
+      "data_object_action",
+      "data_object_action_result"
+    ],
+    "roles": [
+      {
+        "role_id": "data_object",
+        "display_name": "DataObject",
+        "default_python_form": "frozen, slotted dataclass",
+        "responsibilities": [
+          "Represent immutable domain state or one exact request.",
+          "Validate intrinsic field invariants.",
+          "Expose cheap, unsurprising derived properties when useful."
+        ],
+        "prohibitions": [
+          "Filesystem, network, process, clock, or database effects.",
+          "Ambient discovery or mutable global state.",
+          "Generic persistence, rendering, or serialization behavior.",
+          "Cross-object policy or scientific acceptance decisions."
+        ]
+      },
+      {
+        "role_id": "data_object_action",
+        "display_name": "DataObjectAction",
+        "default_python_form": "behavior-named class with explicit dependencies",
+        "responsibilities": [
+          "Perform one named operation over explicit DataObject inputs.",
+          "Own cross-object policy and operation-specific validation.",
+          "Receive stores, clocks, clients, configuration, and authority explicitly.",
+          "Return one typed DataObjectActionResult when the operation has a represented outcome."
+        ],
+        "prohibitions": [
+          "Service-location globals or reflective action discovery.",
+          "Hidden mutable state unrelated to immutable configuration.",
+          "A generic registry that erases domain ownership.",
+          "Use of staticmethod solely to hide a module-level helper."
+        ]
+      },
+      {
+        "role_id": "data_object_action_result",
+        "display_name": "DataObjectActionResult",
+        "default_python_form": "frozen, slotted dataclass with closed outcome",
+        "responsibilities": [
+          "Represent the immutable outcome of one exact action invocation.",
+          "Bind applicable input, action, configuration, output, and evidence identities.",
+          "Represent expected domain failure using a closed outcome vocabulary.",
+          "State limitations without implying human or scientific acceptance."
+        ],
+        "prohibitions": [
+          "Invented success values after an indeterminate or rejected operation.",
+          "Conflation with a workflow ResultObject unless the owner contract states both roles.",
+          "Unbounded exception text as the only machine-readable failure representation.",
+          "Mutation of the input DataObject."
+        ]
+      }
+    ],
+    "rules": [
+      "The roles are architecture classifications and do not require public classes named DataObject, DataObjectAction, or DataObjectActionResult.",
+      "Concrete class names use domain terms such as ScientificMarkdownRenderer and ScientificMarkdownRenderResult.",
+      "An action class is used when policy, dependencies, versioning, substitution, or substantial invariants justify an object boundary.",
+      "A small owner-local pure transformation may remain a typed module-level function.",
+      "Programming errors and violated caller preconditions raise specific exceptions; expected operational outcomes use result records.",
+      "Runtime validation must not depend on assert.",
+      "Pydantic is used at external boundaries; internal records prefer frozen dataclasses."
+    ]
+  },
+  "google_python_style": {
+    "source": {
+      "title": "Google Python Style Guide",
+      "repository": "https://github.com/google/styleguide",
+      "document_url": "https://github.com/google/styleguide/blob/3b8822983dc779c498961cc86332a28c07590f64/pyguide.md",
+      "revision": "3b8822983dc779c498961cc86332a28c07590f64",
+      "blob_sha1": "d8bd300157be2c1dd174450cc106ad27dc7e28e4",
+      "sha256": "4905b424258ffe7b4dabe133ca3c44de6e404370eadc7369b4532564ce0ff3cb",
+      "byte_count": 117945,
+      "license": "CC-BY-3.0",
+      "license_url": "https://github.com/google/styleguide/blob/3b8822983dc779c498961cc86332a28c07590f64/LICENSE"
+    },
+    "extraction": {
+      "scope": "All major numbered Python language and style sections, plus Project Koios-relevant module, diagnostic, mathematical-notation, typing-import, and consistency rules.",
+      "method": "Preserve a pinned upstream excerpt and record an explicit ADOPT or ADAPT disposition with one Project Koios rule and rationale.",
+      "rules": [
+        {
+          "rule_id": "google.pyguide.2.1",
+          "section": "2.1",
+          "title": "Lint",
+          "anchor": "s2.1-lint",
+          "source_excerpt": "Run `pylint` over your code using this [pylintrc](https://google.github.io/styleguide/pylintrc).",
+          "disposition": "ADAPT",
+          "project_rule": "Run the owning repository Ruff configuration and any additional owner checks instead of requiring Pylint.",
+          "rationale": "Project Koios repositories standardize on Ruff; the upstream goal of automated linting is retained."
+        },
+        {
+          "rule_id": "google.pyguide.2.2",
+          "section": "2.2",
+          "title": "Imports",
+          "anchor": "s2.2-imports",
+          "source_excerpt": "Use `import` statements for packages and modules only, not for individual types, classes, or functions.",
+          "disposition": "ADAPT",
+          "project_rule": "Implementation modules import from the owning module. A subpackage __init__.py defines a small stable public API through explicit re-exports and __all__; it must not indiscriminately aggregate implementation objects.",
+          "rationale": "Project Koios preserves implementation ownership while making each subpackage initializer an intentional API rather than an import dumping ground."
+        },
+        {
+          "rule_id": "google.pyguide.2.3",
+          "section": "2.3",
+          "title": "Packages",
+          "anchor": "s2.3-packages",
+          "source_excerpt": "Import each module using the full pathname location of the module.",
+          "disposition": "ADOPT",
+          "project_rule": "Use full absolute package paths for imports.",
+          "rationale": "Absolute imports avoid ambiguous module resolution."
+        },
+        {
+          "rule_id": "google.pyguide.2.4",
+          "section": "2.4",
+          "title": "Exceptions",
+          "anchor": "s2.4-exceptions",
+          "source_excerpt": "Exceptions are allowed but must be used carefully.",
+          "disposition": "ADOPT",
+          "project_rule": "Exceptions are allowed but must be used carefully.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.5",
+          "section": "2.5",
+          "title": "Mutable Global State",
+          "anchor": "s2.5-global-state",
+          "source_excerpt": "Avoid mutable global state.",
+          "disposition": "ADOPT",
+          "project_rule": "Avoid mutable global state.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.6",
+          "section": "2.6",
+          "title": "Nested/Local/Inner Classes and Functions",
+          "anchor": "s2.6-nested",
+          "source_excerpt": "Nested local functions or classes are fine when used to close over a local variable. Inner classes are fine.",
+          "disposition": "ADOPT",
+          "project_rule": "Nested local functions or classes are fine when used to close over a local variable. Inner classes are fine.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.7",
+          "section": "2.7",
+          "title": "Comprehensions & Generator Expressions",
+          "anchor": "s2.7-list_comprehensions",
+          "source_excerpt": "Okay to use for simple cases.",
+          "disposition": "ADOPT",
+          "project_rule": "Okay to use for simple cases.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.8",
+          "section": "2.8",
+          "title": "Default Iterators and Operators",
+          "anchor": "s2.8-default-iterators-and-operators",
+          "source_excerpt": "Use default iterators and operators for types that support them, like lists, dictionaries, and files.",
+          "disposition": "ADOPT",
+          "project_rule": "Use default iterators and operators for types that support them, like lists, dictionaries, and files.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.9",
+          "section": "2.9",
+          "title": "Generators",
+          "anchor": "s2.9-generators",
+          "source_excerpt": "Use generators as needed.",
+          "disposition": "ADOPT",
+          "project_rule": "Use generators as needed.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.10",
+          "section": "2.10",
+          "title": "Lambda Functions",
+          "anchor": "s2.10-lambda-functions",
+          "source_excerpt": "Okay for one-liners. Prefer generator expressions over `map()` or `filter()` with a `lambda`.",
+          "disposition": "ADOPT",
+          "project_rule": "Okay for one-liners. Prefer generator expressions over map() or filter() with a lambda.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.11",
+          "section": "2.11",
+          "title": "Conditional Expressions",
+          "anchor": "s2.11-conditional-expressions",
+          "source_excerpt": "Okay for simple cases.",
+          "disposition": "ADOPT",
+          "project_rule": "Okay for simple cases.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.12",
+          "section": "2.12",
+          "title": "Default Argument Values",
+          "anchor": "s2.12-default-argument-values",
+          "source_excerpt": "Okay in most cases.",
+          "disposition": "ADOPT",
+          "project_rule": "Okay in most cases.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.13",
+          "section": "2.13",
+          "title": "Properties",
+          "anchor": "s2.13-properties",
+          "source_excerpt": "Properties may be used to control getting or setting attributes that require trivial computations or logic. Property implementations must match the general expectations of regular attribute access: that they are cheap, straightforward, and unsurprising.",
+          "disposition": "ADOPT",
+          "project_rule": "Properties may be used to control getting or setting attributes that require trivial computations or logic. Property implementations must match the general expectations of regular attribute access: that they are cheap, straightforward, and unsurprising.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.14",
+          "section": "2.14",
+          "title": "True/False Evaluations",
+          "anchor": "s2.14-truefalse-evaluations",
+          "source_excerpt": "Use the \"implicit\" false if at all possible (with a few caveats).",
+          "disposition": "ADOPT",
+          "project_rule": "Use the \"implicit\" false if at all possible (with a few caveats).",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.16",
+          "section": "2.16",
+          "title": "Lexical Scoping",
+          "anchor": "s2.16-lexical-scoping",
+          "source_excerpt": "Okay to use.",
+          "disposition": "ADOPT",
+          "project_rule": "Okay to use.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.17",
+          "section": "2.17",
+          "title": "Function and Method Decorators",
+          "anchor": "s2.17-function-and-method-decorators",
+          "source_excerpt": "Use decorators judiciously when there is a clear advantage. Avoid `staticmethod` and limit use of `classmethod`.",
+          "disposition": "ADOPT",
+          "project_rule": "Use decorators judiciously when there is a clear advantage. Avoid staticmethod and limit use of classmethod.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.18",
+          "section": "2.18",
+          "title": "Threading",
+          "anchor": "s2.18-threading",
+          "source_excerpt": "Do not rely on the atomicity of built-in types.",
+          "disposition": "ADOPT",
+          "project_rule": "Do not rely on the atomicity of built-in types.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.19",
+          "section": "2.19",
+          "title": "Power Features",
+          "anchor": "s2.19-power-features",
+          "source_excerpt": "Avoid these features.",
+          "disposition": "ADOPT",
+          "project_rule": "Avoid these features.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.2.20",
+          "section": "2.20",
+          "title": "Modern Python: from __future__ imports",
+          "anchor": "s2.20-modern-python",
+          "source_excerpt": "New language version semantic changes may be gated behind a special future import to enable them on a per-file basis within earlier runtimes.",
+          "disposition": "ADAPT",
+          "project_rule": "Every Project Koios Python module retains from __future__ import annotations under the current Python 3.14 repository rule.",
+          "rationale": "The repository intentionally keeps this declaration as an explicit compatibility and annotation policy."
+        },
+        {
+          "rule_id": "google.pyguide.2.21",
+          "section": "2.21",
+          "title": "Type Annotated Code",
+          "anchor": "s2.21-typed-code",
+          "source_excerpt": "You can annotate Python code with [type hints](https://docs.python.org/3/library/typing.html). Type-check the code at build time with a type checking tool like [pytype](https://github.com/google/pytype). In most cases, when feasible, type annotations are in source files. For third-party or extension modules, annotations can be in [stub `.pyi` files](https://peps.python.org/pep-0484/#stub-files).",
+          "disposition": "ADAPT",
+          "project_rule": "Annotate public APIs and run MyPy using the owning repository configuration.",
+          "rationale": "MyPy replaces the upstream pytype recommendation while preserving static type analysis."
+        },
+        {
+          "rule_id": "google.pyguide.3.1",
+          "section": "3.1",
+          "title": "Semicolons",
+          "anchor": "s3.1-semicolons",
+          "source_excerpt": "Do not terminate your lines with semicolons, and do not use semicolons to put two statements on the same line.",
+          "disposition": "ADOPT",
+          "project_rule": "Do not terminate your lines with semicolons, and do not use semicolons to put two statements on the same line.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.3.2",
+          "section": "3.2",
+          "title": "Line length",
+          "anchor": "s3.2-line-length",
+          "source_excerpt": "Maximum line length is *80 characters*.",
+          "disposition": "ADAPT",
+          "project_rule": "Use the owning Ruff line-length configuration, currently 80 characters, with only tool-supported or clearly documented exceptions.",
+          "rationale": "The upstream limit is retained and enforced by the repository toolchain."
+        },
+        {
+          "rule_id": "google.pyguide.3.3",
+          "section": "3.3",
+          "title": "Parentheses",
+          "anchor": "s3.3-parentheses",
+          "source_excerpt": "Use parentheses sparingly.",
+          "disposition": "ADOPT",
+          "project_rule": "Use parentheses sparingly.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.3.4",
+          "section": "3.4",
+          "title": "Indentation",
+          "anchor": "s3.4-indentation",
+          "source_excerpt": "Indent your code blocks with *4 spaces*.",
+          "disposition": "ADOPT",
+          "project_rule": "Use four-space indentation, never tabs, and the owning Ruff formatter for continuation layout.",
+          "rationale": "The formatter provides the deterministic local realization of the upstream rule."
+        },
+        {
+          "rule_id": "google.pyguide.3.5",
+          "section": "3.5",
+          "title": "Blank Lines",
+          "anchor": "s3.5-blank-lines",
+          "source_excerpt": "Two blank lines between top-level definitions, be they function or class definitions. One blank line between method definitions and between the docstring of a `class` and the first method. No blank line following a `def` line. Use single blank lines as you judge appropriate within functions or methods.",
+          "disposition": "ADOPT",
+          "project_rule": "Use the owning Ruff formatter for deterministic blank-line layout.",
+          "rationale": "The upstream spacing rule is retained through automated formatting."
+        },
+        {
+          "rule_id": "google.pyguide.3.6",
+          "section": "3.6",
+          "title": "Whitespace",
+          "anchor": "s3.6-whitespace",
+          "source_excerpt": "Follow standard typographic rules for the use of spaces around punctuation.",
+          "disposition": "ADOPT",
+          "project_rule": "Use standard Python whitespace as enforced by Ruff and its formatter.",
+          "rationale": "Automated enforcement avoids independent formatting interpretations."
+        },
+        {
+          "rule_id": "google.pyguide.3.7",
+          "section": "3.7",
+          "title": "Shebang Line",
+          "anchor": "s3.7-shebang-line",
+          "source_excerpt": "Most `.py` files do not need to start with a `#!` line. Start the main file of a program with `#!/usr/bin/env python3` (to support virtualenvs) or `#!/usr/bin/python3` per [PEP-394](https://peps.python.org/pep-0394/).",
+          "disposition": "ADOPT",
+          "project_rule": "Most .py files do not need to start with a #! line. Start the main file of a program with #!/usr/bin/env python3 (to support virtualenvs) or #!/usr/bin/python3 per PEP-394.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.3.8",
+          "section": "3.8",
+          "title": "Comments and Docstrings",
+          "anchor": "s3.8-comments",
+          "source_excerpt": "Be sure to use the right style for module, function, method docstrings and inline comments.",
+          "disposition": "ADOPT",
+          "project_rule": "Use useful module, public API, class, function, method, and non-obvious implementation documentation without redundant prose.",
+          "rationale": "The upstream documentation purpose and structure are retained."
+        },
+        {
+          "rule_id": "google.pyguide.3.8.2",
+          "section": "3.8.2",
+          "title": "Modules",
+          "anchor": "s3.8.2-comments-in-modules",
+          "source_excerpt": "Every file should contain license boilerplate.",
+          "disposition": "ADAPT",
+          "project_rule": "Every module has a useful module docstring; file-level license boilerplate is added only when the owning repository requires it.",
+          "rationale": "The repository-level Apache-2.0 license remains authoritative without mandatory per-file repetition."
+        },
+        {
+          "rule_id": "google.pyguide.3.10",
+          "section": "3.10",
+          "title": "Strings",
+          "anchor": "s3.10-strings",
+          "source_excerpt": "Use an [f-string](https://docs.python.org/3/reference/lexical_analysis.html#f-strings), the `%` operator, or the `format` method for formatting strings, even when the parameters are all strings. Use your best judgment to decide between string formatting options. A single join with `+` is okay but do not format with `+`.",
+          "disposition": "ADAPT",
+          "project_rule": "Use double quotes under the repository Ruff configuration and use explicit formatting methods rather than repeated string concatenation.",
+          "rationale": "The upstream permits either quote style; Project Koios chooses deterministic double quotes."
+        },
+        {
+          "rule_id": "google.pyguide.3.10.2",
+          "section": "3.10.2",
+          "title": "Error Messages",
+          "anchor": "s3.10.2-error-messages",
+          "source_excerpt": "Error messages (such as: message strings on exceptions like `ValueError`, or messages shown to the user) should follow three guidelines:",
+          "disposition": "ADOPT",
+          "project_rule": "Error messages precisely match the condition, identify interpolated values, and support automated processing; stable machine-readable codes accompany expected operational findings.",
+          "rationale": "Machine-readable result codes strengthen the upstream diagnostic rule."
+        },
+        {
+          "rule_id": "google.pyguide.3.11",
+          "section": "3.11",
+          "title": "Files, Sockets, and similar Stateful Resources",
+          "anchor": "s3.11-files-and-sockets",
+          "source_excerpt": "Explicitly close files and sockets when done with them. This rule naturally extends to closeable resources that internally use sockets, such as database connections, and also other resources that need to be closed down in a similar fashion. To name only a few examples, this also includes [mmap](https://docs.python.org/3/library/mmap.html) mappings, [h5py File objects](https://docs.h5py.org/en/stable/high/file.html), and [matplotlib.pyplot figure windows](https://matplotlib.org/2.1.0/api/_as_gen/matplotlib.pyplot.close.html).",
+          "disposition": "ADOPT",
+          "project_rule": "Explicitly close files and sockets when done with them. This rule naturally extends to closeable resources that internally use sockets, such as database connections, and also other resources that need to be closed down in a similar fashion. To name only a few examples, this also includes mmap mappings, h5py File objects, and matplotlib.pyplot figure windows.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.3.12",
+          "section": "3.12",
+          "title": "TODO Comments",
+          "anchor": "s3.12-todo-comments",
+          "source_excerpt": "Use `TODO` comments for code that is temporary, a short-term solution, or good-enough but not perfect.",
+          "disposition": "ADAPT",
+          "project_rule": "TODO comments identify a durable issue or decision record and explain the remaining work.",
+          "rationale": "Project Koios uses owner-repository issue and decision systems rather than Google-internal references."
+        },
+        {
+          "rule_id": "google.pyguide.3.13",
+          "section": "3.13",
+          "title": "Imports formatting",
+          "anchor": "s3.13-imports-formatting",
+          "source_excerpt": "Imports should be on separate lines; there are [exceptions for `typing` and `collections.abc` imports](#typing-imports).",
+          "disposition": "ADOPT",
+          "project_rule": "Group and sort imports using the owning Ruff configuration.",
+          "rationale": "Ruff implements the upstream ordering requirement deterministically."
+        },
+        {
+          "rule_id": "google.pyguide.3.14",
+          "section": "3.14",
+          "title": "Statements",
+          "anchor": "s3.14-statements",
+          "source_excerpt": "Generally only one statement per line.",
+          "disposition": "ADOPT",
+          "project_rule": "Generally only one statement per line.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.3.15",
+          "section": "3.15",
+          "title": "Getters and Setters",
+          "anchor": "s3.15-access-control",
+          "source_excerpt": "Getter and setter functions (also called accessors and mutators) should be used when they provide a meaningful role or behavior for getting or setting a variable's value.",
+          "disposition": "ADOPT",
+          "project_rule": "Getter and setter functions (also called accessors and mutators) should be used when they provide a meaningful role or behavior for getting or setting a variable's value.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.3.16",
+          "section": "3.16",
+          "title": "Naming",
+          "anchor": "s3.16-naming",
+          "source_excerpt": "`module_name`, `package_name`, `ClassName`, `method_name`, `ExceptionName`, `function_name`, `GLOBAL_CONSTANT_NAME`, `global_var_name`, `instance_var_name`, `function_parameter_name`, `local_var_name`, `query_proper_noun_for_thing`, `send_acronym_via_https`.",
+          "disposition": "ADAPT",
+          "project_rule": "Use descriptive Google-style Python names, while repository test functions retain the established test__subject__description convention.",
+          "rationale": "The repository test convention is deliberate and locally authoritative."
+        },
+        {
+          "rule_id": "google.pyguide.3.16.5",
+          "section": "3.16.5",
+          "title": "Mathematical Notation",
+          "anchor": "math-notation",
+          "source_excerpt": "For mathematically-heavy code, short variable names that would otherwise violate the style guide are preferred when they match established notation in a reference paper or algorithm.",
+          "disposition": "ADOPT",
+          "project_rule": "Established mathematical notation is allowed in narrow scopes when its source and meaning are documented; public APIs prefer descriptive names.",
+          "rationale": "This is directly applicable to scientific software while retaining source provenance."
+        },
+        {
+          "rule_id": "google.pyguide.3.17",
+          "section": "3.17",
+          "title": "Main",
+          "anchor": "s3.17-main",
+          "source_excerpt": "In Python, `pydoc` as well as unit tests require modules to be importable. If a file is meant to be used as an executable, its main functionality should be in a `main()` function, and your code should always check `if __name__ == '__main__'` before executing your main program, so that it is not executed when the module is imported.",
+          "disposition": "ADOPT",
+          "project_rule": "In Python, pydoc as well as unit tests require modules to be importable. If a file is meant to be used as an executable, its main functionality should be in a main() function, and your code should always check if __name__ == '__main__' before executing your main program, so that it is not executed when the module is imported.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.3.18",
+          "section": "3.18",
+          "title": "Function length",
+          "anchor": "s3.18-function-length",
+          "source_excerpt": "Prefer small and focused functions.",
+          "disposition": "ADOPT",
+          "project_rule": "Prefer small and focused functions.",
+          "rationale": "Adopted as written, subject to repository-local automation and the policy precedence order."
+        },
+        {
+          "rule_id": "google.pyguide.3.19.12",
+          "section": "3.19.12",
+          "title": "Imports For Typing",
+          "anchor": "s3.19.12-imports-for-typing",
+          "source_excerpt": "For symbols (including types, functions, and constants) from the `typing` or `collections.abc` modules used to support static analysis and type checking, always import the symbol itself.",
+          "disposition": "ADOPT",
+          "project_rule": "Direct symbol imports are allowed from typing and collections.abc for static analysis; other imports remain module-qualified.",
+          "rationale": "This is the explicit exemption to the module-import rule."
+        },
+        {
+          "rule_id": "google.pyguide.4",
+          "section": "4",
+          "title": "Parting Words",
+          "anchor": "consistency",
+          "source_excerpt": "*BE CONSISTENT*.",
+          "disposition": "ADOPT",
+          "project_rule": "Prefer local consistency for choices not fixed by higher-precedence contracts, policy, AGENTS.md, or pyproject.toml.",
+          "rationale": "Local consistency cannot silently override accepted Project Koios authority."
+        }
+      ]
+    }
+  },
+  "python_rules": [
+    "Every module starts with from __future__ import annotations after any required module docstring placement rules.",
+    "Internal immutable records use dataclass(frozen=True, slots=True) unless a documented requirement needs another form.",
+    "Every named variable has an explicit type annotation where Python syntax permits one.",
+    "Public and private methods have explicit parameter and return annotations, and every parameter after self or cls is keyword-only unless a language or framework protocol requires another signature.",
+    "Method calls spell every argument name where the called signature permits keyword arguments.",
+    "Small private helper behavior belongs to the class that owns the behavior rather than a private module-level function.",
+    "Implementation modules import from the owning module; subpackage __init__.py files expose a small intentional public API through explicit re-exports and __all__ rather than aggregating implementation objects indiscriminately.",
+    "None checks use is None or is not None.",
+    "Mutable values are defensively copied or normalized before storage in immutable records.",
+    "Unknown serialized fields, duplicate JSON members, unsupported versions, and malformed values fail closed.",
+    "Externally supplied JSON is byte-bounded before parsing and depth, collection, and string-bounded before DataObject construction.",
+    "Serialization, rendering, persistence, comparison, and external effects belong to named actions or adapters.",
+    "Properties remain cheap, deterministic, and free of externally visible effects.",
+    "Public action dependencies are supplied through construction or method parameters, not ambient discovery.",
+    "Expected effect ambiguity produces an indeterminate result and reconciliation evidence rather than an automatic retry."
+  ],
+  "validation": {
+    "minimum_commands": [
+      "ruff check .",
+      "mypy src/python",
+      "pytest"
+    ],
+    "rules": [
+      "The owning repository may define stricter or differently scoped commands.",
+      "Passing software checks does not establish architecture acceptance, scientific validity, publication authority, or release readiness.",
+      "Generated Markdown is checked byte-for-byte against the deterministic projection of this JSON source."
+    ]
+  },
+  "deferred": [
+    "Acceptance of the Draft schema for code-policy JSON records.",
+    "Cross-repository automated policy conformance beyond existing owner commands.",
+    "Whether repeated use justifies extracting documentation tooling into a separate package."
+  ]
+}

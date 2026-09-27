@@ -83,8 +83,7 @@ class CodeRepositoryIngester:
         self,
         loader: CodeRepositoryLoader,
         chunker: LineChunker,
-    ) -> None:
-        ...
+    ) -> None: ...
 ```
 
 Current ingestion method shape:
@@ -93,8 +92,7 @@ Current ingestion method shape:
 def iter_chunks(
     self,
     repository: CodeRepository,
-) -> Iterator[TextChunk]:
-    ...
+) -> Iterator[TextChunk]: ...
 ```
 
 The method:

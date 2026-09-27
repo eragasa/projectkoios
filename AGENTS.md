@@ -40,6 +40,18 @@ pip install -e ".[dev]"
 
 - **Pydantic at boundaries only** — API request/response use Pydantic. Internal
   DTOs use `@dataclass(frozen=True)`. Services never import FastAPI.
+- **Adapter taxonomy** — `Adapter` is the nominal containing role. A `Binding`
+  adapts imported or deliberately vendored code; an `Integration` adapts an
+  external application or service. Use base classes for "is-a" relationships
+  and composition for "has-a" relationships. Do not add another shared base
+  class without freezing implementation for an explicit architecture review.
+- **Frankenstein incubation mirror** — paths below
+  `projectkoios.frankensteins` mirror intended `projectkoios` paths. Transfer
+  removes only the incubation segment and does not rename domain classes or
+  redesign inheritance.
+- **Capability repository names** — use names such as `projectkoios-github` and
+  `projectkoios-lammps`; express adapter roles in Python namespaces rather than
+  repository names.
 - **`dev/` is scratch** — experiments and spikes; production code never imports
   from `dev/`.
 - **`from __future__ import annotations`** at top of every module.

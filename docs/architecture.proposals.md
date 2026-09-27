@@ -12,6 +12,7 @@ release decision, or scientific approval.
 |---|---|---|---|
 | Evidence-grounded scientific retrieval | [`ADR20260918`](adr.20260918.evidence-grounded-scientific-rag.md) | Proposed | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) |
 | Workflow-kernel ownership transfer | [`ADR20260918`](adr.20260918.workflow-kernel-transfer.md) | Proposed | [`WORKFLOW-TRANSFER-01`](https://github.com/eragasa/projectkoios/issues/1) |
+| Workflow and CPN development tracks | [`ADR20260920`](adr.20260920.workflow-and-cpn-development-tracks.md) | Accepted | [`WORKFLOW-TRANSFER-01`](https://github.com/eragasa/projectkoios/issues/1) |
 
 ## Accepted cross-repository decisions used by active programs
 

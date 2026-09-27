@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://projectkoios.com/schemas/dev/development-task/0.1.0.schema.json",
+  "title": "Project Koios DevelopmentTask graph document",
+  "description": "Closed structural contract for manually authored DevelopmentTask nodes and non-executable graph relationships.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "document_id",
+    "document_version",
+    "status",
+    "title",
+    "authority",
+    "purpose",
+    "source_materials",
+    "tasks",
+    "decomposition_edges",
+    "dependency_edges"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "document_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "document_version": {
+      "$ref": "#/$defs/nonempty_string"
+    },
+    "status": {
+      "$ref": "#/$defs/nonempty_string"
+    },
+    "title": {
+      "$ref": "#/$defs/nonempty_string"
+    },
+    "authority": {
+      "$ref": "#/$defs/authority"
+    },
+    "purpose": {
+      "$ref": "#/$defs/nonempty_string"
+    },
+    "source_materials": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "items": {
+        "$ref": "#/$defs/source_material"
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4096,
+      "items": {
+        "$ref": "#/$defs/task"
+      }
+    },
+    "decomposition_edges": {
+      "type": "array",
+      "maxItems": 16384,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/decomposition_edge"
+      }
+    },
+    "dependency_edges": {
+      "type": "array",
+      "maxItems": 16384,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/dependency_edge"
+      }
+    }
+  },
+  "$defs": {
+    "nonempty_string": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 65536
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 65536,
+      "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?$"
+    },
+    "text_array": {
+      "type": "array",
+      "maxItems": 4096,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/nonempty_string"
+      }
+    },
+    "repository_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 65536,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*//)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+    },
+    "repository_json_path": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 65536,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*//)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+\\.json$"
+    },
+    "repository_markdown_path": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 65536,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*//)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+\\.md$"
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_format",
+        "projection_format",
+        "source_path",
+        "projection_path",
+        "projection_status"
+      ],
+      "properties": {
+        "source_format": {
+          "const": "json"
+        },
+        "projection_format": {
+          "const": "markdown"
+        },
+        "source_path": {
+          "$ref": "#/$defs/repository_json_path"
+        },
+        "projection_path": {
+          "$ref": "#/$defs/repository_markdown_path"
+        },
+        "projection_status": {
+          "const": "generated"
+        }
+      }
+    },
+    "source_material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "role",
+        "repository_path",
+        "sha256",
+        "byte_count"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "role": {
+          "const": "requirements_source"
+        },
+        "repository_path": {
+          "$ref": "#/$defs/repository_path"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "source_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_label"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "source_label": {
+          "$ref": "#/$defs/nonempty_string"
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "title",
+        "objective",
+        "inputs",
+        "outputs",
+        "changes",
+        "acceptance",
+        "non_goals",
+        "value",
+        "estimated_size",
+        "source_bindings"
+      ],
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "title": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "objective": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "inputs": {
+          "$ref": "#/$defs/text_array"
+        },
+        "outputs": {
+          "$ref": "#/$defs/text_array"
+        },
+        "changes": {
+          "$ref": "#/$defs/text_array"
+        },
+        "acceptance": {
+          "$ref": "#/$defs/text_array"
+        },
+        "non_goals": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/text_array"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        },
+        "value": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/identifier"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "estimated_size": {
+          "enum": [
+            "small",
+            "medium",
+            "large",
+            null
+          ]
+        },
+        "source_bindings": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/source_binding"
+          }
+        }
+      }
+    },
+    "decomposition_edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parent_task_id",
+        "child_task_id"
+      ],
+      "properties": {
+        "parent_task_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "child_task_id": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "dependency_edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prerequisite_task_id",
+        "dependent_task_id"
+      ],
+      "properties": {
+        "prerequisite_task_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "dependent_task_id": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    }
+  }
+}

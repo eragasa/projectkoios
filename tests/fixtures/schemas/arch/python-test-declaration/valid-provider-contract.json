@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "declaration_id": "projectkoios.test.example.provider-contract",
+  "predecessor_declaration_ids": [],
+  "subject": {
+    "ownership_kind": "artifact_owned",
+    "test_file": "tests/projectkoios/example/test__wire_contract.py",
+    "source_module": "projectkoios.example.serialization",
+    "symbol_kind": "artifact",
+    "symbol_name": "example-wire-v1"
+  },
+  "execution_lane": "default",
+  "intents": {
+    "evidence": null,
+    "contracts": [
+      {
+        "contract_id": "projectkoios.example.wire",
+        "contract_version": "0.1.0",
+        "surface": "wire",
+        "role": "provider",
+        "authoritative_reference_ids": [
+          "wire-contract"
+        ]
+      }
+    ],
+    "regressions": []
+  },
+  "references": [
+    {
+      "reference_id": "wire-contract",
+      "kind": "contract_identity",
+      "locator": "projectkoios.example.wire",
+      "version": "0.1.0",
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "byte_count": 1,
+      "resolution_status": "resolved"
+    }
+  ],
+  "requirement": {
+    "requirement_id": "PK.EXAMPLE.WIRE.REQ.001",
+    "statement": "The provider emits the exact canonical wire representation.",
+    "preconditions": [],
+    "authoritative_reference_ids": [
+      "wire-contract"
+    ]
+  },
+  "method": null,
+  "oracle": null,
+  "acceptance": [
+    {
+      "kind": "exact",
+      "observation": "The emitted UTF-8 payload.",
+      "comparison": "bytes_equal",
+      "expected_reference_id": "wire-contract"
+    }
+  ],
+  "interpretation": null,
+  "claim_boundary": {
+    "establishes": [
+      "The provider emits the declared canonical bytes for the represented input."
+    ],
+    "does_not_establish": [
+      "Consumer compatibility outside contract version 0.1.0 or semantic correctness of the represented data."
+    ]
+  },
+  "limitations": []
+}

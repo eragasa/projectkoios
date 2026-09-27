@@ -76,16 +76,14 @@ The search result preserves the original `TextChunk`, including source path, sou
 
 ```python
 class SearchIndex(Protocol):
-    def add_chunks(self, chunks: Iterable[TextChunk]) -> None:
-        ...
+    def add_chunks(self, chunks: Iterable[TextChunk]) -> None: ...
 
     def search(
         self,
         query: str,
         *,
         limit: int = 10,
-    ) -> list[ChunkSearchResult]:
-        ...
+    ) -> list[ChunkSearchResult]: ...
 ```
 
 The protocol allows later search implementations to replace the in-memory implementation without changing the API router, RAG layer, or application service.
@@ -125,19 +123,16 @@ class SearchService:
     def __init__(
         self,
         search_index: SearchIndex | None = None,
-    ) -> None:
-        ...
+    ) -> None: ...
 
-    def add_chunks(self, chunks: Iterable[TextChunk]) -> None:
-        ...
+    def add_chunks(self, chunks: Iterable[TextChunk]) -> None: ...
 
     def search(
         self,
         query: str,
         *,
         limit: int = 10,
-    ) -> list[ChunkSearchResult]:
-        ...
+    ) -> list[ChunkSearchResult]: ...
 ```
 
 If no index is provided, `SearchService` may create a `MemorySearchIndex`.

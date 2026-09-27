@@ -1,0 +1,398 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://projectkoios.com/schemas/policies/code/python-test-0.1.0.json",
+  "title": "Project Koios Python test policy",
+  "description": "Closed schema for the authoritative Project Koios Python test-policy source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "policy_id",
+    "policy_version",
+    "status",
+    "title",
+    "authority",
+    "purpose",
+    "scope",
+    "exclusions",
+    "precedence",
+    "code_policy",
+    "source_provenance",
+    "evidence_classes",
+    "profiles",
+    "module_ownership",
+    "naming",
+    "test_owner_rules",
+    "helper_rules",
+    "fixture_rules",
+    "parameterization_rules",
+    "oracle_rules",
+    "acceptance_rules",
+    "layering_rules",
+    "negative_test_rules",
+    "stop_conditions",
+    "validation",
+    "deferred"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "policy_id": {
+      "const": "projectkoios.code.python-test"
+    },
+    "policy_version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "enum": [
+        "Draft",
+        "Proposed",
+        "Accepted",
+        "Superseded"
+      ]
+    },
+    "title": {
+      "$ref": "#/$defs/text"
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_format",
+        "projection_format",
+        "source_path",
+        "projection_path",
+        "projection_status"
+      ],
+      "properties": {
+        "source_format": {
+          "const": "json"
+        },
+        "projection_format": {
+          "const": "markdown"
+        },
+        "source_path": {
+          "const": "docs/policies/code/python_test.json"
+        },
+        "projection_path": {
+          "const": "docs/policies/code/python_test.md"
+        },
+        "projection_status": {
+          "const": "generated"
+        }
+      }
+    },
+    "purpose": {
+      "$ref": "#/$defs/text"
+    },
+    "scope": {
+      "$ref": "#/$defs/stringList"
+    },
+    "exclusions": {
+      "$ref": "#/$defs/stringList"
+    },
+    "precedence": {
+      "$ref": "#/$defs/stringList"
+    },
+    "code_policy": {
+      "$ref": "#/$defs/codePolicy"
+    },
+    "source_provenance": {
+      "$ref": "#/$defs/sourceProvenance"
+    },
+    "evidence_classes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidenceClass"
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/profile"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "module_ownership": {
+      "$ref": "#/$defs/moduleOwnership"
+    },
+    "naming": {
+      "$ref": "#/$defs/naming"
+    },
+    "test_owner_rules": {
+      "$ref": "#/$defs/stringList"
+    },
+    "helper_rules": {
+      "$ref": "#/$defs/stringList"
+    },
+    "fixture_rules": {
+      "$ref": "#/$defs/stringList"
+    },
+    "parameterization_rules": {
+      "$ref": "#/$defs/stringList"
+    },
+    "oracle_rules": {
+      "$ref": "#/$defs/stringList"
+    },
+    "acceptance_rules": {
+      "$ref": "#/$defs/stringList"
+    },
+    "layering_rules": {
+      "$ref": "#/$defs/stringList"
+    },
+    "negative_test_rules": {
+      "$ref": "#/$defs/stringList"
+    },
+    "stop_conditions": {
+      "$ref": "#/$defs/stringList"
+    },
+    "validation": {
+      "$ref": "#/$defs/validation"
+    },
+    "deferred": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8192
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "codePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "policy_version",
+        "source_path",
+        "requirements"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "projectkoios.code.python"
+        },
+        "policy_version": {
+          "const": "0.1.0"
+        },
+        "source_path": {
+          "const": "docs/policies/code/python.json"
+        },
+        "requirements": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "sourceInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "byte_count",
+        "use"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/text"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "use": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "sourceProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_repository",
+        "source_revision",
+        "source_license",
+        "adaptation",
+        "inputs"
+      ],
+      "properties": {
+        "source_repository": {
+          "const": "https://github.com/eragasa/ksdft2effmass"
+        },
+        "source_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "source_license": {
+          "const": "Apache-2.0"
+        },
+        "adaptation": {
+          "$ref": "#/$defs/text"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceInput"
+          },
+          "minItems": 1,
+          "maxItems": 32
+        }
+      }
+    },
+    "evidenceClass": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_class",
+        "establishes",
+        "does_not_establish"
+      ],
+      "properties": {
+        "evidence_class": {
+          "enum": [
+            "software_verification",
+            "numerical_verification",
+            "scientific_validation",
+            "uncertainty_quantification"
+          ]
+        },
+        "establishes": {
+          "$ref": "#/$defs/text"
+        },
+        "does_not_establish": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "when",
+        "requirements"
+      ],
+      "properties": {
+        "profile_id": {
+          "enum": [
+            "routine",
+            "claim_bearing"
+          ]
+        },
+        "when": {
+          "$ref": "#/$defs/text"
+        },
+        "requirements": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "ownershipKind": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ownership_kind",
+        "meaning",
+        "file_pattern"
+      ],
+      "properties": {
+        "ownership_kind": {
+          "enum": [
+            "class_owned",
+            "artifact_owned"
+          ]
+        },
+        "meaning": {
+          "$ref": "#/$defs/text"
+        },
+        "file_pattern": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "moduleOwnership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ownership_kinds",
+        "rules"
+      ],
+      "properties": {
+        "ownership_kinds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ownershipKind"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "naming": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module_patterns",
+        "class_pattern",
+        "method_pattern",
+        "special_methods",
+        "compatibility"
+      ],
+      "properties": {
+        "module_patterns": {
+          "$ref": "#/$defs/stringList"
+        },
+        "class_pattern": {
+          "$ref": "#/$defs/text"
+        },
+        "method_pattern": {
+          "$ref": "#/$defs/text"
+        },
+        "special_methods": {
+          "$ref": "#/$defs/text"
+        },
+        "compatibility": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_commands",
+        "rules"
+      ],
+      "properties": {
+        "minimum_commands": {
+          "$ref": "#/$defs/stringList"
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    }
+  }
+}

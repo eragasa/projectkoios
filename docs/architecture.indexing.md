@@ -73,11 +73,11 @@ For the first in-memory implementation, the score can be a simple keyword match 
 
 ```python
 class ChunkIndex(Protocol):
-    def add_chunks(self, chunks: Iterable[TextChunk]) -> None:
-        ...
+    def add_chunks(self, chunks: Iterable[TextChunk]) -> None: ...
 
-    def search(self, query: str, *, limit: int = 10) -> list[ChunkSearchResult]:
-        ...
+    def search(
+        self, query: str, *, limit: int = 10
+    ) -> list[ChunkSearchResult]: ...
 ```
 
 The protocol allows later index implementations to replace the in-memory index without changing ingestion or RAG code.

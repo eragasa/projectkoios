@@ -1,0 +1,973 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://projectkoios.com/schemas/arch/python-test-declaration/0.1.0.schema.json",
+  "title": "Project Koios Python test declaration",
+  "description": "Closed declaration contract for explicitly admitted Python test evidence, contracts, and regressions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "declaration_id",
+    "predecessor_declaration_ids",
+    "subject",
+    "execution_lane",
+    "intents",
+    "references",
+    "requirement",
+    "method",
+    "oracle",
+    "acceptance",
+    "interpretation",
+    "claim_boundary",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "declaration_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "predecessor_declaration_ids": {
+      "$ref": "#/$defs/identifier_array"
+    },
+    "subject": {
+      "$ref": "#/$defs/subject"
+    },
+    "execution_lane": {
+      "enum": [
+        "default",
+        "integration",
+        "benchmark",
+        "external"
+      ]
+    },
+    "intents": {
+      "$ref": "#/$defs/intents"
+    },
+    "references": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "$ref": "#/$defs/reference"
+      }
+    },
+    "requirement": {
+      "$ref": "#/$defs/requirement"
+    },
+    "method": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/method"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "oracle": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/oracle"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "acceptance": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/exact_acceptance"
+          },
+          {
+            "$ref": "#/$defs/schema_acceptance"
+          },
+          {
+            "$ref": "#/$defs/set_membership_acceptance"
+          },
+          {
+            "$ref": "#/$defs/tolerance_acceptance"
+          },
+          {
+            "$ref": "#/$defs/performance_acceptance"
+          }
+        ]
+      }
+    },
+    "interpretation": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "claim_boundary": {
+      "$ref": "#/$defs/claim_boundary"
+    },
+    "limitations": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "$ref": "#/$defs/limitation"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "intents": {
+            "properties": {
+              "evidence": {
+                "type": "object",
+                "required": [
+                  "profile"
+                ],
+                "properties": {
+                  "profile": {
+                    "const": "claim_bearing"
+                  }
+                }
+              }
+            },
+            "required": [
+              "evidence"
+            ]
+          }
+        },
+        "required": [
+          "intents"
+        ]
+      },
+      "then": {
+        "properties": {
+          "method": {
+            "$ref": "#/$defs/method"
+          },
+          "oracle": {
+            "$ref": "#/$defs/oracle"
+          },
+          "interpretation": {
+            "$ref": "#/$defs/nonempty_string"
+          },
+          "limitations": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "intents": {
+            "properties": {
+              "regressions": {
+                "contains": {
+                  "type": "object",
+                  "properties": {
+                    "dimension": {
+                      "const": "duration"
+                    }
+                  },
+                  "required": [
+                    "dimension"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "regressions"
+            ]
+          }
+        },
+        "required": [
+          "intents"
+        ]
+      },
+      "then": {
+        "properties": {
+          "execution_lane": {
+            "const": "benchmark"
+          },
+          "acceptance": {
+            "contains": {
+              "$ref": "#/$defs/performance_acceptance"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nonempty_string": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 65536
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9._:-]*[A-Za-z0-9])?$"
+    },
+    "identifier_array": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/identifier"
+      }
+    },
+    "text_array": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/nonempty_string"
+      }
+    },
+    "repository_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 65536,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*//)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+    },
+    "python_module": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*$"
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ownership_kind",
+        "test_file",
+        "source_module",
+        "symbol_kind",
+        "symbol_name"
+      ],
+      "properties": {
+        "ownership_kind": {
+          "enum": [
+            "class_owned",
+            "artifact_owned"
+          ]
+        },
+        "test_file": {
+          "$ref": "#/$defs/repository_path"
+        },
+        "source_module": {
+          "$ref": "#/$defs/python_module"
+        },
+        "symbol_kind": {
+          "enum": [
+            "module",
+            "package",
+            "class",
+            "function",
+            "method",
+            "artifact"
+          ]
+        },
+        "symbol_name": {
+          "$ref": "#/$defs/nonempty_string"
+        }
+      }
+    },
+    "evidence_intent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "profile",
+        "evidence_class"
+      ],
+      "properties": {
+        "evidence_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "profile": {
+          "enum": [
+            "routine",
+            "claim_bearing"
+          ]
+        },
+        "evidence_class": {
+          "enum": [
+            "software_verification",
+            "numerical_verification",
+            "scientific_validation",
+            "uncertainty_quantification"
+          ]
+        }
+      }
+    },
+    "contract_intent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_id",
+        "contract_version",
+        "surface",
+        "role",
+        "authoritative_reference_ids"
+      ],
+      "properties": {
+        "contract_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "contract_version": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "surface": {
+          "enum": [
+            "python",
+            "http",
+            "cli",
+            "wire",
+            "filesystem"
+          ]
+        },
+        "role": {
+          "enum": [
+            "provider",
+            "consumer"
+          ]
+        },
+        "authoritative_reference_ids": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/identifier_array"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        }
+      }
+    },
+    "regression_intent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "regression_id",
+        "dimension",
+        "baseline_reference_id"
+      ],
+      "properties": {
+        "regression_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "dimension": {
+          "enum": [
+            "value",
+            "representation",
+            "duration",
+            "resource",
+            "workflow"
+          ]
+        },
+        "baseline_reference_id": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "intents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence",
+        "contracts",
+        "regressions"
+      ],
+      "properties": {
+        "evidence": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/evidence_intent"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "contracts": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/contract_intent"
+          }
+        },
+        "regressions": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/regression_intent"
+          }
+        }
+      },
+      "anyOf": [
+        {
+          "properties": {
+            "evidence": {
+              "$ref": "#/$defs/evidence_intent"
+            }
+          }
+        },
+        {
+          "properties": {
+            "contracts": {
+              "minItems": 1
+            }
+          }
+        },
+        {
+          "properties": {
+            "regressions": {
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_id",
+        "kind",
+        "locator",
+        "version",
+        "sha256",
+        "byte_count",
+        "resolution_status"
+      ],
+      "properties": {
+        "reference_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "kind": {
+          "enum": [
+            "repository_path",
+            "uri",
+            "content_identity",
+            "contract_identity",
+            "baseline_identity"
+          ]
+        },
+        "locator": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "version": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/nonempty_string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "byte_count": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resolution_status": {
+          "enum": [
+            "resolved",
+            "unresolved"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "repository_path"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "locator": {
+                "$ref": "#/$defs/repository_path"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "uri"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "locator": {
+                "type": "string",
+                "pattern": "^https?://[^\\s]+$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "resolution_status": {
+                "const": "resolved"
+              }
+            },
+            "required": [
+              "resolution_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "byte_count": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "sha256": {
+                "type": "null"
+              },
+              "byte_count": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "statement",
+        "preconditions",
+        "authoritative_reference_ids"
+      ],
+      "properties": {
+        "requirement_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "statement": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "preconditions": {
+          "$ref": "#/$defs/text_array"
+        },
+        "authoritative_reference_ids": {
+          "$ref": "#/$defs/identifier_array"
+        }
+      }
+    },
+    "method": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "setup",
+        "operation",
+        "observations"
+      ],
+      "properties": {
+        "setup": {
+          "$ref": "#/$defs/text_array"
+        },
+        "operation": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "observations": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/text_array"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        }
+      }
+    },
+    "oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "independence_rationale",
+        "reference_ids"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "exact_contract",
+            "analytical_result",
+            "independent_implementation",
+            "trusted_reference",
+            "metamorphic_relation",
+            "invariant",
+            "golden_baseline"
+          ]
+        },
+        "independence_rationale": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "reference_ids": {
+          "$ref": "#/$defs/identifier_array"
+        }
+      }
+    },
+    "exact_acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "observation",
+        "comparison",
+        "expected_reference_id"
+      ],
+      "properties": {
+        "kind": {
+          "const": "exact"
+        },
+        "observation": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "comparison": {
+          "enum": [
+            "equals",
+            "not_equals",
+            "identical",
+            "bytes_equal"
+          ]
+        },
+        "expected_reference_id": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "schema_acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "observation",
+        "schema_reference_id",
+        "supported_version",
+        "expected_result"
+      ],
+      "properties": {
+        "kind": {
+          "const": "schema"
+        },
+        "observation": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "schema_reference_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "supported_version": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "expected_result": {
+          "enum": [
+            "valid",
+            "invalid"
+          ]
+        }
+      }
+    },
+    "set_membership_acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "observation",
+        "relation",
+        "members",
+        "equality_semantics"
+      ],
+      "properties": {
+        "kind": {
+          "const": "set_membership"
+        },
+        "observation": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "relation": {
+          "enum": [
+            "equals",
+            "subset",
+            "superset",
+            "disjoint",
+            "contains"
+          ]
+        },
+        "members": {
+          "$ref": "#/$defs/text_array"
+        },
+        "equality_semantics": {
+          "$ref": "#/$defs/nonempty_string"
+        }
+      }
+    },
+    "tolerance_acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "observation",
+        "quantity",
+        "units",
+        "dtype",
+        "scale",
+        "criterion",
+        "absolute_tolerance",
+        "relative_tolerance",
+        "boundary",
+        "zero_handling",
+        "nonfinite_behavior"
+      ],
+      "properties": {
+        "kind": {
+          "const": "tolerance"
+        },
+        "observation": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "quantity": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "units": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "dtype": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "scale": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "criterion": {
+          "enum": [
+            "absolute",
+            "relative",
+            "combined"
+          ]
+        },
+        "absolute_tolerance": {
+          "type": "number",
+          "minimum": 0
+        },
+        "relative_tolerance": {
+          "type": "number",
+          "minimum": 0
+        },
+        "boundary": {
+          "enum": [
+            "inclusive",
+            "exclusive"
+          ]
+        },
+        "zero_handling": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "nonfinite_behavior": {
+          "$ref": "#/$defs/nonempty_string"
+        }
+      }
+    },
+    "performance_acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "observation",
+        "units",
+        "environment_reference_id",
+        "warm_up_iterations",
+        "sample_count",
+        "statistic",
+        "percentile",
+        "direction",
+        "threshold",
+        "noise_policy"
+      ],
+      "properties": {
+        "kind": {
+          "const": "performance"
+        },
+        "observation": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "units": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "environment_reference_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "warm_up_iterations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sample_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "statistic": {
+          "enum": [
+            "mean",
+            "median",
+            "percentile"
+          ]
+        },
+        "percentile": {
+          "oneOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "direction": {
+          "enum": [
+            "at_most",
+            "at_least"
+          ]
+        },
+        "threshold": {
+          "type": "number"
+        },
+        "noise_policy": {
+          "$ref": "#/$defs/nonempty_string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "statistic": {
+                "const": "percentile"
+              }
+            },
+            "required": [
+              "statistic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "percentile": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 100
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "percentile": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "claim_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "establishes",
+        "does_not_establish"
+      ],
+      "properties": {
+        "establishes": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/text_array"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        },
+        "does_not_establish": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/text_array"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        }
+      }
+    },
+    "limitation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "limitation_id",
+        "statement",
+        "consequence"
+      ],
+      "properties": {
+        "limitation_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "statement": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "consequence": {
+          "$ref": "#/$defs/nonempty_string"
+        }
+      }
+    }
+  }
+}

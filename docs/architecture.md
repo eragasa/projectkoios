@@ -52,6 +52,23 @@ Active cross-repository proposals and their parent roadmaps are listed in the
 not authorize implementation or change architecture status until separately
 accepted.
 
+## Product Use Cases
+
+Cross-repository product outcomes are defined in the
+[use-case catalog](use-cases/README.md). The first two use cases are:
+
+1. evidence-grounded textbook ingestion and RAG;
+2. evidence-grounded, author-controlled manuscript development; and
+3. evidence-grounded prospective research.
+
+Use-case records constrain expected behavior. They do not accept contracts,
+authorize implementation, or grant authority for private-data effects.
+
+Bounded demonstrations of these outcomes are defined in the
+[pilot catalog](pilots/README.md). Pilot definitions remain separate from
+component contracts, executable authorization, private run evidence, and
+scientific acceptance.
+
 ## Current Architecture
 
 The current repository is a Python package repository.
@@ -107,6 +124,18 @@ FastAPI is an adapter, not the system.
 | `projectkoios.references` | Reference management: BibTeX records, PDFs, citation keys, source metadata, and reference ingestion.                                         |
 | `projectkoios.workflow`   | Tasks, states, process objects, workflow graphs, provenance, and generated artifacts.                                                        |
 | `projectkoios.api`        | FastAPI interface over the Project Koios system.                                                                                             |
+
+## Adapter Namespace Direction
+
+The target distributed namespace includes `projectkoios.adapters` for nominal
+adapter roles. A binding adapts an imported or deliberately vendored code
+dependency; an integration adapts an external application or service. A
+capability may own both roles and connect them through composition.
+
+The detailed taxonomy, capability-repository naming, implicit namespace rules,
+and mirrored `projectkoios.frankensteins` incubation overlay are defined in the
+[adapter architecture](architecture.adapters.md) and
+[ADR20260925](adr.20260925.adapter-taxonomy-and-frankenstein-overlay.md).
 
 The Python package avoids a flat structure such as:
 
