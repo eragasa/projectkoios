@@ -62,6 +62,10 @@ are not claimed to exist in `projectkoios`. Copy a relevant example only as a
 starting point, then replace every illustrative path, symbol, claim, source, and
 evidence statement.
 
+## Current indexes
+
+- [`LineChunker` vertical slice](projectkoios/index.md)
+
 ## Change Rule
 
 An architecture-relevant change is a vertical slice: update implementation,
