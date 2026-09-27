@@ -9,8 +9,18 @@ Let:
 - \(O \in \mathbb{Z}\) be `overlap_lines`, with \(0 \le O < C\); and
 - \(S = C-O\) be the step, so \(S \ge 1\).
 
-For zero-based chunk index \(k \in \mathbb{Z}_{\ge 0}\), a chunk exists when
-\(kS < N\). Its one-based inclusive interval is
+For \(N>0\), let the terminal zero-based chunk index be
+
+<a id="eq-line-chunk-terminal"></a>
+```math
+\begin{equation}
+K = \left\lceil \frac{\max(N-C, 0)}{S} \right\rceil .
+\tag{EQ-LINE-CHUNK-TERMINAL}
+\end{equation}
+```
+
+A chunk is emitted exactly for integer indexes \(0 \le k \le K\). Its one-based
+inclusive interval is
 
 <a id="eq-line-chunk-start"></a>
 ```math
@@ -30,11 +40,11 @@ For zero-based chunk index \(k \in \mathbb{Z}_{\ge 0}\), a chunk exists when
 
 ## Consequences
 
-For \(N=0\), no chunk index satisfies the existence condition. For \(N>0\), the
-first interval starts at line 1, every interval contains at most \(C\) lines,
-and consecutive intervals share \(O\) lines. Because \(S\ge1\), starts strictly
-increase and finite input terminates. Emission stops at the first interval with
-\(\operatorname{end}(k)=N\).
+For \(N=0\), no chunk is emitted. For \(N>0\), the first interval starts at
+line 1, every interval contains at most \(C\) lines, and consecutive intervals
+share \(O\) lines. The definition of \(K\) selects the first index whose window
+reaches line \(N\); no later mathematical window is emitted. Because \(S\ge1\),
+starts strictly increase and finite input terminates at \(k=K\).
 
 These equations describe the local implementation; they are not
 research-derived and make no scientific model claim.
