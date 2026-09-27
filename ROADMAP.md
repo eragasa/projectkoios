@@ -5,8 +5,9 @@ Project Koios is being built through small working prototypes.
 The goal is not to design the final system upfront. The goal is to build useful pieces, see what patterns repeat, and only then decide what deserves to become shared infrastructure.
 
 At this stage, `projectkoios` is the mothership repo. It holds the roadmap,
-architecture notes, ADRs, examples, configuration ideas, and experimental
-code. `projectkoios-agent` is the first extracted implementation repository.
+current architecture documentation, examples, configuration ideas, and
+experimental code. `projectkoios-agent` is the first extracted implementation
+repository.
 
 `projectkoios-core` is intentionally deferred. Some of the current code may eventually become core, but the boundaries are not stable yet.
 

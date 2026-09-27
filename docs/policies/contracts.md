@@ -17,8 +17,9 @@ boundaries. Owner-internal records may use the same convention but are not
 required to appear in the cross-repository catalog unless another repository
 depends on them.
 
-Cross-repository product architecture remains in `projectkoios` ADRs. Contract
-content remains in the repository that owns and enforces the boundary.
+Cross-repository product architecture remains in current system indexes under
+`docs/architecture/`. Contract content remains in the repository that owns and
+enforces the boundary.
 
 ## Identity allocation
 

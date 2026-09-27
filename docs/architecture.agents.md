@@ -31,8 +31,7 @@ move it to `projectkoios-agent` yet.
 The workspace package is isolated and tested, but no production consumer in an
 independent repository uses its public API. Its filesystem records may also be
 a Project Koios-specific coordination concern, which would make
-`projectkoios-bootstrap` the incubation owner under the
-[bootstrap Pi harness incubation ADR](adr.20260918.bootstrap-pi-harness-incubation.md)
+`projectkoios-bootstrap` the incubation owner under the current repository map
 rather than `projectkoios-agent`.
 
 The plural `projectkoios.agents` namespace is not a compatibility alias for the

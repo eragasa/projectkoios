@@ -15,15 +15,15 @@ conformance follow the
 authority follow the
 [`task and recovery policy`](../policies/task-and-recovery-records.md).
 
-| Contract ID | Owner | Current authoritative document | Architecture | Parent roadmap | Accepted baseline |
-|---|---|---|---|---|---|
-| `projectkoios.ingestion.clean-transcript` | `projectkoios-ingestion` | [`clean-transcript-v2.md`](https://github.com/eragasa/projectkoios-ingestion/blob/master/docs/contracts/clean-transcript-v2.md#contract-metadata-clean-transcript) | [Evidence-grounded scientific retrieval](../adr.20260918.evidence-grounded-scientific-rag.md) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.ingestion.transcript-batch-plan` | `projectkoios-ingestion` | [`clean-transcript-v2.md`](https://github.com/eragasa/projectkoios-ingestion/blob/master/docs/contracts/clean-transcript-v2.md#contract-metadata-transcript-batch-plan) | [Evidence-grounded scientific retrieval](../adr.20260918.evidence-grounded-scientific-rag.md) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.references.candidate-manifest` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-candidate-manifest) | [Reference authority and projections](../adr.20260918.reference-authority-and-projections.md); [evidence-grounded retrieval](../adr.20260918.evidence-grounded-scientific-rag.md) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.references.claim-locator` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-claim-locator) | [Evidence-grounded scientific retrieval](../adr.20260918.evidence-grounded-scientific-rag.md) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.search.evidence-unit` | `projectkoios-search` | [`retrieval-evidence.md`](https://github.com/eragasa/projectkoios-search/blob/master/docs/contracts/retrieval-evidence.md#contract-metadata-evidence-unit) | [Evidence-grounded scientific retrieval](../adr.20260918.evidence-grounded-scientific-rag.md) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.search.evidence-bundle` | `projectkoios-search` | [`retrieval-evidence.md`](https://github.com/eragasa/projectkoios-search/blob/master/docs/contracts/retrieval-evidence.md#contract-metadata-evidence-bundle) | [Evidence-grounded scientific retrieval](../adr.20260918.evidence-grounded-scientific-rag.md) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.workflow.core` | `projectkoios-workflow` | [`workflow-core.md`](https://github.com/eragasa/projectkoios-workflow/blob/master/docs/contracts/workflow-core.md#contract-metadata) | [Staged workflow-kernel ownership transfer](../adr.20260918.workflow-kernel-transfer.md) | [`WORKFLOW-TRANSFER-01`](https://github.com/eragasa/projectkoios/issues/1) | None |
+| Contract ID | Owner | Current authoritative document | Parent roadmap | Accepted baseline |
+|---|---|---|---|---|
+| `projectkoios.ingestion.clean-transcript` | `projectkoios-ingestion` | [`clean-transcript-v2.md`](https://github.com/eragasa/projectkoios-ingestion/blob/master/docs/contracts/clean-transcript-v2.md#contract-metadata-clean-transcript) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.ingestion.transcript-batch-plan` | `projectkoios-ingestion` | [`clean-transcript-v2.md`](https://github.com/eragasa/projectkoios-ingestion/blob/master/docs/contracts/clean-transcript-v2.md#contract-metadata-transcript-batch-plan) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.references.candidate-manifest` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-candidate-manifest) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.references.claim-locator` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-claim-locator) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.search.evidence-unit` | `projectkoios-search` | [`retrieval-evidence.md`](https://github.com/eragasa/projectkoios-search/blob/master/docs/contracts/retrieval-evidence.md#contract-metadata-evidence-unit) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.search.evidence-bundle` | `projectkoios-search` | [`retrieval-evidence.md`](https://github.com/eragasa/projectkoios-search/blob/master/docs/contracts/retrieval-evidence.md#contract-metadata-evidence-bundle) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.workflow.core` | `projectkoios-workflow` | [`workflow-core.md`](https://github.com/eragasa/projectkoios-workflow/blob/master/docs/contracts/workflow-core.md#contract-metadata) | [`WORKFLOW-TRANSFER-01`](https://github.com/eragasa/projectkoios/issues/1) | None |
 
 Default-branch links locate the current proposal. Only an exact commit link in
 the `Accepted baseline` column identifies an accepted immutable specification.
@@ -41,8 +41,9 @@ Each owner directory contains a `README.md` index. One document may contain a
 suite, but every independently versioned contract has its own metadata,
 normative scope, and conformance subjects.
 
-Cross-repository architecture remains in Project Koios ADRs. Shared policies
-remain under `docs/policies/`. Neither is moved into the contract catalog.
+Cross-repository architecture remains in current system indexes under
+`docs/architecture/`. Shared policies remain under `docs/policies/`. Neither is
+moved into the contract catalog.
 
 ## Registration and change discipline
 
@@ -52,8 +53,8 @@ remain under `docs/policies/`. Neither is moved into the contract catalog.
 - Proposed contracts use target versions below `1.0.0`; Project Koios has no
   formal stable contract release.
 - Change the authoritative document in its owner repository.
-- Update this catalog only when identity, ownership, path, architecture,
-  roadmap, or accepted baseline changes.
+- Update this catalog only when identity, ownership, path, roadmap, or accepted
+  baseline changes.
 - Do not copy contract bodies into this repository.
 - Do not infer acceptance from issue activity, implementation, tests, or use by
   a consumer.
