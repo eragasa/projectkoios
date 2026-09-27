@@ -26,8 +26,6 @@ EXAMPLE_FILES = {
         "implementation/testing/index.md"
     ),
 }
-DETAIL_NAMES = {"implementation", "mathematics", "references", "testing"}
-DETAIL_CHILDREN = {"mathematics", "references", "testing"}
 
 
 def _expected_example_entries() -> set[Path]:
@@ -84,19 +82,7 @@ def _valid_placement(relative: Path) -> bool:
         return relative in EXAMPLE_FILES
     if directories[0] == "_system":
         return len(directories) == 2 and bool(directories[1])
-    if any(part.startswith("_") for part in directories):
-        return False
-    details = [part for part in directories if part in DETAIL_NAMES]
-    if not details:
-        return True
-    if directories[-1] == "implementation":
-        return len(directories) >= 4 and details == ["implementation"]
-    return (
-        len(directories) >= 5
-        and directories[-2] == "implementation"
-        and directories[-1] in DETAIL_CHILDREN
-        and details == ["implementation", directories[-1]]
-    )
+    return not any(part.startswith("_") for part in directories)
 
 
 def validate_repository(repository_root: Path) -> list[str]:

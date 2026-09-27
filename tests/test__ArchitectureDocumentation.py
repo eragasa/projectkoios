@@ -112,18 +112,29 @@ def test__architecture_topology__requires_example_index_regular_file(
     )
 
 
-def test__architecture_topology__rejects_templates_and_misplaced_detail(
+def test__architecture_topology__allows_reserved_names_in_ordinary_paths(
+    tmp_path: Path,
+    repository_root: Path,
+) -> None:
+    root = _fixture(tmp_path, repository_root)
+    for relative in (
+        "references/index.md",
+        "projectkoios/references/index.md",
+        "projectkoios/testing/mathematics/index.md",
+    ):
+        page = root / "docs/architecture" / relative
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text("# Ordinary architecture page\n", encoding="utf-8")
+    assert validate_repository(root) == []
+
+
+def test__architecture_topology__rejects_templates(
     tmp_path: Path,
     repository_root: Path,
 ) -> None:
     root = _fixture(tmp_path, repository_root)
     (root / "docs/architecture/_templates").mkdir()
-    detail = root / "docs/architecture/example_package/mathematics/index.md"
-    detail.parent.mkdir(parents=True)
-    detail.write_text("# Misplaced\n", encoding="utf-8")
-    issues = validate_repository(root)
-    _has(issues, "_templates: obsolete directory")
-    _has(issues, "unsupported architecture placement")
+    _has(validate_repository(root), "_templates: obsolete directory")
 
 
 def test__architecture_topology__allows_bounded_system_index(
@@ -135,3 +146,8 @@ def test__architecture_topology__allows_bounded_system_index(
     system.parent.mkdir(parents=True)
     system.write_text("# Dependency rules\n", encoding="utf-8")
     assert validate_repository(root) == []
+
+    nested = system.parent / "nested/index.md"
+    nested.parent.mkdir()
+    nested.write_text("# Invalid nested system page\n", encoding="utf-8")
+    _has(validate_repository(root), "unsupported architecture placement")
