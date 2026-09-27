@@ -17,11 +17,12 @@ The proposed longer-term scientific direction and its authority limits are descr
 ## Repository Routing
 
 Repository discovery and operational coordination are documented in
-`projectkoios-bootstrap/maps/repositories.md`. The bounded incubation boundary
-for Project Koios-specific Pi coordination tooling is defined by the
-[bounded bootstrap Pi harness incubation ADR](adr.20260918.bootstrap-pi-harness-incubation.md).
+`projectkoios-bootstrap/maps/repositories.md`. Current architecture authority is
+maintained in [`docs/architecture/`](architecture/README.md), while Git history
+carries rationale.
 
-This document does not define session-routing rules. It describes Project Koios product architecture and records cross-repository architectural direction.
+This document does not define session-routing rules. It describes Project Koios
+product architecture and records cross-repository architectural direction.
 
 Project Koios keeps the human in control by making source material,
 intermediate objects, generated outputs, and provenance inspectable.
@@ -51,10 +52,9 @@ The current architecture is intentionally small enough to run, test, and underst
 
 The planned architecture describes the expansion path after the Python package, API boundary, and search model stabilize.
 
-Active cross-repository proposals and their parent roadmaps are listed in the
-[architecture proposal index](architecture.proposals.md). Proposed records do
-not authorize implementation or change architecture status until separately
-accepted.
+Current cross-repository architecture belongs in the owning system indexes
+under [`docs/architecture/`](architecture/README.md). Roadmaps coordinate future
+work but do not override current-state architecture.
 
 ## Current Architecture
 
