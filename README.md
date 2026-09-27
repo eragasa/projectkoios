@@ -25,12 +25,15 @@ It organizes notes, references, code, computational workflows, and generated art
 
 The operational repository map is maintained in
 `projectkoios-bootstrap/maps/repositories.md`. The
-[application-composition ownership decision](docs/adr.20260927.application-composition-ownership.md)
-defines the shared `projectkoios.applications` owner and its reusable-component
-boundary. `projectkoios.applications.pw_dft_scf` is a capability package under
-that owner, not a standalone repository. Independently governed scientific and
-pedagogical projects such as `physkit`, `msekit`, `ksdft2effmass`, and
-`dacp2transport` retain their own ownership and authority.
+[application architecture](docs/architecture.applications.md) defines the
+shared `projectkoios.applications` owner and its reusable-component boundary.
+`projectkoios.applications.pw_dft_scf` is a capability package under that owner,
+not a standalone repository. The [adapter architecture](docs/architecture.adapters.md)
+defines the documentation taxonomy, and the
+[Frankenstein architecture](docs/architecture.frankenstein.md) records the
+current bounded incubation and provenance disposition. Independently governed
+scientific and pedagogical projects such as `physkit`, `msekit`,
+`ksdft2effmass`, and `dacp2transport` retain their own ownership and authority.
 
 ## Product use cases
 

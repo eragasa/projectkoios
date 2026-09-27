@@ -31,14 +31,15 @@ classDiagram
     Integration o-- Binding : may use
 ```
 
-`Adapter`, `Binding`, and `Integration` are nominal base-class roles. Adapter
-membership does not imply a generic `adapt()` method. A shared operation belongs
-on a base class only after its invariant, caller, and owner are demonstrated.
+`Adapter`, `Binding`, and `Integration` are nominal architecture roles. The
+diagram expresses documentation taxonomy; it does not require runtime base
+classes. Adapter membership does not imply a generic `adapt()` method. A base
+class exists only after a real consumer, shared invariant, caller, and owner are
+demonstrated.
 
-Project Koios uses base classes for shared nominal "is-a" relationships and
-composition for "has-a" relationships. If another shared base class appears
-necessary, implementation freezes until an explicit architecture discussion
-accepts it.
+Project Koios uses base classes for demonstrated runtime "is-a" relationships
+and composition for "has-a" relationships. The current unused behaviorless
+nominal base has no runtime owner and is not an extraction target.
 
 ## Bindings
 
@@ -87,14 +88,13 @@ external scientific-application integrations.
 
 ## Repository and namespace ownership
 
-Repositories use concise capability names:
-
-```text
-projectkoios-github
-projectkoios-lammps
-projectkoios-pyflamestk
-projectkoios-pypospack
-```
+Repository placement follows the owning domain and is not determined by the
+adapter role. Neutral simulation abstractions and provider integrations belong
+to `projectkoios-simulations`; application composition belongs to
+`projectkoios-applications`. Other capability owners may contribute adapter
+leaves when their current architecture assigns that responsibility. The
+taxonomy does not require one repository per provider or one repository per
+adapter leaf.
 
 The Python namespace records architectural role:
 
@@ -106,11 +106,10 @@ projectkoios.adapters.bindings.pypospack
 projectkoios.adapters.integrations.lammps
 ```
 
-One capability repository may contribute more than one adapter leaf. Shared
-namespace levels must remain compatible with the implicit namespace-package
-rules in ADR20260629. They do not aggregate all implementations through
-`__init__.py`; provider leaves may expose deliberate facades or composition
-roots.
+One owner repository may contribute more than one adapter leaf. Shared
+namespace levels remain implicit namespace packages. They do not aggregate all
+implementations through `__init__.py`; provider leaves may expose deliberate
+facades or composition roots.
 
 The word "external" is reserved for contribution or governance classification
 when repository ownership needs that distinction. It is not a synonym for
@@ -118,9 +117,10 @@ integration.
 
 ## Frankenstein incubation overlay
 
-`projectkoios.frankensteins` mirrors the intended Project Koios namespace so
-accepted modules can be picked and pulled into their final owner. Migration
-removes only the incubation segment:
+`projectkoios.frankensteins` may mirror an intended Project Koios namespace so
+a bounded module can be reviewed against a possible final path. Mirroring does
+not accept a module or make migration automatic. After explicit owner review,
+an accepted transfer normally removes only the incubation segment:
 
 ```text
 projectkoios.frankensteins.adapters.bindings.pypospack
@@ -130,9 +130,11 @@ projectkoios.frankensteins.adapters.integrations.lammps
     -> projectkoios.adapters.integrations.lammps
 ```
 
-Transfer-ready modules preserve class names, inheritance, dependency direction,
-tests, and documentation. Migration must not require redesigning their domain
-contracts.
+A transfer candidate must preserve its reviewed contract, dependency direction,
+tests, documentation, provenance, and license obligations. Items without a real
+consumer and explicit owner remain incubated, provenance-only, or non-transfer
+targets as recorded in the
+[Frankenstein architecture](architecture.frankenstein.md).
 
 ## Verification boundaries
 

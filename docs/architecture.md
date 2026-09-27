@@ -132,10 +132,12 @@ adapter roles. A binding adapts an imported or deliberately vendored code
 dependency; an integration adapts an external application or service. A
 capability may own both roles and connect them through composition.
 
-The detailed taxonomy, capability-repository naming, implicit namespace rules,
-and mirrored `projectkoios.frankensteins` incubation overlay are defined in the
-[adapter architecture](architecture.adapters.md) and
-[ADR20260925](adr.20260925.adapter-taxonomy-and-frankenstein-overlay.md).
+The current taxonomy and namespace rules are defined in the
+[adapter architecture](architecture.adapters.md). The bounded incubation and
+provenance disposition of `projectkoios.frankensteins` is defined in the
+[Frankenstein architecture](architecture.frankenstein.md). Cross-capability
+scientific composition is defined separately in the
+[application architecture](architecture.applications.md).
 
 The Python package avoids a flat structure such as:
 
