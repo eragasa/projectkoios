@@ -163,10 +163,35 @@ returns one typed `DataObjectActionResult`. Dependencies, clocks, stores,
 external clients, configuration, and authority are explicit rather than
 obtained through ambient discovery.
 
-Concrete operation families share a domain stem, such as
-`ScientificMarkdownRenderRequest`, `ScientificMarkdownRenderActionizer`, and
-`ScientificMarkdownRenderResult`. A pure module-level transformation remains
-valid only when it is not represented as an actionizer boundary.
+`DataObjectActionizer` names the functional ABC and architecture role, not a
+mandatory concrete suffix. An Actionizer is the noun that does the action: the
+performer or agent, not the action itself and not merely a suffix
+transformation. Request and result names share a coherent operation stem, such
+as `ScientificMarkdownRenderRequest` and `ScientificMarkdownRenderResult`; the
+implementation keeps its accurate agent noun, such as
+`ScientificMarkdownRenderer`. `Composer`, `Processor`, `Reconciler`, `Executor`,
+`Validator`, `Detector`, `Projector`, `Coordinator`, `Assembler`, `Recognizer`,
+`Checker`, and `Ingester` are concrete Actionizer nouns when they perform their
+named actions. No intermediate `FooActionizer` class exists solely to attach the
+architecture label.
+
+The inherited `action(*, request)` method is the uniform boundary. An existing
+meaningful domain verb such as `compose`, `process`, `reconcile`, or `execute`
+may remain the meaningful API, with one method delegating to the other and no
+duplicated operation logic. Neither the meaningful implementation noun nor
+semantic method is deprecated merely because the class inherits
+`DataObjectActionizer`. Compatibility aliases are reserved for genuinely
+superseded type names, such as an `Input` renamed to `Request`.
+
+Within a touched bounded family, private implementation helpers attach to the
+`DataObject` or concrete Actionizer that owns the invariant or action. They may
+be private instance methods, `staticmethod`s, or `classmethod`s according to
+whether they need instance state, class state, or neither. Private module-level
+`_helper` functions and generic `Utils` or `Helpers` containers do not
+accumulate. Genuinely shared behavior belongs to a narrowly named collaborator
+object with one real responsibility rather than duplicated or free-floating
+helpers. A public module-level function is valid only as an intentional public
+entry point or factory, not as a hidden implementation helper.
 
 ### DataObjectActionResult
 
@@ -216,6 +241,20 @@ Google Python Style Guide rules.
 This architecture index records their system-level use without creating a
 second independently maintained coding policy.
 
+### Prototype persistence formats
+
+Before a persistence format becomes external, released, or irreplaceable,
+maintain one current canonical format and replace or regenerate it in place.
+Do not accumulate `V1`, `V2`, generation, schema-version, compatibility, or
+migration formats for pre-durability prototypes. Strict closed-shape
+validation, applicable content hashes, and deterministic identities remain
+required; Git preserves superseded prototype history.
+
+Freeze the first numbered format only at an explicit durability boundary. A
+format that is already external, released, or irreplaceable instead requires
+explicit versioning, compatibility, and migration policy and must not be
+silently replaced in place.
+
 The policy projection has one bounded executable sequence:
 
 ```bash
@@ -260,16 +299,24 @@ authorize changes in `projectkoios-ingestion`.
    changed shared operation boundaries. `DataObject` and
    `DataObjectActionizer` are both BaseObject classifications, but no public
    `BaseObject` class exists or is required.
-2. Give each materially changed operation one precise domain stem across its
-   request, actionizer, and result, and retain `Result` for the internal outcome.
-   Use `Response` only for a transport model produced by a boundary adapter.
+2. Give each materially changed operation coherent Request and Result names
+   with one domain-operation stem, and retain `Result` for the internal outcome.
+   Let the concrete actionizer keep its accurate performer/agent noun rather
+   than adding an `Actionizer` suffix or an intermediate `FooActionizer` label
+   class. Use `Response` only for a transport model produced by a boundary
+   adapter.
 3. Implement requests and results as immutable `DataObjectModel` subclasses
    with distinct identities. Bind exact DataObject inputs and any independently
    meaningful domain-model object in the request; bind request, actionizer,
    configuration, outputs, and execution evidence in the result.
-4. Preserve valid cheap invariant methods, derived properties, and existing
-   domain semantics. Do not perform a mechanical rename or repository-wide
-   rewrite merely to adopt classification vocabulary.
+4. Preserve valid cheap invariant methods, derived properties, implementation
+   nouns, semantic operation methods, and existing domain semantics. Supply
+   `action(*, request)` by delegating in one direction when a semantic method
+   remains; do not duplicate logic, deprecate meaningful behavior names, or
+   perform a mechanical repository-wide rewrite. Attach touched private helpers
+   to their owning object; use a narrowly named collaborator for genuinely
+   shared behavior rather than module `_helper` functions or generic utility
+   containers.
 5. Move implementation bodies out of package and subpackage `__init__.py`
    files into cohesive named modules. Keep initializers empty or limit them to
    small explicit facades with aligned `__all__` declarations.
@@ -280,6 +327,11 @@ authorize changes in `projectkoios-ingestion`.
    versioned breaking release.
 7. Run the ingestion owner's focused tests, package export tests, lint, type
    checks, and full maintained validation after each bounded migration.
+8. For prototype persistence formats that have not crossed an external,
+   released, or irreplaceable durability boundary, keep one current canonical
+   format and regenerate it in place; do not create numbered generations or
+   migrations. Preserve strict shape, hashes, deterministic identities, and
+   Git history.
 
 ### Optional observations, not numeric targets
 
@@ -305,10 +357,11 @@ as that boundary.
 
 Stop and return to the architecture owner when the three terms cannot describe
 the operation without changing product semantics, when a proposed model
-boundary requires a new domain decision, when the owning distribution cannot
-declare the `projectkoios.base` dependency without a packaging decision, or
-when compatibility cannot be preserved without a separately approved breaking
-change. Stop and return to the applicable repository owner before changing
+boundary requires a new domain decision, when it is unclear whether a persisted
+format is already external, released, or irreplaceable, when the owning
+distribution cannot declare the `projectkoios.base` dependency without a
+packaging decision, or when compatibility cannot be preserved without a
+separately approved breaking change. Stop and return to the applicable repository owner before changing
 implementation outside `projectkoios-ingestion`. No migration step may silently
 delete exports,
 automatically rewrite the repository, or infer scientific acceptance.

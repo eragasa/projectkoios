@@ -129,8 +129,9 @@ not a reflective object serializer:
 1. `StrictJsonObjectDecoder` consumes bounded bytes, rejects BOMs, invalid
    UTF-8, duplicate members, non-RFC constants, prohibited Unicode, excess
    depth/count/size, and a non-object root.
-2. The owning document deserializer checks exact versioned fields and converts
-   the closed JSON value into its immutable DataObject without coercion.
+2. The owning document deserializer checks exact fields and converts the closed
+   JSON value into its immutable DataObject without coercion. A version field
+   appears only after an explicit durability boundary freezes a numbered format.
 3. Draft 2020-12 JSON Schema validation supplies deterministic structural
    diagnostics where a published schema exists; it does not replace strict
    parsing or DataObject construction.
@@ -141,8 +142,17 @@ not a reflective object serializer:
 6. `JsonSerializationResult` and `JsonDeserializationResult` contain either one
    complete value or structured findings, never a partial value.
 7. Content identity binds exact emitted bytes. Semantic identities, when
-   needed, use a versioned domain separator and length framing rather than a
-   bare unscoped hash.
+   needed, use a stable domain separator and length framing rather than a bare
+   unscoped hash; version the separator only when a durability boundary requires
+   multiple supported meanings.
+
+Before an external, released, or irreplaceable persistence boundary, this
+composition owns one current canonical format. It replaces or regenerates that
+format in place instead of adding V1/V2, generation, schema-version,
+compatibility, or migration variants. Strict shape validation, hashes, and
+deterministic identities remain, while Git preserves superseded prototype
+history. Existing durable formats continue to require explicit versioning and
+migration policy.
 
 Architecture and policy JSON are human-authored inputs. Their decoder may
 accept insignificant whitespace and object-member order while still rejecting
@@ -200,12 +210,21 @@ The relationship to the source-project vocabulary is:
 | BaseObject | Use as a classification containing DataObject and DataObjectActionizer; do not introduce a public class |
 | Registries and reflective discovery | Do not extract as part of this pattern |
 
-Concrete Python operation families share a domain stem. For example,
-`ArchitectureDocumentRenderRequest`,
-`ArchitectureDocumentRenderActionizer`, and
-`ArchitectureDocumentRenderResult` inherit the applicable thin public ABCs
-while retaining domain names. `Result` remains the internal domain term; a
-transport adapter may separately produce an HTTP response model.
+Concrete request and result names share a domain-operation stem, for example
+`ArchitectureDocumentRenderRequest` and
+`ArchitectureDocumentRenderResult`. The implementation inherits
+`DataObjectActionizer[ArchitectureDocumentRenderRequest,
+ArchitectureDocumentRenderResult]` while retaining an accurate performer noun
+such as `ArchitectureDocumentRenderer`. An Actionizer is the noun that does the
+action, not a required suffix, and no intermediate `FooActionizer` exists only
+for labeling. The uniform `action(*, request)` method may delegate to or from an
+established semantic method without duplicate logic or deprecation of the
+meaningful name. Touched private helpers move onto their owning DataObject or
+concrete Actionizer; genuinely shared behavior receives a narrowly named
+collaborator rather than a module `_helper` or generic utility container.
+
+`Result` remains the internal domain term; a transport adapter may separately
+produce an HTTP response model.
 
 The implementation follows the authoritative Draft
 [Project Koios Python policy source](../../../../policies/code/python.json) and

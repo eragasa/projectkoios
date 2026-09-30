@@ -43,7 +43,21 @@ pip install -e ".[dev]"
 - **Thin base-object boundaries** — `BaseObject` is an architecture
   classification, not a Python class. `projectkoios.base` defines the exact
   thin ABC hierarchy for struct-like `DataObject`/`DataObjectModel` request and
-  result records and function-like `DataObjectActionizer` operations.
+  result records and function-like `DataObjectActionizer` operations. The
+  actionizer is the noun that performs the action, not a required `Actionizer`
+  suffix. Concrete Composer, Processor, Reconciler, Executor, Validator,
+  Detector, Projector, Coordinator, Assembler, Recognizer, Checker, Ingester,
+  and similar semantic agent names remain valid.
+- **Helper ownership** — in touched code, private helpers belong as methods on
+  the DataObject or concrete Actionizer that owns the invariant or action.
+  Shared behavior gets a narrowly named collaborator, not module `_helper`
+  functions or generic Utils/Helpers containers. Public module functions are
+  intentional entry points or factories only.
+- **Prototype persistence** — before an external, released, or irreplaceable
+  durability boundary, keep one canonical format and replace/regenerate it in
+  place. Git holds prototype history; numbered formats and migrations begin only
+  at an explicit durability boundary. Strict shape, hashes, and deterministic
+  identities still apply.
 - **Adapter taxonomy** — `Adapter` is the nominal containing role. A `Binding`
   adapts imported or deliberately vendored code; an `Integration` adapts an
   external application or service. Use base classes for "is-a" relationships

@@ -9,7 +9,7 @@
 - Policy ID: `projectkoios.code.python`
 - Policy version: `0.1.0`
 - Status: **Draft**
-- Source SHA-256: `8272a126f45237e6c413f17cd54a6e86d03f259f4eea6633d0b9a1d10bb2e94d`
+- Source SHA-256: `3fc56397fc4b3c72876ba3e4b6624dcfa451bac89147511dfaee47c0e723d12a`
 
 ## Purpose
 
@@ -110,6 +110,8 @@ Action method: `action(*, request: RequestT) -> ResultT`
 - These ABCs are intentionally thin and distinguish struct-like represented state from function-like behavior.
 - DataObject uses an abstract initializer boundary so concrete dataclasses or explicit constructors provide complete represented state.
 - DataObjectActionizer owns the abstract action method and is not a DataObject.
+- Actionizer is the noun that does the action: the performer or agent, not the action itself and not merely a suffix transformation.
+- A concrete implementation inherits DataObjectActionizer[Request, Result] while retaining a meaningful agent noun such as Composer, Processor, Reconciler, Executor, Validator, Detector, Projector, Coordinator, Assembler, Recognizer, Checker, or Ingester.
 - The module adds no BaseObject class, registry, discovery mechanism, persistence behavior, or serialization behavior.
 
 ### DataObject
@@ -195,10 +197,18 @@ DataObjectModel is the public DataObject ABC specialization for immutable struct
 
 - BaseObject is a classification, not a required public base class; DataObject and DataObjectActionizer both fill that classification.
 - The five thin public ABCs and their exact hierarchy are defined in projectkoios.base; concrete domain classes inherit the applicable ABC while retaining domain names.
-- Concrete operation families share a precise domain stem, for example ScientificMarkdownRenderRequest, ScientificMarkdownRenderActionizer, and ScientificMarkdownRenderResult.
+- DataObjectActionizer is the functional ABC and architecture role, not a mandatory concrete class-name suffix.
+- Request and Result names share a coherent domain-operation stem, for example ScientificMarkdownRenderRequest and ScientificMarkdownRenderResult; the implementation uses its accurate behavior noun, such as ScientificMarkdownRenderer.
+- Concrete Composer, Processor, Reconciler, Executor, Validator, Detector, Projector, Coordinator, Assembler, Recognizer, Checker, and Ingester names are domain-specific Actionizers when they accurately describe the implemented verb.
+- Do not introduce an intermediate FooActionizer class solely to attach the architecture label.
+- The inherited action(*, request) method is the uniform functional boundary; an existing meaningful domain verb such as compose, process, reconcile, or execute may remain the meaningful API, with one method delegating to the other and no duplicated operation logic.
+- Do not deprecate a meaningful implementation noun or semantic method merely because the class now inherits DataObjectActionizer; compatibility aliases are reserved for genuinely superseded type names such as Input renamed to Request.
 - Request and result identity are distinct: repeated processing of one request may yield separately identified results when execution evidence, external state, or outcomes differ.
 - Result is the internal domain term; Response is reserved for a transport boundary such as HTTP, where an adapter maps a result to a response schema.
-- A small owner-local pure transformation may remain a typed module-level function only when it is not represented as a DataObjectActionizer boundary.
+- In a touched bounded family, implementation helpers are private instance, staticmethod, or classmethod behavior on the DataObject or concrete Actionizer that owns the invariant or action.
+- Do not accumulate private module-level _helper functions or generic Utils or Helpers containers.
+- Behavior genuinely shared by multiple owners belongs to a narrowly named collaborator object with one real responsibility rather than duplicated or free-floating helpers.
+- A public module-level function is allowed only as an intentional public entry point or factory, not as a hidden implementation helper.
 - Existing DataObjects retain valid cheap invariant methods, derived properties, and domain semantics during incremental migration.
 - Programming errors and violated caller preconditions raise specific exceptions; expected operational outcomes use result records.
 - Runtime validation must not depend on assert.
@@ -506,7 +516,7 @@ Rationale:
 
 Adopted as written, subject to repository-local automation and the policy precedence order.
 
-#### 2.17 Function and Method Decorators — ADOPT
+#### 2.17 Function and Method Decorators — ADAPT
 
 - Rule ID: `google.pyguide.2.17`
 - Upstream section: [2.17](https://github.com/google/styleguide/blob/3b8822983dc779c498961cc86332a28c07590f64/pyguide.md#s2.17-function-and-method-decorators)
@@ -517,11 +527,11 @@ Upstream excerpt:
 
 Project Koios rule:
 
-Use decorators judiciously when there is a clear advantage. Avoid staticmethod and limit use of classmethod.
+Use decorators judiciously. In a touched bounded family, private helper behavior belongs to its owning DataObject or concrete Actionizer and may use an instance method, staticmethod, or classmethod according to that ownership; do not use decorators to obscure an ownerless helper.
 
 Rationale:
 
-Adopted as written, subject to repository-local automation and the policy precedence order.
+Project Koios requires helper ownership and allows the narrow method form that accurately expresses whether the helper needs instance state, class state, or neither.
 
 #### 2.18 Threading — ADOPT
 
@@ -972,12 +982,20 @@ Local consistency cannot silently override accepted Project Koios authority.
 - Every named variable has an explicit type annotation where Python syntax permits one.
 - Public and private methods have explicit parameter and return annotations, and every parameter after self or cls is keyword-only unless a language or framework protocol requires another signature.
 - Method calls spell every argument name where the called signature permits keyword arguments.
-- Small private helper behavior belongs to the class that owns the behavior rather than a private module-level function.
+- Within a touched bounded family, small private helper behavior belongs as an instance method, staticmethod, or classmethod on the DataObject or concrete Actionizer that owns the invariant or action.
+- Private module-level _helper functions and generic Utils or Helpers containers are prohibited.
+- Genuinely shared helper behavior belongs to a narrowly named collaborator object with a real responsibility rather than duplicated or free-floating functions.
+- Public module-level functions are reserved for intentional public entry points or factories, not hidden implementation helpers.
 - Implementation modules import from the owning module; package and subpackage __init__.py files follow the package_initializers policy rather than aggregating implementation or every public object.
 - None checks use is None or is not None.
 - Mutable values are defensively copied or normalized before storage in immutable records.
-- Unknown serialized fields, duplicate JSON members, unsupported versions, and malformed values fail closed.
+- Unknown serialized fields, duplicate JSON members, unsupported durable-format versions, and malformed values fail closed.
 - Externally supplied JSON is byte-bounded before parsing and depth, collection, and string-bounded before DataObject construction.
+- Before an external, released, or irreplaceable persistence durability boundary, maintain exactly one current canonical format and replace or regenerate it in place.
+- A pre-durability prototype does not proliferate V1, V2, generation, schema-version, compatibility, or migration formats; Git preserves superseded prototype history.
+- Pre-durability canonical formats still require strict closed-shape validation, content hashes where applicable, and deterministic identities.
+- Freeze the first numbered format only at an explicit durability boundary.
+- An already external, released, or irreplaceable format requires explicit versioning, compatibility, and migration policy rather than in-place replacement.
 - Serialization, rendering, persistence, comparison, and external effects belong to named actionizers or adapters.
 - Properties remain cheap, deterministic, and free of externally visible effects.
 - Public actionizer dependencies are supplied through construction or method parameters, not ambient discovery.

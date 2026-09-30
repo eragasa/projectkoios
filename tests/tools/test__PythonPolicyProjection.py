@@ -94,6 +94,62 @@ def test__public_abcs__have_the_exact_thin_hierarchy() -> None:
     assert "immutable" in cast(str, model["relationship"])
 
 
+def test__actionizer_naming__preserves_semantic_names_and_methods() -> None:
+    policy: dict[str, object] = _policy()
+    object_model: dict[str, object] = cast(
+        dict[str, object], policy["object_model"]
+    )
+    rules: str = " ".join(cast(list[str], object_model["rules"]))
+    public_abcs: str = json.dumps(object_model["public_abcs"])
+
+    assert "not a mandatory concrete class-name suffix" in rules
+    assert "noun that does the action" in public_abcs
+    assert "Composer, Processor, Reconciler, Executor" in rules
+    assert "Coordinator, Assembler, Recognizer, Checker, and Ingester" in rules
+    assert "intermediate FooActionizer" in rules
+    assert "one method delegating to the other" in rules
+    assert "no duplicated operation logic" in rules
+    assert "Input renamed to Request" in rules
+
+
+def test__helper_ownership__attaches_behavior_to_real_owners() -> None:
+    policy: dict[str, object] = _policy()
+    python_rules: str = " ".join(cast(list[str], policy["python_rules"]))
+    google: dict[str, object] = cast(
+        dict[str, object], policy["google_python_style"]
+    )
+    extraction: dict[str, object] = cast(
+        dict[str, object], google["extraction"]
+    )
+    google_rules: list[dict[str, object]] = cast(
+        list[dict[str, object]], extraction["rules"]
+    )
+    decorator_rule: dict[str, object] = next(
+        rule
+        for rule in google_rules
+        if rule["rule_id"] == "google.pyguide.2.17"
+    )
+
+    assert decorator_rule["disposition"] == "ADAPT"
+    assert "instance method, staticmethod, or classmethod" in python_rules
+    assert "module-level _helper functions" in python_rules
+    assert "narrowly named collaborator object" in python_rules
+    assert "intentional public entry points or factories" in python_rules
+
+
+def test__prototype_persistence__uses_one_pre_durability_format() -> None:
+    policy: dict[str, object] = _policy()
+    python_rules: str = " ".join(cast(list[str], policy["python_rules"]))
+
+    assert "one current canonical format" in python_rules
+    assert "V1, V2, generation, schema-version" in python_rules
+    assert "Git preserves superseded prototype history" in python_rules
+    assert "strict closed-shape validation" in python_rules
+    assert "Freeze the first numbered format" in python_rules
+    assert "already external, released, or irreplaceable" in python_rules
+    assert "versioning, compatibility, and migration policy" in python_rules
+
+
 def test__initializer_migrations__remain_separate() -> None:
     policy: dict[str, object] = _policy()
     initializers: dict[str, object] = cast(
