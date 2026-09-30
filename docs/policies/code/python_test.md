@@ -9,7 +9,7 @@
 - Policy ID: `projectkoios.code.python-test`
 - Policy version: `0.1.0`
 - Status: **Draft**
-- Source SHA-256: `701d8b8529612e9a6821851877155459eb0fdbe5f72284dbb12ed62ced65c03d`
+- Source SHA-256: `27eb7991f84623f248f7308d44b8c80d35e3fdd435187f0f45b0499a07a7509a`
 
 ## Purpose
 
@@ -223,7 +223,7 @@ File pattern: `A concise test__artifact_name.py using repository vocabulary.`
 - Test-only setup, assertion, and data builders are small helpers owned by the cohesive module or optional Test wrapper; module helpers are acceptable when clearer than an artificial class.
 - Helpers own no independent evidence identifier or pass claim.
 - Helpers use visible semantic names, do not hide requirements or tolerances, and do not reproduce the production algorithm.
-- Do not create a production DataObjectAction solely to construct test data.
+- Do not create a production DataObjectActionizer solely to construct test data.
 
 ## Fixture rules
 

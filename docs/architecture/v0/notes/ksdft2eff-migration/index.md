@@ -49,7 +49,7 @@ destination repository by itself.
 | Deterministic JSON-to-Markdown projection profiles | `REPACKAGE` | Project Koios architecture-document tooling |
 | Exact-byte Markdown identities and drift comparison | `REPACKAGE` | Project Koios architecture-document tooling |
 | Valid/invalid fixture and expected-byte oracle pattern | `REPACKAGE` | Project Koios architecture-document tooling |
-| DataObject, ActionObject, and operation-result separation | `REPACKAGE` | Adopt the modified Project Koios DataObject → DataObjectAction → DataObjectActionResult roles |
+| DataObject, ActionObject, request, and operation-result separation | `REPACKAGE` | Adopt the Project Koios DataObject plus DataObjectActionRequest → DataObjectActionizer → DataObjectActionResult roles |
 | Resource manifests with content identities | `REPACKAGE` | Assess against Project Koios artifact and provenance ownership |
 | Generic artifact and provenance concepts | `EXTRACT` | Route through accepted cross-repository architecture and the eventual component owner |
 | Generic workflow, Task, attempt, result, and effect concepts | `DEFER` | Continue through the existing workflow-kernel transfer decisions |
@@ -174,27 +174,35 @@ requirements without modification:
 ## Object-model synthesis
 
 The migration should not copy the complete nominal vocabulary of either
-project. Project Koios v0 instead uses three explicit architecture roles:
+project. Project Koios v0 instead keeps DataObject as the immutable domain-state
+role and uses three explicit operation roles:
 
 ```text
-DataObject → DataObjectAction → DataObjectActionResult
+DataObjectActionRequest → DataObjectActionizer → DataObjectActionResult
 ```
+
+An optional `DataObjectModel` is a more specific DataObject classification only
+when independently meaningful model identity, version, invariants, or reuse are
+part of the domain contract.
 
 The relationship to the source-project vocabulary is:
 
 | Source concept | Project Koios v0 treatment |
 |---|---|
-| Immutable DataObject | Retain as the `data_object` role with intrinsic invariants only |
-| ActionObject | Repackage as the `data_object_action` role over explicit inputs and dependencies |
+| Immutable DataObject | Retain as the `data_object` role with intrinsic invariants and valid cheap deterministic methods |
+| Exact operation input | Represent as `data_object_action_request`, identifying all DataObjects, parameters, and any optional DataObjectModel |
+| ActionObject | Repackage as `data_object_actionizer` over one exact request and explicit dependencies |
 | ResultObject returned by an operation | Repackage as `data_object_action_result` unless it is specifically a workflow ResultObject |
 | Workflow ResultObject | Keep as a distinct workflow-facing role and never infer it from an operation-result name |
 | Generic nominal base classes | Do not extract without demonstrated polymorphic need |
 | Registries and reflective discovery | Do not extract as part of this pattern |
 
-Concrete Python names remain behavior-oriented. For example,
-`ArchitectureDocumentRenderer` may fill the `data_object_action` role without
-being renamed `ArchitectureDocumentAction`. This preserves readable Google-style
-naming while keeping the architecture classification machine-readable.
+Concrete Python operation families share a domain stem. For example,
+`ArchitectureDocumentRenderRequest`,
+`ArchitectureDocumentRenderActionizer`, and
+`ArchitectureDocumentRenderResult` fill the three operation roles without
+requiring taxonomy-named public bases. `Result` remains the internal domain
+term; a transport adapter may separately produce an HTTP response model.
 
 The implementation follows the authoritative Draft
 [Project Koios Python policy source](../../../../policies/code/python.json) and

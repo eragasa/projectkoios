@@ -17,6 +17,7 @@
     "exclusions",
     "precedence",
     "object_model",
+    "package_initializers",
     "google_python_style",
     "python_rules",
     "validation",
@@ -89,6 +90,7 @@
       "required": [
         "flow",
         "roles",
+        "optional_model",
         "rules"
       ],
       "properties": {
@@ -96,10 +98,10 @@
           "type": "array",
           "prefixItems": [
             {
-              "const": "data_object"
+              "const": "data_object_action_request"
             },
             {
-              "const": "data_object_action"
+              "const": "data_object_actionizer"
             },
             {
               "const": "data_object_action_result"
@@ -116,20 +118,29 @@
               "$ref": "#/$defs/dataObjectRole"
             },
             {
-              "$ref": "#/$defs/dataObjectActionRole"
+              "$ref": "#/$defs/dataObjectActionRequestRole"
+            },
+            {
+              "$ref": "#/$defs/dataObjectActionizerRole"
             },
             {
               "$ref": "#/$defs/dataObjectActionResultRole"
             }
           ],
           "items": false,
-          "minItems": 3,
-          "maxItems": 3
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "optional_model": {
+          "$ref": "#/$defs/optionalDataObjectModel"
         },
         "rules": {
           "$ref": "#/$defs/stringList"
         }
       }
+    },
+    "package_initializers": {
+      "$ref": "#/$defs/packageInitializers"
     },
     "google_python_style": {
       "type": "object",
@@ -349,7 +360,7 @@
         }
       ]
     },
-    "dataObjectActionRole": {
+    "dataObjectActionRequestRole": {
       "allOf": [
         {
           "$ref": "#/$defs/roleBase"
@@ -357,10 +368,27 @@
         {
           "properties": {
             "role_id": {
-              "const": "data_object_action"
+              "const": "data_object_action_request"
             },
             "display_name": {
-              "const": "DataObjectAction"
+              "const": "DataObjectActionRequest"
+            }
+          }
+        }
+      ]
+    },
+    "dataObjectActionizerRole": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "data_object_actionizer"
+            },
+            "display_name": {
+              "const": "DataObjectActionizer"
             }
           }
         }
@@ -382,6 +410,67 @@
           }
         }
       ]
+    },
+    "optionalDataObjectModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_id",
+        "display_name",
+        "required",
+        "relationship",
+        "rules"
+      ],
+      "properties": {
+        "role_id": {
+          "const": "data_object_model"
+        },
+        "display_name": {
+          "const": "DataObjectModel"
+        },
+        "required": {
+          "const": false
+        },
+        "relationship": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "packageInitializers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "principle",
+        "rules",
+        "migration"
+      ],
+      "properties": {
+        "principle": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        },
+        "migration": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "implementation_extraction",
+            "facade_narrowing"
+          ],
+          "properties": {
+            "implementation_extraction": {
+              "$ref": "#/$defs/stringList"
+            },
+            "facade_narrowing": {
+              "$ref": "#/$defs/stringList"
+            }
+          }
+        }
+      }
     }
   }
 }

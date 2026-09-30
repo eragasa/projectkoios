@@ -4,13 +4,12 @@
 
 > **GENERATED MARKDOWN PROJECTION.**
 > [`docs/policies/code/python.json`](python.json) is authoritative.
-> Regenerate this file from that source; do not edit it independently.
+> Regenerate this file with `python3.14 -m tools.render_python_policy --write`; do not edit it independently.
 
 - Policy ID: `projectkoios.code.python`
 - Policy version: `0.1.0`
 - Status: **Draft**
-- Source SHA-256:
-  `b29a5acbe5de5b40a6a146b705ef3822ba648d9d1005e4934337f0fb3024513b`
+- Source SHA-256: `9b50a986f64af142b09982e443c6a9f81e260493aae0166fb15d7aa9ade9fc30`
 
 ## Purpose
 
@@ -24,51 +23,64 @@ Define the default Python object model and selected implementation practices for
 
 ## Exclusions
 
-- Automatic repository-wide rewrites of conforming existing code.
+- Automatic repository-wide taxonomy renames or style rewrites of existing code.
 - Scientific acceptance or correctness of domain algorithms.
 - Replacement of owner-repository validation commands.
 - A universal runtime framework or nominal base-class hierarchy.
+- Unannounced removal of existing public package re-exports.
 
 ## Precedence
 
 From highest to lowest:
 
 1. Accepted contracts and architecture decisions.
-2. The owning repository's `AGENTS.md` and `pyproject.toml`.
+2. The owning repository's AGENTS.md and pyproject.toml.
 3. This Project Koios Python policy.
 4. Selected guidance from the Google Python Style Guide.
 
 ## Object model
 
-The default operation flow is:
+The domain-operation flow is:
 
 ```text
-DataObject → DataObjectAction → DataObjectActionResult
+DataObjectActionRequest → DataObjectActionizer → DataObjectActionResult
 ```
 
-These are architecture roles. They do not require public classes named `DataObject`, `DataObjectAction`, or `DataObjectActionResult`.
+A request identifies its input `DataObject` values and, only when the domain needs one, an exact `DataObjectModel`.
+
+These are architecture roles. They do not require public base classes with the taxonomy names.
 
 ```mermaid
 classDiagram
     class DataObject {
         <<architecture role>>
-        immutable represented state
+        immutable domain state
         intrinsic invariants
     }
-    class DataObjectAction {
+    class DataObjectModel {
+        <<optional DataObject role>>
+        immutable domain model
+    }
+    class DataObjectActionRequest {
         <<architecture role>>
-        explicit inputs and dependencies
+        immutable operation intent
+    }
+    class DataObjectActionizer {
+        <<architecture role>>
+        explicit dependencies
         one named operation
     }
     class DataObjectActionResult {
         <<architecture role>>
         immutable closed outcome
-        input and output identities
     }
 
-    DataObjectAction --> DataObject : consumes
-    DataObjectAction --> DataObjectActionResult : returns
-    DataObjectActionResult --> DataObject : identifies applicable input
+    DataObjectModel --> DataObject : refines classification
+    DataObjectActionRequest --> DataObject : identifies input
+    DataObjectActionRequest --> DataObjectModel : optionally uses
+    DataObjectActionizer --> DataObjectActionRequest : processes
+    DataObjectActionizer --> DataObjectActionResult : returns
+    DataObjectActionResult --> DataObjectActionRequest : identifies
 ```
 
 ### DataObject
@@ -77,9 +89,9 @@ Default Python form: frozen, slotted dataclass.
 
 Responsibilities:
 
-- Represent immutable domain state or one exact request.
+- Represent immutable domain state, value, evidence, or output.
 - Validate intrinsic field invariants.
-- Expose cheap, unsurprising derived properties when useful.
+- Expose cheap, deterministic, unsurprising invariant methods and derived properties when useful.
 
 Prohibitions:
 
@@ -88,23 +100,40 @@ Prohibitions:
 - Generic persistence, rendering, or serialization behavior.
 - Cross-object policy or scientific acceptance decisions.
 
-### DataObjectAction
+### DataObjectActionRequest
 
-Default Python form: behavior-named class with explicit dependencies.
+Default Python form: frozen, slotted dataclass with explicit identities.
 
 Responsibilities:
 
-- Perform one named operation over explicit `DataObject` inputs.
-- Own cross-object policy and operation-specific validation.
-- Receive stores, clocks, clients, configuration, and authority explicitly.
-- Return one typed `DataObjectActionResult` when the operation has a represented outcome.
+- Represent the complete immutable intent for one domain operation.
+- Identify the operation contract and version, every input DataObject, operation parameters, and any applicable DataObjectModel.
+- Provide a request identity derived from represented intent rather than execution time, attempt number, or outcome.
 
 Prohibitions:
 
-- Service-location globals or reflective action discovery.
-- Hidden mutable state unrelated to immutable configuration.
+- Live clients, open resources, stores, clocks, or dependency containers.
+- Execution results, mutable progress, or retry state.
+- Implicit discovery of a DataObject or DataObjectModel.
+- Transport-specific response fields.
+
+### DataObjectActionizer
+
+Default Python form: domain-operation class with explicit dependencies.
+
+Responsibilities:
+
+- Perform one named domain operation expressed by an exact DataObjectActionRequest.
+- Own cross-object policy and operation-specific validation.
+- Receive stores, clocks, clients, configuration, and authority explicitly.
+- Return one typed DataObjectActionResult for the request.
+
+Prohibitions:
+
+- Service-location globals or reflective actionizer discovery.
+- Hidden mutable state unrelated to documented immutable configuration.
 - A generic registry that erases domain ownership.
-- Use of `staticmethod` solely to hide a module-level helper.
+- Use of staticmethod solely to hide a module-level helper.
 
 ### DataObjectActionResult
 
@@ -112,27 +141,64 @@ Default Python form: frozen, slotted dataclass with closed outcome.
 
 Responsibilities:
 
-- Represent the immutable outcome of one exact action invocation.
-- Bind applicable input, action, configuration, output, and evidence identities.
+- Represent the immutable outcome of one exact request processed by one identified actionizer contract.
+- Bind the request, actionizer implementation or contract, configuration, model, output, and evidence identities that apply.
 - Represent expected domain failure using a closed outcome vocabulary.
 - State limitations without implying human or scientific acceptance.
 
 Prohibitions:
 
 - Invented success values after an indeterminate or rejected operation.
-- Conflation with a workflow `ResultObject` unless the owner contract states both roles.
+- Conflation with a workflow ResultObject unless the owner contract states both roles.
 - Unbounded exception text as the only machine-readable failure representation.
-- Mutation of the input `DataObject`.
+- Mutation of the request or any input DataObject.
+
+### Optional DataObjectModel
+
+A DataObjectModel is an optional, more specific DataObject classification for an independently meaningful immutable domain model used to interpret, validate, or transform other DataObjects.
+
+- Introduce a DataObjectModel only when its independent identity, version, invariants, or reuse are part of the domain contract.
+- A request references the exact model identity when the operation depends on a model; otherwise model parameters may remain request fields.
+- DataObjectModel does not mean a Pydantic boundary model, ORM model, machine-learning model, or required wrapper unless the owning domain explicitly says so.
+- A DataObjectModel owns no external effects and does not replace the actionizer.
 
 ### Object-model rules
 
-- The roles are architecture classifications and do not require public classes named `DataObject`, `DataObjectAction`, or `DataObjectActionResult`.
-- Concrete class names use domain terms such as `ScientificMarkdownRenderer` and `ScientificMarkdownRenderResult`.
-- An action class is used when policy, dependencies, versioning, substitution, or substantial invariants justify an object boundary.
-- A small owner-local pure transformation may remain a typed module-level function.
+- DataObject, DataObjectModel, DataObjectActionRequest, DataObjectActionizer, and DataObjectActionResult are architecture classifications; this policy does not require public base classes with those names.
+- Concrete operation families share a precise domain stem, for example ScientificMarkdownRenderRequest, ScientificMarkdownRenderActionizer, and ScientificMarkdownRenderResult.
+- Concrete DataObject and optional DataObjectModel names use domain nouns rather than taxonomy suffixes when a clearer name exists.
+- Request and result identity are distinct: repeated processing of one request may yield separately identified results when execution evidence, external state, or outcomes differ.
+- Result is the internal domain term; Response is reserved for a transport boundary such as HTTP, where an adapter maps a result to a response schema.
+- An actionizer class is used when policy, dependencies, versioning, substitution, or substantial invariants justify an object boundary.
+- A small owner-local pure transformation may remain a typed module-level function rather than acquiring taxonomy machinery.
+- Existing DataObjects retain valid cheap invariant methods, derived properties, and domain semantics during incremental migration.
 - Programming errors and violated caller preconditions raise specific exceptions; expected operational outcomes use result records.
-- Runtime validation must not depend on `assert`.
-- Pydantic is used at external boundaries; internal records prefer frozen dataclasses.
+- Runtime validation must not depend on assert.
+- Pydantic is used at external boundaries; internal requests, models, objects, and results prefer frozen dataclasses.
+- Adoption is incremental at a materially changed operation boundary; automatic repository-wide rewrites and unreviewed mechanical renames are prohibited.
+
+## Package initializers
+
+Package and subpackage __init__.py files define small intentional APIs or remain empty; they are not implementation modules or dumping grounds for every public object below the package.
+
+### Rules
+
+- Keep implementation classes and functions in named implementation modules, even when they are re-exported through a package facade.
+- List each intentional re-export explicitly and keep __all__ aligned with the supported facade.
+- Do not use wildcard aggregation, reflective export discovery, or transitive re-export merely because an object is public in its defining module.
+- A root package facade is normally narrower than the combined APIs of its subpackages; consumers may import from the owning subpackage or module.
+- An empty initializer or a small composition root is valid when no broader stable facade is needed.
+
+### Implementation extraction
+
+- Move classes, functions, constants, and orchestration bodies out of oversized initializers into cohesive modules without changing domain behavior.
+- Preserve existing supported import paths with explicit re-exports while implementation moves, unless a separately authorized breaking change says otherwise.
+
+### Facade narrowing
+
+- Inventory documented imports and known consumers before removing root or subpackage re-exports.
+- Treat removal of an existing public re-export as an API change with an explicit compatibility, deprecation, or versioned-breaking-release decision.
+- Do not add new root re-exports solely to preserve the historical breadth of an accidental facade.
 
 ## Google Python Style Guide profile
 
@@ -185,11 +251,11 @@ Upstream excerpt:
 
 Project Koios rule:
 
-Implementation modules import from the owning module. A subpackage __init__.py defines a small stable public API through explicit re-exports and __all__; it must not indiscriminately aggregate implementation objects.
+Implementation modules import from the owning module. Package and subpackage __init__.py files remain empty or expose only a small intentional API through explicit re-exports and __all__; they never serve as implementation modules or indiscriminate aggregators.
 
 Rationale:
 
-Project Koios preserves implementation ownership while making each subpackage initializer an intentional API rather than an import dumping ground.
+Project Koios preserves implementation ownership while making each initializer an intentional facade rather than an import or implementation dumping ground.
 
 #### 2.3 Packages — ADOPT
 
@@ -423,7 +489,7 @@ Upstream excerpt:
 
 Project Koios rule:
 
-Use decorators judiciously when there is a clear advantage. Avoid `staticmethod` and limit use of classmethod.
+Use decorators judiciously when there is a clear advantage. Avoid staticmethod and limit use of classmethod.
 
 Rationale:
 
@@ -474,7 +540,7 @@ Upstream excerpt:
 
 Project Koios rule:
 
-Every Project Koios Python module retains `from __future__ import annotations` under the current Python 3.14 repository rule.
+Every Project Koios Python module retains from __future__ import annotations under the current Python 3.14 repository rule.
 
 Rationale:
 
@@ -865,7 +931,7 @@ Upstream excerpt:
 
 Project Koios rule:
 
-Prefer local consistency for choices not fixed by higher-precedence contracts, policy, `AGENTS.md`, or `pyproject.toml`.
+Prefer local consistency for choices not fixed by higher-precedence contracts, policy, AGENTS.md, or pyproject.toml.
 
 Rationale:
 
@@ -873,20 +939,20 @@ Local consistency cannot silently override accepted Project Koios authority.
 
 ## Python rules
 
-- Every module starts with `from __future__ import annotations` after any required module docstring placement rules.
-- Internal immutable records use `dataclass(frozen=True, slots=True)` unless a documented requirement needs another form.
+- Every module starts with from __future__ import annotations after any required module docstring placement rules.
+- Internal immutable records use dataclass(frozen=True, slots=True) unless a documented requirement needs another form.
 - Every named variable has an explicit type annotation where Python syntax permits one.
 - Public and private methods have explicit parameter and return annotations, and every parameter after self or cls is keyword-only unless a language or framework protocol requires another signature.
 - Method calls spell every argument name where the called signature permits keyword arguments.
 - Small private helper behavior belongs to the class that owns the behavior rather than a private module-level function.
-- Implementation modules import from the owning module; subpackage __init__.py files expose a small intentional public API through explicit re-exports and __all__ rather than aggregating implementation objects indiscriminately.
-- `None` checks use `is None` or `is not None`.
+- Implementation modules import from the owning module; package and subpackage __init__.py files follow the package_initializers policy rather than aggregating implementation or every public object.
+- None checks use is None or is not None.
 - Mutable values are defensively copied or normalized before storage in immutable records.
 - Unknown serialized fields, duplicate JSON members, unsupported versions, and malformed values fail closed.
-- Externally supplied JSON is byte-bounded before parsing and depth, collection, and string-bounded before `DataObject` construction.
-- Serialization, rendering, persistence, comparison, and external effects belong to named actions or adapters.
+- Externally supplied JSON is byte-bounded before parsing and depth, collection, and string-bounded before DataObject construction.
+- Serialization, rendering, persistence, comparison, and external effects belong to named actionizers or adapters.
 - Properties remain cheap, deterministic, and free of externally visible effects.
-- Public action dependencies are supplied through construction or method parameters, not ambient discovery.
+- Public actionizer dependencies are supplied through construction or method parameters, not ambient discovery.
 - Expected effect ambiguity produces an indeterminate result and reconciliation evidence rather than an automatic retry.
 
 ## Minimum validation

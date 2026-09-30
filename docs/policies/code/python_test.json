@@ -200,7 +200,7 @@
     "Test-only setup, assertion, and data builders are small helpers owned by the cohesive module or optional Test wrapper; module helpers are acceptable when clearer than an artificial class.",
     "Helpers own no independent evidence identifier or pass claim.",
     "Helpers use visible semantic names, do not hide requirements or tolerances, and do not reproduce the production algorithm.",
-    "Do not create a production DataObjectAction solely to construct test data."
+    "Do not create a production DataObjectActionizer solely to construct test data."
   ],
   "fixture_rules": [
     "Prefer direct immutable values or maintained immutable resource records.",

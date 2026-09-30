@@ -24,7 +24,11 @@ It organizes notes, references, code, computational workflows, and generated art
 | `projectkoios-workflow` | Generic workflow runtime, state, engine, and CPN contracts |
 
 The operational repository map is maintained in
-`projectkoios-bootstrap/maps/repositories.md`. The
+`projectkoios-bootstrap/maps/repositories.md`. The Draft
+[architecture v0 index](docs/architecture/v0/index.md) defines the current
+Python domain-operation taxonomy and links the authoritative
+[Python policy source](docs/policies/code/python.json) with its generated
+[readable projection](docs/policies/code/python.md). The
 [application architecture](docs/architecture.applications.md) defines the
 shared `projectkoios.applications` owner and its reusable-component boundary.
 `projectkoios.applications.pw_dft_scf` is a capability package under that owner,
