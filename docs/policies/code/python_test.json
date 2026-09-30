@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "policy_id": "projectkoios.code.python-test",
+  "policy_version": "0.1.0",
+  "status": "Draft",
+  "title": "Project Koios Python test policy",
+  "authority": {
+    "source_format": "json",
+    "projection_format": "markdown",
+    "source_path": "docs/policies/code/python_test.json",
+    "projection_path": "docs/policies/code/python_test.md",
+    "projection_status": "generated"
+  },
+  "purpose": "Define Project Koios requirements for proportionate Python tests, maintained evidence, ownership, independent oracles, fixtures, and honest acceptance claims.",
+  "scope": [
+    "New or materially changed Python tests in Project Koios owner repositories.",
+    "Test-owned fixtures, schemas, golden bytes, structured declaration records, ownership records, and parameter cases.",
+    "Software verification and separately authorized numerical verification, scientific validation, or uncertainty-quantification tests."
+  ],
+  "exclusions": [
+    "Automatic repository-wide rewrites of conforming existing tests.",
+    "Scientific, numerical, uncertainty-quantification, publication, release, or human-acceptance claims inferred from routine software-verification evidence.",
+    "Production behavior added solely to make test construction convenient.",
+    "Weakening expectations, tolerances, or coverage merely to obtain a pass."
+  ],
+  "precedence": [
+    "Accepted contracts, scientific specifications, and architecture decisions.",
+    "The owning repository's AGENTS.md, pyproject.toml, and maintained commands.",
+    "The Project Koios Python code policy.",
+    "This Project Koios Python test policy.",
+    "Adapted predecessor conventions recorded under source_provenance."
+  ],
+  "code_policy": {
+    "policy_id": "projectkoios.code.python",
+    "policy_version": "0.1.0",
+    "source_path": "docs/policies/code/python.json",
+    "requirements": [
+      "Every named variable has an explicit type annotation where Python syntax permits one.",
+      "Every public and private method has explicit annotations and keyword-only parameters after self or cls except where a protocol requires another signature.",
+      "Every method call spells each argument name where the callable supports keyword arguments.",
+      "Small helper behavior belongs to its cohesive owner; a test-only module helper is acceptable when clearer than an artificial class.",
+      "The test package initializer exposes only a deliberate stable API when a public test-support API is required."
+    ]
+  },
+  "source_provenance": {
+    "source_repository": "https://github.com/eragasa/ksdft2effmass",
+    "source_revision": "7bd913151f7e61ed2bdba593df920be36573b502",
+    "source_license": "Apache-2.0",
+    "adaptation": "Project Koios retains the predecessor's evidence-class separation, routine and claim-bearing profiles, stable evidence identifiers, module metadata, cohesive Test ownership, semantic parameter identities, independent-oracle requirements, exact acceptance, deterministic structural audit, and stop boundaries. It adapts helper placement, test-name spelling, repository paths, command names, and migration timing to Project Koios authority.",
+    "inputs": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "72146e726e4251437a14e9ac0cf8c16db2750e8daa471f1a0fe03499697d3a9a",
+        "byte_count": 35349,
+        "use": "Testing ownership, Test-class structure, helper placement, resources, negative typing tests, evidence limitations, and stop boundaries."
+      },
+      {
+        "path": ".pi/skills/develop-python-test-evidence/SKILL.md",
+        "sha256": "110c3ef295deaa4188a9358638fcb808b9b7e618437fbdb4b87836a7035779fc",
+        "byte_count": 5430,
+        "use": "Evidence classes, ownership selection, naming, oracle quality, deterministic validation boundary, and stop conditions."
+      },
+      {
+        "path": ".pi/skills/develop-python-test-evidence/references/test-evidence-conventions.md",
+        "sha256": "86ec2f4c392b0c91c1338708ecdcf7fe13c4ab02db62576327ad954abcc59fc8",
+        "byte_count": 11387,
+        "use": "Detailed conventions for ownership, helpers, naming, parameterization, layering, exact and approximate acceptance, and evidence claims."
+      },
+      {
+        "path": "harness/pi/evidence/python-test-evidence-profile-matrix-v1.json",
+        "sha256": "085b4380cab81308b1e25672e039c838a872236533641ac415a1bec1253332d6",
+        "byte_count": 1873,
+        "use": "Predecessor routine and claim-bearing evidence-field profiles; adapted rather than copied as universal requirements."
+      },
+      {
+        "path": "python/pyproject.toml",
+        "sha256": "30f9fd960bb02b475ff620805f3e5d2d7325c57cf110b51a7e2e414d979b01f0",
+        "byte_count": 2744,
+        "use": "Pytest strictness, evidence markers, coverage, Ruff, MyPy, and Python 3.14 configuration reference."
+      },
+      {
+        "path": "harness/pi/docs/evidence-grammar.md",
+        "sha256": "1db352ccd4f8298a8286eb394907d0d319ca9a5ed95bc04de56c434f15b37c03",
+        "byte_count": 8453,
+        "use": "Authority flow, ownership grammar, evidence classes, validator boundaries, and maintained conformance ownership."
+      },
+      {
+        "path": "python/src/ksdft2effmass/harness/pi/conformance/python/validation.py",
+        "sha256": "40be6479238a0ee95a341eb5bc020241c084d1ac41a377dcc076250aa23836e4",
+        "byte_count": 26617,
+        "use": "Reusable explicit-input PythonConformanceValidator orchestration, immutable result model, deterministic diagnostics, and claim boundary."
+      },
+      {
+        "path": "python/src/ksdft2effmass/harness/pi/conformance/python/strict.py",
+        "sha256": "468e1ad59972afe22b63fa5a6f9f52e2d577931ef10dd693ac49a3cfe9f6d8f7",
+        "byte_count": 26529,
+        "use": "Reusable strict coding-standards adapter, Test-owner checks, helper ownership, typing checks, and resource placement."
+      },
+      {
+        "path": "python/src/ksdft2effmass/harness/pi/local/evidence_repository_conformance.py",
+        "sha256": "61dcd86e0555b18c70b388b0831a6381c6249437fdca1cb61ed7391a167525b7",
+        "byte_count": 3958,
+        "use": "Repository-local adapter pattern that resolves source authority and invokes the explicit-input validator without making generated inventories authoritative."
+      },
+      {
+        "path": "python/src/ksdft2effmass/harness/cli/validate_evidence_repository_conformance.py",
+        "sha256": "687b49029f1d24af5263554608e79626647ea2c2165be3e9a684db13092c4fa5",
+        "byte_count": 3044,
+        "use": "Thin deterministic JSON CLI and bounded INVALID_INPUT, INTERNAL_ERROR, PASS, and FAIL command outcomes."
+      }
+    ]
+  },
+  "evidence_classes": [
+    {
+      "evidence_class": "software_verification",
+      "establishes": "The implemented public software contract behaves as specified under the tested conditions.",
+      "does_not_establish": "Numerical correctness, scientific adequacy, uncertainty quantification, publication authority, release readiness, or human acceptance."
+    },
+    {
+      "evidence_class": "numerical_verification",
+      "establishes": "A numerical implementation agrees with an independently derived mathematical oracle under an explicit criterion.",
+      "does_not_establish": "Physical-model adequacy, scientific validation, uncertainty quantification, or human acceptance."
+    },
+    {
+      "evidence_class": "scientific_validation",
+      "establishes": "A declared use is adequate against trusted physical, experimental, or scientific reference evidence under a separately authorized protocol.",
+      "does_not_establish": "Adequacy outside the declared use or protocol, publication authority, or general human acceptance."
+    },
+    {
+      "evidence_class": "uncertainty_quantification",
+      "establishes": "Declared uncertainty sources are characterized or propagated under an explicit uncertainty model or protocol.",
+      "does_not_establish": "Scientific adequacy outside that uncertainty model or automatic acceptance of a result."
+    }
+  ],
+  "profiles": [
+    {
+      "profile_id": "routine",
+      "when": "Maintained software-verification tests whose claims remain bounded to ordinary software behavior and do not carry a numerical, scientific-validation, or uncertainty-quantification claim.",
+      "requirements": [
+        "A static pytest marker links each explicitly admitted test function to one structured declaration record.",
+        "The declaration owns evidence identity, requirement, acceptance, claim boundary, limitations, and provenance metadata without duplicating it in decorators or docstrings.",
+        "Method, oracle, interpretation, and limitations are optional when they add useful information and the represented claim remains routine software verification.",
+        "Evidence identifiers remain stable through authorized renames and migrations.",
+        "Routine evidence remains software verification and cannot be relabeled as a numerical, scientific-validation, uncertainty-quantification, publication, release, or human-acceptance result."
+      ]
+    },
+    {
+      "profile_id": "claim_bearing",
+      "when": "Maintained software or scientific tests that support an explicit numerical-verification, scientific-validation, uncertainty-quantification, or elevated software-contract claim.",
+      "requirements": [
+        "A static pytest marker links each explicitly admitted test function to one structured declaration record.",
+        "The declaration owns evidence identity, requirement, method, oracle, acceptance, interpretation, claim boundary, limitations, and provenance metadata without duplicating it in decorators or docstrings.",
+        "External references require immutable content identity or explicit unresolved status.",
+        "Evidence identifiers remain stable through authorized renames and migrations.",
+        "Deterministic structural validation supplements but does not replace semantic review of the oracle, acceptance criterion, interpretation, limitations, or provenance."
+      ]
+    }
+  ],
+  "module_ownership": {
+    "ownership_kinds": [
+      {
+        "ownership_kind": "class_owned",
+        "meaning": "One public class is the sole primary system under test.",
+        "file_pattern": "test__ClassName.py or a cohesive test__ClassName__facet.py split."
+      },
+      {
+        "ownership_kind": "artifact_owned",
+        "meaning": "A schema, fixture family, wire contract, package API, dependency rule, command, or cross-object agreement is primary.",
+        "file_pattern": "A concise test__artifact_name.py using repository vocabulary."
+      }
+    ],
+    "rules": [
+      "Choose exactly one primary owner before naming the module.",
+      "Module-level test functions are the default.",
+      "An optional cohesive Test... wrapper may provide a collection namespace when it improves readability; it is not mandatory evidence metadata or production architecture.",
+      "A Test wrapper has no initializer, mutable instance state, or inheritance-based reuse.",
+      "Do not duplicate assertions across facet modules or use a facet as a dumping ground for collaborators."
+    ]
+  },
+  "naming": {
+    "module_patterns": [
+      "Class-owned: test__ClassName.py.",
+      "Cohesive class-owned split: test__ClassName__facet.py.",
+      "Artifact-owned: test__artifact_name.py."
+    ],
+    "class_pattern": "Optional Test followed by the class or artifact owner name when a wrapper improves readability.",
+    "method_pattern": "test__surface__facet__behavior, using explicit public behavior and avoiding general, behavior, misc, or opaque numeric names.",
+    "special_methods": "Name equality, hashing, representation, calls, lookup, and other special methods as method facets rather than properties.",
+    "compatibility": "Existing repository tests need not be renamed unless materially changed or separately authorized for migration."
+  },
+  "test_owner_rules": [
+    "Ordinary lightweight tests remain unmarked and outside formal maintained-evidence admission.",
+    "Each test method establishes one named behavior with relevant assertions.",
+    "Cases are independent and do not rely on execution order or mutable self state.",
+    "A module-level function or optional Test wrapper supplies structural pytest identity; evidence metadata remains in the linked declaration record.",
+    "A test class must not become mandatory ceremony, a production object, or a service container.",
+    "Test methods and private helper methods satisfy the Python code policy's explicit typing, keyword-only parameter, and keyword-spelled call requirements."
+  ],
+  "helper_rules": [
+    "Test-only setup, assertion, and data builders are small helpers owned by the cohesive module or optional Test wrapper; module helpers are acceptable when clearer than an artificial class.",
+    "Helpers own no independent evidence identifier or pass claim.",
+    "Helpers use visible semantic names, do not hide requirements or tolerances, and do not reproduce the production algorithm.",
+    "Do not create a production DataObjectActionizer solely to construct test data."
+  ],
+  "fixture_rules": [
+    "Prefer direct immutable values or maintained immutable resource records.",
+    "Use pytest fixtures only for genuine lifecycle management or materially shared setup.",
+    "Keep conftest.py fixtures narrow and broad or stateful autouse behavior prohibited unless explicitly justified.",
+    "Maintained inputs, ownership records, and compact fixtures live beneath the applicable tests resources directory.",
+    "Runtime scratch uses pytest's isolated temporary path and does not become maintained input."
+  ],
+  "parameterization_rules": [
+    "Use pytest.param with explicit semantic IDs for meaningful partitions.",
+    "Semantic IDs describe partitions, not ordinals, raw values, paths, generated representations, or opaque abbreviations.",
+    "One parameterized test remains one evidence owner only when every case shares the same requirement, method shape, oracle, acceptance rule, and failure interpretation.",
+    "Split independently meaningful cases when their oracle, acceptance, or interpretation differs.",
+    "Do not replace independently meaningful assertions with broad loops that obscure failing partitions."
+  ],
+  "oracle_rules": [
+    "Use public contracts, fixed schemas, exact language semantics, independently derived mathematics, higher-precision or independently implemented methods, or approved trusted references.",
+    "Do not use private behavior, production constants as the sole expectation, a reproduction of the production algorithm, or reviewer agreement as the primary oracle.",
+    "Do not mock the system under test; replace only external boundaries when isolation is required.",
+    "Golden bytes or text are valid only when exact representation is itself the contract and the golden source is independently maintained."
+  ],
+  "acceptance_rules": [
+    "Use exact equality for exact state, canonical bytes, ordering, enums, identities, and exact mathematical zeros.",
+    "Approximate acceptance states the represented quantity, units, dtype or precision, scale, independent expected result, criterion type, threshold and boundary, zero or subnormal handling, and nonfinite behavior where applicable.",
+    "Keep test forward-error bounds distinct from production tolerances and scientific acceptance criteria.",
+    "For package exports, compare the exact expected inventory or directly assert required and prohibited names; do not add a redundant numeric export-count assertion.",
+    "Round-trip success establishes only the round-trip representation contract."
+  ],
+  "layering_rules": [
+    "Keep schema validation, runtime construction or deserialization, canonical serialization, fixture orchestration, and projection drift checks distinct.",
+    "Use integration tests only for genuine cross-surface contracts and public boundaries.",
+    "A schema pass establishes wire shape, while runtime tests establish semantic and cross-field invariants.",
+    "Evidence, contract, and regression intent remain orthogonal; regression and contract are not evidence classes, and API is a contract surface.",
+    "A passing software test cannot be promoted to numerical verification, scientific validation, uncertainty quantification, or human acceptance."
+  ],
+  "negative_test_rules": [
+    "Cover malformed syntax, wrong semantic types, Boolean-versus-integer lookalikes, unsupported versions, unknown fields, duplicate members, missing fields, representation limits, and prohibited nonfinite values where applicable.",
+    "Negative runtime-type cases use explicit closed unions and the narrowest call-site type-checker suppression.",
+    "Do not use Any, cast to Any, file-wide suppressions, widened production signatures, skips, or xfail merely to make a negative case possible."
+  ],
+  "stop_conditions": [
+    "Stop when authority, evidence class, primary owner, public or mathematical requirement, independent oracle, acceptance rule, or separately required scientific protocol is missing or conflicting.",
+    "Do not change expected values, weaken tolerances, add skips, remove tests, renumber evidence identifiers, or alter production behavior merely to obtain a pass.",
+    "Report whether the implementation, fixture, method, contract, reference, or environment is inconsistent instead of repairing evidence silently."
+  ],
+  "validation": {
+    "minimum_commands": [
+      "ruff check .",
+      "mypy src/python tools tests",
+      "pytest"
+    ],
+    "rules": [
+      "Run the cheapest affected tests first and broader owner-repository checks afterward.",
+      "Use strict marker and configuration handling when the owner repository declares evidence markers.",
+      "Evidence-bearing tests use static koios_evidence, koios_contract, and koios_regression pytest markers linked to records conforming to projectkoios.arch.python-test-declaration@0.1.0; decorators and docstrings do not duplicate declaration metadata.",
+      "Each intent marker accepts exactly one nonempty literal declaration_id keyword, all intent markers on a test use the same identity, and their set exactly matches the declaration intents.",
+      "Declarations are discovered beneath the explicit tests/declarations root; marker and declaration identities must agree, and every admitted declaration resolves to exactly one collected test function.",
+      "Adapt the pinned PythonConformanceValidator explicit-input architecture and repository adapter rather than implementing an unrelated parallel auditor.",
+      "A deterministic structural validator may establish naming, ownership, metadata, identifier, parameterization, typing, and resource-placement shape only; it cannot establish semantic correctness, oracle independence, tolerance adequacy, scientific validity, or human acceptance.",
+      "Generated Markdown is checked byte-for-byte against the deterministic projection of this JSON source."
+    ]
+  },
+  "deferred": [
+    "Acceptance of the Draft projectkoios.arch.python-test-declaration contract and schema.",
+    "Extraction of the pinned PythonConformanceValidator mechanics into the appropriate Project Koios owner repository, with Project Koios naming and helper-policy adaptations.",
+    "Migration of unchanged legacy tests into Test owner classes.",
+    "Cross-repository enforcement beyond each owner's maintained commands."
+  ]
+}

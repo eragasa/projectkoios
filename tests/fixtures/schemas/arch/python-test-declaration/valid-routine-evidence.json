@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "declaration_id": "projectkoios.test.example.routine",
+  "predecessor_declaration_ids": [],
+  "subject": {
+    "ownership_kind": "artifact_owned",
+    "test_file": "tests/projectkoios/example/test__public_api.py",
+    "source_module": "projectkoios.example",
+    "symbol_kind": "package",
+    "symbol_name": "projectkoios.example"
+  },
+  "execution_lane": "default",
+  "intents": {
+    "evidence": {
+      "evidence_id": "PK.EXAMPLE.ROUTINE.001",
+      "profile": "routine",
+      "evidence_class": "software_verification"
+    },
+    "contracts": [],
+    "regressions": []
+  },
+  "references": [
+    {
+      "reference_id": "python-test-policy",
+      "kind": "repository_path",
+      "locator": "docs/policies/code/python_test.json",
+      "version": "0.1.0",
+      "sha256": "701d8b8529612e9a6821851877155459eb0fdbe5f72284dbb12ed62ced65c03d",
+      "byte_count": 19437,
+      "resolution_status": "resolved"
+    }
+  ],
+  "requirement": {
+    "requirement_id": "PK.EXAMPLE.REQ.001",
+    "statement": "The package exports exactly its declared public names.",
+    "preconditions": [
+      "The package imports successfully in the supported environment."
+    ],
+    "authoritative_reference_ids": [
+      "python-test-policy"
+    ]
+  },
+  "method": null,
+  "oracle": null,
+  "acceptance": [
+    {
+      "kind": "exact",
+      "observation": "The sorted public export inventory.",
+      "comparison": "equals",
+      "expected_reference_id": "python-test-policy"
+    }
+  ],
+  "interpretation": null,
+  "claim_boundary": {
+    "establishes": [
+      "The package export inventory matches the declared software contract."
+    ],
+    "does_not_establish": [
+      "Numerical correctness, scientific validity, publication authority, or release readiness."
+    ]
+  },
+  "limitations": []
+}

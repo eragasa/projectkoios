@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "declaration_id": "projectkoios.test.example.numerical",
+  "predecessor_declaration_ids": [],
+  "subject": {
+    "ownership_kind": "class_owned",
+    "test_file": "tests/projectkoios/example/calculation/test__Calculator.py",
+    "source_module": "projectkoios.example.calculation",
+    "symbol_kind": "class",
+    "symbol_name": "Calculator"
+  },
+  "execution_lane": "default",
+  "intents": {
+    "evidence": {
+      "evidence_id": "PK.EXAMPLE.NUMERICAL.001",
+      "profile": "claim_bearing",
+      "evidence_class": "numerical_verification"
+    },
+    "contracts": [],
+    "regressions": []
+  },
+  "references": [
+    {
+      "reference_id": "analytical-oracle",
+      "kind": "content_identity",
+      "locator": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "version": null,
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "byte_count": 1,
+      "resolution_status": "resolved"
+    }
+  ],
+  "requirement": {
+    "requirement_id": "PK.EXAMPLE.NUMERICAL.REQ.001",
+    "statement": "The numerical result agrees with the analytical result under the declared tolerance.",
+    "preconditions": [
+      "The input lies inside the represented finite domain."
+    ],
+    "authoritative_reference_ids": [
+      "analytical-oracle"
+    ]
+  },
+  "method": {
+    "setup": [
+      "Construct the declared finite input using binary64 values."
+    ],
+    "operation": "Evaluate the public calculation once.",
+    "observations": [
+      "Record the returned scalar value."
+    ]
+  },
+  "oracle": {
+    "kind": "analytical_result",
+    "independence_rationale": "The expected value is derived analytically without invoking the implementation under test.",
+    "reference_ids": [
+      "analytical-oracle"
+    ]
+  },
+  "acceptance": [
+    {
+      "kind": "tolerance",
+      "observation": "The returned scalar value.",
+      "quantity": "dimensionless example result",
+      "units": "1",
+      "dtype": "binary64",
+      "scale": "order unity",
+      "criterion": "combined",
+      "absolute_tolerance": 1e-12,
+      "relative_tolerance": 1e-12,
+      "boundary": "inclusive",
+      "zero_handling": "Use the absolute criterion when the expected value is zero.",
+      "nonfinite_behavior": "Any nonfinite observed or expected value fails the test."
+    }
+  ],
+  "interpretation": "Agreement establishes bounded numerical verification for the represented input and criterion only.",
+  "claim_boundary": {
+    "establishes": [
+      "The implementation agrees with the independent analytical result for the represented input."
+    ],
+    "does_not_establish": [
+      "Scientific-model adequacy, behavior outside the represented domain, or uncertainty quantification."
+    ]
+  },
+  "limitations": [
+    {
+      "limitation_id": "PK.EXAMPLE.NUMERICAL.LIMIT.001",
+      "statement": "Only one finite input is represented.",
+      "consequence": "No claim is made for unrepresented inputs or nonfinite behavior beyond explicit rejection."
+    }
+  ]
+}

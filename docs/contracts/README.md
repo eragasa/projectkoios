@@ -17,8 +17,7 @@ authority follow the
 
 | Contract ID | Owner | Current authoritative document | Parent roadmap | Accepted baseline |
 |---|---|---|---|---|
-| `projectkoios.ingestion.clean-transcript` | `projectkoios-ingestion` | [`clean-transcript-v2.md`](https://github.com/eragasa/projectkoios-ingestion/blob/master/docs/contracts/clean-transcript-v2.md#contract-metadata-clean-transcript) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.ingestion.transcript-batch-plan` | `projectkoios-ingestion` | [`clean-transcript-v2.md`](https://github.com/eragasa/projectkoios-ingestion/blob/master/docs/contracts/clean-transcript-v2.md#contract-metadata-transcript-batch-plan) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.arch.python-test-declaration` | `projectkoios` | [`python-test-declaration.md`](python-test-declaration.md) | None | None |
 | `projectkoios.references.candidate-manifest` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-candidate-manifest) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
 | `projectkoios.references.claim-locator` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-claim-locator) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
 | `projectkoios.search.evidence-unit` | `projectkoios-search` | [`retrieval-evidence.md`](https://github.com/eragasa/projectkoios-search/blob/master/docs/contracts/retrieval-evidence.md#contract-metadata-evidence-unit) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
@@ -42,8 +41,9 @@ suite, but every independently versioned contract has its own metadata,
 normative scope, and conformance subjects.
 
 Cross-repository architecture remains in current system indexes under
-`docs/architecture/`. Shared policies remain under `docs/policies/`. Neither is
-moved into the contract catalog.
+`docs/architecture/`. Shared policies remain under `docs/policies/`, and product
+use cases remain under `docs/use-cases/`. None is moved into the contract
+catalog.
 
 ## Registration and change discipline
 

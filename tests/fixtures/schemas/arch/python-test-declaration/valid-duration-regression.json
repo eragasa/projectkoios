@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "declaration_id": "projectkoios.test.example.duration-regression",
+  "predecessor_declaration_ids": [],
+  "subject": {
+    "ownership_kind": "artifact_owned",
+    "test_file": "tests/projectkoios/example/test__benchmark.py",
+    "source_module": "projectkoios.example.processing",
+    "symbol_kind": "function",
+    "symbol_name": "process"
+  },
+  "execution_lane": "benchmark",
+  "intents": {
+    "evidence": null,
+    "contracts": [],
+    "regressions": [
+      {
+        "regression_id": "PK.EXAMPLE.DURATION.001",
+        "dimension": "duration",
+        "baseline_reference_id": "duration-baseline"
+      }
+    ]
+  },
+  "references": [
+    {
+      "reference_id": "duration-baseline",
+      "kind": "baseline_identity",
+      "locator": "PK.EXAMPLE.DURATION.BASELINE.001",
+      "version": "1",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "byte_count": 1,
+      "resolution_status": "resolved"
+    },
+    {
+      "reference_id": "benchmark-environment",
+      "kind": "content_identity",
+      "locator": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "version": null,
+      "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "byte_count": 1,
+      "resolution_status": "resolved"
+    }
+  ],
+  "requirement": {
+    "requirement_id": "PK.EXAMPLE.DURATION.REQ.001",
+    "statement": "The represented operation remains within the declared duration threshold in the pinned environment.",
+    "preconditions": [
+      "No competing workload is admitted during measurement."
+    ],
+    "authoritative_reference_ids": [
+      "duration-baseline",
+      "benchmark-environment"
+    ]
+  },
+  "method": null,
+  "oracle": null,
+  "acceptance": [
+    {
+      "kind": "performance",
+      "observation": "Wall-clock duration of the represented operation.",
+      "units": "seconds",
+      "environment_reference_id": "benchmark-environment",
+      "warm_up_iterations": 3,
+      "sample_count": 11,
+      "statistic": "median",
+      "percentile": null,
+      "direction": "at_most",
+      "threshold": 0.25,
+      "noise_policy": "Reject the run when the pinned environment preconditions are not met; do not replace the baseline automatically."
+    }
+  ],
+  "interpretation": null,
+  "claim_boundary": {
+    "establishes": [
+      "The median represented duration is at most the threshold in the pinned environment."
+    ],
+    "does_not_establish": [
+      "Performance in other environments or automatic authority to replace the baseline."
+    ]
+  },
+  "limitations": []
+}

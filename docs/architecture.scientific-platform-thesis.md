@@ -11,8 +11,8 @@
 ## Document authority
 
 This document describes a proposed shape for Project Koios as a scientific
-platform. It is not an architecture decision record, implementation plan, API
-contract, or authorization to build a particular service.
+platform. It is not an implementation plan, API contract, or authorization to
+build a particular service.
 
 The thesis establishes vocabulary, desired system properties, and boundaries
 that can guide experiments and later specifications. Individual repositories

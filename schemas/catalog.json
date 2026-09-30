@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "publication_status": "UNPUBLISHED",
+  "resolution_policy": "local_pinned_only",
+  "schemas": [
+    {
+      "schema_id": "https://projectkoios.com/schemas/policies/code/python-0.1.0.json",
+      "contract_id": "projectkoios.arch.python-code-policy",
+      "version": "0.1.0",
+      "semantic_owner": "ARCH",
+      "source_path": "docs/policies/code/python.schema.json",
+      "sha256": "ddc44139dae9b306336c741fbb82c5551fd0c547bd047b4622fb2f24bb9b97fd",
+      "byte_count": 12928
+    },
+    {
+      "schema_id": "https://projectkoios.com/schemas/policies/code/python-test-0.1.0.json",
+      "contract_id": "projectkoios.arch.python-test-policy",
+      "version": "0.1.0",
+      "semantic_owner": "ARCH",
+      "source_path": "docs/policies/code/python_test.schema.json",
+      "sha256": "be942e13481e653f7bc87045ed5858687b6dc1170a23bedff2b82a27ff2b1e06",
+      "byte_count": 8641
+    },
+    {
+      "schema_id": "https://projectkoios.com/schemas/arch/python-test-declaration/0.1.0.schema.json",
+      "contract_id": "projectkoios.arch.python-test-declaration",
+      "version": "0.1.0",
+      "semantic_owner": "ARCH",
+      "source_path": "schemas/arch/python-test-declaration/0.1.0.schema.json",
+      "sha256": "9b0a9f32f9bd55b7e71a67d8e39dbacf9353919056cdf29693e0f66aa8c96d75",
+      "byte_count": 21134
+    },
+    {
+      "schema_id": "https://projectkoios.com/schemas/dev/development-task/0.1.0.schema.json",
+      "contract_id": "projectkoios.dev.development-task",
+      "version": "0.1.0",
+      "semantic_owner": "DEV",
+      "source_path": "schemas/dev/development-task/0.1.0.schema.json",
+      "sha256": "1f3adaa79254274a86a017ba46c9363d1aca69de116bd323f1ba494e30a6fc0b",
+      "byte_count": 6871
+    }
+  ]
+}

@@ -18,8 +18,11 @@ required to appear in the cross-repository catalog unless another repository
 depends on them.
 
 Cross-repository product architecture remains in current system indexes under
-`docs/architecture/`. Contract content remains in the repository that owns and
-enforces the boundary.
+`docs/architecture/`. Contract content normally remains in the repository that
+owns and enforces the boundary. Published or cross-repository JSON Schemas are
+the exception: their canonical bytes and discovery metadata reside in the
+mothership schema registry while the named semantic owner retains responsibility
+for meaning and change review.
 
 ## Identity allocation
 
@@ -229,10 +232,12 @@ The cross-repository catalog contains:
 - parent roadmap; and
 - immutable accepted baseline when one exists.
 
-The catalog does not duplicate contract bodies, mutable task status,
-implementation status, or acceptance evidence. Default-branch links are
-current-draft discovery links. Only commit-pinned links identify an immutable
-specification baseline.
+The contract catalog does not duplicate contract bodies, mutable task status,
+implementation status, or acceptance evidence. The separate schema registry
+may contain canonical versioned JSON Schema bytes for published or
+cross-repository machine-readable contracts. Default-branch links are
+current-draft discovery links. Only commit-pinned links and verified content
+identities identify an immutable specification baseline.
 
 ## Change procedure
 
@@ -247,7 +252,9 @@ specification baseline.
 
 ## Deferred machinery
 
-No dedicated contract repository, schema service, generated mirror, custom
-registry daemon, or package is authorized. Machine-readable schemas and
-automated catalog checks are introduced only when a concrete serialization or
-recurring validation requirement justifies them.
+No dedicated contract repository, network schema resolver, custom registry
+daemon, or schema package is authorized. The repository-local `schemas/`
+registry is authorized for published or cross-repository JSON Schemas with a
+concrete serialization or recurring validation requirement. Validators resolve
+through its pinned catalog without implicit network access. HTTP publication
+remains a separate authorization and deployment boundary.

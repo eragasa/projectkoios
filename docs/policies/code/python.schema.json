@@ -1,0 +1,559 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://projectkoios.com/schemas/policies/code/python-0.1.0.json",
+  "title": "Project Koios Python code policy",
+  "description": "Closed schema for the authoritative Project Koios Python policy source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "policy_id",
+    "policy_version",
+    "status",
+    "title",
+    "authority",
+    "purpose",
+    "scope",
+    "exclusions",
+    "precedence",
+    "object_model",
+    "package_initializers",
+    "google_python_style",
+    "python_rules",
+    "validation",
+    "deferred"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "policy_id": {
+      "const": "projectkoios.code.python"
+    },
+    "policy_version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "enum": [
+        "Draft",
+        "Proposed",
+        "Accepted",
+        "Superseded"
+      ]
+    },
+    "title": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_format",
+        "projection_format",
+        "source_path",
+        "projection_path",
+        "projection_status"
+      ],
+      "properties": {
+        "source_format": {
+          "const": "json"
+        },
+        "projection_format": {
+          "const": "markdown"
+        },
+        "source_path": {
+          "const": "docs/policies/code/python.json"
+        },
+        "projection_path": {
+          "const": "docs/policies/code/python.md"
+        },
+        "projection_status": {
+          "const": "generated"
+        }
+      }
+    },
+    "purpose": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "scope": {
+      "$ref": "#/$defs/stringList"
+    },
+    "exclusions": {
+      "$ref": "#/$defs/stringList"
+    },
+    "precedence": {
+      "$ref": "#/$defs/stringList"
+    },
+    "object_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "flow",
+        "base_object_classification",
+        "public_abcs",
+        "roles",
+        "data_object_model",
+        "rules"
+      ],
+      "properties": {
+        "flow": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "data_object_action_request"
+            },
+            {
+              "const": "data_object_actionizer"
+            },
+            {
+              "const": "data_object_action_result"
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "base_object_classification": {
+          "$ref": "#/$defs/baseObjectClassification"
+        },
+        "public_abcs": {
+          "$ref": "#/$defs/publicAbcs"
+        },
+        "roles": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/dataObjectRole"
+            },
+            {
+              "$ref": "#/$defs/dataObjectActionRequestRole"
+            },
+            {
+              "$ref": "#/$defs/dataObjectActionizerRole"
+            },
+            {
+              "$ref": "#/$defs/dataObjectActionResultRole"
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "data_object_model": {
+          "$ref": "#/$defs/dataObjectModel"
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "package_initializers": {
+      "$ref": "#/$defs/packageInitializers"
+    },
+    "google_python_style": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "extraction"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/googleStyleSource"
+        },
+        "extraction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope",
+            "method",
+            "rules"
+          ],
+          "properties": {
+            "scope": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "method": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "rules": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/googleStyleRule"
+              },
+              "minItems": 1,
+              "maxItems": 128
+            }
+          }
+        }
+      }
+    },
+    "python_rules": {
+      "$ref": "#/$defs/stringList"
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_commands",
+        "rules"
+      ],
+      "properties": {
+        "minimum_commands": {
+          "$ref": "#/$defs/stringList"
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "deferred": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "googleStyleSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "repository",
+        "document_url",
+        "revision",
+        "blob_sha1",
+        "sha256",
+        "byte_count",
+        "license",
+        "license_url"
+      ],
+      "properties": {
+        "title": {
+          "const": "Google Python Style Guide"
+        },
+        "repository": {
+          "const": "https://github.com/google/styleguide"
+        },
+        "document_url": {
+          "type": "string",
+          "pattern": "^https://github.com/google/styleguide/blob/[0-9a-f]{40}/pyguide\\.md$"
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "blob_sha1": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "license": {
+          "const": "CC-BY-3.0"
+        },
+        "license_url": {
+          "type": "string",
+          "pattern": "^https://github.com/google/styleguide/blob/[0-9a-f]{40}/LICENSE$"
+        }
+      }
+    },
+    "googleStyleRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule_id",
+        "section",
+        "title",
+        "anchor",
+        "source_excerpt",
+        "disposition",
+        "project_rule",
+        "rationale"
+      ],
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "pattern": "^google\\.pyguide\\.[0-9]+(?:\\.[0-9]+)*$"
+        },
+        "section": {
+          "type": "string",
+          "pattern": "^[0-9]+(?:\\.[0-9]+)*$"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "anchor": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "source_excerpt": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "disposition": {
+          "enum": [
+            "ADOPT",
+            "ADAPT",
+            "EXCLUDE",
+            "DEFER"
+          ]
+        },
+        "project_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "roleBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_id",
+        "display_name",
+        "default_python_form",
+        "responsibilities",
+        "prohibitions"
+      ],
+      "properties": {
+        "role_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "display_name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "default_python_form": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "responsibilities": {
+          "$ref": "#/$defs/stringList"
+        },
+        "prohibitions": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "dataObjectRole": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "data_object"
+            },
+            "display_name": {
+              "const": "DataObject"
+            }
+          }
+        }
+      ]
+    },
+    "dataObjectActionRequestRole": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "data_object_action_request"
+            },
+            "display_name": {
+              "const": "DataObjectActionRequest"
+            }
+          }
+        }
+      ]
+    },
+    "dataObjectActionizerRole": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "data_object_actionizer"
+            },
+            "display_name": {
+              "const": "DataObjectActionizer"
+            }
+          }
+        }
+      ]
+    },
+    "dataObjectActionResultRole": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "data_object_action_result"
+            },
+            "display_name": {
+              "const": "DataObjectActionResult"
+            }
+          }
+        }
+      ]
+    },
+    "baseObjectClassification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "display_name",
+        "public_base_required",
+        "members",
+        "meaning"
+      ],
+      "properties": {
+        "display_name": {
+          "const": "BaseObject"
+        },
+        "public_base_required": {
+          "const": false
+        },
+        "members": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "DataObject"
+            },
+            {
+              "const": "DataObjectActionizer"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "meaning": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "publicAbcs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "hierarchy",
+        "action_method",
+        "rules"
+      ],
+      "properties": {
+        "module": {
+          "const": "projectkoios.base"
+        },
+        "hierarchy": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "DataObject(ABC)"
+            },
+            {
+              "const": "DataObjectModel(DataObject, ABC)"
+            },
+            {
+              "const": "DataObjectActionRequest(DataObjectModel, ABC)"
+            },
+            {
+              "const": "DataObjectActionResult(DataObjectModel, ABC)"
+            },
+            {
+              "const": "DataObjectActionizer[RequestT: DataObjectActionRequest, ResultT: DataObjectActionResult](ABC)"
+            }
+          ],
+          "items": false,
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "action_method": {
+          "const": "action(*, request: RequestT) -> ResultT"
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "dataObjectModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_id",
+        "display_name",
+        "relationship",
+        "rules"
+      ],
+      "properties": {
+        "role_id": {
+          "const": "data_object_model"
+        },
+        "display_name": {
+          "const": "DataObjectModel"
+        },
+        "relationship": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "packageInitializers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "principle",
+        "rules",
+        "migration"
+      ],
+      "properties": {
+        "principle": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        },
+        "migration": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "implementation_extraction",
+            "facade_narrowing"
+          ],
+          "properties": {
+            "implementation_extraction": {
+              "$ref": "#/$defs/stringList"
+            },
+            "facade_narrowing": {
+              "$ref": "#/$defs/stringList"
+            }
+          }
+        }
+      }
+    }
+  }
+}

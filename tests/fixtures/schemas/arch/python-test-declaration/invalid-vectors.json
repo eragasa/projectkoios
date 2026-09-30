@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "schema_id": "https://projectkoios.com/schemas/arch/python-test-declaration/0.1.0.schema.json",
+  "vectors": [
+    {
+      "case_id": "unknown-root-field",
+      "base_fixture": "valid-routine-evidence.json",
+      "operation": "add",
+      "path": [
+        "unknown"
+      ],
+      "value": "prohibited",
+      "expected_keyword": "additionalProperties"
+    },
+    {
+      "case_id": "empty-intents",
+      "base_fixture": "valid-routine-evidence.json",
+      "operation": "replace",
+      "path": [
+        "intents"
+      ],
+      "value": {
+        "evidence": null,
+        "contracts": [],
+        "regressions": []
+      },
+      "expected_keyword": "anyOf"
+    },
+    {
+      "case_id": "claim-bearing-without-oracle",
+      "base_fixture": "valid-claim-bearing-numerical.json",
+      "operation": "replace",
+      "path": [
+        "oracle"
+      ],
+      "value": null,
+      "expected_keyword": "type"
+    },
+    {
+      "case_id": "duration-regression-outside-benchmark-lane",
+      "base_fixture": "valid-routine-evidence.json",
+      "operation": "replace",
+      "path": [
+        "intents"
+      ],
+      "value": {
+        "evidence": null,
+        "contracts": [],
+        "regressions": [
+          {
+            "regression_id": "PK.EXAMPLE.DURATION.001",
+            "dimension": "duration",
+            "baseline_reference_id": "python-test-policy"
+          }
+        ]
+      },
+      "expected_keyword": "const"
+    },
+    {
+      "case_id": "unresolved-reference-with-content-identity",
+      "base_fixture": "valid-routine-evidence.json",
+      "operation": "replace",
+      "path": [
+        "references",
+        0,
+        "resolution_status"
+      ],
+      "value": "unresolved",
+      "expected_keyword": "type"
+    }
+  ]
+}

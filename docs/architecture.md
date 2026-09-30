@@ -19,7 +19,9 @@ The proposed longer-term scientific direction and its authority limits are descr
 Repository discovery and operational coordination are documented in
 `projectkoios-bootstrap/maps/repositories.md`. Current architecture authority is
 maintained in [`docs/architecture/`](architecture/README.md), while Git history
-carries rationale.
+carries rationale. The bootstrap repository owns its bounded Project
+Koios-specific Pi coordination-harness incubation; stable product and component
+behavior remains with its routed owner.
 
 This document does not define session-routing rules. It describes Project Koios
 product architecture and records cross-repository architectural direction.
@@ -54,7 +56,25 @@ The planned architecture describes the expansion path after the Python package, 
 
 Current cross-repository architecture belongs in the owning system indexes
 under [`docs/architecture/`](architecture/README.md). Roadmaps coordinate future
-work but do not override current-state architecture.
+work but do not override current-state architecture. Git history retains earlier
+prototype designs; parallel historical decision documents are not maintained.
+
+## Product Use Cases
+
+Cross-repository product outcomes are defined in the
+[use-case catalog](use-cases/README.md). The current use cases are:
+
+1. evidence-grounded textbook ingestion and RAG;
+2. evidence-grounded, author-controlled manuscript development; and
+3. evidence-grounded prospective research.
+
+Use-case records constrain expected behavior. They do not accept contracts,
+authorize implementation, or grant authority for private-data effects.
+
+Bounded demonstrations of these outcomes are defined in the
+[pilot catalog](pilots/README.md). Pilot definitions remain separate from
+component contracts, executable authorization, private run evidence, and
+scientific acceptance.
 
 ## Current Architecture
 
@@ -111,6 +131,20 @@ FastAPI is an adapter, not the system.
 | `projectkoios.references` | Reference management: BibTeX records, PDFs, citation keys, source metadata, and reference ingestion.                                         |
 | `projectkoios.workflow`   | Tasks, states, process objects, workflow graphs, provenance, and generated artifacts.                                                        |
 | `projectkoios.api`        | FastAPI interface over the Project Koios system.                                                                                             |
+
+## Adapter Namespace Direction
+
+The target distributed namespace includes `projectkoios.adapters` for nominal
+adapter roles. A binding adapts an imported or deliberately vendored code
+dependency; an integration adapts an external application or service. A
+capability may own both roles and connect them through composition.
+
+The current taxonomy and namespace rules are defined in the
+[adapter architecture](architecture.adapters.md). The bounded incubation and
+provenance disposition of `projectkoios.frankensteins` is defined in the
+[Frankenstein architecture](architecture.frankenstein.md). Cross-capability
+scientific composition is defined separately in the
+[application architecture](architecture.applications.md).
 
 The Python package avoids a flat structure such as:
 
