@@ -51,9 +51,12 @@ pip install -e ".[dev]"
 
 - **Pydantic at boundaries only** — API request/response use Pydantic. Internal
   DTOs use `@dataclass(frozen=True)`. Services never import FastAPI.
-- **Current architecture docs** — follow `docs/architecture/README.md`; use only
-  directory `index.md` pages and make architecture changes vertical slices with
-  mapped tests. Git history carries rationale.
+- **Current architecture docs** — for architecture owned by this repository,
+  follow `docs/architecture/README.md`; use only directory `index.md` pages and
+  make architecture changes vertical slices with mapped tests. These topology
+  and validation rules are local to this repository. Component repositories
+  own and enforce their implementation-architecture documentation topology.
+  Git history carries rationale.
 - **Thin base-object boundaries** — `BaseObject` is an architecture
   classification, not a Python class. `projectkoios.base` defines the exact
   thin ABC hierarchy for struct-like `DataObject`/`DataObjectModel` request and

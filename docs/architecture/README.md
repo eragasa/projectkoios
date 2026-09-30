@@ -12,6 +12,11 @@ The repository that owns an implementation owns its package, module, class, and
 implementation documentation. `projectkoios` owns cross-repository and system
 architecture. Documentation must not claim behavior owned by another repository.
 
+The topology and validator below apply only to architecture documentation in
+this product-architecture repository. Component repositories define and enforce
+their own implementation-architecture topology. This repository neither
+prescribes nor validates their package, module, or class pages.
+
 ## Topology
 
 All architecture Markdown pages are directory indexes. The sole exception is
@@ -82,6 +87,6 @@ Run from the repository root:
 python tools/validate_architecture_docs.py
 ```
 
-The validator checks only bounded filesystem topology. It does not parse
-Markdown meaning, Python symbols, citations, scientific truth, Git state, or
-other repositories.
+The validator checks only bounded filesystem topology in this repository. It
+does not parse Markdown meaning, Python symbols, citations, scientific truth,
+Git state, or any component repository.
