@@ -49,7 +49,7 @@ project-specific research records.
 The current independent use cases cover:
 
 1. evidence-grounded textbook ingestion and RAG;
-2. evidence-grounded manuscript development; and
+2. evidence-grounded manuscript and course-note development; and
 3. evidence-grounded prospective research.
 
 Bounded cross-repository demonstrations are defined separately in the

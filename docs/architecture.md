@@ -65,7 +65,8 @@ Cross-repository product outcomes are defined in the
 [use-case catalog](use-cases/README.md). The current use cases are:
 
 1. evidence-grounded textbook ingestion and RAG;
-2. evidence-grounded, author-controlled manuscript development; and
+2. evidence-grounded, author-controlled manuscript and course-note
+   development; and
 3. evidence-grounded prospective research.
 
 Use-case records constrain expected behavior. They do not accept contracts,

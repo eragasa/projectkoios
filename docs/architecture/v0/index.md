@@ -27,6 +27,11 @@ documents; component code remains with the applicable owner repository.
 Working notes for the first source-project assessment are in the
 [`ksdft2effmass` migration notes](notes/ksdft2eff-migration/index.md).
 
+The living [evidence-grounded long-form authoring](#evidence-grounded-long-form-authoring)
+section defines the first manuscript prototype and independent course reuse
+test. It is a manually maintained narrative design, not a generated module
+record.
+
 ## Architecture as data
 
 Module architecture will be authored as strict JSON and rendered
@@ -390,7 +395,8 @@ Markdown back to source pages, regions, blocks, equations, figures, citations,
 and bibliography entries.
 
 Changing the Markdown creates a new Markdown identity, new chunk identities,
-and a new search projection. It does not mutate an earlier generation.
+and a new search projection. It does not mutate an earlier content-identified
+artifact.
 
 ## Source-page identity
 
@@ -476,6 +482,352 @@ uses pinned committed source blobs, not an uncommitted working tree.
 7. Represent citation, chunking, API, and Web modules only after the first
    projection proves the format.
 
+## Evidence-grounded long-form authoring
+
+### Status and classification
+
+This is the living narrative v0 design for a bounded authoring prototype.
+It is maintained directly in this index rather than represented as a generated
+module record. It is not an accepted contract, implementation authorization,
+source-use authorization, or scientific or pedagogical acceptance.
+
+The first prototype is one bounded `ksdft2effmass` manuscript section. A
+reference-grounded course-note explanation is the independent reuse test. The
+design deliberately avoids building a workflow system, publication system, or
+generalized writing agent during the prototype.
+
+### Goal
+
+Project Koios should help an author draft scientific manuscripts and course
+notes from multiple references while preserving inspectable evidence and human
+control.
+
+```text
+reference evidence -> retrieval -> draft proposal -> human author
+```
+
+The responsibilities remain separate:
+
+- **References** records bibliographic identity, observed source assets, and
+  access or rights evidence. It does not authorize a particular use.
+- **The author or domain owner** authorizes the purpose-specific local use of
+  selected sources.
+- **Ingestion** produces content-identified extraction and canonical-transcript
+  records with page and block lineage. It does not attach references or write
+  prose.
+- **Search** composes bounded evidence items and retrieves them. It does not
+  answer or decide whether evidence supports a claim.
+- **Generation** proposes text and citations. It does not edit the target.
+- **The author or principal investigator** retains scientific, editorial, and
+  pedagogical acceptance authority.
+
+### Non-negotiable boundaries
+
+1. Source bytes remain unchanged and content-identified.
+2. Every retrieved item resolves to an observed reference/asset linkage and
+   retained extraction evidence.
+3. The manuscript or course note is query context, never evidence for itself.
+4. Generated prose and earlier model answers never enter the source-evidence
+   index.
+5. A retrieval score does not establish support, truth, or acceptance.
+6. Missing or inadequate evidence is reported rather than invented.
+7. Conflicting sources remain visible.
+8. The first prototype uses local inference and sends no source or target text
+   to a remote provider.
+9. The model receives no filesystem, shell, database, browser, or publication
+   tools. Retrieved text is untrusted quoted data and cannot issue instructions.
+10. A model never writes directly to a manuscript, bibliography, or course.
+11. Structural checks do not establish mathematical, scientific, editorial, or
+    pedagogical correctness.
+12. Private paths and protected excerpts do not enter public logs or fixtures.
+13. Prototype data has one current canonical shape. Derived artifacts are
+    regenerated when that shape changes; Git retains earlier designs.
+
+### Smallest useful architecture
+
+#### Source admission
+
+Before ingestion or retrieval, the prototype must have:
+
+- a stable bibliographic work identity and its authority status;
+- an observed source-asset identity;
+- the References-owned linkage between the work and asset;
+- access and rights observations; and
+- an explicit purpose-specific local-use authorization from the author or
+  domain owner.
+
+References supplies evidence; it does not make the use decision. Source
+admission reports `REFERENCE_IDENTITY_UNRESOLVED`, `DISCOVERY_INCOMPLETE`,
+`ASSET_INACCESSIBLE`, `RIGHTS_UNKNOWN`, `USE_NOT_AUTHORIZED`, or
+`INGESTION_MISSING` as distinct typed failures before retrieval. Do not collapse
+them into “source unavailable” or `INSUFFICIENT_EVIDENCE`.
+
+#### Transcript admission
+
+Ingestion reports extraction identity, canonical transcript, page/block
+lineage, transformations, warnings, and derivation-audit results. The authoring
+owner decides fitness for the selected use.
+
+The minimal fail-closed gate requires:
+
+- matching source and transcript identities;
+- passing lineage/derivation consistency checks;
+- resolvable page and block lineage for every selected item;
+- retained extraction text and transformation mapping; and
+- block-resolvable warning details.
+
+Baseline automated/unreviewed warnings and zero/nonzero warning counts are not
+quality decisions. A warning affecting selected evidence requires page
+inspection or exclusion. A passing audit proves internal consistency, not
+extraction accuracy.
+
+#### Evidence item
+
+The first prototype uses text evidence only. An evidence item carries:
+
+- stable bibliographic work identity and candidate/accepted authority status;
+- optional accepted canonical citekey;
+- exact source-asset and transcript-result identities;
+- page identity/index and printed label when available;
+- clean-transcript block record identity and retained source-span tuple;
+- indexed search text and its digest;
+- exact retained extraction text, or an explicit transformation mapping, and
+  its digest;
+- extraction/transformation warnings; and
+- a deterministic evidence-item identity derived from those values.
+
+Block-level resolution is sufficient initially. Do not invent character offsets
+until an indexer can validate them. A page-navigation locator is not a text-span
+locator.
+
+Normalized clean text may improve retrieval but is not quote-authoritative.
+Quote checks resolve to exact retained extraction text or an explicit
+transformation mapping. This validates retained extraction, not ground-truth PDF
+wording; page evidence and warnings remain visible.
+
+Bundle-local labels such as `E1` are presentation only. Ranking ties, citation
+mappings, and replay use the deterministic evidence-item identity.
+
+Typed figure, table, and equation retrieval are deferred until a concrete
+writing need and fixture demonstrate their value.
+
+#### Evidence query
+
+Search receives no manuscript or course bytes. A query binds:
+
+- one purpose;
+- a bounded query representation produced by the domain composer;
+- an opaque target identity;
+- optional bounded bibliographic-work filters; and
+- fixed limits.
+
+The implementation fixes maxima for query characters, opaque identity length,
+filter count and identity length, result count, per-work count, per-item indexed
+and retained text, warning count and length, and aggregate bundle text. Exact
+constants belong to implementation and tests, not a parallel format.
+
+The first purpose is `manuscript_authoring`. Course-purpose generalization waits
+for the independent course slice.
+
+#### Evidence bundle
+
+Search returns a bounded bundle containing:
+
+- request and exact corpus/index identity;
+- ordered ranked evidence items;
+- lexical scores, ranks, matched terms, and tie keys;
+- warnings, applied bounds, omissions, and truncation; and
+- exactly one outcome:
+  - `EVIDENCE_AVAILABLE`;
+  - `INSUFFICIENT_EVIDENCE`;
+  - `INVALID_REQUEST`; or
+  - `INFRASTRUCTURE_FAILURE`.
+
+`INSUFFICIENT_EVIDENCE` is mechanical: a valid completed search over the
+admitted corpus selected no item satisfying documented lexical, filter, and
+bound rules, or an explicitly required work was absent. A reviewer deciding
+that returned evidence does not support a claim is not a Search insufficiency
+outcome. Unsupported capability, malformed bounds, corrupt indexes, and
+unexpected defects are never relabeled as insufficiency.
+
+The bundle is evidence presented to a writer. It is not an answer and does not
+claim entailment.
+
+#### Deterministic multiple-reference selection
+
+The prototype:
+
+1. globally orders eligible items by lexical score, then stable evidence-item
+   identity;
+2. always retains the strongest eligible item;
+3. fills remaining slots in that order while enforcing a per-work cap;
+4. defines “source diversity” by bibliographic work identity, not asset,
+   transcript, or passage identity;
+5. records omissions caused by caps or aggregate limits; and
+6. reports a missing explicitly requested work rather than silently
+   substituting another.
+
+Different assets or versions of one work remain visible but do not count as
+independent references. No fusion lane is required.
+
+#### Draft proposal
+
+The domain composer retains target context privately, enforces a fixed maximum
+context size, and sends Search only the bounded query representation and opaque
+target identity. It gives the generation component the bounded target context
+and one evidence bundle separately.
+
+The generated proposal contains:
+
+- proposed text;
+- citation markers mapped to evidence-item identities;
+- optional existing manuscript citekey plus status: accepted, prospective, or
+  missing;
+- statements explicitly marked unsupported or partial;
+- conflicts and qualifications; and
+- model and prompt identity sufficient to inspect the run.
+
+Generation may emit an accepted canonical citekey supplied by References. It
+must not turn a candidate/proposed key into a citation. When no accepted key
+exists, it reports an unresolved bibliographic-identity gap. The target owner
+compares accepted keys with the supplied target bibliography snapshot.
+
+The initial output is a bounded local review file or terminal artifact, not a
+new database. The author manually accepts, rejects, or copies material. A richer
+claim ledger, automated patch application, persistent review records,
+publication receipts, and workflow orchestration are later capabilities, not
+prerequisites.
+
+### Retrieval strategy
+
+Use deterministic BM25 or an equivalent documented full-text baseline before
+embeddings. Record tokenization, scoring, limits, and tie breaking. Add semantic
+retrieval only if a fixed benchmark demonstrates useful improvement.
+
+A text-only lexical slice may answer an equation-oriented question only from
+inspectable retained text. If the claim requires an equation representation,
+the domain composer reports deferred modality and emits no equation-backed
+prose. Rendering, reconstruction, and equivalence remain later work.
+
+Curated notes may help discovery in a future slice, but final literature support
+resolves to independent reference evidence.
+
+### Ownership and dependency direction
+
+| Concern | Owner |
+|---|---|
+| Cross-repository architecture and use cases | `projectkoios` |
+| Bibliographic identity, observed assets, linkage, and rights evidence | `projectkoios-references` |
+| Extraction, canonical transcript, and page/block lineage | `projectkoios-ingestion` |
+| Evidence items, lexical retrieval, and evidence bundles | `projectkoios-search` |
+| Manuscript target parsing and repository-local checks | `ksdft2effmass` |
+| Course structure, objectives, and repository-local checks | `projectkoios-courses` |
+| Scientific/editorial/pedagogical acceptance | Author, principal investigator, or designated human authority |
+
+`ksdft2effmass` is the temporary composition root for the manuscript prototype;
+`projectkoios-courses` is the temporary composition root for the course slice.
+They call reusable owners in the direction References -> Ingestion -> Search.
+Reusable owners never import either domain repository.
+
+Do not involve `projectkoios-agent`, `projectkoios-applications`,
+`projectkoios-workflow`, the API, or the Web merely to complete the first local
+slice. The first two domain composers remain local. Shared generation behavior
+moves to `projectkoios-agent` only after independent reuse demonstrates the
+same useful boundary.
+
+### Optional manuscript structural guard
+
+A repository-local LaTeX auditor is not assumed to exist. If one is present at
+prototype time, apply only its documented implemented checks to a staged copy.
+Those checks may include include containment, missing includes, duplicate
+labels, or unresolved references. Do not require repository-specific structure
+unless its contract actually exists.
+
+Passing such an audit means only that the checked structure satisfies its
+software rules. It does not establish correct mathematics, adequate citations,
+scientific support, authorship, or publication readiness.
+
+### First prototype
+
+Use one manuscript subsection and a small authorized reference set:
+
+1. Admit selected works/assets and canonical transcript blocks through the
+   gates above.
+2. Build a deterministic lexical index.
+3. Ask one author-supplied question about one target passage.
+4. Return a small evidence bundle from multiple bibliographic works.
+5. Generate one paragraph or short subsection proposal with evidence-linked
+   citation markers and explicit unsupported statements.
+6. Validate that markers resolve to bundle items, quotations resolve to retained
+   extraction text, and target citekey status is explicit.
+7. Optionally run an implemented repository-local structural check on a staged
+   copy.
+8. Present the proposal and evidence to the author.
+9. Stop without editing the manuscript.
+
+The prototype succeeds when the author can inspect why each citation was
+proposed and can see missing, partial, or conflicting evidence.
+
+### Reference-grounded course reuse test — Courses Option A
+
+After the manuscript slice works, repeat the pattern for one bounded explanatory
+prose block tied to one course-owned learning objective.
+
+`lecture_authoring` is default-deny. The first course slice admits only
+independently validated `theory_evidence` from independent references. It has no
+cross-purpose fallback. Worked examples, exercises, existing course notes, model
+answers, and every source/generated/reviewed solution role remain owner-local
+context and are not Search evidence items. A worked example becomes eligible
+only in a later policy and only when it is source-linked text from an admitted
+independent reference.
+
+The course-owned objective identity plus exact text/revision stays in target
+context and proposal provenance. Search neither owns nor infers the objective.
+The course author assesses alignment.
+
+Use one fixed course case containing expected theory and at least one excluded
+example or solution passage. Record expected admitted evidence and the course
+author's usefulness/revision assessment. This is a reference-grounded test, not
+full integration of atomic notes.
+
+Only source-evidence, retrieval, insufficiency, conflict, and proposal
+provenance behavior is a candidate for sharing.
+
+### Prototype evaluation
+
+Fix a small benchmark before testing:
+
+- directly supported and paraphrased needs;
+- a partially supported claim;
+- conflicting sources;
+- a missing intended work;
+- a text-resolvable equation-oriented question;
+- an equation request requiring deferred modality; and
+- a deliberately zero-hit lexical request.
+
+Measure whether expected evidence appears, locators and retained quotations
+resolve, ranking replays, citations use only bundle items, unsupported material
+stays visible, and the author finds the proposed paragraph useful without
+excessive revision.
+
+These are product-development signals, not scientific validation.
+
+### Later, only when earned
+
+Semantic/equation retrieval, note-evidence identities, persistent review,
+automated patching, workflow orchestration, API/Web review, model training,
+shared generation infrastructure, and publication/deployment are deferred.
+Promote one only when the prototype exposes a repeated concrete failure that it
+solves.
+
+### Stop conditions
+
+Stop when source/use authority is unclear, evidence cannot resolve to retained
+extraction, selected warnings require unresolved page inspection, target text
+would leave its approved boundary, retrieved content could influence tools,
+the target changed, an equation representation is required, or a proposed
+shared abstraction has only one real consumer.
+
 ## Boundaries
 
 Architecture v0 does not by itself authorize:
@@ -486,7 +838,7 @@ Architecture v0 does not by itself authorize:
 - scientific simulation or result interpretation;
 - contract acceptance;
 - production deployment or release; or
-- replacement of existing immutable transcript generations.
+- replacement of admitted canonical transcript artifacts.
 
 Each extraction, implementation, publication, and acceptance step remains a
 separate decision.

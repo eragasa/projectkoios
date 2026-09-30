@@ -15,14 +15,14 @@ conformance follow the
 authority follow the
 [`task and recovery policy`](../policies/task-and-recovery-records.md).
 
-| Contract ID | Owner | Current authoritative document | Parent roadmap | Accepted baseline |
-|---|---|---|---|---|
-| `projectkoios.arch.python-test-declaration` | `projectkoios` | [`python-test-declaration.md`](python-test-declaration.md) | None | None |
-| `projectkoios.references.candidate-manifest` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-candidate-manifest) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.references.claim-locator` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-claim-locator) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.search.evidence-unit` | `projectkoios-search` | [`retrieval-evidence.md`](https://github.com/eragasa/projectkoios-search/blob/master/docs/contracts/retrieval-evidence.md#contract-metadata-evidence-unit) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.search.evidence-bundle` | `projectkoios-search` | [`retrieval-evidence.md`](https://github.com/eragasa/projectkoios-search/blob/master/docs/contracts/retrieval-evidence.md#contract-metadata-evidence-bundle) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
-| `projectkoios.workflow.core` | `projectkoios-workflow` | [`workflow-core.md`](https://github.com/eragasa/projectkoios-workflow/blob/master/docs/contracts/workflow-core.md#contract-metadata) | [`WORKFLOW-TRANSFER-01`](https://github.com/eragasa/projectkoios/issues/1) | None |
+| Contract ID | Owner | Current authoritative document | Architecture | Parent roadmap | Accepted baseline |
+|---|---|---|---|---|---|
+| `projectkoios.arch.python-test-declaration` | `projectkoios` | [`python-test-declaration.md`](python-test-declaration.md) | [Architecture v0](../architecture/v0/index.md) | None | None |
+| `projectkoios.references.candidate-manifest` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-candidate-manifest) | [Long-form authoring](../architecture/v0/index.md#evidence-grounded-long-form-authoring) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.references.claim-locator` | `projectkoios-references` | [`reference-evidence.md`](https://github.com/eragasa/projectkoios-references/blob/master/docs/contracts/reference-evidence.md#contract-metadata-claim-locator) | [Long-form authoring](../architecture/v0/index.md#evidence-grounded-long-form-authoring) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.search.evidence-unit` | `projectkoios-search` | [`retrieval-evidence.md`](https://github.com/eragasa/projectkoios-search/blob/master/docs/contracts/retrieval-evidence.md#contract-metadata-evidence-unit) | [Long-form authoring](../architecture/v0/index.md#evidence-grounded-long-form-authoring) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.search.evidence-bundle` | `projectkoios-search` | [`retrieval-evidence.md`](https://github.com/eragasa/projectkoios-search/blob/master/docs/contracts/retrieval-evidence.md#contract-metadata-evidence-bundle) | [Long-form authoring](../architecture/v0/index.md#evidence-grounded-long-form-authoring) | [`RAG-ROADMAP-01`](https://github.com/eragasa/projectkoios/issues/2) | None |
+| `projectkoios.workflow.core` | `projectkoios-workflow` | [`workflow-core.md`](https://github.com/eragasa/projectkoios-workflow/blob/master/docs/contracts/workflow-core.md#contract-metadata) | Pending focused current architecture | [`WORKFLOW-TRANSFER-01`](https://github.com/eragasa/projectkoios/issues/1) | None |
 
 Default-branch links locate the current proposal. Only an exact commit link in
 the `Accepted baseline` column identifies an accepted immutable specification.
@@ -53,8 +53,8 @@ catalog.
 - Proposed contracts use target versions below `1.0.0`; Project Koios has no
   formal stable contract release.
 - Change the authoritative document in its owner repository.
-- Update this catalog only when identity, ownership, path, roadmap, or accepted
-  baseline changes.
+- Update this catalog only when identity, ownership, path, architecture,
+  roadmap, or accepted baseline changes.
 - Do not copy contract bodies into this repository.
 - Do not infer acceptance from issue activity, implementation, tests, or use by
   a consumer.
