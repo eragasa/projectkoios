@@ -19,9 +19,9 @@ release.
 
 Demonstrate one lean, local, text-only authoring slice for a bounded
 `ksdft2effmass` manuscript subsection. The author receives a short proposal
-whose citation markers resolve to stable evidence items from admitted reference
-works, while missing, partial, conflicting, and deferred-modality cases remain
-visible.
+whose citation markers resolve to immutable evidence items from admitted
+reference works, while missing, partial, conflicting, and deferred-modality
+cases remain visible.
 
 ## Bounded scope
 
@@ -37,8 +37,8 @@ The pilot uses:
 - one small benchmark fixed before evaluation.
 
 The manuscript context remains with the `ksdft2effmass` composition root. Search
-receives only a bounded query representation, opaque target identity, optional
-work filters, and fixed bounds.
+receives only an evidence retrieval request containing a bounded query
+representation, opaque target identity, optional work filters, and fixed bounds.
 
 ## Exclusions
 
@@ -60,7 +60,7 @@ The pilot does not include:
 | `projectkoios` | Pilot definition and cross-repository architecture |
 | `projectkoios-references` | Bibliographic authority status, observed assets and linkage, and access/rights evidence |
 | `projectkoios-ingestion` | Extraction, canonical transcript, page/block lineage, transformations, warnings, and derivation audit |
-| `projectkoios-search` | Stable evidence items, deterministic lexical retrieval, bounds, per-work selection, and closed outcomes |
+| `projectkoios-search` | Immutable evidence items and deterministic lexical retrieval request/result behavior |
 | `ksdft2effmass` | Temporary composition root, target context, local generation, repository checks, and manuscript authority |
 | Author or principal investigator | Purpose-specific source-use authorization and scientific/editorial acceptance |
 
@@ -93,17 +93,20 @@ insufficiency outcome.
 2. Admit selected works, assets, and transcript blocks through the source and
    transcript gates.
 3. Build the deterministic lexical index over admitted reference evidence only.
-4. Retain bounded manuscript context locally and send Search only the bounded
-   query representation and opaque target identity.
-5. Order eligible evidence by lexical score and stable evidence-item identity;
-   retain the strongest item and fill remaining slots under a per-work cap.
-6. Return applied bounds, omissions, warnings, and exactly one Search outcome:
+4. Retain bounded manuscript context locally and construct one evidence
+   retrieval request with opaque target identity.
+5. Search orders eligible evidence by lexical score then stable evidence-item
+   identity, retaining the strongest item and filling remaining slots under a
+   per-work cap.
+6. Return one evidence retrieval result with ordered ranked items, applied
+   bounds, omissions, warnings, and exactly one outcome:
    `EVIDENCE_AVAILABLE`, `INSUFFICIENT_EVIDENCE`, `INVALID_REQUEST`, or
    `INFRASTRUCTURE_FAILURE`.
-7. Give the local model the bounded target context and evidence bundle
+7. Give the local model the bounded target context and retrieval result
    separately.
-8. Generate one proposal whose markers map to evidence-item identities and
-   whose unsupported, partial, conflicting, or deferred claims remain explicit.
+8. Generate one proposal whose markers map to stable evidence-item identities
+   and whose unsupported, partial, conflicting, or deferred claims remain
+   explicit.
 9. Emit an accepted canonical citekey only when References supplied one;
    otherwise report the bibliographic gap and candidate/prospective status.
 10. Resolve quotations to retained extraction or an explicit transformation
@@ -140,7 +143,7 @@ The pilot is technically demonstrated only when reviewed evidence shows:
 4. every selected item resolves to one work/asset linkage and exact retained
    extraction with page/block lineage and warnings;
 5. ordering and multiple-work selection replay deterministically;
-6. every proposal marker maps only to supplied evidence;
+6. every proposal marker maps only to supplied evidence items;
 7. candidate citekeys are never emitted as accepted citations;
 8. missing, partial, conflicting, zero-hit, invalid, infrastructure, and
    deferred-modality cases remain distinct;
@@ -169,5 +172,5 @@ abstraction still has only one demonstrated consumer.
 | Manuscript, target context, proposal, and author assessment | `ksdft2effmass` or its authorized private storage |
 | Reference observations and linkage | `projectkoios-references` evidence boundary |
 | Extraction and transcript evidence | `projectkoios-ingestion` evidence boundary |
-| Evidence items, index, bundle, and retrieval outcome | `projectkoios-search` evidence boundary |
+| Evidence items, retrieval result, and index | `projectkoios-search` evidence boundary |
 | Synthetic fixtures and conformance tests | Applicable owner repository when separately authorized |

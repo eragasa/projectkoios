@@ -515,8 +515,9 @@ The responsibilities remain separate:
 - **Ingestion** produces content-identified extraction and canonical-transcript
   records with page and block lineage. It does not attach references or write
   prose.
-- **Search** composes bounded evidence items and retrieves them. It does not
-  answer or decide whether evidence supports a claim.
+- **Search** composes immutable evidence items and processes bounded evidence
+  retrieval requests into closed results. It does not answer or decide whether
+  evidence supports a claim.
 - **Generation** proposes text and citations. It does not edit the target.
 - **The author or principal investigator** retains scientific, editorial, and
   pedagogical acceptance authority.
@@ -549,9 +550,9 @@ The responsibilities remain separate:
 
 Before ingestion or retrieval, the prototype must have:
 
-- a stable bibliographic work identity and its authority status;
-- an observed source-asset identity;
-- the References-owned linkage between the work and asset;
+- an opaque bibliographic-work identity and its authority status;
+- an opaque observed source-asset identity;
+- the References-owned linkage between those identities;
 - access and rights observations; and
 - an explicit purpose-specific local-use authorization from the author or
   domain owner.
@@ -570,7 +571,7 @@ owner decides fitness for the selected use.
 
 The minimal fail-closed gate requires:
 
-- matching source and transcript identities;
+- matching opaque source-asset and transcript-result identities;
 - passing lineage/derivation consistency checks;
 - resolvable page and block lineage for every selected item;
 - retained extraction text and transformation mapping; and
@@ -583,37 +584,39 @@ extraction accuracy.
 
 #### Evidence item
 
-The first prototype uses text evidence only. An evidence item carries:
+The first prototype uses immutable text evidence only. An evidence item carries:
 
-- stable bibliographic work identity and candidate/accepted authority status;
+- opaque bibliographic-work identity and candidate/accepted authority status;
 - optional accepted canonical citekey;
-- exact source-asset and transcript-result identities;
-- page identity/index and printed label when available;
-- clean-transcript block record identity and retained source-span tuple;
+- opaque source-asset and transcript-result identities;
+- opaque page identity/index and printed label when available;
+- opaque clean-transcript block-record identity and retained source-span tuple;
 - indexed search text and its digest;
 - exact retained extraction text, or an explicit transformation mapping, and
   its digest;
 - extraction/transformation warnings; and
 - a deterministic evidence-item identity derived from those values.
 
-Block-level resolution is sufficient initially. Do not invent character offsets
-until an indexer can validate them. A page-navigation locator is not a text-span
-locator.
+Opaque identities are not paths, display labels, citekeys, or containers from
+which consumers infer storage layout. Block-level resolution is sufficient
+initially. Do not invent character offsets until an indexer can validate them. A
+page-navigation locator is not a text-span locator.
 
 Normalized clean text may improve retrieval but is not quote-authoritative.
 Quote checks resolve to exact retained extraction text or an explicit
 transformation mapping. This validates retained extraction, not ground-truth PDF
 wording; page evidence and warnings remain visible.
 
-Bundle-local labels such as `E1` are presentation only. Ranking ties, citation
+Result-local labels such as `E1` are presentation only. Ranking ties, citation
 mappings, and replay use the deterministic evidence-item identity.
 
 Typed figure, table, and equation retrieval are deferred until a concrete
 writing need and fixture demonstrate their value.
 
-#### Evidence query
+#### Evidence retrieval request
 
-Search receives no manuscript or course bytes. A query binds:
+Search receives no manuscript or course bytes. An evidence retrieval request
+binds:
 
 - one purpose;
 - a bounded query representation produced by the domain composer;
@@ -623,21 +626,22 @@ Search receives no manuscript or course bytes. A query binds:
 
 The implementation fixes maxima for query characters, opaque identity length,
 filter count and identity length, result count, per-work count, per-item indexed
-and retained text, warning count and length, and aggregate bundle text. Exact
-constants belong to implementation and tests, not a parallel format.
+and retained text, warning count and length, and aggregate result text. Exact
+constants belong to the owning implementation and tests, not a parallel format
+here.
 
 The first purpose is `manuscript_authoring`. Course-purpose generalization waits
 for the independent course slice.
 
-#### Evidence bundle
+#### Evidence retrieval result
 
-Search returns a bounded bundle containing:
+Search returns one bounded evidence retrieval result containing:
 
 - request and exact corpus/index identity;
 - ordered ranked evidence items;
 - lexical scores, ranks, matched terms, and tie keys;
 - warnings, applied bounds, omissions, and truncation; and
-- exactly one outcome:
+- exactly one externally relevant outcome:
   - `EVIDENCE_AVAILABLE`;
   - `INSUFFICIENT_EVIDENCE`;
   - `INVALID_REQUEST`; or
@@ -646,12 +650,13 @@ Search returns a bounded bundle containing:
 `INSUFFICIENT_EVIDENCE` is mechanical: a valid completed search over the
 admitted corpus selected no item satisfying documented lexical, filter, and
 bound rules, or an explicitly required work was absent. A reviewer deciding
-that returned evidence does not support a claim is not a Search insufficiency
+that returned evidence does not support a claim is not a retrieval-insufficiency
 outcome. Unsupported capability, malformed bounds, corrupt indexes, and
 unexpected defects are never relabeled as insufficiency.
 
-The bundle is evidence presented to a writer. It is not an answer and does not
-claim entailment.
+The result presents evidence to a writer. It is not an answer and does not claim
+entailment. Search owns its package, module, class, identity-field, and method
+architecture behind this cross-repository boundary.
 
 #### Deterministic multiple-reference selection
 
@@ -673,14 +678,15 @@ independent references. No fusion lane is required.
 #### Draft proposal
 
 The domain composer retains target context privately, enforces a fixed maximum
-context size, and sends Search only the bounded query representation and opaque
-target identity. It gives the generation component the bounded target context
-and one evidence bundle separately.
+context size, and constructs an evidence retrieval request containing only the
+bounded query representation and opaque target identity. It gives the
+generation component the bounded target context and one evidence retrieval
+result separately.
 
 The generated proposal contains:
 
 - proposed text;
-- citation markers mapped to evidence-item identities;
+- citation markers mapped to stable evidence-item identities;
 - optional existing manuscript citekey plus status: accepted, prospective, or
   missing;
 - statements explicitly marked unsupported or partial;
@@ -719,7 +725,7 @@ resolves to independent reference evidence.
 | Cross-repository architecture and use cases | `projectkoios` |
 | Bibliographic identity, observed assets, linkage, and rights evidence | `projectkoios-references` |
 | Extraction, canonical transcript, and page/block lineage | `projectkoios-ingestion` |
-| Evidence items, lexical retrieval, and evidence bundles | `projectkoios-search` |
+| Evidence items and lexical retrieval request/result behavior | `projectkoios-search` |
 | Manuscript target parsing and repository-local checks | `ksdft2effmass` |
 | Course structure, objectives, and repository-local checks | `projectkoios-courses` |
 | Scientific/editorial/pedagogical acceptance | Author, principal investigator, or designated human authority |
@@ -755,11 +761,13 @@ Use one manuscript subsection and a small authorized reference set:
    gates above.
 2. Build a deterministic lexical index.
 3. Ask one author-supplied question about one target passage.
-4. Return a small evidence bundle from multiple bibliographic works.
+4. Return one bounded evidence retrieval result containing evidence from
+   multiple bibliographic works.
 5. Generate one paragraph or short subsection proposal with evidence-linked
    citation markers and explicit unsupported statements.
-6. Validate that markers resolve to bundle items, quotations resolve to retained
-   extraction text, and target citekey status is explicit.
+6. Validate that markers resolve to result items by stable evidence-item
+   identity, quotations resolve to retained extraction text, and target citekey
+   status is explicit.
 7. Optionally run an implemented repository-local structural check on a staged
    copy.
 8. Present the proposal and evidence to the author.
@@ -806,7 +814,7 @@ Fix a small benchmark before testing:
 - a deliberately zero-hit lexical request.
 
 Measure whether expected evidence appears, locators and retained quotations
-resolve, ranking replays, citations use only bundle items, unsupported material
+resolve, ranking replays, citations use only result items, unsupported material
 stays visible, and the author finds the proposed paragraph useful without
 excessive revision.
 
