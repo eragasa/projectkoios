@@ -12,10 +12,13 @@ The repository that owns an implementation owns its package, module, class, and
 implementation documentation. `projectkoios` owns cross-repository and system
 architecture. Documentation must not claim behavior owned by another repository.
 
-The topology and validator below apply only to architecture documentation in
-this product-architecture repository. Component repositories define and enforce
-their own implementation-architecture topology. This repository neither
-prescribes nor validates their package, module, or class pages.
+The index-only topology and validator below apply only to architecture
+documentation in this product-architecture repository. `projectkoios` is the
+exception because it owns product and cross-repository architecture rather than
+component implementation architecture. Component repositories maintain and
+enforce the common source-mirroring trio/`ClassName` convention in their own
+repositories and do not invent repository-specific topologies. This repository's
+validator does not validate component trees.
 
 ## Topology
 

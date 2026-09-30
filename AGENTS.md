@@ -53,10 +53,12 @@ pip install -e ".[dev]"
   DTOs use `@dataclass(frozen=True)`. Services never import FastAPI.
 - **Current architecture docs** — for architecture owned by this repository,
   follow `docs/architecture/README.md`; use only directory `index.md` pages and
-  make architecture changes vertical slices with mapped tests. These topology
-  and validation rules are local to this repository. Component repositories
-  own and enforce their implementation-architecture documentation topology.
-  Git history carries rationale.
+  make architecture changes vertical slices with mapped tests. This repository
+  is the product/cross-repository architecture exception. Component repositories
+  maintain and enforce the common source-mirroring trio/`ClassName` convention
+  in their own repositories and do not invent local alternatives. This
+  repository's validator does not validate component trees. Git history carries
+  rationale.
 - **Thin base-object boundaries** — `BaseObject` is an architecture
   classification, not a Python class. `projectkoios.base` defines the exact
   thin ABC hierarchy for struct-like `DataObject`/`DataObjectModel` request and
