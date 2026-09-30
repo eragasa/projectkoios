@@ -24,7 +24,7 @@ handoff artifacts. Added a short architecture note for the incubation boundary.
 - Add a minimal workspace bootstrap helper if the directory layout needs to be
   created automatically.
 
-## Candidate ADR or implementation topics
+## Candidate architecture or implementation topics
 
 - Formal workspace lifecycle for agent state.
 - Split action object into specialized workspace actions.

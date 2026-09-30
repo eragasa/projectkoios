@@ -18,7 +18,7 @@ Added an `Agents Incubation` section to `docs/architecture.md`, linked to a new 
 - Keep the incubation note and the main architecture doc synchronized when `projectkoios.agents` changes.
 - Decide whether `AgentWorkspaceAction` should stay generic or be split into specialized action types later.
 
-## Candidate ADR or implementation topics
+## Candidate architecture or implementation topics
 
 - Formal lifecycle for agent workspace state.
 - Stable action-object naming for workspace records.

@@ -342,7 +342,7 @@ This note does not decide:
 - whether `ksdft2effmass` becomes a thin package, research repository, or
   publication repository;
 - ownership of reusable QE or Wannier90 integrations;
-- migration of workflow implementation already covered by separate ADRs;
+- migration of workflow implementation owned by its routed repository;
 - scientific acceptance of any result or claim;
 - retirement of any existing source-project interface; or
 - creation of a new Project Koios repository.

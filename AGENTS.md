@@ -2,13 +2,14 @@
 
 ## Status
 
-**Transitional mothership repo.** Per ADR20260626, implementation code is being
-extracted to separate repos (`projectkoios-agent` first). `projectkoios-core` is
-deferred. The current `src/python/projectkoios/` layout is provisional — it does
+**Transitional mothership repo.** Implementation belongs in the owner
+repositories assigned by `projectkoios-bootstrap/maps/repositories.md`;
+`projectkoios-agent` was the first extraction and `projectkoios-core` remains
+deferred. The current `src/python/projectkoios/` layout is provisional and does
 not match the planned subpackage structure in `docs/architecture.md`.
 
-Repository routing is documented in `projectkoios-bootstrap/maps/repositories.md`.
-This repo only owns product architecture and durable domain docs.
+This repo owns product architecture and durable domain docs, not operational
+repository routing.
 
 ## Setup
 
@@ -32,9 +33,19 @@ pip install -e ".[dev]"
 - Current subpackages (`agents/`, `api/`, `chunking/`, `indexing/`,
   `repositories/`, `runtime/`, `search/`, `vault/`) are **tentative** — expect
   reorganization into `core/`, `vault/`, `search/`, `references/`,
-  `workflow/`, `api/` per `docs/architecture.md`, or extraction to separate
-  repos per `ADR20260626`
+  `workflow/`, `api/` per `docs/architecture.md`, or extraction to the owner
+  repositories assigned by the repository-routing map
 - `core/` package does not exist yet
+
+## Documentation governance
+
+- Do not create ADRs, architecture decision records, decision-record files, or
+  decision-record directories.
+- Maintain current architecture, policy, and use-case documents in place under
+  `docs/architecture*.md`, `docs/architecture/`, `docs/policies/`, and
+  `docs/use-cases/`.
+- Git history carries superseded prototype designs. Do not create tombstones,
+  historical replacement records, or numbered pre-durability design files.
 
 ## Architecture rules
 

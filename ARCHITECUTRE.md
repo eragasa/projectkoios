@@ -12,7 +12,7 @@ It contains:
 
 - architecture notes
 - roadmap
-- ADRs
+- current architecture and policy documents
 - examples
 - configuration templates
 - experimental incubation code

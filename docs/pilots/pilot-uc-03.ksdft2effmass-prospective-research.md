@@ -7,10 +7,10 @@
 - **Execution status:** Not authorized
 - **Use case:**
   [UC-03](../use-cases/uc-03.evidence-grounded-prospective-research.md)
-- **Architecture:**
-  [evidence-grounded scientific retrieval](../adr.20260918.evidence-grounded-scientific-rag.md)
+- **Evidence architecture:** [search](../architecture.search.md) and
+  [applications](../architecture.applications.md)
 - **Workflow architecture:**
-  [workflow and CPN development tracks](../adr.20260920.workflow-and-cpn-development-tracks.md)
+  [planned workflow boundary](../architecture.md#planned-architecture)
 - **Parent roadmaps:** `RAG-ROADMAP-01` and `WORKFLOW-TRANSFER-01`
 
 This definition does not authorize a computation, software or manuscript

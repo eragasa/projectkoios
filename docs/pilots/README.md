@@ -26,7 +26,7 @@ disposition, or scientific acceptance.
 |---|---|
 | Cross-repository pilot definition | `projectkoios/docs/pilots/` |
 | Product outcome | `projectkoios/docs/use-cases/` |
-| Architecture decision | `projectkoios/docs/adr.*.md` |
+| Current architecture | `projectkoios/docs/architecture*.md` and `projectkoios/docs/architecture/` |
 | Exact component contract | Owning repository under `docs/contracts/` |
 | Synthetic fixtures and conformance tests | Owning component repository |
 | Mutable coordination | Owner issue and parent roadmap |

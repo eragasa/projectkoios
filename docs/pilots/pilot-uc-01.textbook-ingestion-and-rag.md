@@ -7,8 +7,8 @@
 - **Execution status:** Not authorized
 - **Use case:**
   [UC-01](../use-cases/uc-01.evidence-grounded-textbook-ingestion-and-rag.md)
-- **Architecture:**
-  [evidence-grounded scientific retrieval](../adr.20260918.evidence-grounded-scientific-rag.md)
+- **Architecture:** [ingestion](../architecture.ingestion.md) and
+  [search](../architecture.search.md)
 - **Parent roadmap:** `RAG-ROADMAP-01`
 
 This definition does not authorize ingestion, model execution, private artifact

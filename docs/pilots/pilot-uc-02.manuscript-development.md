@@ -7,8 +7,9 @@
 - **Execution status:** Not authorized
 - **Use case:**
   [UC-02](../use-cases/uc-02.evidence-grounded-manuscript-development.md)
-- **Architecture:**
-  [evidence-grounded scientific retrieval](../adr.20260918.evidence-grounded-scientific-rag.md)
+- **Architecture:** [agents](../architecture.agents.md),
+  [applications](../architecture.applications.md), and
+  [search](../architecture.search.md)
 - **Parent roadmap:** `RAG-ROADMAP-01`
 
 This definition does not authorize manuscript or bibliography modification,
