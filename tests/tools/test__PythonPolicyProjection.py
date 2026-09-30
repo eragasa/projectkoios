@@ -55,20 +55,43 @@ def test__object_model__uses_exact_operation_taxonomy() -> None:
     assert "DataObjectActionResponse" not in json.dumps(policy)
 
 
-def test__optional_model__is_a_nonrequired_data_object_refinement() -> None:
+def test__base_object__is_a_classification_without_a_public_base() -> None:
     policy: dict[str, object] = _policy()
     object_model: dict[str, object] = cast(
         dict[str, object], policy["object_model"]
     )
-    model: dict[str, object] = cast(
-        dict[str, object], object_model["optional_model"]
+    base_object: dict[str, object] = cast(
+        dict[str, object], object_model["base_object_classification"]
     )
 
-    assert model["display_name"] == "DataObjectModel"
-    assert model["required"] is False
-    assert "more specific DataObject classification" in cast(
-        str, model["relationship"]
+    assert base_object["public_base_required"] is False
+    assert base_object["members"] == ["DataObject", "DataObjectActionizer"]
+
+
+def test__public_abcs__have_the_exact_thin_hierarchy() -> None:
+    policy: dict[str, object] = _policy()
+    object_model: dict[str, object] = cast(
+        dict[str, object], policy["object_model"]
     )
+    public_abcs: dict[str, object] = cast(
+        dict[str, object], object_model["public_abcs"]
+    )
+    model: dict[str, object] = cast(
+        dict[str, object], object_model["data_object_model"]
+    )
+
+    assert public_abcs["module"] == "projectkoios.base"
+    assert public_abcs["hierarchy"] == [
+        "DataObject(ABC)",
+        "DataObjectModel(DataObject, ABC)",
+        "DataObjectActionRequest(DataObjectModel, ABC)",
+        "DataObjectActionResult(DataObjectModel, ABC)",
+        (
+            "DataObjectActionizer[RequestT: DataObjectActionRequest, "
+            "ResultT: DataObjectActionResult](ABC)"
+        ),
+    ]
+    assert "immutable" in cast(str, model["relationship"])
 
 
 def test__initializer_migrations__remain_separate() -> None:

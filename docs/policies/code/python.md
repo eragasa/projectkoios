@@ -9,7 +9,7 @@
 - Policy ID: `projectkoios.code.python`
 - Policy version: `0.1.0`
 - Status: **Draft**
-- Source SHA-256: `9b50a986f64af142b09982e443c6a9f81e260493aae0166fb15d7aa9ade9fc30`
+- Source SHA-256: `8272a126f45237e6c413f17cd54a6e86d03f259f4eea6633d0b9a1d10bb2e94d`
 
 ## Purpose
 
@@ -26,7 +26,7 @@ Define the default Python object model and selected implementation practices for
 - Automatic repository-wide taxonomy renames or style rewrites of existing code.
 - Scientific acceptance or correctness of domain algorithms.
 - Replacement of owner-repository validation commands.
-- A universal runtime framework or nominal base-class hierarchy.
+- A behavior-bearing universal object framework or required BaseObject class.
 - Unannounced removal of existing public package re-exports.
 
 ## Precedence
@@ -46,51 +46,80 @@ The domain-operation flow is:
 DataObjectActionRequest → DataObjectActionizer → DataObjectActionResult
 ```
 
-A request identifies its input `DataObject` values and, only when the domain needs one, an exact `DataObjectModel`.
-
-These are architecture roles. They do not require public base classes with the taxonomy names.
+Requests and results are immutable `DataObjectModel` values. The actionizer is the separate function-like boundary.
 
 ```mermaid
 classDiagram
+    class BaseObjectClassification {
+        <<classification only>>
+        no required Python class
+    }
     class DataObject {
-        <<architecture role>>
-        immutable domain state
-        intrinsic invariants
+        <<ABC>>
+        struct-like boundary
     }
     class DataObjectModel {
-        <<optional DataObject role>>
-        immutable domain model
+        <<ABC>>
+        immutable DataObject
     }
     class DataObjectActionRequest {
-        <<architecture role>>
+        <<ABC>>
         immutable operation intent
     }
     class DataObjectActionizer {
-        <<architecture role>>
-        explicit dependencies
-        one named operation
+        <<generic ABC>>
+        +action(request) DataObjectActionResult
     }
     class DataObjectActionResult {
-        <<architecture role>>
+        <<ABC>>
         immutable closed outcome
     }
 
-    DataObjectModel --> DataObject : refines classification
-    DataObjectActionRequest --> DataObject : identifies input
-    DataObjectActionRequest --> DataObjectModel : optionally uses
-    DataObjectActionizer --> DataObjectActionRequest : processes
+    BaseObjectClassification --> DataObject : includes
+    BaseObjectClassification --> DataObjectActionizer : includes
+    DataObjectModel --|> DataObject
+    DataObjectActionRequest --|> DataObjectModel
+    DataObjectActionResult --|> DataObjectModel
+    DataObjectActionizer --> DataObjectActionRequest : accepts
     DataObjectActionizer --> DataObjectActionResult : returns
-    DataObjectActionResult --> DataObjectActionRequest : identifies
 ```
+
+### BaseObject classification
+
+BaseObject is the architecture classification for the thin struct-like and function-like object boundaries; no public BaseObject class or inheritance edge is required.
+
+Members:
+
+- DataObject
+- DataObjectActionizer
+
+### Required thin public ABCs
+
+Module: `projectkoios.base`
+
+```text
+DataObject(ABC)
+DataObjectModel(DataObject, ABC)
+DataObjectActionRequest(DataObjectModel, ABC)
+DataObjectActionResult(DataObjectModel, ABC)
+DataObjectActionizer[RequestT: DataObjectActionRequest, ResultT: DataObjectActionResult](ABC)
+```
+
+Action method: `action(*, request: RequestT) -> ResultT`
+
+- These ABCs are intentionally thin and distinguish struct-like represented state from function-like behavior.
+- DataObject uses an abstract initializer boundary so concrete dataclasses or explicit constructors provide complete represented state.
+- DataObjectActionizer owns the abstract action method and is not a DataObject.
+- The module adds no BaseObject class, registry, discovery mechanism, persistence behavior, or serialization behavior.
 
 ### DataObject
 
-Default Python form: frozen, slotted dataclass.
+Default Python form: thin ABC implemented by a struct-like record.
 
 Responsibilities:
 
-- Represent immutable domain state, value, evidence, or output.
-- Validate intrinsic field invariants.
+- Provide the nominal boundary for represented domain state or values.
+- Validate intrinsic field invariants in the concrete implementation.
 - Expose cheap, deterministic, unsurprising invariant methods and derived properties when useful.
 
 Prohibitions:
@@ -102,47 +131,47 @@ Prohibitions:
 
 ### DataObjectActionRequest
 
-Default Python form: frozen, slotted dataclass with explicit identities.
+Default Python form: frozen, slotted DataObjectModel with explicit identities.
 
 Responsibilities:
 
 - Represent the complete immutable intent for one domain operation.
-- Identify the operation contract and version, every input DataObject, operation parameters, and any applicable DataObjectModel.
+- Identify the operation contract and version, every input DataObject, operation parameters, and any applicable domain model.
 - Provide a request identity derived from represented intent rather than execution time, attempt number, or outcome.
 
 Prohibitions:
 
 - Live clients, open resources, stores, clocks, or dependency containers.
 - Execution results, mutable progress, or retry state.
-- Implicit discovery of a DataObject or DataObjectModel.
+- Implicit discovery of a DataObject or domain model.
 - Transport-specific response fields.
 
 ### DataObjectActionizer
 
-Default Python form: domain-operation class with explicit dependencies.
+Default Python form: thin generic ABC implemented by a function-like domain operation.
 
 Responsibilities:
 
 - Perform one named domain operation expressed by an exact DataObjectActionRequest.
 - Own cross-object policy and operation-specific validation.
 - Receive stores, clocks, clients, configuration, and authority explicitly.
-- Return one typed DataObjectActionResult for the request.
+- Return one typed DataObjectActionResult from action(*, request=...).
 
 Prohibitions:
 
 - Service-location globals or reflective actionizer discovery.
 - Hidden mutable state unrelated to documented immutable configuration.
 - A generic registry that erases domain ownership.
-- Use of staticmethod solely to hide a module-level helper.
+- DataObject inheritance or represented-state responsibilities.
 
 ### DataObjectActionResult
 
-Default Python form: frozen, slotted dataclass with closed outcome.
+Default Python form: frozen, slotted DataObjectModel with closed outcome.
 
 Responsibilities:
 
 - Represent the immutable outcome of one exact request processed by one identified actionizer contract.
-- Bind the request, actionizer implementation or contract, configuration, model, output, and evidence identities that apply.
+- Bind the request, actionizer implementation or contract, configuration, domain-model, output, and evidence identities that apply.
 - Represent expected domain failure using a closed outcome vocabulary.
 - State limitations without implying human or scientific acceptance.
 
@@ -153,28 +182,27 @@ Prohibitions:
 - Unbounded exception text as the only machine-readable failure representation.
 - Mutation of the request or any input DataObject.
 
-### Optional DataObjectModel
+### DataObjectModel
 
-A DataObjectModel is an optional, more specific DataObject classification for an independently meaningful immutable domain model used to interpret, validate, or transform other DataObjects.
+DataObjectModel is the public DataObject ABC specialization for immutable struct-like DataObjects; every DataObjectActionRequest and DataObjectActionResult inherits it.
 
-- Introduce a DataObjectModel only when its independent identity, version, invariants, or reuse are part of the domain contract.
-- A request references the exact model identity when the operation depends on a model; otherwise model parameters may remain request fields.
-- DataObjectModel does not mean a Pydantic boundary model, ORM model, machine-learning model, or required wrapper unless the owning domain explicitly says so.
-- A DataObjectModel owns no external effects and does not replace the actionizer.
+- Concrete DataObjectModel implementations use an immutable form such as dataclass(frozen=True, slots=True) unless a documented domain requirement needs another implementation.
+- DataObjectModel describes immutable domain structure; it does not mean a Pydantic boundary model, ORM model, or machine-learning model unless the owning domain explicitly assigns that meaning.
+- A separate domain-model object is introduced only when its independent identity, version, invariants, or reuse are part of the operation contract.
+- DataObjectModel owns no external effects and does not replace the actionizer.
 
 ### Object-model rules
 
-- DataObject, DataObjectModel, DataObjectActionRequest, DataObjectActionizer, and DataObjectActionResult are architecture classifications; this policy does not require public base classes with those names.
+- BaseObject is a classification, not a required public base class; DataObject and DataObjectActionizer both fill that classification.
+- The five thin public ABCs and their exact hierarchy are defined in projectkoios.base; concrete domain classes inherit the applicable ABC while retaining domain names.
 - Concrete operation families share a precise domain stem, for example ScientificMarkdownRenderRequest, ScientificMarkdownRenderActionizer, and ScientificMarkdownRenderResult.
-- Concrete DataObject and optional DataObjectModel names use domain nouns rather than taxonomy suffixes when a clearer name exists.
 - Request and result identity are distinct: repeated processing of one request may yield separately identified results when execution evidence, external state, or outcomes differ.
 - Result is the internal domain term; Response is reserved for a transport boundary such as HTTP, where an adapter maps a result to a response schema.
-- An actionizer class is used when policy, dependencies, versioning, substitution, or substantial invariants justify an object boundary.
-- A small owner-local pure transformation may remain a typed module-level function rather than acquiring taxonomy machinery.
+- A small owner-local pure transformation may remain a typed module-level function only when it is not represented as a DataObjectActionizer boundary.
 - Existing DataObjects retain valid cheap invariant methods, derived properties, and domain semantics during incremental migration.
 - Programming errors and violated caller preconditions raise specific exceptions; expected operational outcomes use result records.
 - Runtime validation must not depend on assert.
-- Pydantic is used at external boundaries; internal requests, models, objects, and results prefer frozen dataclasses.
+- Pydantic is used at external boundaries; internal requests, models, objects, and results use the applicable ABC and prefer frozen dataclasses.
 - Adoption is incremental at a materially changed operation boundary; automatic repository-wide rewrites and unreviewed mechanical renames are prohibited.
 
 ## Package initializers

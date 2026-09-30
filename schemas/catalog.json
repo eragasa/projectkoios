@@ -9,8 +9,8 @@
       "version": "0.1.0",
       "semantic_owner": "ARCH",
       "source_path": "docs/policies/code/python.schema.json",
-      "sha256": "16051fafa0711a6434be2fbc3bd780aa256c76216fcfa56e8a49676a675855e8",
-      "byte_count": 10853
+      "sha256": "ddc44139dae9b306336c741fbb82c5551fd0c547bd047b4622fb2f24bb9b97fd",
+      "byte_count": 12928
     },
     {
       "schema_id": "https://projectkoios.com/schemas/policies/code/python-test-0.1.0.json",

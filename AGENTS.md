@@ -40,6 +40,10 @@ pip install -e ".[dev]"
 
 - **Pydantic at boundaries only** — API request/response use Pydantic. Internal
   DTOs use `@dataclass(frozen=True)`. Services never import FastAPI.
+- **Thin base-object boundaries** — `BaseObject` is an architecture
+  classification, not a Python class. `projectkoios.base` defines the exact
+  thin ABC hierarchy for struct-like `DataObject`/`DataObjectModel` request and
+  result records and function-like `DataObjectActionizer` operations.
 - **Adapter taxonomy** — `Adapter` is the nominal containing role. A `Binding`
   adapts imported or deliberately vendored code; an `Integration` adapts an
   external application or service. Use base classes for "is-a" relationships

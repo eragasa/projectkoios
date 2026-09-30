@@ -174,35 +174,38 @@ requirements without modification:
 ## Object-model synthesis
 
 The migration should not copy the complete nominal vocabulary of either
-project. Project Koios v0 instead keeps DataObject as the immutable domain-state
-role and uses three explicit operation roles:
+project. Project Koios v0 treats DataObject and DataObjectActionizer as the two
+BaseObject classifications without introducing a public `BaseObject` class. It
+defines the thin `DataObject` ABC for struct-like records, the thin generic
+`DataObjectActionizer` ABC for function-like operations, and this exact flow:
 
 ```text
 DataObjectActionRequest → DataObjectActionizer → DataObjectActionResult
 ```
 
-An optional `DataObjectModel` is a more specific DataObject classification only
-when independently meaningful model identity, version, invariants, or reuse are
-part of the domain contract.
+An immutable DataObject is a `DataObjectModel`. The request and result ABCs
+therefore inherit `DataObjectModel`; a separate domain-model value remains
+optional and is introduced only when its identity or reuse matters.
 
 The relationship to the source-project vocabulary is:
 
 | Source concept | Project Koios v0 treatment |
 |---|---|
-| Immutable DataObject | Retain as the `data_object` role with intrinsic invariants and valid cheap deterministic methods |
-| Exact operation input | Represent as `data_object_action_request`, identifying all DataObjects, parameters, and any optional DataObjectModel |
-| ActionObject | Repackage as `data_object_actionizer` over one exact request and explicit dependencies |
-| ResultObject returned by an operation | Repackage as `data_object_action_result` unless it is specifically a workflow ResultObject |
+| Struct-like DataObject | Inherit the thin `projectkoios.base.DataObject` ABC and retain intrinsic invariants and valid cheap deterministic methods |
+| Immutable DataObject | Inherit `DataObjectModel`, the immutable DataObject ABC specialization |
+| Exact operation input | Inherit `DataObjectActionRequest`, identifying all DataObjects, parameters, and any separate domain-model object |
+| ActionObject | Repackage as the function-like `DataObjectActionizer` ABC over one exact request and explicit dependencies |
+| ResultObject returned by an operation | Inherit `DataObjectActionResult` unless it is specifically a workflow ResultObject |
 | Workflow ResultObject | Keep as a distinct workflow-facing role and never infer it from an operation-result name |
-| Generic nominal base classes | Do not extract without demonstrated polymorphic need |
+| BaseObject | Use as a classification containing DataObject and DataObjectActionizer; do not introduce a public class |
 | Registries and reflective discovery | Do not extract as part of this pattern |
 
 Concrete Python operation families share a domain stem. For example,
 `ArchitectureDocumentRenderRequest`,
 `ArchitectureDocumentRenderActionizer`, and
-`ArchitectureDocumentRenderResult` fill the three operation roles without
-requiring taxonomy-named public bases. `Result` remains the internal domain
-term; a transport adapter may separately produce an HTTP response model.
+`ArchitectureDocumentRenderResult` inherit the applicable thin public ABCs
+while retaining domain names. `Result` remains the internal domain term; a
+transport adapter may separately produce an HTTP response model.
 
 The implementation follows the authoritative Draft
 [Project Koios Python policy source](../../../../policies/code/python.json) and

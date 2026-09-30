@@ -89,8 +89,10 @@
       "additionalProperties": false,
       "required": [
         "flow",
+        "base_object_classification",
+        "public_abcs",
         "roles",
-        "optional_model",
+        "data_object_model",
         "rules"
       ],
       "properties": {
@@ -110,6 +112,12 @@
           "items": false,
           "minItems": 3,
           "maxItems": 3
+        },
+        "base_object_classification": {
+          "$ref": "#/$defs/baseObjectClassification"
+        },
+        "public_abcs": {
+          "$ref": "#/$defs/publicAbcs"
         },
         "roles": {
           "type": "array",
@@ -131,8 +139,8 @@
           "minItems": 4,
           "maxItems": 4
         },
-        "optional_model": {
-          "$ref": "#/$defs/optionalDataObjectModel"
+        "data_object_model": {
+          "$ref": "#/$defs/dataObjectModel"
         },
         "rules": {
           "$ref": "#/$defs/stringList"
@@ -411,13 +419,91 @@
         }
       ]
     },
-    "optionalDataObjectModel": {
+    "baseObjectClassification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "display_name",
+        "public_base_required",
+        "members",
+        "meaning"
+      ],
+      "properties": {
+        "display_name": {
+          "const": "BaseObject"
+        },
+        "public_base_required": {
+          "const": false
+        },
+        "members": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "DataObject"
+            },
+            {
+              "const": "DataObjectActionizer"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "meaning": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "publicAbcs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "hierarchy",
+        "action_method",
+        "rules"
+      ],
+      "properties": {
+        "module": {
+          "const": "projectkoios.base"
+        },
+        "hierarchy": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "DataObject(ABC)"
+            },
+            {
+              "const": "DataObjectModel(DataObject, ABC)"
+            },
+            {
+              "const": "DataObjectActionRequest(DataObjectModel, ABC)"
+            },
+            {
+              "const": "DataObjectActionResult(DataObjectModel, ABC)"
+            },
+            {
+              "const": "DataObjectActionizer[RequestT: DataObjectActionRequest, ResultT: DataObjectActionResult](ABC)"
+            }
+          ],
+          "items": false,
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "action_method": {
+          "const": "action(*, request: RequestT) -> ResultT"
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "dataObjectModel": {
       "type": "object",
       "additionalProperties": false,
       "required": [
         "role_id",
         "display_name",
-        "required",
         "relationship",
         "rules"
       ],
@@ -427,9 +513,6 @@
         },
         "display_name": {
           "const": "DataObjectModel"
-        },
-        "required": {
-          "const": false
         },
         "relationship": {
           "$ref": "#/$defs/nonEmptyString"

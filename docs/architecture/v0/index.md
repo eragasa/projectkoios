@@ -76,89 +76,106 @@ The default domain-operation shape is:
 DataObjectActionRequest → DataObjectActionizer → DataObjectActionResult
 ```
 
-A request identifies the applicable `DataObject` inputs and, only when the
-domain needs one, an exact `DataObjectModel`. These names are architecture
-classifications. They do not require public base classes with the taxonomy
-names, inheritance used only for labeling, or a universal runtime framework.
+`BaseObject` is the architecture classification containing the struct-like
+`DataObject` boundary and function-like `DataObjectActionizer` boundary. It is
+not a required Python class. The five required thin public ABCs live in
+`projectkoios.base`:
+
+```text
+DataObject(ABC)
+DataObjectModel(DataObject, ABC)
+DataObjectActionRequest(DataObjectModel, ABC)
+DataObjectActionResult(DataObjectModel, ABC)
+DataObjectActionizer[RequestT: DataObjectActionRequest,
+                     ResultT: DataObjectActionResult](ABC)
+```
 
 ```mermaid
 classDiagram
-    class ArchitectureDocument {
-        <<DataObject>>
+    class BaseObjectClassification {
+        <<classification only>>
+        no required Python class
     }
-    class ArchitectureDocumentRenderProfile {
-        <<optional DataObjectModel>>
+    class DataObject {
+        <<ABC>>
+        struct-like boundary
     }
-    class ArchitectureDocumentRenderRequest {
-        <<DataObjectActionRequest>>
+    class DataObjectModel {
+        <<ABC>>
+        immutable DataObject
     }
-    class ArchitectureDocumentRenderActionizer {
-        <<DataObjectActionizer>>
-        +execute(request) ArchitectureDocumentRenderResult
+    class DataObjectActionRequest {
+        <<ABC>>
+        immutable operation intent
     }
-    class ArchitectureDocumentRenderResult {
-        <<DataObjectActionResult>>
+    class DataObjectActionizer {
+        <<generic ABC>>
+        +action(request) DataObjectActionResult
+    }
+    class DataObjectActionResult {
+        <<ABC>>
+        immutable closed outcome
     }
 
-    ArchitectureDocumentRenderProfile --> ArchitectureDocument : refines classification
-    ArchitectureDocumentRenderRequest --> ArchitectureDocument : identifies input
-    ArchitectureDocumentRenderRequest --> ArchitectureDocumentRenderProfile : uses
-    ArchitectureDocumentRenderActionizer --> ArchitectureDocumentRenderRequest : processes
-    ArchitectureDocumentRenderActionizer --> ArchitectureDocumentRenderResult : returns
-    ArchitectureDocumentRenderResult --> ArchitectureDocumentRenderRequest : identifies
+    BaseObjectClassification --> DataObject : includes
+    BaseObjectClassification --> DataObjectActionizer : includes
+    DataObjectModel --|> DataObject
+    DataObjectActionRequest --|> DataObjectModel
+    DataObjectActionResult --|> DataObjectModel
+    DataObjectActionizer --> DataObjectActionRequest : accepts
+    DataObjectActionizer --> DataObjectActionResult : returns
 ```
 
 ### DataObject
 
-A DataObject is an immutable representation of domain state, value, evidence,
-or output. It should normally be a frozen, slotted dataclass. It owns intrinsic
-field invariants and may retain cheap, deterministic, unsurprising invariant
-methods and derived properties. It does not perform filesystem, network,
-process, clock, or database effects or own generic serialization, rendering,
-or persistence.
+`DataObject` is the thin ABC for struct-like represented domain state or values.
+Its abstract initializer requires a concrete dataclass or explicit constructor
+to provide complete state. A concrete DataObject owns intrinsic invariants and
+may retain cheap, deterministic, unsurprising invariant methods and derived
+properties. It does not perform filesystem, network, process, clock, or
+database effects or own generic serialization, rendering, or persistence.
 
 Boundary Pydantic models are not internal DataObjects. An adapter converts a
-validated boundary model into an internal request or DataObject.
+validated boundary model into an applicable concrete DataObject.
 
-### Optional DataObjectModel
+### DataObjectModel
 
-A DataObjectModel is an optional, more specific DataObject classification for
-an independently meaningful immutable domain model used to interpret,
-validate, or transform other DataObjects. Introduce it only when its identity,
-version, invariants, or reuse matter to the domain contract. It is not a
-mandatory wrapper, actionizer, Pydantic model, ORM model, or machine-learning
-model unless the owning domain explicitly assigns that meaning.
+`DataObjectModel` is the DataObject ABC specialization for an immutable
+struct-like object. Concrete implementations normally use
+`dataclass(frozen=True, slots=True)`. This name does not imply a Pydantic model,
+ORM model, or machine-learning model. A separate domain-model object is needed
+only when its independent identity, version, invariants, or reuse are part of
+the operation contract.
 
 ### DataObjectActionRequest
 
-A DataObjectActionRequest is the complete immutable intent for one domain
-operation. Its identity binds the operation contract and version, all input
-DataObject identities, parameters, and an optional DataObjectModel identity.
-It contains no live clients, stores, clocks, open resources, results, mutable
-progress, or retry state. Execution timestamps and attempt numbers therefore
-do not change the identity of represented intent.
+`DataObjectActionRequest` inherits `DataObjectModel` and represents the complete
+immutable intent for one domain operation. Its identity binds the operation
+contract and version, all input DataObject identities, parameters, and any
+applicable domain-model identity. It contains no live clients, stores, clocks,
+open resources, results, mutable progress, or retry state.
 
 ### DataObjectActionizer
 
-A DataObjectActionizer performs one named domain operation expressed by an
-exact request. It receives policy, dependencies, clocks, stores, external
-clients, and authority explicitly rather than through mutable globals or
-ambient discovery. It is stateless unless its documented identity includes
-immutable configuration.
+`DataObjectActionizer` is the separate function-like generic ABC. Its abstract
+`action(*, request)` method accepts one typed `DataObjectActionRequest` and
+returns one typed `DataObjectActionResult`. Dependencies, clocks, stores,
+external clients, configuration, and authority are explicit rather than
+obtained through ambient discovery.
 
 Concrete operation families share a domain stem, such as
 `ScientificMarkdownRenderRequest`, `ScientificMarkdownRenderActionizer`, and
-`ScientificMarkdownRenderResult`. A small owner-local pure transformation may
-remain a typed module-level function when an actionizer boundary would add
-empty machinery.
+`ScientificMarkdownRenderResult`. A pure module-level transformation remains
+valid only when it is not represented as an actionizer boundary.
 
 ### DataObjectActionResult
 
-A DataObjectActionResult is the immutable outcome of one exact request processed
-under one identified actionizer contract. It binds the request, actionizer,
-configuration, optional model, outputs, evidence, and closed expected outcome
-that apply. Request and result identities remain distinct because repeated
-processing can produce separately identified execution evidence or outcomes.
+`DataObjectActionResult` inherits `DataObjectModel` and represents the immutable
+outcome of one exact request processed under one identified actionizer contract.
+It binds the request, actionizer, configuration, applicable domain model,
+outputs, evidence, and closed expected outcome. Request and result identities
+remain distinct because repeated processing can produce separately identified
+execution evidence or outcomes.
 
 `Result` is the internal domain term, not `Response`. Response models belong at
 transport boundaries such as HTTP; an adapter maps the domain result to the
@@ -171,15 +188,15 @@ caller preconditions use specific exceptions such as `TypeError` and
 DataObjectActionResult remains distinct from a workflow `ResultObject` unless
 an owning contract explicitly assigns both roles.
 
-### Avoid nominal framework machinery
+### Avoid framework machinery
 
 The v0 design does not introduce:
 
-- a universal DataObject superclass;
+- a public `BaseObject` class;
+- behavior on the thin ABCs beyond their struct/function boundary;
 - a universal Actionizer registry or service locator;
 - reflective actionizer discovery;
-- generic `to_json` or `from_json` methods on every DataObject;
-- inheritance used only to attach an architectural label; or
+- generic `to_json` or `from_json` methods on every DataObject; or
 - one result wrapper that erases domain-specific outcomes.
 
 Serialization, persistence, rendering, and comparison remain named operations
@@ -192,9 +209,10 @@ The authoritative Draft policy source is
 human-readable projection is
 [`docs/policies/code/python.md`](../../policies/code/python.md).
 
-The policy owns the detailed DataObject, optional DataObjectModel,
-DataObjectActionRequest, DataObjectActionizer, DataObjectActionResult, package
-initializer, Python, tooling, and judicious Google Python Style Guide rules.
+The policy owns the BaseObject classification, exact thin ABC hierarchy,
+DataObject, DataObjectModel, DataObjectActionRequest, DataObjectActionizer,
+DataObjectActionResult, package initializer, Python, tooling, and judicious
+Google Python Style Guide rules.
 This architecture index records their system-level use without creating a
 second independently maintained coding policy.
 
@@ -203,7 +221,8 @@ The policy projection has one bounded executable sequence:
 ```bash
 python3.14 -m tools.render_python_policy --write
 python3.14 -m tools.render_python_policy --check
-pytest -q tests/tools/test__PythonPolicyProjection.py \
+pytest -q tests/projectkoios/test__base.py \
+  tests/tools/test__PythonPolicyProjection.py \
   tests/schemas/test__SchemaCatalog.py
 ```
 
@@ -220,7 +239,7 @@ policy framework, a schema-catalog replacement, or a workflow engine.
 
 | Module | Responsibility | Planned owner |
 |---|---|---|
-| `architecture-document` | Closed JSON architecture model, DataObject/request/actionizer/result roles, validation, Mermaid generation, and deterministic Markdown projection | `projectkoios` documentation tooling |
+| `architecture-document` | Closed JSON architecture model, BaseObject classification, thin DataObject/actionizer ABCs, validation, Mermaid generation, and deterministic Markdown projection | `projectkoios` documentation tooling |
 | `scientific-markdown` | Source-anchored scientific Markdown, equations, figures, assets, and provenance | `projectkoios-ingestion` |
 | `citation-graph` | Citation occurrences, bibliography occurrences, canonical mappings, links, and derived backlinks | `projectkoios-references` |
 | `markdown-chunking` | Markdown-AST-aware chunks, source-map retention, content roles, and purpose admission | `projectkoios-search` |
@@ -237,16 +256,17 @@ authorize changes in `projectkoios-ingestion`.
 
 ### Required migration rules
 
-1. Use `DataObjectActionRequest`, `DataObjectActionizer`, and
-   `DataObjectActionResult` as architecture classifications. Do not introduce
-   public bases with those names unless concrete polymorphic need is reviewed.
+1. Use the exact thin ABC hierarchy from `projectkoios.base` for materially
+   changed shared operation boundaries. `DataObject` and
+   `DataObjectActionizer` are both BaseObject classifications, but no public
+   `BaseObject` class exists or is required.
 2. Give each materially changed operation one precise domain stem across its
    request, actionizer, and result, and retain `Result` for the internal outcome.
    Use `Response` only for a transport model produced by a boundary adapter.
-3. Keep requests and results immutable with distinct identities. Bind exact
-   DataObject inputs and any independently meaningful optional DataObjectModel
-   in the request; bind request, actionizer, configuration, outputs, and
-   execution evidence in the result.
+3. Implement requests and results as immutable `DataObjectModel` subclasses
+   with distinct identities. Bind exact DataObject inputs and any independently
+   meaningful domain-model object in the request; bind request, actionizer,
+   configuration, outputs, and execution evidence in the result.
 4. Preserve valid cheap invariant methods, derived properties, and existing
    domain semantics. Do not perform a mechanical rename or repository-wide
    rewrite merely to adopt classification vocabulary.
@@ -271,23 +291,26 @@ substantial implementation in `figures/__init__.py` (1,659 lines, 18 classes,
 `provenance/__init__.py` (586 lines, 10 classes). In contrast, the article and
 textbook initializers are small 11-line APIs, while the PDF initializer is 77
 lines with 32 exports. These September 2026 counts locate review candidates
-only. They are
-not thresholds, acceptance criteria, desired export counts, or permission to
-remove an API.
+only. They are not thresholds, acceptance criteria, desired export counts, or
+permission to remove an API.
 
-A `DataObjectModel` is optional. Introduce one only where model identity,
-version, invariants, or reuse are independently meaningful; keeping model
-parameters directly on a request is valid otherwise. Likewise, a small pure
-transformation need not acquire an actionizer class.
+A separate domain-model object is optional. Introduce one only where model
+identity, version, invariants, or reuse are independently meaningful; keeping
+model parameters directly on a request is valid otherwise. All immutable
+requests and results still inherit the `DataObjectModel` ABC. Likewise, a small
+pure transformation need not acquire an actionizer class unless it is exposed
+as that boundary.
 
 ### Stop conditions
 
 Stop and return to the architecture owner when the three terms cannot describe
 the operation without changing product semantics, when a proposed model
-boundary requires a new domain decision, or when compatibility cannot be
-preserved without a separately approved breaking change. Stop and return to
-the applicable repository owner before changing implementation outside
-`projectkoios-ingestion`. No migration step may silently delete exports,
+boundary requires a new domain decision, when the owning distribution cannot
+declare the `projectkoios.base` dependency without a packaging decision, or
+when compatibility cannot be preserved without a separately approved breaking
+change. Stop and return to the applicable repository owner before changing
+implementation outside `projectkoios-ingestion`. No migration step may silently
+delete exports,
 automatically rewrite the repository, or infer scientific acceptance.
 
 ## Scientific Markdown pipeline

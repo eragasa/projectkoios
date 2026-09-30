@@ -257,6 +257,18 @@ def render(*, source_bytes: bytes, document: JsonObject) -> bytes:
         value=_field(owner=document, name="object_model"),
         label="object_model",
     )
+    base_classification: JsonObject = _object(
+        value=_field(owner=object_model, name="base_object_classification"),
+        label="base_object_classification",
+    )
+    public_abcs: JsonObject = _object(
+        value=_field(owner=object_model, name="public_abcs"),
+        label="public_abcs",
+    )
+    data_object_model: JsonObject = _object(
+        value=_field(owner=object_model, name="data_object_model"),
+        label="data_object_model",
+    )
     initializer_policy: JsonObject = _object(
         value=_field(owner=document, name="package_initializers"),
         label="package_initializers",
@@ -324,64 +336,109 @@ def render(*, source_bytes: bytes, document: JsonObject) -> bytes:
             "DataObjectActionResult",
             "```",
             "",
-            "A request identifies its input `DataObject` values and, only when "
-            "the domain needs one, an exact `DataObjectModel`.",
-            "",
-            "These are architecture roles. They do not require public base "
-            "classes with the taxonomy names.",
+            "Requests and results are immutable `DataObjectModel` values. "
+            "The actionizer is the separate function-like boundary.",
             "",
             "```mermaid",
             "classDiagram",
+            "    class BaseObjectClassification {",
+            "        <<classification only>>",
+            "        no required Python class",
+            "    }",
             "    class DataObject {",
-            "        <<architecture role>>",
-            "        immutable domain state",
-            "        intrinsic invariants",
+            "        <<ABC>>",
+            "        struct-like boundary",
             "    }",
             "    class DataObjectModel {",
-            "        <<optional DataObject role>>",
-            "        immutable domain model",
+            "        <<ABC>>",
+            "        immutable DataObject",
             "    }",
             "    class DataObjectActionRequest {",
-            "        <<architecture role>>",
+            "        <<ABC>>",
             "        immutable operation intent",
             "    }",
             "    class DataObjectActionizer {",
-            "        <<architecture role>>",
-            "        explicit dependencies",
-            "        one named operation",
+            "        <<generic ABC>>",
+            "        +action(request) DataObjectActionResult",
             "    }",
             "    class DataObjectActionResult {",
-            "        <<architecture role>>",
+            "        <<ABC>>",
             "        immutable closed outcome",
             "    }",
             "",
-            "    DataObjectModel --> DataObject : refines classification",
-            "    DataObjectActionRequest --> DataObject : identifies input",
-            "    DataObjectActionRequest --> DataObjectModel : optionally uses",
-            "    DataObjectActionizer --> DataObjectActionRequest : processes",
+            "    BaseObjectClassification --> DataObject : includes",
+            "    BaseObjectClassification --> DataObjectActionizer : includes",
+            "    DataObjectModel --|> DataObject",
+            "    DataObjectActionRequest --|> DataObjectModel",
+            "    DataObjectActionResult --|> DataObjectModel",
+            "    DataObjectActionizer --> DataObjectActionRequest : accepts",
             "    DataObjectActionizer --> DataObjectActionResult : returns",
-            "    DataObjectActionResult --> DataObjectActionRequest "
-            ": identifies",
             "```",
+            "",
+            "### BaseObject classification",
+            "",
+            _string(
+                value=_field(owner=base_classification, name="meaning"),
+                label="BaseObject meaning",
+            ),
+            "",
+            "Members:",
             "",
         ]
     )
+    _add_list(
+        lines=lines,
+        values=_strings(
+            value=_field(owner=base_classification, name="members"),
+            label="BaseObject members",
+        ),
+    )
+    lines.extend(
+        [
+            "",
+            "### Required thin public ABCs",
+            "",
+            "Module: "
+            f"`{_field(owner=public_abcs, name='module')}`",
+            "",
+            "```text",
+        ]
+    )
+    lines.extend(
+        _strings(
+            value=_field(owner=public_abcs, name="hierarchy"),
+            label="public ABC hierarchy",
+        )
+    )
+    lines.extend(
+        [
+            "```",
+            "",
+            "Action method: "
+            f"`{_field(owner=public_abcs, name='action_method')}`",
+            "",
+        ]
+    )
+    _add_list(
+        lines=lines,
+        values=_strings(
+            value=_field(owner=public_abcs, name="rules"),
+            label="public ABC rules",
+        ),
+    )
+    lines.append("")
     role: JsonObject
     for role in _objects(
         value=_field(owner=object_model, name="roles"),
         label="object model roles",
     ):
         _render_role(lines=lines, role=role)
-    optional_model: JsonObject = _object(
-        value=_field(owner=object_model, name="optional_model"),
-        label="optional_model",
-    )
     lines.extend(
         [
-            "### Optional DataObjectModel",
+            "### DataObjectModel",
             "",
             _string(
-                value=_field(owner=optional_model, name="relationship"),
+                value=_field(owner=data_object_model, name="relationship"),
                 label="model relationship",
             ),
             "",
@@ -390,7 +447,7 @@ def render(*, source_bytes: bytes, document: JsonObject) -> bytes:
     _add_list(
         lines=lines,
         values=_strings(
-            value=_field(owner=optional_model, name="rules"),
+            value=_field(owner=data_object_model, name="rules"),
             label="model rules",
         ),
     )
