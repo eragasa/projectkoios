@@ -94,6 +94,23 @@ macro expansion, an unbounded graph, malformed UTF-8, changed bytes, duplicate
 identities, or inconsistent derived counts makes the snapshot incomplete and
 blocks the catalog.
 
+A cross-process handoff uses one explicitly operator-supplied, target-owned
+artifact containing the complete snapshot Result. The target owns its canonical
+unversioned JSON codec, complete encode/decode shape, bounds, and replay rules.
+The codec adds no runtime timestamp, machine-local root, protected excerpt,
+downstream identity, or numbered prototype format. No consumer parses TeX,
+BibLaTeX, or an ad hoc test fixture in place of that codec.
+
+After decoding and replay, a target-side one-way Project Koios binding maps the
+complete owner Result to the References-neutral target records. It preserves the
+owner snapshot, occurrence, group, bibliography-entry, source-gap, content, and
+locator identities while omitting only owner-internal detail that the neutral
+boundary does not consume. The target binding may call reusable References
+contracts; References, Applications, API, and Web do not import target parsing
+or rescan target sources. Artifact selection is explicit: there is no default,
+repository search, newest-file selection, or committed generated runtime
+snapshot requirement.
+
 ## References projection and neutral linkage
 
 References consumes the target snapshot, exact bibliography-entry bindings, a
@@ -118,6 +135,15 @@ last-write-wins behavior.
 `available-linked` means only that exact neutral attachment exists. It does not
 mean canonical identity, verified rights, processing admission, ingestion,
 Search admission, authoring fitness, scientific support, or human review.
+
+Availability remains evidence, not an absence inferred from missing input. If
+References has no complete bounded availability observation for a key, the
+projection reports `not-evaluated`; it must not report `not-observed`, label the
+document missing, or enable PDF upload. A private receipt contributes positive,
+explicitly incomplete availability evidence and cannot retroactively prove a
+complete pre-receipt observation. Production bibliography bindings, identity
+projection, availability evidence, and final projection remain
+References-owned dependent inputs.
 
 ## Orthogonal control projection
 
@@ -221,6 +247,34 @@ client-derived page identity. Owner page order, zero-based page index, one-based
 physical page, nullable printed label, exact escaped text, and
 `AUTOMATED_UNREVIEWED` status remain intact.
 
+## Cross-process runtime composition
+
+The direct in-process provider injection remains the narrow executable seam.
+Standard cross-process startup depends first on the target artifact and binding
+above and then on a replay-valid References projection with explicit complete
+availability evidence where missing-document behavior is required.
+
+Applications owns the later closed, unversioned runtime manifest and typed
+runtime bundle. Its loader receives one explicit operator-selected
+configuration path, binds only deployment-provisioned private roots, and
+composes the existing custody, registry, and synchronous service. It neither
+creates deployment roots nor scans for artifacts, repositories, packages, or
+newest state. Deployment keeps the manifest and roots outside Git worktrees and
+supplies them explicitly.
+
+API owns only optional control-profile activation, one explicit Applications
+configuration path, a statically named owner-composition call, provider
+adaptation, and injection. An unconfigured control profile retains the fixed
+sanitized unavailable response. Configured but missing, malformed, unsafe, or
+incompatible owner state fails startup with a fixed non-sensitive error instead
+of falling back to fixtures or partial service. A public profile never loads the
+private capability. Browser behavior and ownership do not change.
+
+The Applications manifest/bundle, References production projection artifact,
+and API startup bridge are dependent milestones, not implementation authority
+created by this page. They require their own owner validation and separate
+implementation authorization.
+
 ## Control API and Web
 
 The API surface is control-only and remains local/private until a separately
@@ -230,17 +284,20 @@ slice is:
 ```text
 GET  /citation-documents
 POST /citation-documents/{item_id}/source
-POST /citation-documents/{item_id}/ingestion
+POST /citation-documents/{item_id}/process-private
 GET  /transcripts/{document_id}
 ```
 
 The catalog returns a typed unavailable result when snapshot closure is
 incomplete; it never returns a partial inventory as complete. Upload streams or
-spools one bounded body into Applications custody, requires caller-scoped
-idempotency, and returns receipt-only language. Ingestion returns a synchronous
-terminal result. An indeterminate result requires reconciliation and supplies
-no transcript link or retry action. The API does not return `202`, a workflow
-ID, queue position, percentage, polling URL, or retry promise.
+spools one bounded raw `application/pdf` body with no filename or multipart
+semantics into Applications custody and returns receipt-only language. Exact
+content-derived receipt replay and exact owner request replay provide current
+idempotency; the first slice has no caller-supplied idempotency key. The separate
+`process-private` action returns a synchronous terminal result. An indeterminate
+result requires reconciliation and supplies no transcript link or retry action.
+The API does not return `202`, a workflow ID, queue position, percentage,
+polling URL, or retry promise.
 
 API maps owner DTOs without renaming their meanings. It owns no TeX parsing,
 PDF storage, attachment decision, ingestion runtime, task database, package
@@ -315,19 +372,23 @@ The slice is conformant only when:
 2. all repeated occurrences and generated citations remain independently
    addressable;
 3. an unknown citation-capable macro makes inventory unavailable;
-4. incomplete inventory never appears as a complete catalog;
-5. upload creates no link, processing request, Search item, or acceptance;
-6. processing requires a separate exact intent/admission and neutral link;
-7. duplicate receipt/request replay is deterministic and identity conflicts
+4. the target-owned complete Result artifact decodes and replays exactly before
+   the target-side binding supplies neutral records;
+5. incomplete inventory never appears as a complete catalog;
+6. absent complete availability evidence remains `not-evaluated`, is never
+   labeled missing, and enables no upload;
+7. upload creates no link, processing request, Search item, or acceptance;
+8. processing requires a separate exact intent/admission and neutral link;
+9. duplicate receipt/request replay is deterministic and identity conflicts
    fail closed;
-8. only terminal ingestion success, failure, or indeterminate outcome is
-   persisted or returned, and indeterminate output requires reconciliation;
-9. technically processed output remains unavailable to Search and authoring;
-10. every transcript opens by opaque document ID with owner page order and
+10. only terminal ingestion success, failure, or indeterminate outcome is
+    persisted or returned, and indeterminate output requires reconciliation;
+11. technically processed output remains unavailable to Search and authoring;
+12. every transcript opens by opaque document ID with owner page order and
     automated/unreviewed labeling;
-11. private paths, protected excerpts, and uploaded bytes do not cross the
+13. private paths, protected excerpts, and uploaded bytes do not cross the
     control boundary; and
-12. no automated state implies scientific or editorial acceptance.
+14. no automated state implies scientific or editorial acceptance.
 
 Snapshot incompleteness, unresolved or ambiguous identity, inaccessible bytes,
 missing processing admission, stale projection, link ambiguity, malformed PDF,
@@ -341,4 +402,7 @@ The first slice excludes Search indexing, authoring-evidence admission,
 automated citation acceptance, transcript proofreading, async dispatch,
 queued/running status, retries, background workers, cross-process recovery,
 remote processing, publication, redistribution, and manuscript or bibliography
-writes. Each requires its own owner architecture and authorization.
+writes. Applications manifest/runtime implementation, References production
+availability/projection publication, and API standard-startup activation remain
+ordered dependent milestones. Each requires its own owner validation and
+separate implementation authorization.
