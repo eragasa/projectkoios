@@ -72,6 +72,7 @@ evidence statement.
 
 ## Current indexes
 
+- [`Citation-document control`](_system/citation-document-control/index.md)
 - [`LineChunker` vertical slice](projectkoios/index.md)
 
 ## Change Rule

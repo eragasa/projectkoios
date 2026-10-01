@@ -29,8 +29,10 @@ Working notes for the first source-project assessment are in the
 
 The living [evidence-grounded long-form authoring](#evidence-grounded-long-form-authoring)
 section defines the first manuscript prototype and independent course reuse
-test. It is a manually maintained narrative design, not a generated module
-record.
+test. The bounded
+[citation-document control](../_system/citation-document-control/index.md)
+slice prepares private document evidence without admitting it to authoring.
+Both are manually maintained narrative designs, not generated module records.
 
 ## Architecture as data
 
@@ -515,6 +517,11 @@ The responsibilities remain separate:
 - **Ingestion** produces content-identified extraction and canonical-transcript
   records with page and block lineage. It does not attach references or write
   prose.
+- **Applications** composes private receipt, explicit processing intent,
+  synchronous extraction, deterministic package publication, and bounded
+  transcript registration. It does not admit evidence to Search or authoring.
+- **API and Web** expose only the bounded local control surface. They do not own
+  inventory, storage, attachment, processing, indexing, or acceptance.
 - **Search** composes immutable evidence items and processes bounded evidence
   retrieval requests into closed results. It does not answer or decide whether
   evidence supports a claim.
@@ -541,24 +548,50 @@ The responsibilities remain separate:
 11. Structural checks do not establish mathematical, scientific, editorial, or
     pedagogical correctness.
 12. Private paths and protected excerpts do not enter public logs or fixtures.
-13. Prototype data has one current canonical shape. Derived artifacts are
+13. Upload is an immutable private receipt, not processing or attachment.
+14. Private technical processing requires a separate explicit intent and
+    admission and never implies Search or authoring admission.
+15. Synchronous processing reports only terminal success, failure, or
+    indeterminate outcome; browser pending state is not a durable queue or run
+    state. Indeterminate publication requires reconciliation, not automatic
+    retry or repair.
+16. Prototype data has one current canonical shape. Derived artifacts are
     regenerated when that shape changes; Git retains earlier designs.
 
 ### Smallest useful architecture
 
+#### Citation-document control
+
+The separately bounded
+[citation-document control](../_system/citation-document-control/index.md)
+slice inventories every rendered monograph citation, receives private immutable
+PDF bytes, requires a separate **Process privately** intent, performs one
+synchronous technical extraction, and exposes the resulting automated,
+unreviewed transcript. The manuscript owner emits the complete deterministic
+citation snapshot. References consumes an exact projection and binding without
+rescanning TeX.
+
+The control slice may technically process a resolved candidate or accepted
+identity before source-evidence admission. That permission is purpose-specific
+and local. The resulting document remains unavailable to Search and authoring
+until the independent source and transcript gates below pass. Search indexing,
+async dispatch, queue status, and automated acceptance are absent.
+
 #### Source admission
 
-Before ingestion or retrieval, the prototype must have:
+Before retrieval or authoring use, the prototype must have:
 
 - an opaque bibliographic-work identity and its authority status;
 - an opaque observed source-asset identity;
 - the References-owned linkage between those identities;
 - access and rights observations; and
-- an explicit purpose-specific local-use authorization from the author or
+- an explicit purpose-specific authoring-use authorization from the author or
   domain owner.
 
-References supplies evidence; it does not make the use decision. Source
-admission reports `REFERENCE_IDENTITY_UNRESOLVED`, `DISCOVERY_INCOMPLETE`,
+A private receipt, neutral link, processing admission, successful extraction,
+or available transcript does not satisfy this gate. References supplies
+evidence; it does not make the use decision. Source admission reports
+`REFERENCE_IDENTITY_UNRESOLVED`, `DISCOVERY_INCOMPLETE`,
 `ASSET_INACCESSIBLE`, `RIGHTS_UNKNOWN`, `USE_NOT_AUTHORIZED`, or
 `INGESTION_MISSING` as distinct typed failures before retrieval. Do not collapse
 them into “source unavailable” or `INSUFFICIENT_EVIDENCE`.
@@ -723,23 +756,27 @@ resolves to independent reference evidence.
 | Concern | Owner |
 |---|---|
 | Cross-repository architecture and use cases | `projectkoios` |
-| Bibliographic identity, observed assets, linkage, and rights evidence | `projectkoios-references` |
+| Citation graph, occurrence snapshot, bibliography snapshot, and source gaps | `ksdft2effmass` |
+| Bibliographic identity, observed assets, neutral linkage, and rights evidence | `projectkoios-references` |
 | Extraction, canonical transcript, and page/block lineage | `projectkoios-ingestion` |
+| Private receipt, processing intent/admission, synchronous composition, package, and registry | `projectkoios-applications` |
+| Citation-document control transport | `projectkoios-api` |
+| Citation-document control interaction and presentation | `projectkoios-web` |
 | Evidence items and lexical retrieval request/result behavior | `projectkoios-search` |
-| Manuscript target parsing and repository-local checks | `ksdft2effmass` |
+| Manuscript target context, generation, and repository-local checks | `ksdft2effmass` |
 | Course structure, objectives, and repository-local checks | `projectkoios-courses` |
 | Scientific/editorial/pedagogical acceptance | Author, principal investigator, or designated human authority |
 
-`ksdft2effmass` is the temporary composition root for the manuscript prototype;
-`projectkoios-courses` is the temporary composition root for the course slice.
-They call reusable owners in the direction References -> Ingestion -> Search.
-Reusable owners never import either domain repository.
+`ksdft2effmass` is the temporary composition root for the manuscript authoring
+prototype; `projectkoios-courses` is the temporary composition root for the
+course slice. Reusable owners never import either domain repository.
 
-Do not involve `projectkoios-agent`, `projectkoios-applications`,
-`projectkoios-workflow`, the API, or the Web merely to complete the first local
-slice. The first two domain composers remain local. Shared generation behavior
-moves to `projectkoios-agent` only after independent reuse demonstrates the
-same useful boundary.
+Applications, API, and Web participate only in the separately bounded
+citation-document control slice. That slice ends at private technical output
+and does not replace References -> Ingestion -> Search admission for authoring.
+Workflow is not involved in the synchronous first slice. The domain composers
+remain local. Shared generation behavior moves to `projectkoios-agent` only
+after independent reuse demonstrates the same useful boundary.
 
 ### Optional manuscript structural guard
 
@@ -755,7 +792,9 @@ scientific support, authorship, or publication readiness.
 
 ### First prototype
 
-Use one manuscript subsection and a small authorized reference set:
+The citation-document control slice may prepare private transcripts first, but
+only documents that later pass source and transcript admission enter this
+prototype. Use one manuscript subsection and a small authorized reference set:
 
 1. Admit selected works/assets and canonical transcript blocks through the
    gates above.
@@ -822,11 +861,12 @@ These are product-development signals, not scientific validation.
 
 ### Later, only when earned
 
-Semantic/equation retrieval, note-evidence identities, persistent review,
-automated patching, workflow orchestration, API/Web review, model training,
-shared generation infrastructure, and publication/deployment are deferred.
-Promote one only when the prototype exposes a repeated concrete failure that it
-solves.
+Semantic/equation retrieval, note-evidence identities, persistent authoring
+review, automated patching, workflow orchestration, API/Web authoring review,
+model training, shared generation infrastructure, and publication/deployment
+are deferred. The bounded citation-document control API/Web surface is the sole
+current exception; it owns no authoring decision. Promote another capability
+only when the prototype exposes a repeated concrete failure that it solves.
 
 ### Stop conditions
 
