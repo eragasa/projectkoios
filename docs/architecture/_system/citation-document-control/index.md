@@ -158,7 +158,19 @@ Three records remain orthogonal:
 3. References-owned PDF/document evidence records availability, content
    identity, and neutral linkage independently of either bibliography record.
 
-A References intake may correlate to a target citation only when its literal
+The primary References evidence path consumes the exact publishing-owned
+manuscript `references.bib` bytes selected by the target snapshot. References
+parses those BibTeX bytes into ordered source-bibliography observations and
+binds them to target bibliography entries. Each binding requires exact literal
+citekey equality plus full source path, bibliography digest and size, entry
+index, and verbatim-entry content lineage; matching a key alone is insufficient.
+References parses BibTeX, not TeX. `ksdft2effmass` remains the sole owner of the
+TeX-rendered occurrence, group, and source-gap inventory.
+
+Separately pasted or explicitly Web-acquired BibTeX is optional alternate or
+additional References intake. It is not required for the current complete
+manuscript bibliography and never replaces its primary exact-byte binding. Such
+an intake may correlate to a target citation only when its literal
 case-sensitive citekey exactly equals the target literal citekey. Equality is a
 correlation key, not canonical bibliographic identity, target bibliography
 membership, rights or access evidence, document availability, scientific
