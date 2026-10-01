@@ -94,6 +94,31 @@ macro expansion, an unbounded graph, malformed UTF-8, changed bytes, duplicate
 identities, or inconsistent derived counts makes the snapshot incomplete and
 blocks the catalog.
 
+A cross-process handoff uses one explicitly operator-supplied, target-owned
+artifact containing the complete snapshot Result. The target owns its canonical
+unversioned JSON codec, complete encode/decode shape, bounds, and replay rules.
+The codec adds no runtime timestamp, machine-local root, protected excerpt,
+downstream identity, or numbered prototype format. No consumer parses TeX,
+BibLaTeX, or an ad hoc test fixture in place of that codec.
+
+After decoding and replay, a target-side one-way Project Koios binding maps the
+complete owner Result to the References-neutral target records. It preserves the
+owner snapshot, occurrence, group, bibliography-entry, source-gap, content, and
+locator identities while omitting only owner-internal detail that the neutral
+boundary does not consume. Exact literal citekeys are preserved byte-for-byte;
+no target, binding, References, API, or Web step normalizes them. The target
+binding may call reusable References contracts; References, Applications, API,
+and Web do not import target parsing or rescan target sources.
+
+The manuscript is real work in preparation. A generated complete-Result
+artifact is confidential manuscript-derived metadata even though it contains no
+excerpt. It is never committed, included in fixtures, logged, or transmitted
+off the approved local machine. Artifact selection is explicit: there is no
+default, repository search, or newest-file selection. Any future external
+artifact writer requires an explicitly selected local mode-0700 root and creates
+one mode-0600 file exactly once without overwrite. It has no default destination
+and never writes the complete Result to standard output.
+
 ## References projection and neutral linkage
 
 References consumes the target snapshot, exact bibliography-entry bindings, a
@@ -118,6 +143,70 @@ last-write-wins behavior.
 `available-linked` means only that exact neutral attachment exists. It does not
 mean canonical identity, verified rights, processing admission, ingestion,
 Search admission, authoring fitness, scientific support, or human review.
+
+Availability remains evidence, not an absence inferred from missing input. If
+References has no complete bounded availability observation for a key, the
+projection reports `not-evaluated`; it must not report `not-observed`, label the
+document missing, or enable PDF upload. A private receipt contributes positive,
+explicitly incomplete availability evidence and cannot retroactively prove a
+complete pre-receipt observation. Production bibliography bindings, identity
+projection, availability evidence, and final projection remain
+References-owned dependent inputs.
+
+## Publishing bibliography and References BibTeX intake
+
+Three records remain orthogonal:
+
+1. The publishing-owned target bibliography entry is exact target metadata in
+   the immutable manuscript snapshot. The citation-document control surface
+   does not add, replace, or rewrite it.
+2. A References-owned BibTeX intake or source-bibliography observation records
+   separately supplied bibliographic evidence. Its bytes may come from direct
+   operator paste or a separately evidenced Web acquisition.
+3. References-owned PDF/document evidence records availability, content
+   identity, and neutral linkage independently of either bibliography record.
+
+The primary References evidence path consumes the exact publishing-owned
+manuscript `references.bib` bytes selected by the target snapshot. References
+parses those BibTeX bytes into ordered source-bibliography observations and
+binds them to target bibliography entries. Each binding requires exact literal
+citekey equality plus full source path, bibliography digest and size, entry
+index, and verbatim-entry content lineage; matching a key alone is insufficient.
+References parses BibTeX, not TeX. `ksdft2effmass` remains the sole owner of the
+TeX-rendered occurrence, group, and source-gap inventory.
+
+Separately pasted or explicitly Web-acquired BibTeX is optional alternate or
+additional References intake. It is not required for the current complete
+manuscript bibliography and never replaces its primary exact-byte binding. Such
+an intake may correlate to a target citation only when its literal
+case-sensitive citekey exactly equals the target literal citekey. Equality is a
+correlation key, not canonical bibliographic identity, target bibliography
+membership, rights or access evidence, document availability, scientific
+support, citation acceptance, or publication authority. If the publishing
+bibliography lacks the entry, a matching References intake does not make the
+target entry defined.
+
+Directly pasted BibTeX retains direct-paste provenance and must not claim that
+Project Koios fetched or observed it on the Web. Paste and Web acquisition are
+future capabilities, not part of the current slice. Explicit Web acquisition
+requires separately accepted operator authentication and authorization, SSRF
+protection, destination/network policy, bounded content validation, and exact
+acquisition/provenance evidence. It never transmits manuscript text, the target
+snapshot, citekey inventory, or other manuscript-derived inputs. A
+browser-visible string or pasted URL is not Web acquisition evidence. BibTeX
+content is bounded untrusted data, never a command or filesystem path. No intake
+path automatically writes a manuscript or publishing bibliography.
+
+References may derive a separate candidate or store projection from an exact
+source-bibliography observation and normalize DOI or other bibliographic
+identifiers under its own documented rules. The raw observation remains intact
+and replayable; enrichment never rewrites or replaces it. A normalized
+identifier is neither citekey normalization nor canonical identity acceptance,
+and it changes no publishing bibliography, PDF availability, access/right
+status, scientific support, or human acceptance state. Future external DOI or
+metadata lookup remains deferred and requires the separately accepted Web
+acquisition, network, SSRF, content, authentication, authorization, and
+provenance controls above.
 
 ## Orthogonal control projection
 
@@ -221,6 +310,36 @@ client-derived page identity. Owner page order, zero-based page index, one-based
 physical page, nullable printed label, exact escaped text, and
 `AUTOMATED_UNREVIEWED` status remain intact.
 
+## Cross-process runtime composition
+
+The direct in-process provider injection remains the narrow executable seam.
+Standard cross-process startup depends first on the target artifact and binding
+above and then on a replay-valid References projection with explicit complete
+availability evidence where missing-document behavior is required.
+
+Applications owns the later closed, unversioned runtime manifest and typed
+runtime bundle. Its loader receives one explicit operator-selected
+configuration path, binds only deployment-provisioned private roots, and
+composes the existing custody, registry, and synchronous service. It neither
+creates deployment roots nor scans for artifacts, repositories, packages, or
+newest state. Deployment keeps the manifest and roots outside Git worktrees and
+supplies them explicitly.
+
+API owns only optional control-profile activation, one explicit Applications
+configuration path, a statically named owner-composition call, provider
+adaptation, and injection. An unconfigured control profile retains the fixed
+sanitized unavailable response. Configured but missing, malformed, unsafe, or
+incompatible owner state fails startup with a fixed non-sensitive error instead
+of falling back to fixtures or partial service. Any current sanitized demo
+projection remains synthetic and is never presented as manuscript evidence. A
+public profile never loads the private capability. Browser behavior and
+ownership do not change.
+
+The Applications manifest/bundle, References production projection artifact,
+and API startup bridge are dependent milestones, not implementation authority
+created by this page. They require their own owner validation and separate
+implementation authorization.
+
 ## Control API and Web
 
 The API surface is control-only and remains local/private until a separately
@@ -230,17 +349,20 @@ slice is:
 ```text
 GET  /citation-documents
 POST /citation-documents/{item_id}/source
-POST /citation-documents/{item_id}/ingestion
+POST /citation-documents/{item_id}/process-private
 GET  /transcripts/{document_id}
 ```
 
 The catalog returns a typed unavailable result when snapshot closure is
 incomplete; it never returns a partial inventory as complete. Upload streams or
-spools one bounded body into Applications custody, requires caller-scoped
-idempotency, and returns receipt-only language. Ingestion returns a synchronous
-terminal result. An indeterminate result requires reconciliation and supplies
-no transcript link or retry action. The API does not return `202`, a workflow
-ID, queue position, percentage, polling URL, or retry promise.
+spools one bounded raw `application/pdf` body with no filename or multipart
+semantics into Applications custody and returns receipt-only language. Exact
+content-derived receipt replay and exact owner request replay provide current
+idempotency; the first slice has no caller-supplied idempotency key. The separate
+`process-private` action returns a synchronous terminal result. An indeterminate
+result requires reconciliation and supplies no transcript link or retry action.
+The API does not return `202`, a workflow ID, queue position, percentage,
+polling URL, or retry promise.
 
 API maps owner DTOs without renaming their meanings. It owns no TeX parsing,
 PDF storage, attachment decision, ingestion runtime, task database, package
@@ -296,8 +418,8 @@ extracted content cannot issue tool or policy instructions.
 | Concern | Owner |
 |---|---|
 | Product and cross-repository architecture | `projectkoios` |
-| Citation graph, rendered occurrences, bibliography snapshot, source gaps | `ksdft2effmass` |
-| Bibliographic identity, exact entry binding, availability, neutral link, catalog projection | `projectkoios-references` |
+| Citation graph, rendered occurrences, publishing bibliography snapshot, source gaps | `ksdft2effmass` |
+| BibTeX intake/observation, bibliographic identity, exact entry binding, availability, neutral link, catalog projection | `projectkoios-references` |
 | Extraction and transcript artifacts | `projectkoios-ingestion` |
 | Receipt, intent/admission, synchronous composition, package, registry | `projectkoios-applications` |
 | HTTP DTOs, routing, bounded upload transport, safe errors | `projectkoios-api` |
@@ -315,19 +437,27 @@ The slice is conformant only when:
 2. all repeated occurrences and generated citations remain independently
    addressable;
 3. an unknown citation-capable macro makes inventory unavailable;
-4. incomplete inventory never appears as a complete catalog;
-5. upload creates no link, processing request, Search item, or acceptance;
-6. processing requires a separate exact intent/admission and neutral link;
-7. duplicate receipt/request replay is deterministic and identity conflicts
+4. the target-owned complete Result artifact decodes and replays exactly before
+   the target-side binding supplies neutral records;
+5. incomplete inventory never appears as a complete catalog;
+6. absent complete availability evidence remains `not-evaluated`, is never
+   labeled missing, and enables no upload;
+7. upload creates no link, processing request, Search item, or acceptance;
+8. processing requires a separate exact intent/admission and neutral link;
+9. duplicate receipt/request replay is deterministic and identity conflicts
    fail closed;
-8. only terminal ingestion success, failure, or indeterminate outcome is
-   persisted or returned, and indeterminate output requires reconciliation;
-9. technically processed output remains unavailable to Search and authoring;
-10. every transcript opens by opaque document ID with owner page order and
+10. only terminal ingestion success, failure, or indeterminate outcome is
+    persisted or returned, and indeterminate output requires reconciliation;
+11. technically processed output remains unavailable to Search and authoring;
+12. every transcript opens by opaque document ID with owner page order and
     automated/unreviewed labeling;
-11. private paths, protected excerpts, and uploaded bytes do not cross the
-    control boundary; and
-12. no automated state implies scientific or editorial acceptance.
+13. private paths, protected excerpts, and uploaded bytes do not cross the
+    control boundary;
+14. no automated state implies scientific or editorial acceptance; and
+15. publishing target entries, References BibTeX observations, and PDF/document
+    evidence remain distinct, and literal-key equality grants no authority; and
+16. derived identifier enrichment preserves its raw observation and grants no
+    identity, document, rights, support, or acceptance authority.
 
 Snapshot incompleteness, unresolved or ambiguous identity, inaccessible bytes,
 missing processing admission, stale projection, link ambiguity, malformed PDF,
@@ -341,4 +471,7 @@ The first slice excludes Search indexing, authoring-evidence admission,
 automated citation acceptance, transcript proofreading, async dispatch,
 queued/running status, retries, background workers, cross-process recovery,
 remote processing, publication, redistribution, and manuscript or bibliography
-writes. Each requires its own owner architecture and authorization.
+writes. Applications manifest/runtime implementation, References production
+availability/projection publication, and API standard-startup activation remain
+ordered dependent milestones. Each requires its own owner validation and
+separate implementation authorization.
