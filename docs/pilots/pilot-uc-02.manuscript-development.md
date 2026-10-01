@@ -9,6 +9,8 @@
   [UC-02](../use-cases/uc-02.evidence-grounded-manuscript-development.md)
 - **Architecture:**
   [evidence-grounded long-form authoring](../architecture/v0/index.md#evidence-grounded-long-form-authoring)
+- **Supporting control slice:**
+  [citation-document control](../architecture/_system/citation-document-control/index.md)
 - **Parent roadmap:** `RAG-ROADMAP-01`
 
 This definition does not authorize source access, ingestion, model execution,
@@ -40,6 +42,36 @@ The manuscript context remains with the `ksdft2effmass` composition root. Search
 receives only an evidence retrieval request containing a bounded query
 representation, opaque target identity, optional work filters, and fixed bounds.
 
+## Supporting citation-document control
+
+A separately bounded control slice may prepare the private transcript evidence
+used by readiness review. It does not expand the authoring pilot into a control
+plane and it does not admit its output to Search.
+
+For the initial monograph revision, the manuscript owner emits a complete
+immutable snapshot whose acceptance evidence derives 122 distinct key groups,
+221 rendered calls, 277 occurrences, 45 `\citationtodo` markers, and two
+non-key source gaps. These values describe that snapshot only; they are not
+format constants.
+
+The control sequence is:
+
+1. project the complete snapshot and exact References identity/availability
+   evidence without rescanning TeX;
+2. receive a PDF into private immutable Applications custody;
+3. require a separate explicit **Process privately** intent/admission;
+4. record a References-owned neutral source-document link;
+5. synchronously extract and publish one deterministic document package;
+6. register and expose the automated, unreviewed transcript by opaque document
+   ID; and
+7. stop without Search or authoring admission.
+
+The control API returns only terminal success, failure, or an indeterminate
+outcome requiring reconciliation. It has no workflow, queue, running, polling,
+percentage, background-worker, automatic-retry, repair, or recovery claim. An
+indeterminate outcome exposes no transcript-ready state. The dedicated browser
+page presents owner state but creates none of it.
+
 ## Exclusions
 
 The pilot does not include:
@@ -47,7 +79,8 @@ The pilot does not include:
 - direct manuscript or bibliography writes;
 - a claim ledger, patch applier, or persistent review database;
 - semantic, typed-equation, figure, or table retrieval;
-- workflow orchestration, API, or browser review;
+- workflow orchestration or API/browser authoring review beyond the separately
+  bounded citation-document control surface;
 - remote model providers or model tools;
 - extraction of shared generation behavior to `projectkoios-agent`;
 - scientific, editorial, or citation acceptance by automation; or
@@ -60,8 +93,11 @@ The pilot does not include:
 | `projectkoios` | Pilot definition and cross-repository architecture |
 | `projectkoios-references` | Bibliographic authority status, observed assets and linkage, and access/rights evidence |
 | `projectkoios-ingestion` | Extraction, canonical transcript, page/block lineage, transformations, warnings, and derivation audit |
+| `projectkoios-applications` | Supporting private receipt, processing intent/admission, synchronous composition, package, and registry |
+| `projectkoios-api` | Supporting control-only catalog, upload, process, and transcript transport |
+| `projectkoios-web` | Supporting dedicated private citation-document control page |
 | `projectkoios-search` | Immutable evidence items and deterministic lexical retrieval request/result behavior |
-| `ksdft2effmass` | Temporary composition root, target context, local generation, repository checks, and manuscript authority |
+| `ksdft2effmass` | Citation snapshot, temporary composition root, target context, local generation, repository checks, and manuscript authority |
 | Author or principal investigator | Purpose-specific source-use authorization and scientific/editorial acceptance |
 
 Reusable owners never import `ksdft2effmass`. Passing technical checks does not
@@ -71,10 +107,12 @@ transfer author or principal-investigator authority.
 
 Before an executable run is separately authorized, the pilot owner identifies:
 
-1. the exact manuscript revision and selected span;
+1. the complete owner citation snapshot, exact manuscript revision, and selected
+   span;
 2. each bibliographic work's candidate or accepted authority status;
-3. each observed asset and References-owned work/asset linkage;
-4. rights observations and explicit purpose-specific local-use authorization;
+3. each observed asset and References-owned neutral work/document linkage;
+4. any private-processing result separately from rights observations and
+   explicit purpose-specific authoring-use authorization;
 5. admitted transcript blocks with matching source identity, page/block
    lineage, retained extraction or transformation mapping, and warning details;
 6. deterministic evidence-item, corpus, index, and ranking identities;
@@ -89,7 +127,9 @@ insufficiency outcome.
 
 ## Procedure
 
-1. Verify that manuscript and source inputs are unchanged and read-only.
+1. Verify that manuscript and source inputs are unchanged and read-only. Treat
+   any control-slice receipt, link, ingestion result, and transcript as separate
+   evidence that grants no authoring admission by itself.
 2. Admit selected works, assets, and transcript blocks through the source and
    transcript gates.
 3. Build the deterministic lexical index over admitted reference evidence only.
@@ -169,8 +209,10 @@ abstraction still has only one demonstrated consumer.
 |---|---|
 | Pilot definition | This file |
 | Architecture and use case | `projectkoios` living documentation |
-| Manuscript, target context, proposal, and author assessment | `ksdft2effmass` or its authorized private storage |
-| Reference observations and linkage | `projectkoios-references` evidence boundary |
+| Citation snapshot, manuscript, target context, proposal, and author assessment | `ksdft2effmass` or its authorized private storage |
+| Reference observations and neutral linkage | `projectkoios-references` evidence boundary |
 | Extraction and transcript evidence | `projectkoios-ingestion` evidence boundary |
+| Private receipt, processing intent/result, package, and registry | `projectkoios-applications` control boundary |
+| Control transport and browser presentation | `projectkoios-api` and `projectkoios-web` |
 | Evidence items, retrieval result, and index | `projectkoios-search` evidence boundary |
 | Synthetic fixtures and conformance tests | Applicable owner repository when separately authorized |
