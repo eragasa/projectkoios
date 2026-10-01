@@ -105,11 +105,19 @@ After decoding and replay, a target-side one-way Project Koios binding maps the
 complete owner Result to the References-neutral target records. It preserves the
 owner snapshot, occurrence, group, bibliography-entry, source-gap, content, and
 locator identities while omitting only owner-internal detail that the neutral
-boundary does not consume. The target binding may call reusable References
-contracts; References, Applications, API, and Web do not import target parsing
-or rescan target sources. Artifact selection is explicit: there is no default,
-repository search, newest-file selection, or committed generated runtime
-snapshot requirement.
+boundary does not consume. Exact literal citekeys are preserved byte-for-byte;
+no target, binding, References, API, or Web step normalizes them. The target
+binding may call reusable References contracts; References, Applications, API,
+and Web do not import target parsing or rescan target sources.
+
+The manuscript is real work in preparation. A generated complete-Result
+artifact is confidential manuscript-derived metadata even though it contains no
+excerpt. It is never committed, included in fixtures, logged, or transmitted
+off the approved local machine. Artifact selection is explicit: there is no
+default, repository search, or newest-file selection. Any future external
+artifact writer requires an explicitly selected local mode-0700 root and creates
+one mode-0600 file exactly once without overwrite. It has no default destination
+and never writes the complete Result to standard output.
 
 ## References projection and neutral linkage
 
@@ -179,11 +187,15 @@ bibliography lacks the entry, a matching References intake does not make the
 target entry defined.
 
 Directly pasted BibTeX retains direct-paste provenance and must not claim that
-Project Koios fetched or observed it on the Web. Explicit Web acquisition needs
-its own source locator, acquisition evidence, and applicable access/rights
-observations; browser-visible text or a pasted URL is not such evidence.
-BibTeX content is bounded untrusted data, never a command or filesystem path.
-No intake path automatically writes a manuscript or publishing bibliography.
+Project Koios fetched or observed it on the Web. Paste and Web acquisition are
+future capabilities, not part of the current slice. Explicit Web acquisition
+requires separately accepted operator authentication and authorization, SSRF
+protection, destination/network policy, bounded content validation, and exact
+acquisition/provenance evidence. It never transmits manuscript text, the target
+snapshot, citekey inventory, or other manuscript-derived inputs. A
+browser-visible string or pasted URL is not Web acquisition evidence. BibTeX
+content is bounded untrusted data, never a command or filesystem path. No intake
+path automatically writes a manuscript or publishing bibliography.
 
 ## Orthogonal control projection
 
@@ -307,8 +319,10 @@ configuration path, a statically named owner-composition call, provider
 adaptation, and injection. An unconfigured control profile retains the fixed
 sanitized unavailable response. Configured but missing, malformed, unsafe, or
 incompatible owner state fails startup with a fixed non-sensitive error instead
-of falling back to fixtures or partial service. A public profile never loads the
-private capability. Browser behavior and ownership do not change.
+of falling back to fixtures or partial service. Any current sanitized demo
+projection remains synthetic and is never presented as manuscript evidence. A
+public profile never loads the private capability. Browser behavior and
+ownership do not change.
 
 The Applications manifest/bundle, References production projection artifact,
 and API startup bridge are dependent milestones, not implementation authority
