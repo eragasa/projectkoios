@@ -197,6 +197,17 @@ browser-visible string or pasted URL is not Web acquisition evidence. BibTeX
 content is bounded untrusted data, never a command or filesystem path. No intake
 path automatically writes a manuscript or publishing bibliography.
 
+References may derive a separate candidate or store projection from an exact
+source-bibliography observation and normalize DOI or other bibliographic
+identifiers under its own documented rules. The raw observation remains intact
+and replayable; enrichment never rewrites or replaces it. A normalized
+identifier is neither citekey normalization nor canonical identity acceptance,
+and it changes no publishing bibliography, PDF availability, access/right
+status, scientific support, or human acceptance state. Future external DOI or
+metadata lookup remains deferred and requires the separately accepted Web
+acquisition, network, SSRF, content, authentication, authorization, and
+provenance controls above.
+
 ## Orthogonal control projection
 
 The catalog preserves these dimensions independently:
@@ -444,7 +455,9 @@ The slice is conformant only when:
     control boundary;
 14. no automated state implies scientific or editorial acceptance; and
 15. publishing target entries, References BibTeX observations, and PDF/document
-    evidence remain distinct, and literal-key equality grants no authority.
+    evidence remain distinct, and literal-key equality grants no authority; and
+16. derived identifier enrichment preserves its raw observation and grants no
+    identity, document, rights, support, or acceptance authority.
 
 Snapshot incompleteness, unresolved or ambiguous identity, inaccessible bytes,
 missing processing admission, stale projection, link ambiguity, malformed PDF,
