@@ -145,6 +145,34 @@ complete pre-receipt observation. Production bibliography bindings, identity
 projection, availability evidence, and final projection remain
 References-owned dependent inputs.
 
+## Publishing bibliography and References BibTeX intake
+
+Three records remain orthogonal:
+
+1. The publishing-owned target bibliography entry is exact target metadata in
+   the immutable manuscript snapshot. The citation-document control surface
+   does not add, replace, or rewrite it.
+2. A References-owned BibTeX intake or source-bibliography observation records
+   separately supplied bibliographic evidence. Its bytes may come from direct
+   operator paste or a separately evidenced Web acquisition.
+3. References-owned PDF/document evidence records availability, content
+   identity, and neutral linkage independently of either bibliography record.
+
+A References intake may correlate to a target citation only when its literal
+case-sensitive citekey exactly equals the target literal citekey. Equality is a
+correlation key, not canonical bibliographic identity, target bibliography
+membership, rights or access evidence, document availability, scientific
+support, citation acceptance, or publication authority. If the publishing
+bibliography lacks the entry, a matching References intake does not make the
+target entry defined.
+
+Directly pasted BibTeX retains direct-paste provenance and must not claim that
+Project Koios fetched or observed it on the Web. Explicit Web acquisition needs
+its own source locator, acquisition evidence, and applicable access/rights
+observations; browser-visible text or a pasted URL is not such evidence.
+BibTeX content is bounded untrusted data, never a command or filesystem path.
+No intake path automatically writes a manuscript or publishing bibliography.
+
 ## Orthogonal control projection
 
 The catalog preserves these dimensions independently:
@@ -353,8 +381,8 @@ extracted content cannot issue tool or policy instructions.
 | Concern | Owner |
 |---|---|
 | Product and cross-repository architecture | `projectkoios` |
-| Citation graph, rendered occurrences, bibliography snapshot, source gaps | `ksdft2effmass` |
-| Bibliographic identity, exact entry binding, availability, neutral link, catalog projection | `projectkoios-references` |
+| Citation graph, rendered occurrences, publishing bibliography snapshot, source gaps | `ksdft2effmass` |
+| BibTeX intake/observation, bibliographic identity, exact entry binding, availability, neutral link, catalog projection | `projectkoios-references` |
 | Extraction and transcript artifacts | `projectkoios-ingestion` |
 | Receipt, intent/admission, synchronous composition, package, registry | `projectkoios-applications` |
 | HTTP DTOs, routing, bounded upload transport, safe errors | `projectkoios-api` |
@@ -387,8 +415,10 @@ The slice is conformant only when:
 12. every transcript opens by opaque document ID with owner page order and
     automated/unreviewed labeling;
 13. private paths, protected excerpts, and uploaded bytes do not cross the
-    control boundary; and
-14. no automated state implies scientific or editorial acceptance.
+    control boundary;
+14. no automated state implies scientific or editorial acceptance; and
+15. publishing target entries, References BibTeX observations, and PDF/document
+    evidence remain distinct, and literal-key equality grants no authority.
 
 Snapshot incompleteness, unresolved or ambiguous identity, inaccessible bytes,
 missing processing admission, stale projection, link ambiguity, malformed PDF,
