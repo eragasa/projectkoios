@@ -133,6 +133,38 @@ FastAPI is an adapter, not the system.
 | `projectkoios.workflow`   | Tasks, states, process objects, workflow graphs, provenance, and generated artifacts.                                                        |
 | `projectkoios.api`        | FastAPI interface over the Project Koios system.                                                                                             |
 
+## Page-projection chunking boundary
+
+For citation-aligned page content, Ingestion owns and emits the exact
+`projectkoios.ingestion.page.projection.result.PageProjectionResult`. Search
+owns deterministic chunk derivation from that value, including the chunk
+contract version, Search-owned chunk identities, and deterministic
+rebuildability.
+
+The only permitted production dependency across this boundary is narrow and
+one-way:
+
+```text
+projectkoios-search
+  -> projectkoios.ingestion.page.projection.result.PageProjectionResult
+```
+
+`projectkoios-ingestion` must not import `projectkoios-search`. Only the Search
+chunk-derivation boundary may use the Ingestion leaf contract; Search indexing
+and retrieval modules remain independent of Ingestion. Search consumes the
+exact value directly. A duplicate DTO and an Applications-owned translation or
+mapping layer are not part of the current architecture.
+
+Applications retains cross-capability composition ownership, and Workflow
+retains generic orchestration, state, retry, and authoritative replay
+ownership. Search chunk
+derivation owns only deterministic mapping, validation, identity, and
+versioning. It receives no indexing, retrieval, publication, model-selection or
+model-execution, application-composition, or workflow-orchestration authority.
+
+This boundary supersedes older prototype descriptions in which Ingestion
+created `TextChunk` values and Search only received them.
+
 ## Adapter Namespace Direction
 
 The target distributed namespace includes `projectkoios.adapters` for nominal

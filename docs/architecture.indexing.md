@@ -4,7 +4,9 @@
 
 The `projectkoios.indexing` package stores `TextChunk` objects and provides a query interface for retrieving matching chunks.
 
-Indexing is the layer between ingestion and retrieval. It receives chunks produced by ingestion and makes them searchable.
+Indexing is the layer between Search chunk derivation and retrieval. It
+receives Search-owned chunks and makes them searchable without importing
+Ingestion.
 
 The first implementation is an in-memory chunk index. It is intended to make the repository-to-search pipeline testable before adding embeddings, vector databases, or external storage.
 
@@ -80,7 +82,8 @@ class ChunkIndex(Protocol):
     ) -> list[ChunkSearchResult]: ...
 ```
 
-The protocol allows later index implementations to replace the in-memory index without changing ingestion or RAG code.
+The protocol allows later index implementations to replace the in-memory index
+without changing Search chunk-derivation, API, or RAG code.
 
 Possible later implementations include:
 
@@ -117,7 +120,7 @@ This scoring rule is not intended to be final. It exists to make the full pipeli
 
 | Layer     | Object                   | Responsibility                                 |
 | --------- | ------------------------ | ---------------------------------------------- |
-| Ingestion | `CodeRepositoryIngester` | Produces `TextChunk` objects.                  |
+| Search chunk derivation | Search-owned derivation | Produces Search-owned chunks.                  |
 | Indexing  | `MemoryChunkIndex`       | Stores chunks and returns matching chunks.     |
 | RAG       | later                    | Builds grounded prompts from retrieved chunks. |
 
@@ -145,8 +148,8 @@ projectkoios.mcp
 Dependency direction:
 
 ```text
-ingestion produces chunks
-indexing stores and searches chunks
+Search chunk derivation produces Search-owned chunks
+indexing stores and searches those chunks independently of Ingestion
 rag consumes search results later
 ```
 
