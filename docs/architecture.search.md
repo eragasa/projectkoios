@@ -2,30 +2,41 @@
 
 ## Purpose
 
-The `projectkoios.search` package provides search over `TextChunk` objects.
+The `projectkoios.search` package owns deterministic, versioned chunk
+derivation, indexing, and retrieval. For citation-aligned page content, chunk
+derivation consumes the exact
+`projectkoios.ingestion.page.projection.result.PageProjectionResult` contract
+and produces Search-owned chunks for downstream Search modules.
 
-Search is the layer that receives chunks, stores them in a searchable structure, and returns matching chunks as search results.
-
-The first implementation is an in-memory keyword search index. It exists to make the pipeline executable and testable before adding SQLite FTS, vector search, hybrid retrieval, or external databases.
+This boundary supersedes this page's earlier prototype rule that Search only
+receives `TextChunk` objects, does not chunk, and must not import Ingestion.
+The first prototype used an in-memory keyword index over `TextChunk`; that
+prototype does not define the current cross-repository chunking boundary.
 
 ## Package Boundary
 
 The package is responsible for:
 
-* accepting `TextChunk` objects
-* storing chunks in a searchable index
+* deriving chunks deterministically under an explicit contract version from
+  exact `PageProjectionResult` values
+* owning the resulting chunk contracts and identities
+* storing Search-owned chunks in searchable indexes
 * searching chunks by query text
 * scoring matching chunks
-* returning `ChunkSearchResult` objects
-* preserving chunk provenance
+* returning Search-owned results
+* preserving page-projection provenance
 
 The package is not responsible for:
 
 * discovering repositories
 * loading files
-* chunking text
-* coordinating ingestion
-* extracting text from PDFs
+* coordinating or implementing ingestion
+* extracting or projecting text from PDFs
+* having chunk derivation index or retrieve
+* having chunk derivation publish chunks or source material
+* having chunk derivation select or invoke models
+* having chunk derivation orchestrate workflows
+* composing applications
 * building RAG prompts
 * calling an LLM
 * exposing HTTP endpoints
@@ -141,15 +152,20 @@ This keeps the default local application usable while still allowing dependency 
 
 ## Responsibility Split
 
-| Layer          | Object                   | Responsibility                                                         |
-| -------------- | ------------------------ | ---------------------------------------------------------------------- |
-| Ingestion      | `CodeRepositoryIngester` | Produces `TextChunk` objects.                                          |
-| Search         | `MemorySearchIndex`      | Stores chunks and returns matching chunks.                             |
-| Search service | `SearchService`          | Provides application-level access to a `SearchIndex`.                  |
-| API            | `create_search_router`   | Converts API request/response models to and from search service calls. |
-| RAG            | later                    | Builds grounded prompts from search results.                           |
+| Layer | Responsibility |
+| --- | --- |
+| Ingestion page projection | Produces the exact `PageProjectionResult`. |
+| Search chunk derivation | Deterministically derives Search-owned chunks under an explicit version. |
+| Search indexing | Stores Search-owned chunks without importing Ingestion. |
+| Search retrieval | Ranks and returns Search-owned evidence without importing Ingestion. |
+| Applications | Composes cross-capability application calls without translating this leaf contract. |
+| Workflow | Owns generic orchestration, state, retries, and authoritative replay. |
 
-The search package receives chunks. It does not know how those chunks were produced.
+Chunk derivation is a narrow Search operation between page projection and the
+independent indexing/retrieval modules. It owns only deterministic mapping,
+validation, identity, and versioning. It receives no indexing, retrieval,
+publication, model-selection or model-execution, application-composition, or
+workflow-orchestration authority.
 
 ## API Boundary
 
@@ -173,30 +189,43 @@ The search package owns `ChunkSearchResult`.
 
 ## Dependency Direction
 
-The search package may import from:
+A narrow production dependency is permitted in one direction only:
 
 ```text
-projectkoios.chunking
+projectkoios-search
+  -> projectkoios.ingestion.page.projection.result.PageProjectionResult
 ```
 
-The search package must not import from:
+Only the Search chunk-derivation boundary may use that exact leaf contract.
+Search indexing and retrieval modules must remain independent of Ingestion, and
+`projectkoios-ingestion` must not import `projectkoios-search`. No broader
+Ingestion API becomes a Search dependency.
+
+Search consumes the exact owner contract directly. A duplicate DTO and an
+Applications-owned translation or mapping layer are rejected for this boundary
+unless a later product-architecture review changes the decision. Applications
+retains cross-capability composition ownership, and Workflow retains generic
+orchestration ownership; neither takes ownership of the leaf value or its
+chunk-derivation semantics.
+
+The remaining prohibited directions are:
 
 ```text
-projectkoios.api
-projectkoios.repositories
-projectkoios.ingestion
-projectkoios.rag
-projectkoios.llm
-projectkoios.mcp
+projectkoios.search -> projectkoios.api
+projectkoios.search -> projectkoios.repositories
+projectkoios.search -> projectkoios.rag
+projectkoios.search -> projectkoios.llm
+projectkoios.search -> projectkoios.mcp
+projectkoios.ingestion -> projectkoios.search
 ```
 
-Dependency direction:
+Boundary flow:
 
 ```text
-chunking produces TextChunk
-ingestion supplies TextChunk objects to search
-search returns ChunkSearchResult
-api and rag consume search results
+Ingestion emits exact PageProjectionResult
+  -> Search derives deterministic versioned chunks
+  -> independent Search indexing and retrieval consume Search-owned chunks
+  -> API and RAG consume Search results
 ```
 
 ## Public API
@@ -278,6 +307,12 @@ Current `SearchService` test behaviors:
 
 ## Package Invariant
 
-The `projectkoios.search` package is valid when it can store `TextChunk` objects, search them through a stable interface, and return `ChunkSearchResult` objects without knowing how the chunks were produced.
+The `projectkoios.search` package is valid when it can deterministically
+reconstruct equivalent chunks from an exact `PageProjectionResult` under an
+explicit version and its independent indexing and retrieval modules can consume
+the Search-owned output through stable interfaces.
 
-It must not load files, chunk text, coordinate ingestion, build RAG prompts, call an LLM, expose API endpoints, expose MCP tools, or modify source repositories.
+It must not load files, coordinate Ingestion, broaden the permitted Ingestion
+import, publish content, select or invoke models, orchestrate workflows, compose
+applications, build RAG prompts, call an LLM, expose API or MCP endpoints, or
+modify source repositories.

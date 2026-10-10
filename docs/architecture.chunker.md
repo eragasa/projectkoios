@@ -103,19 +103,22 @@ Repository loaders produce source objects.
 
 Chunkers produce chunks.
 
-Ingesters later coordinate loaders and chunkers.
+In the legacy repository/line-chunking prototype, ingesters coordinated loaders
+and chunkers. That statement does not govern `PageProjectionResult`.
 
 | Layer              | Example object                 | Responsibility                                        |
 | ------------------ | ------------------------------ | ----------------------------------------------------- |
 | Repository loading | `CodeRepositoryLoader`         | Loads `CodeFile` objects.                             |
 | Chunking           | `LineChunker`                  | Converts text into `TextChunk` objects.               |
-| Ingestion          | `CodeRepositoryIngester` later | Calls loader, calls chunker, sends chunks downstream. |
+| Superseded prototype | `CodeRepositoryIngester` | Historical LineChunker coordination only; Search owns current page-projection chunk derivation. |
 
 The chunking package must not import `projectkoios.repositories.code`.
 
 The repository package must not import `projectkoios.chunking`.
 
-A later ingestion package may import both.
+The legacy repository/line-chunking ingestion package could import both. That
+statement likewise does not govern `PageProjectionResult`; Search owns current
+page-projection chunk derivation.
 
 ## Chunker Interface
 

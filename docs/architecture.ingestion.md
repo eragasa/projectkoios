@@ -2,30 +2,29 @@
 
 ## Purpose
 
-The `projectkoios.ingestion` package coordinates source loading and chunking.
+The `projectkoios.ingestion` package owns source processing, canonical evidence,
+and page projection. For citation-aligned page content, Ingestion emits the
+exact `projectkoios.ingestion.page.projection.result.PageProjectionResult` and
+stops at that contract.
 
-Ingestion turns loaded source objects into `TextChunk` objects that can later be indexed, searched, cited, or passed into RAG.
-
-The package does not define repository models or chunk models. It uses existing loaders and chunkers.
-
-The first implemented ingester is `CodeRepositoryIngester`.
+Search owns deterministic, versioned chunk derivation from the exact result.
+This boundary supersedes the earlier prototype design in which Ingestion
+coordinated chunking and emitted `TextChunk` objects. The
+`CodeRepositoryIngester` material below describes that superseded prototype,
+not current cross-repository ownership.
 
 ## Package Boundary
 
 The package is responsible for:
 
-* receiving a source repository object
-* calling the appropriate repository loader
-* passing loaded source text to a chunker
-* yielding `TextChunk` objects
-* preserving source provenance from loaded files into chunks
+* processing admitted sources into canonical evidence
+* preserving source and evidence provenance
+* deriving canonical citation-aligned page projections
+* emitting the exact `PageProjectionResult` owner contract
 
 The package is not responsible for:
 
-* discovering repository roots
-* loading files directly
-* defining source file models
-* defining chunk models
+* deriving or defining Search chunks
 * indexing chunks
 * searching chunks
 * embedding chunks
@@ -36,7 +35,7 @@ The package is not responsible for:
 * exposing MCP tools
 * modifying source repositories
 
-## Package Layout
+## Superseded prototype layout
 
 ```text
 src/python/projectkoios/ingestion/
@@ -44,38 +43,40 @@ src/python/projectkoios/ingestion/
 └── code_repository_ingester.py
 ```
 
-## Core Objects
+## Superseded prototype object
 
-| Object                   | Meaning                                                                     | Status  |
-| ------------------------ | --------------------------------------------------------------------------- | ------- |
-| `CodeRepositoryIngester` | Coordinates `CodeRepositoryLoader` and `LineChunker` for code repositories. | current |
+| Object | Meaning | Status |
+| --- | --- | --- |
+| `CodeRepositoryIngester` | Coordinated `CodeRepositoryLoader` and `LineChunker` for code repositories. | superseded prototype |
 
 ## Responsibility Split
 
-| Layer          | Object                   | Responsibility                                                    |
-| -------------- | ------------------------ | ----------------------------------------------------------------- |
-| Source loading | `CodeRepositoryLoader`   | Loads `CodeFile` objects from a `CodeRepository`.                 |
-| Chunking       | `LineChunker`            | Converts text into `TextChunk` objects.                           |
-| Ingestion      | `CodeRepositoryIngester` | Calls the loader and chunker to produce chunks from a repository. |
+| Layer | Responsibility |
+| --- | --- |
+| Ingestion evidence and page projection | Produces the exact `PageProjectionResult`. |
+| Search chunk derivation | Imports that exact leaf contract and derives deterministic, versioned Search chunks. |
+| Applications | Owns cross-capability application composition without translating the leaf contract. |
+| Workflow | Owns generic orchestration, state, retries, and replay. |
 
-The ingester owns the loop over source files.
+Ingestion does not own the loop that derives Search chunks. Chunk derivation
+does not grant Ingestion or Search's derivation module indexing, retrieval,
+publication, model-selection or model-execution, application-composition, or
+workflow-orchestration authority.
 
-The loader does not know about chunking.
+## Superseded `CodeRepositoryIngester` prototype
 
-The chunker does not know about repositories.
+The prototype `CodeRepositoryIngester` converted a `CodeRepository` into an
+iterator of `TextChunk` objects. That behavior does not define the current
+Ingestion-to-Search boundary.
 
-## `CodeRepositoryIngester`
-
-`CodeRepositoryIngester` converts a `CodeRepository` into an iterator of `TextChunk` objects.
-
-It receives its dependencies explicitly:
+It received its dependencies explicitly:
 
 | Dependency             | Role                                                |
 | ---------------------- | --------------------------------------------------- |
 | `CodeRepositoryLoader` | Provides `CodeFile` objects.                        |
 | `LineChunker`          | Converts each file’s text into `TextChunk` objects. |
 
-Current constructor shape:
+Prototype constructor shape:
 
 ```python
 class CodeRepositoryIngester:
@@ -86,7 +87,7 @@ class CodeRepositoryIngester:
     ) -> None: ...
 ```
 
-Current ingestion method shape:
+Prototype ingestion method shape:
 
 ```python
 def iter_chunks(
@@ -102,9 +103,9 @@ The method:
 3. calls `chunker.chunk_text(...)`
 4. yields each `TextChunk`
 
-## Provenance Mapping
+## Superseded prototype provenance mapping
 
-The ingester maps `CodeFile` fields into chunk provenance.
+The prototype ingester mapped `CodeFile` fields into chunk provenance.
 
 | `CodeFile` field | `TextChunk` field           |
 | ---------------- | --------------------------- |
@@ -113,41 +114,34 @@ The ingester maps `CodeFile` fields into chunk provenance.
 | file role        | `source_kind = "code_file"` |
 | `text`           | input to chunker            |
 
-The ingester uses repository-relative paths, not absolute file paths, for `TextChunk.source_path`.
+The prototype used repository-relative paths, not absolute file paths, for
+`TextChunk.source_path`. This mapping grants no current chunk ownership to
+Ingestion.
 
 ## Dependency Direction
 
-The ingestion package may import from:
+The current production dependency is narrow and one-way:
 
 ```text
-projectkoios.repositories.code
-projectkoios.chunking
+projectkoios-search
+  -> projectkoios.ingestion.page.projection.result.PageProjectionResult
 ```
 
-The following packages must not import from `projectkoios.ingestion`:
+`projectkoios-ingestion` must not import `projectkoios-search`. Search consumes
+the exact leaf value directly; a duplicate DTO and an Applications-owned
+translation or mapping layer are not part of the current architecture.
+Applications retains composition ownership, and Workflow retains orchestration
+ownership.
 
-```text
-projectkoios.repositories.code
-projectkoios.chunking
-```
+## Superseded prototype public API
 
-Dependency direction:
-
-```text
-ingestion imports repositories and chunking
-repositories do not import ingestion
-chunking does not import ingestion
-```
-
-## Public API
-
-The current public API is exported from:
+The prototype public API was exported from:
 
 ```text
 projectkoios.ingestion
 ```
 
-Current public objects:
+Prototype public objects:
 
 ```python
 CodeRepositoryIngester
@@ -169,21 +163,21 @@ ingester = CodeRepositoryIngester(
 chunks = ingester.iter_chunks(repository)
 ```
 
-## Tests
+## Superseded prototype tests
 
-Tests belong under:
+Prototype tests belonged under:
 
 ```text
 tests/projectkoios/ingestion/
 ```
 
-Current test file:
+Prototype test file:
 
 ```text
 tests/projectkoios/ingestion/test__CodeRepositoryIngester.py
 ```
 
-Current test behaviors:
+Prototype test behaviors:
 
 | Test                                                    | Behavior                                            |
 | ------------------------------------------------------- | --------------------------------------------------- |
@@ -196,6 +190,10 @@ Tests should use temporary directories and the real `CodeRepositoryLoader` and `
 
 ## Package Invariant
 
-The `projectkoios.ingestion` package is valid when it can coordinate source loading and chunking without taking ownership of either concern.
+The `projectkoios.ingestion` package is valid when it can produce canonical
+source evidence and the exact `PageProjectionResult` without deriving Search
+chunks or depending on Search.
 
-It must not load files directly, define chunking strategy, index chunks, search chunks, call an LLM, expose API endpoints, expose MCP tools, or modify repository contents.
+It must not own Search chunk contracts or derivation, index or retrieve chunks,
+publish content, select or invoke models, compose applications, orchestrate
+workflows, call an LLM, expose API or MCP endpoints, or modify source material.
