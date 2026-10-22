@@ -1,0 +1,1943 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "ART-F1",
+      "commit": "26603110e9d64cd51c9101eff68060307f258a18",
+      "locators": [
+        {
+          "end_line": 28,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        },
+        {
+          "end_line": 95,
+          "kind": "LINE_RANGE",
+          "start_line": 84
+        }
+      ],
+      "owner_repository_id": "REPO-FORMAL",
+      "owner_repository_semantic_id": "projectkoios.formal",
+      "path": "docs/formal-vs-numerical-evidence.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/formal-vs-numerical-evidence.md#L1-L28"
+    },
+    {
+      "artifact_id": "ART-F2",
+      "commit": "26603110e9d64cd51c9101eff68060307f258a18",
+      "locators": [
+        {
+          "end_line": 33,
+          "kind": "LINE_RANGE",
+          "start_line": 9
+        }
+      ],
+      "owner_repository_id": "REPO-FORMAL",
+      "owner_repository_semantic_id": "projectkoios.formal",
+      "path": "proofs/BandGauge/Papers/Ragasa2026A/BG-RAGASA2026A-THM-032-constructed-false-positive.tex",
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/proofs/BandGauge/Papers/Ragasa2026A/BG-RAGASA2026A-THM-032-constructed-false-positive.tex#L9-L33"
+    },
+    {
+      "artifact_id": "ART-F3A",
+      "commit": "26603110e9d64cd51c9101eff68060307f258a18",
+      "locators": [
+        {
+          "end_line": 1,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        }
+      ],
+      "owner_repository_id": "REPO-FORMAL",
+      "owner_repository_semantic_id": "projectkoios.formal",
+      "path": "lean-toolchain",
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/lean-toolchain#L1-L1"
+    },
+    {
+      "artifact_id": "ART-F3B",
+      "commit": "26603110e9d64cd51c9101eff68060307f258a18",
+      "locators": [
+        {
+          "end_line": 8,
+          "kind": "LINE_RANGE",
+          "start_line": 5
+        }
+      ],
+      "owner_repository_id": "REPO-FORMAL",
+      "owner_repository_semantic_id": "projectkoios.formal",
+      "path": "lakefile.toml",
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/lakefile.toml#L5-L8"
+    },
+    {
+      "artifact_id": "ART-F4",
+      "commit": "26603110e9d64cd51c9101eff68060307f258a18",
+      "locators": [
+        {
+          "end_line": 31,
+          "kind": "LINE_RANGE",
+          "start_line": 15
+        }
+      ],
+      "owner_repository_id": "REPO-FORMAL",
+      "owner_repository_semantic_id": "projectkoios.formal",
+      "path": "docs/certificates.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/certificates.md#L15-L31"
+    },
+    {
+      "artifact_id": "ART-F5",
+      "commit": "26603110e9d64cd51c9101eff68060307f258a18",
+      "locators": [
+        {
+          "end_line": 18,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        }
+      ],
+      "owner_repository_id": "REPO-FORMAL",
+      "owner_repository_semantic_id": "projectkoios.formal",
+      "path": "docs/theorem-manifest.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/theorem-manifest.md#L1-L18"
+    },
+    {
+      "artifact_id": "ART-H1",
+      "commit": "7fa09bc3b631984d3b049b00d858935575d5687d",
+      "locators": [
+        {
+          "end_line": 14,
+          "kind": "LINE_RANGE",
+          "start_line": 8
+        },
+        {
+          "end_line": 59,
+          "kind": "LINE_RANGE",
+          "start_line": 31
+        }
+      ],
+      "owner_repository_id": "REPO-BOOTSTRAP",
+      "owner_repository_semantic_id": "projectkoios.bootstrap",
+      "path": "docs/harness-incubation.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-bootstrap",
+      "url": "https://github.com/eragasa/projectkoios-bootstrap/blob/7fa09bc3b631984d3b049b00d858935575d5687d/docs/harness-incubation.md#L8-L14"
+    },
+    {
+      "artifact_id": "ART-H2",
+      "commit": "7fa09bc3b631984d3b049b00d858935575d5687d",
+      "locators": [
+        {
+          "end_line": 30,
+          "kind": "LINE_RANGE",
+          "start_line": 3
+        },
+        {
+          "end_line": 101,
+          "kind": "LINE_RANGE",
+          "start_line": 51
+        }
+      ],
+      "owner_repository_id": "REPO-BOOTSTRAP",
+      "owner_repository_semantic_id": "projectkoios.bootstrap",
+      "path": "docs/candidates/coordinator-startup.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-bootstrap",
+      "url": "https://github.com/eragasa/projectkoios-bootstrap/blob/7fa09bc3b631984d3b049b00d858935575d5687d/docs/candidates/coordinator-startup.md#L3-L30"
+    },
+    {
+      "artifact_id": "ART-H3",
+      "commit": "7fa09bc3b631984d3b049b00d858935575d5687d",
+      "locators": [
+        {
+          "end_line": 14,
+          "kind": "LINE_RANGE",
+          "start_line": 3
+        },
+        {
+          "end_line": 86,
+          "kind": "LINE_RANGE",
+          "start_line": 39
+        }
+      ],
+      "owner_repository_id": "REPO-BOOTSTRAP",
+      "owner_repository_semantic_id": "projectkoios.bootstrap",
+      "path": "docs/candidates/named-repository-sessions.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-bootstrap",
+      "url": "https://github.com/eragasa/projectkoios-bootstrap/blob/7fa09bc3b631984d3b049b00d858935575d5687d/docs/candidates/named-repository-sessions.md#L3-L14"
+    },
+    {
+      "artifact_id": "ART-H4",
+      "commit": "7fa09bc3b631984d3b049b00d858935575d5687d",
+      "locators": [
+        {
+          "end_line": 9,
+          "kind": "LINE_RANGE",
+          "start_line": 3
+        },
+        {
+          "end_line": 67,
+          "kind": "LINE_RANGE",
+          "start_line": 49
+        },
+        {
+          "end_line": 139,
+          "kind": "LINE_RANGE",
+          "start_line": 94
+        }
+      ],
+      "owner_repository_id": "REPO-BOOTSTRAP",
+      "owner_repository_semantic_id": "projectkoios.bootstrap",
+      "path": "docs/candidates/herdr-session-continuity.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-bootstrap",
+      "url": "https://github.com/eragasa/projectkoios-bootstrap/blob/7fa09bc3b631984d3b049b00d858935575d5687d/docs/candidates/herdr-session-continuity.md#L3-L9"
+    },
+    {
+      "artifact_id": "ART-K1",
+      "commit": "5aaff25b784c7d1bc079a3030a73be387dc11a0f",
+      "locators": [
+        {
+          "end_line": 8,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        },
+        {
+          "end_line": 222,
+          "kind": "LINE_RANGE",
+          "start_line": 159
+        }
+      ],
+      "owner_repository_id": "REPO-KSD",
+      "owner_repository_semantic_id": "ksdft2effmass",
+      "path": "calculations/research-monograph/particle-in-box/README.md",
+      "public_remote": "https://github.com/eragasa/ksdft2effmass",
+      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/calculations/research-monograph/particle-in-box/README.md#L1-L8"
+    },
+    {
+      "artifact_id": "ART-K2",
+      "commit": "5aaff25b784c7d1bc079a3030a73be387dc11a0f",
+      "locators": [
+        {
+          "end_line": 38,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        }
+      ],
+      "owner_repository_id": "REPO-KSD",
+      "owner_repository_semantic_id": "ksdft2effmass",
+      "path": "calculations/research-monograph/particle-in-box/SHA256SUMS",
+      "public_remote": "https://github.com/eragasa/ksdft2effmass",
+      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/calculations/research-monograph/particle-in-box/SHA256SUMS#L1-L38"
+    },
+    {
+      "artifact_id": "ART-K3",
+      "commit": "5aaff25b784c7d1bc079a3030a73be387dc11a0f",
+      "locators": [
+        {
+          "end_line": 87,
+          "kind": "LINE_RANGE",
+          "start_line": 85
+        },
+        {
+          "end_line": 168,
+          "kind": "LINE_RANGE",
+          "start_line": 146
+        }
+      ],
+      "owner_repository_id": "REPO-KSD",
+      "owner_repository_semantic_id": "ksdft2effmass",
+      "path": "calculations/research-monograph/particle-in-box/protocol.md",
+      "public_remote": "https://github.com/eragasa/ksdft2effmass",
+      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/calculations/research-monograph/particle-in-box/protocol.md#L85-L87"
+    },
+    {
+      "artifact_id": "ART-K4",
+      "commit": "5aaff25b784c7d1bc079a3030a73be387dc11a0f",
+      "locators": [
+        {
+          "end_line": 18,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        }
+      ],
+      "owner_repository_id": "REPO-KSD",
+      "owner_repository_semantic_id": "ksdft2effmass",
+      "path": "calculations/research-monograph/impurity-defect-2d/DEPRECATION.md",
+      "public_remote": "https://github.com/eragasa/ksdft2effmass",
+      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/calculations/research-monograph/impurity-defect-2d/DEPRECATION.md#L1-L18"
+    },
+    {
+      "artifact_id": "ART-K5",
+      "commit": "5aaff25b784c7d1bc079a3030a73be387dc11a0f",
+      "locators": [
+        {
+          "end_line": 14,
+          "kind": "LINE_RANGE",
+          "start_line": 3
+        },
+        {
+          "end_line": 57,
+          "kind": "LINE_RANGE",
+          "start_line": 48
+        }
+      ],
+      "owner_repository_id": "REPO-KSD",
+      "owner_repository_semantic_id": "ksdft2effmass",
+      "path": "experiments/periodic-reduction/composite-band-alignment-and-locality/periodic1d/README.md",
+      "public_remote": "https://github.com/eragasa/ksdft2effmass",
+      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/experiments/periodic-reduction/composite-band-alignment-and-locality/periodic1d/README.md#L3-L14"
+    },
+    {
+      "artifact_id": "ART-K6",
+      "commit": "5aaff25b784c7d1bc079a3030a73be387dc11a0f",
+      "locators": [
+        {
+          "end_line": 114,
+          "kind": "LINE_RANGE",
+          "start_line": 88
+        }
+      ],
+      "owner_repository_id": "REPO-KSD",
+      "owner_repository_semantic_id": "ksdft2effmass",
+      "path": "experiments/periodic-reduction/composite-band-alignment-and-locality/periodic1d/protocol.md",
+      "public_remote": "https://github.com/eragasa/ksdft2effmass",
+      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/experiments/periodic-reduction/composite-band-alignment-and-locality/periodic1d/protocol.md#L88-L114"
+    },
+    {
+      "artifact_id": "ART-K7",
+      "commit": "5aaff25b784c7d1bc079a3030a73be387dc11a0f",
+      "locators": [
+        {
+          "end_line": 30,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        },
+        {
+          "end_line": 69,
+          "kind": "LINE_RANGE",
+          "start_line": 32
+        },
+        {
+          "end_line": 95,
+          "kind": "LINE_RANGE",
+          "start_line": 71
+        }
+      ],
+      "owner_repository_id": "REPO-KSD",
+      "owner_repository_semantic_id": "ksdft2effmass",
+      "path": "THIRD_PARTY_NOTICES.md",
+      "public_remote": "https://github.com/eragasa/ksdft2effmass",
+      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/THIRD_PARTY_NOTICES.md#L1-L30"
+    },
+    {
+      "artifact_id": "ART-K8",
+      "commit": "5aaff25b784c7d1bc079a3030a73be387dc11a0f",
+      "locators": [
+        {
+          "end_line": 28,
+          "kind": "LINE_RANGE",
+          "start_line": 17
+        }
+      ],
+      "owner_repository_id": "REPO-KSD",
+      "owner_repository_semantic_id": "ksdft2effmass",
+      "path": "docs/publications/research-monograph/chapters/preface.tex",
+      "public_remote": "https://github.com/eragasa/ksdft2effmass",
+      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/docs/publications/research-monograph/chapters/preface.tex#L17-L28"
+    },
+    {
+      "artifact_id": "ART-M1",
+      "commit": "965181d89d607fb00469560c94fd50b7a28eaa9d",
+      "locators": [
+        {
+          "end_line": 57,
+          "kind": "LINE_RANGE",
+          "start_line": 43
+        }
+      ],
+      "owner_repository_id": "REPO-MOTHERSHIP",
+      "owner_repository_semantic_id": "projectkoios",
+      "path": "docs/architecture.scientific-platform-thesis.md",
+      "public_remote": "https://github.com/eragasa/projectkoios",
+      "url": "https://github.com/eragasa/projectkoios/blob/965181d89d607fb00469560c94fd50b7a28eaa9d/docs/architecture.scientific-platform-thesis.md#L43-L57"
+    },
+    {
+      "artifact_id": "ART-M2",
+      "commit": "965181d89d607fb00469560c94fd50b7a28eaa9d",
+      "locators": [
+        {
+          "end_line": 67,
+          "kind": "LINE_RANGE",
+          "start_line": 60
+        }
+      ],
+      "owner_repository_id": "REPO-MOTHERSHIP",
+      "owner_repository_semantic_id": "projectkoios",
+      "path": "docs/architecture/README.md",
+      "public_remote": "https://github.com/eragasa/projectkoios",
+      "url": "https://github.com/eragasa/projectkoios/blob/965181d89d607fb00469560c94fd50b7a28eaa9d/docs/architecture/README.md#L60-L67"
+    },
+    {
+      "artifact_id": "ART-M3",
+      "commit": "965181d89d607fb00469560c94fd50b7a28eaa9d",
+      "locators": [
+        {
+          "end_line": 148,
+          "kind": "LINE_RANGE",
+          "start_line": 135
+        }
+      ],
+      "owner_repository_id": "REPO-MOTHERSHIP",
+      "owner_repository_semantic_id": "projectkoios",
+      "path": "docs/policies/task-and-recovery-records.md",
+      "public_remote": "https://github.com/eragasa/projectkoios",
+      "url": "https://github.com/eragasa/projectkoios/blob/965181d89d607fb00469560c94fd50b7a28eaa9d/docs/policies/task-and-recovery-records.md#L135-L148"
+    },
+    {
+      "artifact_id": "ART-O1",
+      "commit": "b722edab216ef416b8b4affa902b04a26e3da98b",
+      "locators": [
+        {
+          "end_line": 27,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        },
+        {
+          "end_line": 165,
+          "kind": "LINE_RANGE",
+          "start_line": 132
+        }
+      ],
+      "owner_repository_id": "REPO-OPTIMIZATION",
+      "owner_repository_semantic_id": "projectkoios.optimization",
+      "path": "README.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-optimization",
+      "url": "https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/README.md#L1-L27"
+    },
+    {
+      "artifact_id": "ART-O2",
+      "commit": "b722edab216ef416b8b4affa902b04a26e3da98b",
+      "locators": [
+        {
+          "end_line": 86,
+          "kind": "LINE_RANGE",
+          "start_line": 21
+        }
+      ],
+      "owner_repository_id": "REPO-OPTIMIZATION",
+      "owner_repository_semantic_id": "projectkoios.optimization",
+      "path": "tests/projectkoios/numerics/finite_periodic/numpy/finite_series/test__NumpyFiniteFourierSeriesEvaluator__numerical.py",
+      "public_remote": "https://github.com/eragasa/projectkoios-optimization",
+      "url": "https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/tests/projectkoios/numerics/finite_periodic/numpy/finite_series/test__NumpyFiniteFourierSeriesEvaluator__numerical.py#L21-L86"
+    },
+    {
+      "artifact_id": "ART-O3",
+      "commit": "b722edab216ef416b8b4affa902b04a26e3da98b",
+      "locators": [
+        {
+          "end_line": 170,
+          "kind": "LINE_RANGE",
+          "start_line": 83
+        }
+      ],
+      "owner_repository_id": "REPO-OPTIMIZATION",
+      "owner_repository_semantic_id": "projectkoios.optimization",
+      "path": "tests/projectkoios/numerics/finite_periodic/numpy/test__NumpyFinitePeriodicTransforms__integration.py",
+      "public_remote": "https://github.com/eragasa/projectkoios-optimization",
+      "url": "https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/tests/projectkoios/numerics/finite_periodic/numpy/test__NumpyFinitePeriodicTransforms__integration.py#L83-L170"
+    },
+    {
+      "artifact_id": "ART-O4",
+      "commit": "b722edab216ef416b8b4affa902b04a26e3da98b",
+      "locators": [
+        {
+          "end_line": 73,
+          "kind": "LINE_RANGE",
+          "start_line": 63
+        }
+      ],
+      "owner_repository_id": "REPO-OPTIMIZATION",
+      "owner_repository_semantic_id": "projectkoios.optimization",
+      "path": "docs/architecture/projectkoios/numerics/finite_periodic/transforms/numerics.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-optimization",
+      "url": "https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/docs/architecture/projectkoios/numerics/finite_periodic/transforms/numerics.md#L63-L73"
+    },
+    {
+      "artifact_id": "ART-O5",
+      "commit": "b722edab216ef416b8b4affa902b04a26e3da98b",
+      "locators": [
+        {
+          "end_line": 17,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        }
+      ],
+      "owner_repository_id": "REPO-OPTIMIZATION",
+      "owner_repository_semantic_id": "projectkoios.optimization",
+      "path": "NOTICE",
+      "public_remote": "https://github.com/eragasa/projectkoios-optimization",
+      "url": "https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/NOTICE#L1-L17"
+    },
+    {
+      "artifact_id": "ART-O6",
+      "commit": "00c60201d16f2ee61e5fffd83a1a1f24cd327672",
+      "locators": [
+        {
+          "end_line": 170,
+          "kind": "LINE_RANGE",
+          "start_line": 140
+        }
+      ],
+      "owner_repository_id": "REPO-OPTIMIZATION",
+      "owner_repository_semantic_id": "projectkoios.optimization",
+      "path": "tests/projectkoios/numerics/finite_periodic/numpy/test__NumpyFinitePeriodicTransforms__integration.py",
+      "public_remote": "https://github.com/eragasa/projectkoios-optimization",
+      "url": "https://github.com/eragasa/projectkoios-optimization/blob/00c60201d16f2ee61e5fffd83a1a1f24cd327672/tests/projectkoios/numerics/finite_periodic/numpy/test__NumpyFinitePeriodicTransforms__integration.py#L140-L170"
+    },
+    {
+      "artifact_id": "ART-O7",
+      "commit": "b722edab216ef416b8b4affa902b04a26e3da98b",
+      "locators": [
+        {
+          "end_line": 13,
+          "kind": "LINE_RANGE",
+          "start_line": 6
+        }
+      ],
+      "owner_repository_id": "REPO-OPTIMIZATION",
+      "owner_repository_semantic_id": "projectkoios.optimization",
+      "path": "pyproject.toml",
+      "public_remote": "https://github.com/eragasa/projectkoios-optimization",
+      "url": "https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/pyproject.toml#L6-L13"
+    },
+    {
+      "artifact_id": "ART-P1",
+      "commit": "11e58938ac8d0022f9e6df3aba7ca8757b4a9f88",
+      "locators": [
+        {
+          "end_line": 94,
+          "kind": "LINE_RANGE",
+          "start_line": 42
+        }
+      ],
+      "owner_repository_id": "REPO-PHYSKIT",
+      "owner_repository_semantic_id": "projectkoios.physkit",
+      "path": "tests/projectkoios/physkit/solidstate/interatomic_potentials/pair/morse/test__MorsePotential__evaluate.py",
+      "public_remote": "https://github.com/eragasa/projectkoios-physkit",
+      "url": "https://github.com/eragasa/projectkoios-physkit/blob/11e58938ac8d0022f9e6df3aba7ca8757b4a9f88/tests/projectkoios/physkit/solidstate/interatomic_potentials/pair/morse/test__MorsePotential__evaluate.py#L42-L94"
+    },
+    {
+      "artifact_id": "ART-P2",
+      "commit": "11e58938ac8d0022f9e6df3aba7ca8757b4a9f88",
+      "locators": [
+        {
+          "end_line": 37,
+          "kind": "LINE_RANGE",
+          "start_line": 32
+        }
+      ],
+      "owner_repository_id": "REPO-PHYSKIT",
+      "owner_repository_semantic_id": "projectkoios.physkit",
+      "path": "docs/provenance/periodic-cosine-potential-library.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-physkit",
+      "url": "https://github.com/eragasa/projectkoios-physkit/blob/11e58938ac8d0022f9e6df3aba7ca8757b4a9f88/docs/provenance/periodic-cosine-potential-library.md#L32-L37"
+    },
+    {
+      "artifact_id": "ART-P3",
+      "commit": "11e58938ac8d0022f9e6df3aba7ca8757b4a9f88",
+      "locators": [
+        {
+          "end_line": 24,
+          "kind": "LINE_RANGE",
+          "start_line": 9
+        },
+        {
+          "end_line": 75,
+          "kind": "LINE_RANGE",
+          "start_line": 51
+        }
+      ],
+      "owner_repository_id": "REPO-PHYSKIT",
+      "owner_repository_semantic_id": "projectkoios.physkit",
+      "path": "docs/provenance/oblique-periodic-boundary-prototype-review.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-physkit",
+      "url": "https://github.com/eragasa/projectkoios-physkit/blob/11e58938ac8d0022f9e6df3aba7ca8757b4a9f88/docs/provenance/oblique-periodic-boundary-prototype-review.md#L9-L24"
+    },
+    {
+      "artifact_id": "ART-P4",
+      "commit": "11e58938ac8d0022f9e6df3aba7ca8757b4a9f88",
+      "locators": [
+        {
+          "end_line": 21,
+          "kind": "LINE_RANGE",
+          "start_line": 10
+        },
+        {
+          "end_line": 147,
+          "kind": "LINE_RANGE",
+          "start_line": 114
+        }
+      ],
+      "owner_repository_id": "REPO-PHYSKIT",
+      "owner_repository_semantic_id": "projectkoios.physkit",
+      "path": "docs/provenance/finite-periodic-lattice-source-mapping.md",
+      "public_remote": "https://github.com/eragasa/projectkoios-physkit",
+      "url": "https://github.com/eragasa/projectkoios-physkit/blob/11e58938ac8d0022f9e6df3aba7ca8757b4a9f88/docs/provenance/finite-periodic-lattice-source-mapping.md#L10-L21"
+    },
+    {
+      "artifact_id": "ART-P5",
+      "commit": "11e58938ac8d0022f9e6df3aba7ca8757b4a9f88",
+      "locators": [
+        {
+          "end_line": 6,
+          "kind": "LINE_RANGE",
+          "start_line": 1
+        }
+      ],
+      "owner_repository_id": "REPO-PHYSKIT",
+      "owner_repository_semantic_id": "projectkoios.physkit",
+      "path": "NOTICE",
+      "public_remote": "https://github.com/eragasa/projectkoios-physkit",
+      "url": "https://github.com/eragasa/projectkoios-physkit/blob/11e58938ac8d0022f9e6df3aba7ca8757b4a9f88/NOTICE#L1-L6"
+    },
+    {
+      "artifact_id": "ART-P6",
+      "commit": "11e58938ac8d0022f9e6df3aba7ca8757b4a9f88",
+      "locators": [
+        {
+          "end_line": 12,
+          "kind": "LINE_RANGE",
+          "start_line": 5
+        }
+      ],
+      "owner_repository_id": "REPO-PHYSKIT",
+      "owner_repository_semantic_id": "projectkoios.physkit",
+      "path": "pyproject.toml",
+      "public_remote": "https://github.com/eragasa/projectkoios-physkit",
+      "url": "https://github.com/eragasa/projectkoios-physkit/blob/11e58938ac8d0022f9e6df3aba7ca8757b4a9f88/pyproject.toml#L5-L12"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "PKAM-C-001",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The proposed mothership architecture separates LLM control, versioned execution, and evidence/human-review gates.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-M1"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "This does not establish that the whole proposed platform exists."
+      ],
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "Section 2, opening paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-002",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "Current architecture documentation distinguishes implementation conformance, numerical verification, scientific validation, and human acceptance.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-M2"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "One evidence kind does not automatically grant another."
+      ],
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "Section 2, opening paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-003",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "Technical review, operator authorization, lifecycle decisions, and scientific or publication decisions are separate outcome dimensions.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-M3"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "A technical pass is not release or publication authority."
+      ],
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "Section 3, final paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-004",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The cited Formal dossier identifies the result as AI-assisted and kernel-checked while recording explicit scientific and runtime nonclaims.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "LEAN_THEOREM",
+      "evidence_ids": [
+        "EV-F2"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "AI assistance is not proof authority.",
+        "Kernel checking is not scientific validation."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 4, final paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-005",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The cited ksdft2effmass preface discloses LLM assistance and assigns scientific responsibility to the author.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-K8"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "The LLM is not an author or scientific authority."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 4, final paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-006",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The Formal checkpoint pins Lean v4.35.0 and Mathlib commit 56a005855ea17e0b0958f73ec801ae140b0a1679.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SOFTWARE_CONFORMANCE",
+      "evidence_ids": [
+        "EV-F3"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "The topic-branch checkpoint is not main, a tag, or a release."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.1, completed paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-007",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The Formal theorem manifest distinguishes existing declarations and their proof status, and the encoded Paper A finite analytic counterexample has a proved Lean declaration with reported axioms and explicit boundaries.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "LEAN_THEOREM",
+      "evidence_ids": [
+        "EV-F2",
+        "EV-F5"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "It does not prove source fidelity, runtime output, a four-state parent result, material validation, or a continuum claim."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.1, completed paragraph and channel 1",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-008",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "One Paper A exact analytic construction is encoded in Lean. Its rational-enclosure certificate is accepted by a Boolean exact checker; proved bridges and source-specific theorems bind that acceptance to the construction.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXACT_CHECKED_CERTIFICATE",
+      "evidence_ids": [
+        "EV-F2",
+        "EV-F4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "It is not a runtime scientific certificate and does not bind external floating-point artifacts."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.1, completed paragraph and channel 2",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-009",
+      "claim_kind": "NONCLAIM",
+      "claim_text": "No runtime data/parser certificate binding is established by the cited Formal checkpoint.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXACT_CHECKED_CERTIFICATE",
+      "evidence_ids": [
+        "EV-F4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "NOT_CLAIMED",
+      "nonclaims": [
+        "A runtime scientific certificate is not claimed."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.1, runtime-certificate boundary",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-010",
+      "claim_kind": "PLANNED",
+      "claim_text": "A future runtime certificate would require an exact target proposition and certificate data model, unambiguous parsing, a checker implemented in or soundly connected to Lean, a proved acceptance bridge, retained input bound by digest and provenance, explicit numerical and model assumptions, discharged field-derived obligations, and a reviewed source crosswalk.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "PLANNED",
+      "evidence_ids": [
+        "EV-F1",
+        "EV-F4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PLANNED",
+      "nonclaims": [
+        "No such runtime bridge is reported complete."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.1, planned paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-011",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The provisional Optimization migration checkpoint documents bounded finite-periodic transforms, evaluation, diagnostics, and optimization capabilities while leaving scientific meaning with consumers.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SOFTWARE_CONFORMANCE",
+      "evidence_ids": [
+        "EV-O1",
+        "EV-O4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PROVISIONAL",
+      "nonclaims": [
+        "This report does not present the checkpoint as a tag, release, or adopted downstream baseline.",
+        "It does not select scientific tolerances."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.2, completed paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-012",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The finite-series source tests define bounded comparisons against a separately expressed 100-digit mpmath reference and an explicit floating-point acceptance bound.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "NUMERICAL_VERIFICATION",
+      "evidence_ids": [
+        "EV-O2"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PROVISIONAL",
+      "nonclaims": [
+        "Source inspection is not a retained CI result.",
+        "The comparison is not an exact certificate or scientific validation."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.2, completed paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-013",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The transform integration source tests cover one-, two-, and three-dimensional reconstruction, Parseval, and Hermiticity diagnostics with explicit bounds.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "NUMERICAL_VERIFICATION",
+      "evidence_ids": [
+        "EV-O3"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PROVISIONAL",
+      "nonclaims": [
+        "The tests do not establish continuum behavior or material validity."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.2, completed paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-014",
+      "claim_kind": "NONCLAIM",
+      "claim_text": "The cited Optimization evidence is not admitted as an exact certificate or scientific validation.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SCIENTIFIC_VALIDATION",
+      "evidence_ids": [
+        "EV-O1",
+        "EV-O4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "NOT_CLAIMED",
+      "nonclaims": [
+        "Exact certification and scientific validation are not claimed."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.2, evidence boundary paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-015",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "Immutable correction commit 00c60201d16f2ee61e5fffd83a1a1f24cd327672 adds an independently declared Hermiticity-defect test case retained by the provisional checkpoint.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-O6",
+        "EV-O3"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PROVISIONAL",
+      "nonclaims": [
+        "This does not prove that every diagnostic is independent or error-free."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.2, correction paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-016",
+      "claim_kind": "PLANNED",
+      "claim_text": "Consumer scientific interpretation and campaign thresholds remain consumer-owned; this report does not demonstrate exact runtime certificates, formal bindings, or retained public run evidence for the cited checkpoint.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "PLANNED",
+      "evidence_ids": [
+        "EV-O1",
+        "EV-O4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PLANNED",
+      "nonclaims": [
+        "No completed consumer scientific decision or exact runtime certificate is claimed."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.2, planned paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-017",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The PhysKit Morse-potential test source defines a separately expressed centered finite-difference comparison of the radial force with the negative energy derivative using step 1.0e-5, relative tolerance 5.0e-10, and absolute tolerance 0.0.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "NUMERICAL_VERIFICATION",
+      "evidence_ids": [
+        "EV-P1"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "The source test is not material validation or retained CI execution evidence."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.3, completed paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-018",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The periodic-cosine provenance record classifies mapped checks as implementation and numerical verification rather than experimental material validation.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SOFTWARE_CONFORMANCE",
+      "evidence_ids": [
+        "EV-P2"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "No material potential is experimentally validated."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.3, completed paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-019",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "PhysKit records a rejected oblique-periodic notebook whose clean execution failed, saved displays were not reproducible, invalid behavior was not migrated, and bytes remain recoverable after maintained replacement.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-P3"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "This is not evidence of a general tested rollback mechanism."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.3, prototype paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-020",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "PhysKit extraction records preserve exact donor identities while retaining campaign tolerances, scientific interpretation, validation, and human acceptance with their owners.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-P4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "Extraction does not transfer scientific or human authority."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.3, provenance paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-021",
+      "claim_kind": "NONCLAIM",
+      "claim_text": "The scoped PhysKit artifacts cited by this report do not demonstrate material validation, pedagogical effectiveness, or uncertainty quantification.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SCIENTIFIC_VALIDATION",
+      "evidence_ids": [
+        "EV-P2",
+        "EV-P4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "NOT_CLAIMED",
+      "nonclaims": [
+        "Material validation, pedagogical effectiveness, and uncertainty quantification are not claimed."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.3, planned paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-022",
+      "claim_kind": "PLANNED",
+      "claim_text": "This report requires separate claim-specific protocols, evidence, and human dispositions before asserting any future PhysKit material-validation, pedagogical-effectiveness, or uncertainty-quantification claim.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "PLANNED",
+      "evidence_ids": [
+        "EV-P2",
+        "EV-P4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PLANNED",
+      "nonclaims": [
+        "No such completed protocol or disposition is claimed."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.3, planned paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-023",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The retained particle-in-a-box case is a calculated illustrative numerical experiment, not a software harness, public API, semiconductor calculation, or scientific-validation result.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-K1"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "The topic-branch checkpoint is not presented as main or an adopted release."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.4, completed paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-024",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The retained particle-in-a-box case identifies maintained files with SHA-256 and records inputs, outputs, verification scripts, figures, and environment fields.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SOFTWARE_CONFORMANCE",
+      "evidence_ids": [
+        "EV-K2",
+        "EV-K3",
+        "EV-K1"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "A digest establishes identity, not scientific validity or redistribution permission."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.4, completed paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-025",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "Retained independent verifiers compare finite results with declared finite mathematics and analytical oracles under binary64 arithmetic.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "NUMERICAL_VERIFICATION",
+      "evidence_ids": [
+        "EV-K3"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "Passing does not establish exact equality, continuum behavior, model selection, or material validation."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.4, completed paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-026",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The retained results show expected second-order behavior for declared fixed low modes and lack uniform eigenvalue accuracy when mode index scales with grid dimension.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "NUMERICAL_VERIFICATION",
+      "evidence_ids": [
+        "EV-K1"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "The fixed-grid observations are not a global continuum or material claim."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.4, limitation paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-027",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The Stage C deprecation record freezes historical entry points and exact bytes, names successors, and grants no new execution or scientific authority.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-K4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "Deprecation does not authorize execution or change historical evidence."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.4, deprecation paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-028",
+      "claim_kind": "PLANNED",
+      "claim_text": "The composite-band successor is MIGRATION_IN_PROGRESS and its protocol requires an independent verifier and evidence gates, but no immutable experiment version, maintained run, or new result exists.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "PLANNED",
+      "evidence_ids": [
+        "EV-K5",
+        "EV-K6"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PLANNED",
+      "nonclaims": [
+        "The successor is not a completed case study."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.4, planned paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-029",
+      "claim_kind": "NONCLAIM",
+      "claim_text": "The retained particle-in-a-box evidence does not validate a material model, silicon, DFT, Wannier localization, or impurity physics.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SCIENTIFIC_VALIDATION",
+      "evidence_ids": [
+        "EV-K1",
+        "EV-K3"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "NOT_CLAIMED",
+      "nonclaims": [
+        "No semiconductor or material validation is claimed."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.4, interpretation boundary",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-030",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The Bootstrap incubation boundary permits bounded source, sanitized fixtures, tests, and limitations while excluding transcripts, generated handoffs, credentials, and runtime state.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-H1"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "The boundary is not evidence that candidate mechanics are validated generic tooling."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.5, completed paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-031",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The candidate documentation specifies deterministic preflight, explicit repository/task naming, fail-closed scoped messaging checks, bounded failures, and no durable orchestration database, and records mocked or fake-boundary test coverage.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SOFTWARE_CONFORMANCE",
+      "evidence_ids": [
+        "EV-H2",
+        "EV-H3"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PROVISIONAL",
+      "nonclaims": [
+        "Mocked tests do not prove Pi/Herdr availability, model compliance, or authorization security."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.5, candidate paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-032",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "A documented pane-closure incident terminated Pi; the read-only diagnostic fails closed but cannot recover the process, and reassignment remains operator-authorized.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-H4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PROVISIONAL",
+      "nonclaims": [
+        "This is not autonomous rollback or recurrence evidence."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.5, incident paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-033",
+      "claim_kind": "NONCLAIM",
+      "claim_text": "The candidate guard is not an authorization service, mocked checks do not prove model compliance or live availability, and the diagnostic does not recover terminated processes.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "HUMAN_DECISION",
+      "evidence_ids": [
+        "EV-H2",
+        "EV-H3",
+        "EV-H4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "NOT_CLAIMED",
+      "nonclaims": [
+        "Authorization, live availability, model compliance, and autonomous recovery are not claimed."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.5, candidate and incident boundaries",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-034",
+      "claim_kind": "PLANNED",
+      "claim_text": "Independent recurrence, generic-tool validation, LLM policy compliance, and end-to-end availability remain future or unestablished work.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "PLANNED",
+      "evidence_ids": [
+        "EV-H2",
+        "EV-H3",
+        "EV-H4"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PLANNED",
+      "nonclaims": [
+        "No completed compliance study or generic-tool validation is claimed."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.5, planned paragraph",
+      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-035",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "The cited repositories identify repository-specific third-party or adaptation notices that require separate rights review before any deposit.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
+      "evidence_ids": [
+        "EV-O5",
+        "EV-P5",
+        "EV-K7"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "Apache-2.0 project licensing does not clear every dependency, vendored artifact, figure, or publication input."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 8, opening paragraph",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-036",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "At the cited provisional Optimization checkpoint, pyproject.toml records development package version 0.1.0.dev0.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SOFTWARE_CONFORMANCE",
+      "evidence_ids": [
+        "EV-O7"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "PROVISIONAL",
+      "nonclaims": [
+        "The checkpoint is not claimed as an adopted release."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.2, maturity sentence",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    },
+    {
+      "claim_id": "PKAM-C-037",
+      "claim_kind": "AFFIRMATIVE",
+      "claim_text": "At the cited PhysKit checkpoint, pyproject.toml records development package version 0.1.3.dev0.",
+      "claim_text_kind": "BOUNDED_SUMMARY",
+      "evidence_class": "SOFTWARE_CONFORMANCE",
+      "evidence_ids": [
+        "EV-P6"
+      ],
+      "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
+      "lifecycle_status": "COMPLETED",
+      "nonclaims": [
+        "The checkpoint is not claimed as a release."
+      ],
+      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
+      "report_locator": "Section 5.3, maturity sentence",
+      "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
+      "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
+    }
+  ],
+  "closed_enums": {
+    "claim_kind": [
+      "AFFIRMATIVE",
+      "NONCLAIM",
+      "PLANNED"
+    ],
+    "claim_text_kind": [
+      "BOUNDED_SUMMARY",
+      "EXACT_WORDING"
+    ],
+    "evidence_class": [
+      "SOFTWARE_CONFORMANCE",
+      "LEAN_THEOREM",
+      "EXACT_CHECKED_CERTIFICATE",
+      "NUMERICAL_VERIFICATION",
+      "SCIENTIFIC_VALIDATION",
+      "HUMAN_DECISION",
+      "EXPERIENCE_OBSERVATION",
+      "PLANNED"
+    ],
+    "human_decision_state": [
+      "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION"
+    ],
+    "independent_review_status": [
+      "PENDING"
+    ],
+    "lifecycle_status": [
+      "COMPLETED",
+      "PROVISIONAL",
+      "PLANNED",
+      "NOT_CLAIMED"
+    ],
+    "locator_kind": [
+      "LINE_RANGE",
+      "DECLARATION"
+    ],
+    "method": [
+      "BOUNDARY_DOCUMENT_INSPECTION",
+      "CANDIDATE_CONTRACT_AND_TEST_MAPPING_INSPECTION",
+      "CERTIFICATE_INVENTORY_INSPECTION",
+      "CORRECTION_COMMIT_AND_SOURCE_INSPECTION",
+      "DEPENDENCY_LOCK_INSPECTION",
+      "DEPRECATION_RECORD_INSPECTION",
+      "DISCLOSURE_INSPECTION",
+      "DOCUMENT_INSPECTION",
+      "FORMAL_DOSSIER_INSPECTION",
+      "INCIDENT_AND_DIAGNOSTIC_RECORD_INSPECTION",
+      "MANIFEST_INSPECTION",
+      "MIGRATION_STATUS_INSPECTION",
+      "PROSPECTIVE_PROTOCOL_INSPECTION",
+      "PROTOCOL_INSPECTION",
+      "PROTOTYPE_REVIEW_INSPECTION",
+      "PROVENANCE_MAPPING_INSPECTION",
+      "RETAINED_RESULT_DOCUMENT_INSPECTION",
+      "RIGHTS_NOTICE_INSPECTION",
+      "SOURCE_TEST_INSPECTION"
+    ],
+    "owner_evidence_confirmation_status": [
+      "CONFIRMED_FOR_DRAFT",
+      "PUBLIC_OWNER_RECORD_ONLY",
+      "PENDING"
+    ],
+    "public_status": [
+      "PUBLIC_IMMUTABLE"
+    ],
+    "report_source_state": [
+      "LOCAL_UNCOMMITTED_DRAFT"
+    ],
+    "report_status": [
+      "DRAFT_NOT_RELEASED_NOT_PEER_REVIEWED"
+    ],
+    "rights_provenance_status": [
+      "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING"
+    ],
+    "technical_review_status": [
+      "BOUNDED_SELF_REVIEW_COMPLETE",
+      "PENDING_INDEPENDENT_REVIEW"
+    ]
+  },
+  "evidence": [
+    {
+      "artifact_ids": [
+        "ART-F1"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-F1",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "F1",
+      "result_summary": "Defines separate formal, exact-certificate, numerical, runtime, and publication evidence channels.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-F2"
+      ],
+      "checker": "Lean kernel as reported by the dossier",
+      "comparator": null,
+      "environment": "Lean/Mathlib versions are bound separately by EV-F3; no local proof rerun is admitted.",
+      "evidence_id": "EV-F2",
+      "method": "FORMAL_DOSSIER_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "F2",
+      "result_summary": "Records the proved declaration, exact bounded statement, axiom report, AI assistance, and nonclaims.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-F3A",
+        "ART-F3B"
+      ],
+      "checker": "Lean toolchain resolver and Lake dependency declaration",
+      "comparator": null,
+      "environment": "Lean v4.35.0; Mathlib commit 56a005855ea17e0b0958f73ec801ae140b0a1679.",
+      "evidence_id": "EV-F3",
+      "method": "DEPENDENCY_LOCK_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "F3",
+      "result_summary": "Pins the Lean and Mathlib identities used by the cited checkpoint.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-F4"
+      ],
+      "checker": "Boolean exact rational-enclosure checker with proved soundness bridge, as inventoried",
+      "comparator": null,
+      "environment": "Exact data encoded directly in Lean; no runtime parser or floating-point binding.",
+      "evidence_id": "EV-F4",
+      "method": "CERTIFICATE_INVENTORY_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "F4",
+      "result_summary": "Inventories one exact analytic source certificate and explicitly reports no runtime scientific certificate.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-F5"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-F5",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "F5",
+      "result_summary": "States that only the first table inventories existing Lean declarations and records proof status and assumptions.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-H1"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-H1",
+      "method": "BOUNDARY_DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "H1",
+      "result_summary": "Permits bounded source, sanitized fixtures, tests, and limitations while excluding transcripts, credentials, handoffs, and runtime state.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-H2"
+      ],
+      "checker": "Mocked/fake-boundary tests documented by the candidate",
+      "comparator": null,
+      "environment": "Candidate source and mocked test design only; no live availability evidence admitted.",
+      "evidence_id": "EV-H2",
+      "method": "CANDIDATE_CONTRACT_AND_TEST_MAPPING_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "H2",
+      "result_summary": "Documents deterministic preflight, fail-closed behavior, limits, and lack of authorization or model-compliance proof.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-H3"
+      ],
+      "checker": "Mocked/fake-boundary tests documented by the candidate",
+      "comparator": null,
+      "environment": "Candidate source and mocked test design only; no live availability evidence admitted.",
+      "evidence_id": "EV-H3",
+      "method": "CANDIDATE_CONTRACT_AND_TEST_MAPPING_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "H3",
+      "result_summary": "Documents explicit repository/task naming, scoped messaging checks, bounded failures, and no durable orchestration database.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-H4"
+      ],
+      "checker": "Read-only fail-closed continuity diagnostic as documented",
+      "comparator": null,
+      "environment": "Documented incident and candidate behavior; no local rerun or live session state admitted.",
+      "evidence_id": "EV-H4",
+      "method": "INCIDENT_AND_DIAGNOSTIC_RECORD_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "H4",
+      "result_summary": "Records pane closure terminating Pi, diagnostic limits, inability to recover, and operator-authorized reassignment.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-K1"
+      ],
+      "checker": null,
+      "comparator": "Declared finite-difference analytical oracles and refinement summaries",
+      "environment": "Retained binary64 experiment records for declared grids and modes; no local rerun admitted.",
+      "evidence_id": "EV-K1",
+      "method": "RETAINED_RESULT_DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "K1",
+      "result_summary": "Documents the illustrative non-API scope, fixed-mode convergence, high-index limitation, and scientific nonclaims.",
+      "tolerance": "Values and scope are those stated in the retained README; no new tolerance inferred."
+    },
+    {
+      "artifact_ids": [
+        "ART-K2"
+      ],
+      "checker": "SHA-256 manifest",
+      "comparator": null,
+      "environment": "Retained public manifest; digest verification was not rerun for this ledger.",
+      "evidence_id": "EV-K2",
+      "method": "MANIFEST_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "K2",
+      "result_summary": "Lists SHA-256 identities for the retained experiment files.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-K3"
+      ],
+      "checker": "Retained independent verification scripts named by the protocol",
+      "comparator": "Finite mathematics, analytical oracles, projector identities, and declared residual identities",
+      "environment": "Retained experiment records under binary64 arithmetic; exact Python and NumPy versions remain in the owner result records.",
+      "evidence_id": "EV-K3",
+      "method": "PROTOCOL_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "K3",
+      "result_summary": "Maps protocol requirements to retained evidence and limits passing checks to the finite illustrative construction.",
+      "tolerance": "Acceptance boundary is the retained verifier criteria under binary64 arithmetic."
+    },
+    {
+      "artifact_ids": [
+        "ART-K4"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-K4",
+      "method": "DEPRECATION_RECORD_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "K4",
+      "result_summary": "Records frozen Stage C entry points, exact historical-byte authority, named successors, and no transferred execution or scientific authority.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-K5"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-K5",
+      "method": "MIGRATION_STATUS_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "K5",
+      "result_summary": "Marks the composite-band successor MIGRATION_IN_PROGRESS with no immutable experiment version or maintained run.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-K6"
+      ],
+      "checker": null,
+      "comparator": "Independent verifier required by the prospective protocol",
+      "environment": "Prospective protocol only; no maintained execution or result is admitted.",
+      "evidence_id": "EV-K6",
+      "method": "PROSPECTIVE_PROTOCOL_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "K6",
+      "result_summary": "Defines future dependency and evidence gates without recording a result.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-K7"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-K7",
+      "method": "RIGHTS_NOTICE_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "K7",
+      "result_summary": "Inventories third-party SNAKES, Pint, Matplotlib/font, and elsarticle licensing considerations.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-K8"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-K8",
+      "method": "DISCLOSURE_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "K8",
+      "result_summary": "Discloses LLM assistance while assigning scientific selection, interpretation, reporting, and responsibility to the author.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-M1"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-M1",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "M1",
+      "result_summary": "Documents the proposed control, execution, and evidence-plane split.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-M2"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-M2",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "M2",
+      "result_summary": "Documents distinct implementation, numerical, scientific, and human-acceptance evidence kinds.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-M3"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-M3",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "M3",
+      "result_summary": "Documents separation of technical outcomes, authorization, and human decisions.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-O1"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-O1",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "O1",
+      "result_summary": "Documents finite-periodic capabilities and consumer-owned scientific coordinates, units, and acceptance.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-O2"
+      ],
+      "checker": "pytest assertion in cited source",
+      "comparator": "Separately expressed mpmath evaluation at 100 decimal digits",
+      "environment": "Python test source; binary64 implementation values and mpmath 100-digit reference; no local rerun admitted.",
+      "evidence_id": "EV-O2",
+      "method": "SOURCE_TEST_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "O2",
+      "result_summary": "Defines bounded 1D/2D/3D random comparisons against the high-precision reference.",
+      "tolerance": "512 * ulp(1.0) * max(1.0, sum(abs(coefficients)))"
+    },
+    {
+      "artifact_ids": [
+        "ART-O3"
+      ],
+      "checker": "pytest and NumPy assertions in cited source",
+      "comparator": "Reconstruction, Parseval, and independently declared Hermiticity-defect checks",
+      "environment": "NumPy complex128 test source; no local rerun admitted.",
+      "evidence_id": "EV-O3",
+      "method": "SOURCE_TEST_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "O3",
+      "result_summary": "Defines bounded transform integration and diagnostic checks in one, two, and three dimensions.",
+      "tolerance": "8.0e-15 absolute reconstruction; 2.0e-15 times scale for Parseval; 2.0e-14 and 2.0e-16 bounds in cited tests"
+    },
+    {
+      "artifact_ids": [
+        "ART-O4"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-O4",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "O4",
+      "result_summary": "Assigns diagnostic reporting to the library while leaving scientific tolerances and acceptance to consumers.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-O5"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-O5",
+      "method": "RIGHTS_NOTICE_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "O5",
+      "result_summary": "Records adapted BSD-2-Clause PyPosPack lineage and notice obligations.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-O6"
+      ],
+      "checker": "pytest assertion in the correction commit",
+      "comparator": "Independently declared coefficient defect with expected 0.25 diagnostic",
+      "environment": "NumPy complex128 test source at the immutable correction commit; no local rerun admitted.",
+      "evidence_id": "EV-O6",
+      "method": "CORRECTION_COMMIT_AND_SOURCE_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "O6",
+      "result_summary": "The correction commit introduces the independently declared Hermiticity-defect case.",
+      "tolerance": "pytest.approx absolute 2.0e-16, relative 0.0"
+    },
+    {
+      "artifact_ids": [
+        "ART-O7"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-O7",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "O7",
+      "result_summary": "Records Optimization package version 0.1.0.dev0 and its development metadata.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-P1"
+      ],
+      "checker": "NumPy isclose assertion in cited source",
+      "comparator": "Centered finite-difference negative energy derivative with step 1.0e-5",
+      "environment": "NumPy float64 test source with electron-volt and angstrom quantities; no local rerun admitted.",
+      "evidence_id": "EV-P1",
+      "method": "SOURCE_TEST_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "P1",
+      "result_summary": "Defines a bounded, separately expressed centered finite-difference check of the corrected Morse radial-force sign.",
+      "tolerance": "relative 5.0e-10; absolute 0.0"
+    },
+    {
+      "artifact_ids": [
+        "ART-P2"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-P2",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "P2",
+      "result_summary": "Classifies mapped periodic-cosine checks as implementation and numerical verification, not material validation.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-P3"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-P3",
+      "method": "PROTOTYPE_REVIEW_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "P3",
+      "result_summary": "Records syntax failure, nonreproducible saved displays, rejection, maintained replacement, and byte recovery.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-P4"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-P4",
+      "method": "PROVENANCE_MAPPING_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "P4",
+      "result_summary": "Records exact donor identities and retains scientific interpretation, tolerances, validation, and acceptance with their owners.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-P5"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-P5",
+      "method": "RIGHTS_NOTICE_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "P5",
+      "result_summary": "Records maintained adaptations of Apache-2.0 ksdft2effmass source and points to provenance mappings.",
+      "tolerance": null
+    },
+    {
+      "artifact_ids": [
+        "ART-P6"
+      ],
+      "checker": null,
+      "comparator": null,
+      "environment": "Public immutable Git artifacts; no local rerun admitted as evidence.",
+      "evidence_id": "EV-P6",
+      "method": "DOCUMENT_INSPECTION",
+      "public_status": "PUBLIC_IMMUTABLE",
+      "report_reference": "P6",
+      "result_summary": "Records PhysKit package version 0.1.3.dev0 and its development metadata.",
+      "tolerance": null
+    }
+  ],
+  "report": {
+    "evidence_cutoff": "2026-10-21",
+    "independent_review_status": "PENDING",
+    "ledger_scope": "Bounded public repository evidence for methodology and case-study claims; external release guidance is outside this ledger.",
+    "report_id": "project-koios-audit-first-methodology",
+    "source_path": "docs/reports/project-koios-audit-first-methodology.md",
+    "source_state": "LOCAL_UNCOMMITTED_DRAFT",
+    "status": "DRAFT_NOT_RELEASED_NOT_PEER_REVIEWED",
+    "title": "Project Koios: An audit-first, LLM-assisted workflow for verifiable computational physics"
+  },
+  "repositories": [
+    {
+      "public_remote": "https://github.com/eragasa/projectkoios-bootstrap",
+      "repository_id": "REPO-BOOTSTRAP",
+      "semantic_id": "projectkoios.bootstrap"
+    },
+    {
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "repository_id": "REPO-FORMAL",
+      "semantic_id": "projectkoios.formal"
+    },
+    {
+      "public_remote": "https://github.com/eragasa/ksdft2effmass",
+      "repository_id": "REPO-KSD",
+      "semantic_id": "ksdft2effmass"
+    },
+    {
+      "public_remote": "https://github.com/eragasa/projectkoios",
+      "repository_id": "REPO-MOTHERSHIP",
+      "semantic_id": "projectkoios"
+    },
+    {
+      "public_remote": "https://github.com/eragasa/projectkoios-optimization",
+      "repository_id": "REPO-OPTIMIZATION",
+      "semantic_id": "projectkoios.optimization"
+    },
+    {
+      "public_remote": "https://github.com/eragasa/projectkoios-physkit",
+      "repository_id": "REPO-PHYSKIT",
+      "semantic_id": "projectkoios.physkit"
+    }
+  ],
+  "schema_version": "projectkoios.evidence-ledger/1",
+  "status_definitions": {
+    "BOUNDED_SELF_REVIEW_COMPLETE": "Ledger structure, mappings, locators, enums, privacy, and deterministic checks passed locally; this is not independent review.",
+    "CONFIRMED_FOR_DRAFT": "The owner-supplied checkpoint or clarification is admitted for this Draft only; this is not release or publication acceptance.",
+    "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION": "No human release, publication, deposit, submission, or DOI decision is represented.",
+    "PENDING_INDEPENDENT_REVIEW": "No independent technical review conclusion is represented by this status.",
+    "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY": "Only public links to project-owned Apache-2.0 repository content are used; deposit-file rights still require milestone review.",
+    "PUBLIC_OWNER_RECORD_ONLY": "The claim uses an immutable public owner-repository record without asserting a separate owner acceptance decision.",
+    "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING": "Applicable notice or provenance material is identified, but deposit-file rights review remains pending."
+  }
+}
