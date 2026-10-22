@@ -66,12 +66,15 @@ remain unmeasured.
 
 ## 2. The audit-first principle
 
+<a id="PKAM-C-001"></a>
 The workflow starts from an authority boundary rather than from a model
 capability. The mothership's proposed platform thesis places language-model
 agents in a control plane, calculations in a versioned execution plane, and
-accepted artifacts behind evidence and human-review gates.[M1] The current
-architecture documentation separately classifies implementation conformance,
-numerical verification, scientific validation, and human acceptance.[M2]
+accepted artifacts behind evidence and human-review gates.[M1]
+<a id="PKAM-C-002"></a>
+The current architecture documentation separately classifies implementation
+conformance, numerical verification, scientific validation, and human
+acceptance.[M2]
 
 An audit-first task applies the following sequence:
 
@@ -117,6 +120,7 @@ channels.[F1] Its required numerical-to-formal bridge names the proposition,
 exact data model, parser, checker, soundness theorem, bound external input, and
 rounding or model assumptions.[F1]
 
+<a id="PKAM-C-003"></a>
 The outcome dimensions are also separate. A technical pass, review disposition,
 operator authorization, lifecycle decision, and scientific or publication
 decision do not grant one another automatically.[M3]
@@ -143,42 +147,48 @@ An LLM may not, merely by producing an answer:
 - erase or relabel failed attempts.
 
 The relevant evidence is therefore the checked artifact, not the eloquence of
-the generated path to it. The cited Formal proof dossier identifies its result
-as AI-assisted and kernel-checked and explicitly excludes runtime,
-four-state-parent, material, and continuum claims.[F2] The `ksdft2effmass`
-monograph similarly discloses LLM assistance with drafting, code, analysis, and
-editorial work while assigning scientific selection, interpretation, reporting, and
-responsibility to the author.[K8]
+the generated path to it.
+<a id="PKAM-C-004"></a>
+The cited Formal proof dossier identifies its result as AI-assisted and
+kernel-checked and explicitly excludes runtime, four-state-parent, material,
+and continuum claims.[F2]
+<a id="PKAM-C-005"></a>
+The `ksdft2effmass` monograph similarly discloses LLM assistance with drafting,
+code, analysis, and editorial work while assigning scientific selection,
+interpretation, reporting, and responsibility to the author.[K8]
 
 ## 5. Case studies
 
 ### 5.1 Project Koios Formal and Lean
 
+<a id="PKAM-C-006"></a>
 **Completed and documented.** At immutable public Formal revision
 `26603110e9d64cd51c9101eff68060307f258a18` on
 `origin/work/paper-a-diagnostic-producer-audit`, Lean is pinned to `v4.35.0` and
 Mathlib to commit `56a005855ea17e0b0958f73ec801ae140b0a1679`.[F3] This checkpoint
-is not presented as main, a tag, or a release. The theorem manifest records
-proved declarations and their assumptions rather than treating plans as
-theorems.[F5] One bounded Paper A construction includes a Boolean exact
-rational-enclosure checker, a proved bridge, and source-specific theorems for a
-finite analytic counterexample.[F4] The associated dossier calls the result
-AI-assisted and kernel-checked, reports the kernel axioms, and excludes runtime,
-four-state-parent, material, and continuum claims.[F2]
+is not presented as main, a tag, or a release.
 
-This case demonstrates two separate completed channels:
+<a id="PKAM-C-007"></a>
+At the cited Formal checkpoint, the encoded Paper A two-observation construction
+has a proved Lean declaration whose conjunction asserts zero canonical spectral
+loss at the encoded witness, spectral-pass membership in the source rectangle,
+positive scale, and disjointness from the optimized-operator pass set; the cited
+manifest and dossier report its axioms and explicit boundaries.[F2][F4][F5]
 
-1. **Lean theorem evidence:** encoded propositions checked by the pinned kernel;
-2. **an exact analytic source-certificate chain:** a Boolean exact
-   rational-enclosure checker accepts the encoded certificate, while proved
-   bridges and source-specific Lean theorems bind those checked conditions to
-   the encoded construction.
+<a id="PKAM-C-008"></a>
+The same construction includes exact rational data, a Boolean exact
+rational-enclosure checker, checker-soundness theorems, and Paper A bridge
+theorems binding accepted checked conditions to the encoded construction.[F4]
+This case therefore documents two separate completed channels: reported Lean
+theorem evidence and one exact analytic source-certificate chain. It does not
+claim that Lean was rerun during preparation or technical review of this Draft.
 
-It does not demonstrate a runtime scientific certificate. The repository's
-certificate inventory explicitly reports that no runtime data/parser binding
-exists and that its generic checkers do not automatically bind external
-floating-point artifacts.[F4]
+<a id="PKAM-C-009"></a>
+The cited Formal certificate inventory reports that no runtime data/parser
+certificate binding exists at the checkpoint and that generic checkers do not
+automatically bind external floating-point artifacts.[F4]
 
+<a id="PKAM-C-010"></a>
 **Planned, not demonstrated.** A future runtime certificate would require an
 exact target proposition and certificate data model; an unambiguous parser; a
 checker implemented in or soundly connected to Lean; a theorem connecting
@@ -190,22 +200,37 @@ distinct from scientific validation and independent expert review.
 
 ### 5.2 Project Koios Optimization and Numerics
 
-**Completed and documented.** At immutable public provisional revision
-`b722edab216ef416b8b4affa902b04a26e3da98b`, the repository exposes bounded
-finite-periodic transforms, evaluation, diagnostics, and optimization
-capabilities while keeping scientific coordinates, units, and acceptance with
-consumers.[O1] The provisional checkpoint records development package version
-`0.1.0.dev0`; this report does not present it as a tag, release, or adopted
-downstream baseline.[O7] The finite-series numerical test source defines bounded
-comparisons against a separately expressed 100-digit `mpmath` reference with an
-explicit floating-point acceptance bound.[O2] The transform integration test
-source defines one-, two-, and three-dimensional reconstruction and
-Parseval/Hermiticity diagnostic checks with explicit bounds.[O3]
+<a id="PKAM-C-011"></a>
+**Public provisional source is documented.** At immutable public
+migration-branch revision `b722edab216ef416b8b4affa902b04a26e3da98b`,
+repository source documents bounded finite-periodic transforms, evaluation,
+diagnostics, and optimization capabilities while keeping scientific
+coordinates, units, thresholds, and acceptance with consumers.[O1][O4]
+<a id="PKAM-C-036"></a>
+The checkpoint's `pyproject.toml` records development version `0.1.0.dev0`.
+This Draft treats the checkpoint as provisional and does not identify it as a
+tag, release, or adopted downstream baseline.[O7]
 
-This evidence is software and bounded numerical verification. It is not an exact
-certificate and not scientific validation. The diagnostic layer deliberately
-reports values without selecting scientific tolerances.[O4]
+<a id="PKAM-C-012"></a>
+Source inspection—not a retained command or CI result—shows that the
+finite-series test defines bounded one-, two-, and three-dimensional comparisons
+against a direct Fourier sum evaluated inside `mpmath.workdps(100)`, with each
+reference real and imaginary component converted to binary64 before comparison
+and an explicit floating-point acceptance bound.[O2]
+<a id="PKAM-C-013"></a>
+Source inspection also shows that transform integration tests define one-, two-,
+and three-dimensional reconstruction, Parseval, and Hermiticity checks with
+explicit bounds.[O3]
 
+<a id="PKAM-C-014"></a>
+These public source artifacts document source-level test definitions for
+prospective numerical verification; this Draft admits no executed
+numerical-verification result for this Optimization checkpoint. They are not
+exact certificates or scientific validation. Diagnostic analyzers report
+represented values while consumers retain scientific tolerances and
+acceptance.[O4]
+
+<a id="PKAM-C-015"></a>
 The repository history also contains a correction specifically titled “Use
 independent Hermiticity defect evidence” at immutable public commit
 `00c60201d16f2ee61e5fffd83a1a1f24cd327672`.[O6] The cited test at the
@@ -213,67 +238,90 @@ provisional checkpoint retains an independently declared defect case.[O3] This
 is useful correction evidence, not proof that all diagnostics are independent
 or error-free.
 
-**Planned, not demonstrated.** Consumer-level scientific interpretation and
-campaign thresholds remain consumer-owned.[O1][O4] This report does not
-demonstrate an exact runtime certificate or formal binding for the cited
-checkpoint, and it admits no retained command output or CI artifact as evidence.
-Such evidence should be added only when immutable, public, and tied to the
-reported revision.
+<a id="PKAM-C-016"></a>
+**Planned, not demonstrated.** Optimization assigns scientific tolerances and
+acceptance to consumers. This Draft admits no completed consumer scientific
+disposition, exact runtime certificate, formal binding, or retained public
+executed-result artifact for this case; adding any such evidence remains future
+work.[O1][O4]
 
 ### 5.3 PhysKit
 
+<a id="PKAM-C-037"></a>
 **Completed and documented.** At immutable public main revision
-`11e58938ac8d0022f9e6df3aba7ca8757b4a9f88`, PhysKit records implementation
-and numerical evidence without claiming material validation. The cited
-checkpoint records development package version `0.1.3.dev0`; this report does
-not present it as a release.[P6] The Morse-potential test source defines a
-separately expressed centered finite-difference comparison of the radial force
-with the negative energy derivative, using step `1.0e-5`, `rtol=5.0e-10`, and
-`atol=0.0`.[P1] A periodic-cosine provenance record classifies its mapped
-analytical and numerical checks as implementation and numerical verification,
-not experimental validation of a material potential.[P2]
+`11e58938ac8d0022f9e6df3aba7ca8757b4a9f88`, the cited PhysKit checkpoint
+records development package version `0.1.3.dev0`; this Draft does not present it
+as a release.[P6]
+<a id="PKAM-C-017"></a>
+A Morse-potential test source checks the corrected force directions and defines
+a check of the relation $F_r=-dV/dr$ by comparing the returned radial force with
+a separately expressed centered finite-difference approximation to the returned
+potential energies (step $10^{-5}$ angstrom, `rtol=5e-10`, `atol=0`).[P1]
+<a id="PKAM-C-018"></a>
+A periodic-cosine provenance record classifies its mapped analytical and
+numerical checks as implementation and numerical verification, not experimental
+validation of a material potential.[P2]
 
+<a id="PKAM-C-019"></a>
 PhysKit also records a failed oblique-periodic notebook prototype: clean
 execution stopped with a syntax error, saved displays were not reproducible from
 the source, invalid behavior was not migrated, and the artifact was removed only
 after a maintained replacement existed while its bytes remained recoverable by
 commit and blob.[P3] This is concrete evidence of review, rejection, correction,
-and a recoverable preservation path.
+and recoverable byte-level preservation after maintained replacement; byte
+recovery is documented, but rollback was not exercised or evaluated and no
+general tested rollback mechanism is established.
 
-Cross-repository extraction records identify exact donor commits, blobs, and
-hashes while retaining campaign tolerances, semiconductor interpretation,
-scientific validation, and human acceptance with their owners.[P4]
+<a id="PKAM-C-020"></a>
+PhysKit extraction records preserve exact donor identities while retaining
+campaign tolerances and acceptance policy, retained calculations and execution
+authority, semiconductor-specific interpretation, scientific-validation
+conclusions, and human-acceptance conclusions with `ksdft2effmass`.[P4]
 
-**Planned, not demonstrated.** These scoped artifacts do not demonstrate
-material validation, pedagogical effectiveness, or uncertainty
-quantification.[P2][P4] This report requires separate claim-specific protocols,
-evidence, and human dispositions before asserting any such future PhysKit claim.
+<a id="PKAM-C-021"></a>
+**Planned, not demonstrated.** These examples do not validate a material model.
+<a id="PKAM-C-022"></a>
+Any future PhysKit material-validation claim requires a separate protocol,
+reference evidence, and human disposition.[P2][P4]
 
 ### 5.4 `ksdft2effmass`
 
+<a id="PKAM-C-023"></a>
 **Completed and documented.** At immutable public revision
 `5aaff25b784c7d1bc079a3030a73be387dc11a0f` on
 `origin/work/monograph-current-library-capabilities`, the retained
 particle-in-a-box experiment is explicitly labeled a calculated illustrative
 numerical experiment rather than a software harness, public API, semiconductor
-calculation, or scientific-validation result.[K1] This checkpoint is not
-presented as main or an adopted release. It retains inputs, outputs,
-verification scripts, figures, environment information, and a
-SHA-256 manifest.[K2] Independent verifiers compare finite results with stated
-analytical oracles and identities; the acceptance boundary is agreement with
-the declared finite mathematics under binary64 arithmetic, not material or
-continuum validation.[K3] This evidence does not validate a material model,
-silicon, DFT, Wannier localization, or impurity physics.
+calculation, or scientific-validation result.[K1] Git branch reachability is not
+evidence of an adopted release, and no release or publication status is claimed
+here.
+<a id="PKAM-C-024"></a>
+The experiment retains inputs, outputs, verification scripts, figures,
+environment information, and a 38-entry SHA-256 manifest supporting exact
+maintained-file identities.[K2] This report admits the manifest only as
+maintained-file identity evidence and makes no same-checkpoint producer-script
+claim.
+<a id="PKAM-C-025"></a>
+Independent verifiers compare finite results with stated analytical oracles and
+identities; the acceptance boundary is agreement with the declared finite
+mathematics under binary64 arithmetic, not material or continuum
+validation.[K3]
+<a id="PKAM-C-029"></a>
+This evidence does not validate a material model, silicon, DFT, Wannier
+localization, or impurity physics.
 
+<a id="PKAM-C-026"></a>
 The retained results also expose limitations rather than only favorable numbers:
 fixed low modes show the expected second-order trend, while high-index modes do
 not exhibit uniform accuracy as the mode index scales with grid dimension.[K1]
 
-Correction and reversibility appear in a separate deprecation record. Historical
-Stage C command-line entry points and exact retained bytes remain frozen, newer
-adapters are named, and the migration explicitly grants no scientific,
-numerical-policy, or execution authority.[K4]
+<a id="PKAM-C-027"></a>
+Deprecation without provenance rewriting appears in a separate record.
+Historical Stage C command-line entry points and exact retained bytes remain
+frozen, newer adapters are named, and the migration explicitly grants no
+scientific, numerical-policy, or execution authority.[K4]
 
+<a id="PKAM-C-028"></a>
 **Planned, not demonstrated.** The publication-independent composite-band
 successor is marked `MIGRATION_IN_PROGRESS`, has no immutable experiment version
 and no retained maintained run.[K5] Its protocol requires an independent
@@ -282,6 +330,7 @@ This report therefore treats it as planned work, not a completed case study.
 
 ### 5.5 Project Koios Pi and LLM coordination harness
 
+<a id="PKAM-C-030"></a>
 **Completed and documented.** At immutable public Bootstrap revision
 `7fa09bc3b631984d3b049b00d858935575d5687d`, the accepted harness-incubation
 boundary permits bounded source, sanitized fixtures, tests, and explicit
@@ -289,19 +338,24 @@ limitations while excluding transcripts, generated handoffs, credentials, and
 runtime state.[H1] The startup and named-session mechanisms remain
 **Candidate**, not validated generic tooling.[H2][H3]
 
+<a id="PKAM-C-031"></a>
 The candidate documentation specifies deterministic preflight, explicit
 repository/task naming, fail-closed scoped messaging checks, bounded failure
 behavior, and no durable orchestration database, and records mocked/fake-boundary
-test coverage.[H2][H3] It expressly states that the guard is not an authorization
-service and that mocked tests do not prove Pi/Herdr availability or model
-compliance.
+test coverage.[H2][H3]
+<a id="PKAM-C-033"></a>
+It expressly states that the guard is not an authorization service, mocked
+tests do not prove Pi/Herdr availability or model compliance, and the continuity
+diagnostic does not recover terminated processes.[H4]
 
+<a id="PKAM-C-032"></a>
 A concrete coordination failure is retained: a pane was closed rather than the
 client detached, terminating the Pi process. The resulting read-only diagnostic
-fails closed but cannot recover the process; reassignment remains an
-authorized human action.[H4] This is failure and correction evidence, not a
-claim of autonomous rollback.
+fails closed but cannot recover the process; reassignment remains an authorized
+human action.[H4] This is failure and correction evidence, not a claim of
+autonomous rollback.
 
+<a id="PKAM-C-034"></a>
 **Planned, not demonstrated.** Independent recurrence, generic-tool validation,
 proof that an LLM follows the coordination prompt, and end-to-end availability
 remain unestablished.
@@ -369,15 +423,12 @@ for a predeclared comparison with quality and rework controls.
 
 ## 8. Rights, provenance, privacy, and authorship
 
-The cited repository notices identify Apache-2.0 project or donor material
-alongside repository-specific third-party and adaptation obligations.
-Optimization retains a `NOTICE` for adapted BSD-2-Clause PyPosPack material and
-names the associated source lineage.[O5] PhysKit records maintained adaptations
-of Apache-2.0 `ksdft2effmass` source and routes exact mappings through its
-provenance records.[P5] `ksdft2effmass` separately inventories dependencies and
-vendored publication support under LGPL, BSD, PSF-related, font, and LPPL terms
-that differ from the project's Apache-2.0 license.[K7] These statements do not
-establish that every possible deposit input may be redistributed.
+<a id="PKAM-C-035"></a>
+Rights review for any future deposit remains pending. The cited Optimization,
+PhysKit, and `ksdft2effmass` notice records identify repository-level license and
+provenance information and named third-party exceptions.[O5][P5][K7] They do not
+establish the rights status or redistribution permission of every cited or
+depositable file.
 
 Before any public milestone, the author must review:
 
@@ -468,6 +519,10 @@ rights are cleared, and limitations remain visible in the released files.
 
 ## Evidence references
 
+`Z1`–`Z3` and `A1` are mutable external procedural guidance accessed
+2026-10-21; `Z4` was accessed 2026-10-22. They are outside the Project Koios
+evidence ledger and must be rechecked before any milestone.
+
 ### Mothership and methodology
 
 - **[M1]** Project Koios, commit
@@ -484,16 +539,31 @@ rights are cleared, and limitations remain visible in the released files.
   [`26603110e9d64cd51c9101eff68060307f258a18`](https://github.com/eragasa/projectkoios-formal/commit/26603110e9d64cd51c9101eff68060307f258a18),
   `docs/formal-vs-numerical-evidence.md`,
   [lines 1–28](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/formal-vs-numerical-evidence.md#L1-L28)
-  and [lines 84–95](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/formal-vs-numerical-evidence.md#L84-L95).
+  and [lines 82–95](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/formal-vs-numerical-evidence.md#L82-L95).
 - **[F2]** Same commit,
   [`BG-RAGASA2026A-THM-032` proof dossier, lines 9–33](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/proofs/BandGauge/Papers/Ragasa2026A/BG-RAGASA2026A-THM-032-constructed-false-positive.tex#L9-L33).
 - **[F3]** Same commit,
   [`lean-toolchain`](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/lean-toolchain)
   and [`lakefile.toml`, lines 5–8](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/lakefile.toml#L5-L8).
-- **[F4]** Same commit,
-  [`docs/certificates.md`, lines 15–31](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/certificates.md#L15-L31).
-- **[F5]** Same commit,
-  [`docs/theorem-manifest.md`, lines 1–18](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/theorem-manifest.md#L1-L18).
+- **[F4]** Same commit: certificate inventory
+  [`docs/certificates.md`, lines 15–31](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/certificates.md#L15-L31);
+  exact rational data, Boolean checker, and checker soundness in
+  `RankTwoSeparationEnclosure.lean`,
+  [lines 20–155](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Certificates/RankTwoSeparationEnclosure.lean#L20-L155),
+  [157–206](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Certificates/RankTwoSeparationEnclosure.lean#L157-L206),
+  [354–365](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Certificates/RankTwoSeparationEnclosure.lean#L354-L365),
+  and [436–452](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Certificates/RankTwoSeparationEnclosure.lean#L436-L452);
+  Paper A certificate bridges in
+  [`CertificateBridge.lean`, lines 95–183](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Papers/Ragasa2026A/CertificateBridge.lean#L95-L183);
+  and the constructed false-positive data and theorems in
+  `ConstructedFalsePositive.lean`,
+  [lines 43–75](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Papers/Ragasa2026A/ConstructedFalsePositive.lean#L43-L75),
+  [123–134](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Papers/Ragasa2026A/ConstructedFalsePositive.lean#L123-L134),
+  [200–250](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Papers/Ragasa2026A/ConstructedFalsePositive.lean#L200-L250),
+  and [252–318](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Papers/Ragasa2026A/ConstructedFalsePositive.lean#L252-L318).
+- **[F5]** Same commit, `docs/theorem-manifest.md`,
+  [lines 1–18](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/theorem-manifest.md#L1-L18)
+  and [193–203](https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/theorem-manifest.md#L193-L203).
 
 ### Optimization and Numerics
 
@@ -506,7 +576,7 @@ rights are cleared, and limitations remain visible in the released files.
 - **[O3]** Same commit,
   [`test__NumpyFinitePeriodicTransforms__integration.py`, lines 83–170](https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/tests/projectkoios/numerics/finite_periodic/numpy/test__NumpyFinitePeriodicTransforms__integration.py#L83-L170).
 - **[O4]** Same commit,
-  [`transforms/numerics.md`, lines 63–73](https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/docs/architecture/projectkoios/numerics/finite_periodic/transforms/numerics.md#L63-L73).
+  [`transforms/scientific.md`, lines 22–43](https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/docs/architecture/projectkoios/numerics/finite_periodic/transforms/scientific.md#L22-L43).
 - **[O5]** Same commit,
   [`NOTICE`, lines 1–17](https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/NOTICE#L1-L17).
 - **[O6]** Project Koios Optimization, immutable public correction commit
@@ -556,10 +626,7 @@ rights are cleared, and limitations remain visible in the released files.
 - **[K6]** Same commit,
   [`protocol.md`, lines 88–114](https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/experiments/periodic-reduction/composite-band-alignment-and-locality/periodic1d/protocol.md#L88-L114).
 - **[K7]** Same commit,
-  `THIRD_PARTY_NOTICES.md`,
-  [lines 1–30](https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/THIRD_PARTY_NOTICES.md#L1-L30),
-  [lines 32–69](https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/THIRD_PARTY_NOTICES.md#L32-L69),
-  and [lines 71–95](https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/THIRD_PARTY_NOTICES.md#L71-L95).
+  [`THIRD_PARTY_NOTICES.md`, lines 1–95](https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/THIRD_PARTY_NOTICES.md#L1-L95).
 - **[K8]** Same commit,
   [`research-monograph/chapters/preface.tex`, lines 17–28](https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/docs/publications/research-monograph/chapters/preface.tex#L17-L28).
 

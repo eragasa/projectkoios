@@ -12,7 +12,7 @@
         {
           "end_line": 95,
           "kind": "LINE_RANGE",
-          "start_line": 84
+          "start_line": 82
         }
       ],
       "owner_repository_id": "REPO-FORMAL",
@@ -86,6 +86,84 @@
       "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/docs/certificates.md#L15-L31"
     },
     {
+      "artifact_id": "ART-F4A",
+      "commit": "26603110e9d64cd51c9101eff68060307f258a18",
+      "locators": [
+        {
+          "end_line": 155,
+          "kind": "LINE_RANGE",
+          "start_line": 20
+        },
+        {
+          "end_line": 206,
+          "kind": "LINE_RANGE",
+          "start_line": 157
+        },
+        {
+          "end_line": 365,
+          "kind": "LINE_RANGE",
+          "start_line": 354
+        },
+        {
+          "end_line": 452,
+          "kind": "LINE_RANGE",
+          "start_line": 436
+        }
+      ],
+      "owner_repository_id": "REPO-FORMAL",
+      "owner_repository_semantic_id": "projectkoios.formal",
+      "path": "ProjectKoios/BandGauge/Certificates/RankTwoSeparationEnclosure.lean",
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Certificates/RankTwoSeparationEnclosure.lean#L20-L155"
+    },
+    {
+      "artifact_id": "ART-F4B",
+      "commit": "26603110e9d64cd51c9101eff68060307f258a18",
+      "locators": [
+        {
+          "end_line": 183,
+          "kind": "LINE_RANGE",
+          "start_line": 95
+        }
+      ],
+      "owner_repository_id": "REPO-FORMAL",
+      "owner_repository_semantic_id": "projectkoios.formal",
+      "path": "ProjectKoios/BandGauge/Papers/Ragasa2026A/CertificateBridge.lean",
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Papers/Ragasa2026A/CertificateBridge.lean#L95-L183"
+    },
+    {
+      "artifact_id": "ART-F4C",
+      "commit": "26603110e9d64cd51c9101eff68060307f258a18",
+      "locators": [
+        {
+          "end_line": 75,
+          "kind": "LINE_RANGE",
+          "start_line": 43
+        },
+        {
+          "end_line": 134,
+          "kind": "LINE_RANGE",
+          "start_line": 123
+        },
+        {
+          "end_line": 250,
+          "kind": "LINE_RANGE",
+          "start_line": 200
+        },
+        {
+          "end_line": 318,
+          "kind": "LINE_RANGE",
+          "start_line": 252
+        }
+      ],
+      "owner_repository_id": "REPO-FORMAL",
+      "owner_repository_semantic_id": "projectkoios.formal",
+      "path": "ProjectKoios/BandGauge/Papers/Ragasa2026A/ConstructedFalsePositive.lean",
+      "public_remote": "https://github.com/eragasa/projectkoios-formal",
+      "url": "https://github.com/eragasa/projectkoios-formal/blob/26603110e9d64cd51c9101eff68060307f258a18/ProjectKoios/BandGauge/Papers/Ragasa2026A/ConstructedFalsePositive.lean#L43-L75"
+    },
+    {
       "artifact_id": "ART-F5",
       "commit": "26603110e9d64cd51c9101eff68060307f258a18",
       "locators": [
@@ -93,6 +171,11 @@
           "end_line": 18,
           "kind": "LINE_RANGE",
           "start_line": 1
+        },
+        {
+          "end_line": 203,
+          "kind": "LINE_RANGE",
+          "start_line": 193
         }
       ],
       "owner_repository_id": "REPO-FORMAL",
@@ -306,26 +389,16 @@
       "commit": "5aaff25b784c7d1bc079a3030a73be387dc11a0f",
       "locators": [
         {
-          "end_line": 30,
-          "kind": "LINE_RANGE",
-          "start_line": 1
-        },
-        {
-          "end_line": 69,
-          "kind": "LINE_RANGE",
-          "start_line": 32
-        },
-        {
           "end_line": 95,
           "kind": "LINE_RANGE",
-          "start_line": 71
+          "start_line": 1
         }
       ],
       "owner_repository_id": "REPO-KSD",
       "owner_repository_semantic_id": "ksdft2effmass",
       "path": "THIRD_PARTY_NOTICES.md",
       "public_remote": "https://github.com/eragasa/ksdft2effmass",
-      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/THIRD_PARTY_NOTICES.md#L1-L30"
+      "url": "https://github.com/eragasa/ksdft2effmass/blob/5aaff25b784c7d1bc079a3030a73be387dc11a0f/THIRD_PARTY_NOTICES.md#L1-L95"
     },
     {
       "artifact_id": "ART-K8",
@@ -449,16 +522,16 @@
       "commit": "b722edab216ef416b8b4affa902b04a26e3da98b",
       "locators": [
         {
-          "end_line": 73,
+          "end_line": 43,
           "kind": "LINE_RANGE",
-          "start_line": 63
+          "start_line": 22
         }
       ],
       "owner_repository_id": "REPO-OPTIMIZATION",
       "owner_repository_semantic_id": "projectkoios.optimization",
-      "path": "docs/architecture/projectkoios/numerics/finite_periodic/transforms/numerics.md",
+      "path": "docs/architecture/projectkoios/numerics/finite_periodic/transforms/scientific.md",
       "public_remote": "https://github.com/eragasa/projectkoios-optimization",
-      "url": "https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/docs/architecture/projectkoios/numerics/finite_periodic/transforms/numerics.md#L63-L73"
+      "url": "https://github.com/eragasa/projectkoios-optimization/blob/b722edab216ef416b8b4affa902b04a26e3da98b/docs/architecture/projectkoios/numerics/finite_periodic/transforms/scientific.md#L22-L43"
     },
     {
       "artifact_id": "ART-O5",
@@ -631,8 +704,8 @@
         "This does not establish that the whole proposed platform exists."
       ],
       "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
-      "report_locator": "Section 2, opening paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "report_locator": "#PKAM-C-001",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -650,8 +723,8 @@
         "One evidence kind does not automatically grant another."
       ],
       "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
-      "report_locator": "Section 2, opening paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "report_locator": "#PKAM-C-002",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -669,8 +742,8 @@
         "A technical pass is not release or publication authority."
       ],
       "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
-      "report_locator": "Section 3, final paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "report_locator": "#PKAM-C-003",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -678,7 +751,7 @@
       "claim_kind": "AFFIRMATIVE",
       "claim_text": "The cited Formal dossier identifies the result as AI-assisted and kernel-checked while recording explicit scientific and runtime nonclaims.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "LEAN_THEOREM",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-F2"
       ],
@@ -688,9 +761,9 @@
         "AI assistance is not proof authority.",
         "Kernel checking is not scientific validation."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 4, final paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-004",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -707,8 +780,8 @@
       "nonclaims": [
         "The LLM is not an author or scientific authority."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 4, final paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-005",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -726,19 +799,20 @@
       "nonclaims": [
         "The topic-branch checkpoint is not main, a tag, or a release."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.1, completed paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-006",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
       "claim_id": "PKAM-C-007",
       "claim_kind": "AFFIRMATIVE",
-      "claim_text": "The Formal theorem manifest distinguishes existing declarations and their proof status, and the encoded Paper A finite analytic counterexample has a proved Lean declaration with reported axioms and explicit boundaries.",
+      "claim_text": "At the cited Formal checkpoint, the encoded Paper A two-observation construction has a proved Lean declaration whose conjunction asserts zero canonical spectral loss at the encoded witness, spectral-pass membership in the source rectangle, positive scale, and disjointness from the optimized-operator pass set; the cited manifest and dossier report its axioms and explicit boundaries.",
       "claim_text_kind": "BOUNDED_SUMMARY",
       "evidence_class": "LEAN_THEOREM",
       "evidence_ids": [
         "EV-F2",
+        "EV-F4",
         "EV-F5"
       ],
       "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
@@ -746,9 +820,9 @@
       "nonclaims": [
         "It does not prove source fidelity, runtime output, a four-state parent result, material validation, or a continuum claim."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.1, completed paragraph and channel 1",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-007",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -766,17 +840,17 @@
       "nonclaims": [
         "It is not a runtime scientific certificate and does not bind external floating-point artifacts."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.1, completed paragraph and channel 2",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-008",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
       "claim_id": "PKAM-C-009",
       "claim_kind": "NONCLAIM",
-      "claim_text": "No runtime data/parser certificate binding is established by the cited Formal checkpoint.",
+      "claim_text": "The cited Formal certificate inventory reports that no runtime data/parser certificate binding exists at the checkpoint.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "EXACT_CHECKED_CERTIFICATE",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-F4"
       ],
@@ -785,9 +859,9 @@
       "nonclaims": [
         "A runtime scientific certificate is not claimed."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.1, runtime-certificate boundary",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-009",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -805,9 +879,9 @@
       "nonclaims": [
         "No such runtime bridge is reported complete."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.1, planned paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-010",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -826,17 +900,17 @@
         "This report does not present the checkpoint as a tag, release, or adopted downstream baseline.",
         "It does not select scientific tolerances."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.2, completed paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-011",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
       "claim_id": "PKAM-C-012",
       "claim_kind": "AFFIRMATIVE",
-      "claim_text": "The finite-series source tests define bounded comparisons against a separately expressed 100-digit mpmath reference and an explicit floating-point acceptance bound.",
+      "claim_text": "The finite-series source test defines bounded comparisons against a direct Fourier sum evaluated inside mpmath.workdps(100), converts each reference real and imaginary component to binary64, and applies an explicit floating-point acceptance bound.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "NUMERICAL_VERIFICATION",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-O2"
       ],
@@ -846,8 +920,8 @@
         "Source inspection is not a retained CI result.",
         "The comparison is not an exact certificate or scientific validation."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.2, completed paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-012",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -856,17 +930,18 @@
       "claim_kind": "AFFIRMATIVE",
       "claim_text": "The transform integration source tests cover one-, two-, and three-dimensional reconstruction, Parseval, and Hermiticity diagnostics with explicit bounds.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "NUMERICAL_VERIFICATION",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-O3"
       ],
       "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
       "lifecycle_status": "PROVISIONAL",
       "nonclaims": [
-        "The tests do not establish continuum behavior or material validity."
+        "The tests do not establish continuum behavior or material validity.",
+        "Source inspection is not a retained executed result."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.2, completed paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-013",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -875,7 +950,7 @@
       "claim_kind": "NONCLAIM",
       "claim_text": "The cited Optimization evidence is not admitted as an exact certificate or scientific validation.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "SCIENTIFIC_VALIDATION",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-O1",
         "EV-O4"
@@ -885,8 +960,8 @@
       "nonclaims": [
         "Exact certification and scientific validation are not claimed."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.2, evidence boundary paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-014",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -905,15 +980,15 @@
       "nonclaims": [
         "This does not prove that every diagnostic is independent or error-free."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.2, correction paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-015",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
       "claim_id": "PKAM-C-016",
       "claim_kind": "PLANNED",
-      "claim_text": "Consumer scientific interpretation and campaign thresholds remain consumer-owned; this report does not demonstrate exact runtime certificates, formal bindings, or retained public run evidence for the cited checkpoint.",
+      "claim_text": "Optimization assigns scientific tolerances and acceptance to consumers. This Draft admits no completed consumer scientific disposition, exact runtime certificate, formal binding, or retained public executed-result artifact for this case; adding any such evidence remains future work.",
       "claim_text_kind": "BOUNDED_SUMMARY",
       "evidence_class": "PLANNED",
       "evidence_ids": [
@@ -925,17 +1000,17 @@
       "nonclaims": [
         "No completed consumer scientific decision or exact runtime certificate is claimed."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.2, planned paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-016",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
       "claim_id": "PKAM-C-017",
       "claim_kind": "AFFIRMATIVE",
-      "claim_text": "The PhysKit Morse-potential test source defines a separately expressed centered finite-difference comparison of the radial force with the negative energy derivative using step 1.0e-5, relative tolerance 5.0e-10, and absolute tolerance 0.0.",
+      "claim_text": "The PhysKit Morse-potential test source checks the corrected force directions and defines a check of F_r=-dV/dr against a separately expressed centered finite-difference approximation to returned production potential energies, using step 1.0e-5 angstrom, relative tolerance 5.0e-10, and absolute tolerance 0.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "NUMERICAL_VERIFICATION",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-P1"
       ],
@@ -944,8 +1019,8 @@
       "nonclaims": [
         "The source test is not material validation or retained CI execution evidence."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.3, completed paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-017",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -954,7 +1029,7 @@
       "claim_kind": "AFFIRMATIVE",
       "claim_text": "The periodic-cosine provenance record classifies mapped checks as implementation and numerical verification rather than experimental material validation.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "SOFTWARE_CONFORMANCE",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-P2"
       ],
@@ -963,8 +1038,8 @@
       "nonclaims": [
         "No material potential is experimentally validated."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.3, completed paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-018",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -980,17 +1055,17 @@
       "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
       "lifecycle_status": "COMPLETED",
       "nonclaims": [
-        "This is not evidence of a general tested rollback mechanism."
+        "Byte recovery is documented; rollback execution and a general tested rollback mechanism are not."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.3, prototype paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-019",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
       "claim_id": "PKAM-C-020",
       "claim_kind": "AFFIRMATIVE",
-      "claim_text": "PhysKit extraction records preserve exact donor identities while retaining campaign tolerances, scientific interpretation, validation, and human acceptance with their owners.",
+      "claim_text": "PhysKit extraction records preserve exact donor identities while retaining campaign tolerances and acceptance policy, retained calculations and execution authority, semiconductor-specific interpretation, scientific-validation conclusions, and human-acceptance conclusions with ksdft2effmass.",
       "claim_text_kind": "BOUNDED_SUMMARY",
       "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
@@ -1001,17 +1076,17 @@
       "nonclaims": [
         "Extraction does not transfer scientific or human authority."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.3, provenance paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-020",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
       "claim_id": "PKAM-C-021",
       "claim_kind": "NONCLAIM",
-      "claim_text": "The scoped PhysKit artifacts cited by this report do not demonstrate material validation, pedagogical effectiveness, or uncertainty quantification.",
+      "claim_text": "The cited PhysKit cases do not establish material validation.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "SCIENTIFIC_VALIDATION",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-P2",
         "EV-P4"
@@ -1019,17 +1094,17 @@
       "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
       "lifecycle_status": "NOT_CLAIMED",
       "nonclaims": [
-        "Material validation, pedagogical effectiveness, and uncertainty quantification are not claimed."
+        "Material validation is not claimed."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.3, planned paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-021",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
       "claim_id": "PKAM-C-022",
       "claim_kind": "PLANNED",
-      "claim_text": "This report requires separate claim-specific protocols, evidence, and human dispositions before asserting any future PhysKit material-validation, pedagogical-effectiveness, or uncertainty-quantification claim.",
+      "claim_text": "Any future PhysKit material-validation claim requires a separate protocol, reference evidence, and human disposition.",
       "claim_text_kind": "BOUNDED_SUMMARY",
       "evidence_class": "PLANNED",
       "evidence_ids": [
@@ -1039,10 +1114,10 @@
       "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
       "lifecycle_status": "PLANNED",
       "nonclaims": [
-        "No such completed protocol or disposition is claimed."
+        "No completed material-validation protocol or disposition is claimed."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.3, planned paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-022",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1058,10 +1133,10 @@
       "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
       "lifecycle_status": "COMPLETED",
       "nonclaims": [
-        "The topic-branch checkpoint is not presented as main or an adopted release."
+        "Git branch reachability is not evidence of an adopted release, and no release or publication status is claimed here."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.4, completed paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-023",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1079,10 +1154,10 @@
       "human_decision_state": "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION",
       "lifecycle_status": "COMPLETED",
       "nonclaims": [
-        "A digest establishes identity, not scientific validity or redistribution permission."
+        "A digest establishes maintained-file identity, not same-checkpoint producer causality, scientific validity, or redistribution permission."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.4, completed paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-024",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1100,8 +1175,8 @@
       "nonclaims": [
         "Passing does not establish exact equality, continuum behavior, model selection, or material validation."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.4, completed paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-025",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1119,8 +1194,8 @@
       "nonclaims": [
         "The fixed-grid observations are not a global continuum or material claim."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.4, limitation paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-026",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1138,8 +1213,8 @@
       "nonclaims": [
         "Deprecation does not authorize execution or change historical evidence."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.4, deprecation paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-027",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1158,8 +1233,8 @@
       "nonclaims": [
         "The successor is not a completed case study."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.4, planned paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-028",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1168,7 +1243,7 @@
       "claim_kind": "NONCLAIM",
       "claim_text": "The retained particle-in-a-box evidence does not validate a material model, silicon, DFT, Wannier localization, or impurity physics.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "SCIENTIFIC_VALIDATION",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-K1",
         "EV-K3"
@@ -1178,8 +1253,8 @@
       "nonclaims": [
         "No semiconductor or material validation is claimed."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.4, interpretation boundary",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-029",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1197,9 +1272,9 @@
       "nonclaims": [
         "The boundary is not evidence that candidate mechanics are validated generic tooling."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.5, completed paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-030",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -1217,9 +1292,9 @@
       "nonclaims": [
         "Mocked tests do not prove Pi/Herdr availability, model compliance, or authorization security."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.5, candidate paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-031",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -1236,9 +1311,9 @@
       "nonclaims": [
         "This is not autonomous rollback or recurrence evidence."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.5, incident paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-032",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -1246,7 +1321,7 @@
       "claim_kind": "NONCLAIM",
       "claim_text": "The candidate guard is not an authorization service, mocked checks do not prove model compliance or live availability, and the diagnostic does not recover terminated processes.",
       "claim_text_kind": "BOUNDED_SUMMARY",
-      "evidence_class": "HUMAN_DECISION",
+      "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
         "EV-H2",
         "EV-H3",
@@ -1257,9 +1332,9 @@
       "nonclaims": [
         "Authorization, live availability, model compliance, and autonomous recovery are not claimed."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.5, candidate and incident boundaries",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-033",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
@@ -1278,15 +1353,15 @@
       "nonclaims": [
         "No completed compliance study or generic-tool validation is claimed."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.5, planned paragraph",
-      "rights_provenance_status": "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-034",
+      "rights_provenance_status": "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
     {
       "claim_id": "PKAM-C-035",
       "claim_kind": "AFFIRMATIVE",
-      "claim_text": "The cited repositories identify repository-specific third-party or adaptation notices that require separate rights review before any deposit.",
+      "claim_text": "The cited Optimization, PhysKit, and ksdft2effmass records identify repository-specific third-party or adaptation notices that require separate rights review before any deposit.",
       "claim_text_kind": "BOUNDED_SUMMARY",
       "evidence_class": "EXPERIENCE_OBSERVATION",
       "evidence_ids": [
@@ -1299,8 +1374,8 @@
       "nonclaims": [
         "Apache-2.0 project licensing does not clear every dependency, vendored artifact, figure, or publication input."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 8, opening paragraph",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-035",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1318,8 +1393,8 @@
       "nonclaims": [
         "The checkpoint is not claimed as an adopted release."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.2, maturity sentence",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-036",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     },
@@ -1337,8 +1412,8 @@
       "nonclaims": [
         "The checkpoint is not claimed as a release."
       ],
-      "owner_evidence_confirmation_status": "CONFIRMED_FOR_DRAFT",
-      "report_locator": "Section 5.3, maturity sentence",
+      "owner_evidence_confirmation_status": "PUBLIC_OWNER_RECORD_ONLY",
+      "report_locator": "#PKAM-C-037",
       "rights_provenance_status": "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING",
       "technical_review_status": "BOUNDED_SELF_REVIEW_COMPLETE"
     }
@@ -1401,21 +1476,19 @@
       "SOURCE_TEST_INSPECTION"
     ],
     "owner_evidence_confirmation_status": [
-      "CONFIRMED_FOR_DRAFT",
-      "PUBLIC_OWNER_RECORD_ONLY",
-      "PENDING"
+      "PUBLIC_OWNER_RECORD_ONLY"
     ],
     "public_status": [
       "PUBLIC_IMMUTABLE"
     ],
     "report_source_state": [
-      "LOCAL_UNCOMMITTED_DRAFT"
+      "LOCAL_DRAFT"
     ],
     "report_status": [
       "DRAFT_NOT_RELEASED_NOT_PEER_REVIEWED"
     ],
     "rights_provenance_status": [
-      "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY",
+      "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED",
       "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING"
     ],
     "technical_review_status": [
@@ -1469,7 +1542,10 @@
     },
     {
       "artifact_ids": [
-        "ART-F4"
+        "ART-F4",
+        "ART-F4A",
+        "ART-F4B",
+        "ART-F4C"
       ],
       "checker": "Boolean exact rational-enclosure checker with proved soundness bridge, as inventoried",
       "comparator": null,
@@ -1478,7 +1554,7 @@
       "method": "CERTIFICATE_INVENTORY_INSPECTION",
       "public_status": "PUBLIC_IMMUTABLE",
       "report_reference": "F4",
-      "result_summary": "Inventories one exact analytic source certificate and explicitly reports no runtime scientific certificate.",
+      "result_summary": "Directly locates the exact rational data, Boolean checker, checker-soundness and Paper A bridge theorems, one accepted exact analytic source certificate, and the explicit absence of runtime parser or floating-point binding.",
       "tolerance": null
     },
     {
@@ -1724,8 +1800,8 @@
         "ART-O2"
       ],
       "checker": "pytest assertion in cited source",
-      "comparator": "Separately expressed mpmath evaluation at 100 decimal digits",
-      "environment": "Python test source; binary64 implementation values and mpmath 100-digit reference; no local rerun admitted.",
+      "comparator": "Direct Fourier sum evaluated inside mpmath.workdps(100), with each real and imaginary reference component converted to binary64 before comparison",
+      "environment": "Python test source; binary64 implementation values compared with a binary64-rounded result computed inside mpmath.workdps(100); no executed result admitted.",
       "evidence_id": "EV-O2",
       "method": "SOURCE_TEST_INSPECTION",
       "public_status": "PUBLIC_IMMUTABLE",
@@ -1808,13 +1884,13 @@
         "ART-P1"
       ],
       "checker": "NumPy isclose assertion in cited source",
-      "comparator": "Centered finite-difference negative energy derivative with step 1.0e-5",
+      "comparator": "Separately expressed centered finite-difference approximation -(V(r+h)-V(r-h))/(2h) using returned production potential energies and step 1.0e-5 angstrom.",
       "environment": "NumPy float64 test source with electron-volt and angstrom quantities; no local rerun admitted.",
       "evidence_id": "EV-P1",
       "method": "SOURCE_TEST_INSPECTION",
       "public_status": "PUBLIC_IMMUTABLE",
       "report_reference": "P1",
-      "result_summary": "Defines a bounded, separately expressed centered finite-difference check of the corrected Morse radial-force sign.",
+      "result_summary": "Defines a bounded numerical consistency-check procedure for the corrected Morse radial-force sign and negative-energy-derivative relation; no executed result is admitted.",
       "tolerance": "relative 5.0e-10; absolute 0.0"
     },
     {
@@ -1828,7 +1904,7 @@
       "method": "DOCUMENT_INSPECTION",
       "public_status": "PUBLIC_IMMUTABLE",
       "report_reference": "P2",
-      "result_summary": "Classifies mapped periodic-cosine checks as implementation and numerical verification, not material validation.",
+      "result_summary": "The owner provenance record classifies its mapped checks as implementation and numerical verification and explicitly excludes experimental validation of a material potential.",
       "tolerance": null
     },
     {
@@ -1856,7 +1932,7 @@
       "method": "PROVENANCE_MAPPING_INSPECTION",
       "public_status": "PUBLIC_IMMUTABLE",
       "report_reference": "P4",
-      "result_summary": "Records exact donor identities and retains scientific interpretation, tolerances, validation, and acceptance with their owners.",
+      "result_summary": "Records exact donor identities and preserves the explicit boundary: reusable represented mathematics moves to PhysKit, while campaign policy, retained execution, semiconductor interpretation, scientific-validation conclusions, and human acceptance remain with ksdft2effmass.",
       "tolerance": null
     },
     {
@@ -1894,7 +1970,7 @@
     "ledger_scope": "Bounded public repository evidence for methodology and case-study claims; external release guidance is outside this ledger.",
     "report_id": "project-koios-audit-first-methodology",
     "source_path": "docs/reports/project-koios-audit-first-methodology.md",
-    "source_state": "LOCAL_UNCOMMITTED_DRAFT",
+    "source_state": "LOCAL_DRAFT",
     "status": "DRAFT_NOT_RELEASED_NOT_PEER_REVIEWED",
     "title": "Project Koios: An audit-first, LLM-assisted workflow for verifiable computational physics"
   },
@@ -1933,10 +2009,16 @@
   "schema_version": "projectkoios.evidence-ledger/1",
   "status_definitions": {
     "BOUNDED_SELF_REVIEW_COMPLETE": "Ledger structure, mappings, locators, enums, privacy, and deterministic checks passed locally; this is not independent review.",
-    "CONFIRMED_FOR_DRAFT": "The owner-supplied checkpoint or clarification is admitted for this Draft only; this is not release or publication acceptance.",
+    "COMPLETED": "The bounded observation or owner-recorded occurrence named by the claim exists at the cited revision; this does not classify repository or package maturity and does not imply support, scientific validation, release, or publication.",
+    "DRAFT_NOT_RELEASED_NOT_PEER_REVIEWED": "The report remains a Draft and represents neither peer review nor release.",
     "DRAFT_ONLY_NO_RELEASE_OR_PUBLICATION_DECISION": "No human release, publication, deposit, submission, or DOI decision is represented.",
-    "PENDING_INDEPENDENT_REVIEW": "No independent technical review conclusion is represented by this status.",
-    "PROJECT_APACHE_2_0_PUBLIC_LINK_ONLY": "Only public links to project-owned Apache-2.0 repository content are used; deposit-file rights still require milestone review.",
+    "LOCAL_DRAFT": "A mutable local Draft state that implies neither commit, remote publication, release, nor peer review.",
+    "NOT_CLAIMED": "The denied channel or conclusion is explicitly not admitted by the report.",
+    "PENDING": "Targeted independent technical re-review has not yet completed; this does not request or imply publication authority.",
+    "PENDING_INDEPENDENT_REVIEW": "No independent technical review conclusion is represented by this claim status.",
+    "PLANNED": "The claim records future requirements or work and does not represent completed implementation, execution, verification, or validation.",
+    "PROVISIONAL": "The bounded source or occurrence is documented at a provisional checkpoint and is not represented as an adopted release or baseline.",
+    "PUBLIC_LINK_ONLY_RIGHTS_NOT_ASSESSED": "Only public links are used; no per-file or deposit-rights conclusion is represented.",
     "PUBLIC_OWNER_RECORD_ONLY": "The claim uses an immutable public owner-repository record without asserting a separate owner acceptance decision.",
     "THIRD_PARTY_NOTICES_IDENTIFIED_RIGHTS_REVIEW_PENDING": "Applicable notice or provenance material is identified, but deposit-file rights review remains pending."
   }

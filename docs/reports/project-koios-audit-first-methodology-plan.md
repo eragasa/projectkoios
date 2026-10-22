@@ -50,7 +50,8 @@ This task creates only state 1.
 
 ## 3. Claim-admission rule
 
-An affirmative claim enters the main narrative only when the ledger records:
+An affirmative Project Koios methodology or case-study evidence claim enters
+the main narrative only when the ledger records:
 
 - a stable claim identifier;
 - exact wording and evidence class;
@@ -62,6 +63,10 @@ An affirmative claim enters the main narrative only when the ledger records:
 - rights and third-party provenance status;
 - technical review disposition; and
 - human decision state where acceptance is required.
+
+The narrative location of every admitted claim must carry a stable `PKAM-C-*`
+anchor. The ledger's `report_locator` must identify that anchor rather than a
+mutable paragraph description.
 
 A plan, issue, directory name, branch name, or model statement is not completion
 evidence. A public provisional branch may support an experience observation but
@@ -123,12 +128,13 @@ call verification against an analytical model material validation.
 - Broader public provisional reference:
   `b722edab216ef416b8b4affa902b04a26e3da98b`
 - Role: finite-periodic transforms and diagnostics, least squares, affine and
-  quadratic methods, Procrustes alignment, spectra/projectors, bounded
-  independent numerical comparisons, provenance mappings
+  quadratic methods, Procrustes alignment, spectra/projectors, source-level test
+  definitions for prospective numerical verification, provenance mappings
 - Maturity: `b722ed...` is a clean public migration branch at package version
   `0.1.0.dev0`; it is not a tag, release, or adopted downstream baseline
-- Completed evidence admitted from the provisional branch:
-  `SOFTWARE_CONFORMANCE`, `NUMERICAL_VERIFICATION`, and correction history
+- Documented evidence admitted from the provisional branch:
+  source-level test definitions for prospective numerical verification and
+  correction history; no executed numerical-verification result is admitted
 - Not admitted: exact arithmetic certificate, backward-error certificate, UQ,
   scientific interpretation, adopted release, or publication authority
 - Local rerun exclusion: reported 869-test, lint, type, and reproducible-build
@@ -140,15 +146,15 @@ call verification against an analytical model material validation.
 ### 5.4 PhysKit
 
 - Revision: `11e58938ac8d0022f9e6df3aba7ca8757b4a9f88`
-- Role: reusable computational-physics contracts, independent finite numerical
-  comparisons, extraction provenance, rejected-prototype review
+- Role: reusable computational-physics contracts, source-level numerical
+  consistency-check definitions, extraction provenance, rejected-prototype
+  review
 - Maturity: public main at inspection; development version `0.1.3.dev0`, not a
   release
-- Completed evidence admitted: `SOFTWARE_CONFORMANCE`, bounded
-  `NUMERICAL_VERIFICATION`, and `EXPERIENCE_OBSERVATION` for rejection,
-  correction, replacement, and byte preservation
-- Not admitted: material validation, broad pedagogical effectiveness, UQ, or
-  human scientific acceptance
+- Documented evidence admitted: source-level consistency-check definitions and
+  `EXPERIENCE_OBSERVATION` for rejection, correction, replacement, and byte
+  preservation; no executed numerical-verification result is admitted
+- Not admitted: material validation or human scientific acceptance
 - Local rerun exclusion: reported repository tests, Ruff, and formatting results
   are local observations rather than retained public evidence
 
@@ -158,9 +164,10 @@ call verification against an analytical model material validation.
 - Role: retained illustrative particle-in-a-box numerical experiment,
   independent verifiers, SHA-256 manifest, explicit interpretation limits,
   historical-interface deprecation, prospective composite-band protocol
-- Maturity: immutable public checkpoint on
-  `origin/work/monograph-current-library-capabilities`; not presented as main or
-  an adopted release
+- Maturity: immutable public checkpoint identified through
+  `origin/work/monograph-current-library-capabilities`; the exact commit is also
+  reachable from public `main`, but branch reachability is not evidence of an
+  adopted release and no release or publication status is claimed
 - Completed evidence admitted: bounded `NUMERICAL_VERIFICATION` for the finite
   illustrative model and `EXPERIENCE_OBSERVATION` for deprecation/preservation
 - Planned evidence: composite-band successor remains `MIGRATION_IN_PROGRESS`,
@@ -188,8 +195,8 @@ call verification against an analytical model material validation.
 | Case | Completed/documented | Planned or missing |
 |---|---|---|
 | Formal/Lean | Pinned kernel/dependencies; theorem manifest; exact analytic source certificate; axiom and boundary reporting | Runtime data/parser binding; owner-reviewed scientific crosswalk; independent expert review |
-| Optimization | Provisional public implementations; independent/high-precision bounded comparisons; correction commits; exact source/provenance mappings | Adopted release baseline; retained CI evidence; exact certificate layer where scientifically required; consumer scientific decisions |
-| PhysKit | Public-main numerical checks; provenance; rejected prototype and maintained replacement | Material-specific validation; pedagogical validation where claimed; UQ |
+| Optimization | Provisional public source; source-level test definitions for prospective numerical verification; correction commits; exact source/provenance mappings | Executed retained numerical-verification result; adopted release baseline; retained CI evidence; exact certificate layer where scientifically required; consumer scientific decisions |
+| PhysKit | Public-main source-level Morse consistency-check definition; provenance; rejected prototype and maintained replacement | Executed retained check result; material-specific validation |
 | `ksdft2effmass` | Retained finite illustrative experiment; independent verifiers; checksums; limitations; historical CLI deprecation | Composite-band maintained run and immutable `.v1`; material validation; authorized production calculations |
 | Pi harness | Public candidate source/tests; deterministic and fail-closed boundaries; documented pane-loss incident | Independent recurrence; promotion decision; real end-to-end evidence; LLM compliance study; productivity study |
 
@@ -408,7 +415,8 @@ submission-authorization boundary.
 ## 14. Current blockers
 
 - A bounded machine-readable cross-repository evidence ledger exists for this
-  Draft, but independent claim review remains incomplete.
+  Draft, but targeted re-review of the consolidated corrections remains
+  incomplete.
 - Optimization's broadest evidence is on a public provisional migration branch,
   not an adopted release.
 - Formal has no runtime scientific certificate and no recorded independent
@@ -435,7 +443,7 @@ Without release authority, the safe next actions are:
    any later milestone;
 4. resolve Formal summary inconsistencies and Optimization provisional-status
    wording;
-5. obtain independent technical reviews;
+5. complete targeted independent technical re-review of corrected claims;
 6. decide whether the first milestone remains Markdown-only or adds a rendered
    PDF; and
 7. stop before commit, push, release, publication, submission, deposit, or DOI
