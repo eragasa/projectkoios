@@ -63,19 +63,21 @@ beside the source. Retention does not authorize release or publication.
 - Bibliography processor: BibTeX `0.99d` (TeX Live 2025)
 - Deterministic build epoch: `SOURCE_DATE_EPOCH=1792674722`, `TZ=UTC`,
   `FORCE_SOURCE_DATE=1`
-- PDF pages: 9 (Ghostscript `10.04.0` page-count inspection)
-- PDF size: 350,385 bytes
+- PDF pages: 12 (Ghostscript `10.04.0` page-count inspection)
+- PDF size: 372,406 bytes
 - PDF SHA-256:
-  `f904717b1fae76e6b1720030896e441bc57def276b937d1d9320e2224bf9dd8c`
+  `e8ea37979706a72caed7c34ce475c9e3e655d60c50a68dc5773a8ba19f2fa8e1`
 - Clean-build comparison: two consecutive clean builds produced the same PDF
   SHA-256 and byte count.
 
-Publication inputs remain local and uncommitted in this first pass. Their
+The preserved first-pass package is commit
+`6db177ce8af369039fbaccd25f9dcde53033e2e7`. This related-work revision
+supersedes the publication files from that checkpoint. Its publication-input
 SHA-256 identities are:
 
 ```text
-b5113d142bedbc851f40e691d1e75f90101e8f3df0d6b8f525a375271887f1aa  Ragasa2026_pk_a.tex
-b2193fc4d3ecc57e59fedef5a63ec52b20533dc4f4a9721d59d132e3675693da  references.bib
+8e3264d7d61778267bf448529623e5bfbe30081b2de146af5626cc9ffc793462  Ragasa2026_pk_a.tex
+bd83b273d0681f09afdfe7f825f9811edf5e33f838dc6b05d71d170be0bc511d  references.bib
 ac4fb7b2279f3aaf54bd1fab64c5bd7502a270bb580b1d32c3264750c66d78d6  Makefile
 b284382198a77bfcbcc107f4920fc799e419ea78a5b93c3a775eba7868706a6f  figures/audit-first-workflow.tex
 2eb9b912d9eca525865b1a743752f11d9f8bdf13b4f25fbba9dfa46a0a8f3100  figures/evidence-authority-separation.tex
@@ -83,6 +85,25 @@ b284382198a77bfcbcc107f4920fc799e419ea78a5b93c3a775eba7868706a6f  figures/audit-
 
 The scientific and methodological source identity remains the reviewed report
 and ledger at commit `45da16e6428c3c431359da4f80f46de7ebf71081`.
+
+## Related-work metadata provenance
+
+The related-work revision admits 12 author/editor-authorized entries after a
+References verification dated 2026-10-23. The received canonical 12-entry
+BibTeX block was 5,745 bytes with SHA-256
+`5d6fbff3c70c292139d5c6795ad5b437059178c594e1d6d8a2faf01595b2b4c1`.
+The merged bibliography preserves the verified identities and ten DOI values.
+For plainnat/BibTeX rendering, it adds an editor-labelled sort key to the
+PROV-DM record, repeats the two accepted access dates in rendered note text, and
+repeats the NIST DOI in rendered note text because the style otherwise drops
+those fields. The canonical parrot glyph in the Bender et al. title remains in
+`references.bib`; the pdfTeX source explicitly renders that unsupported glyph as
+`[parrot]`. These render accommodations are not identity changes.
+
+The external sources contextualize established practice; they are not evidence
+that a Project Koios case implemented a cited practice. The 2026-10-23 metadata,
+correction, retraction, and errata checks are point-in-time checks and must be
+repeated immediately before any separately authorized submission.
 
 ## Evidence and nonclaims
 

@@ -2,6 +2,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{1F99C}{[parrot]}
 \usepackage{geometry}
 \usepackage{microtype}
 \usepackage{booktabs}
@@ -100,6 +101,115 @@ The contribution is methodological and descriptive. We present:
 The article makes no claim that the complete platform is implemented, that the
 cases form a representative sample, or that LLM assistance improved time, cost,
 quality, or productivity.
+
+\section{Related work and positioning}
+\label{sec:related-work}
+
+\paragraph{Computational reproducibility and research-software practice.}
+Established guidance for reproducible computational research emphasizes
+recording the workflow by which a result was obtained, retaining inputs,
+parameters, and intermediate artifacts, identifying exact software versions,
+and placing custom code under version control
+\citep{SandveEtAl2013ReproducibleComputationalResearch}. These practices make a
+computational account more inspectable and give another investigator a better
+specified starting point. For an audit-first process, the practical lesson is
+to retain enough context to distinguish a documented recipe, an inspected
+source tree, and a recorded execution. That distinction improves traceability;
+it does not turn any of those records into a successful replay. The practices
+also motivate this manuscript's emphasis on revision-pinned sources and
+retained artifacts. That correspondence is
+methodological context, not evidence that the practices were implemented in any
+particular \projectkoios{} case; case-specific facts remain supported by the
+immutable owner records cited later. Nor do the practices establish independent
+replication, numerical correctness, successful replay of this manuscript's
+artifacts, or scientific validation.
+
+\paragraph{Verification, validation, and artifact audit.}
+Computational verification and physical or scientific validation answer
+different questions: assessing whether a computational model or implementation
+is solved as intended is not the same as assessing its relation to the physical
+world \citep{OberkampfTrucanoHirsch2004VerificationValidation}. Artifact review
+similarly distinguishes availability, evaluation of artifact properties, and
+reproduced or replicated results; ACM's living guidance records these as
+separate outcomes in Artifact Review and Badging Version~1.1
+\citep{ACM2020ArtifactReviewBadging}. A public artifact may therefore be
+available without having undergone functional evaluation, and an evaluated
+artifact need not have produced an independently reproduced result. The
+source-inspection, test-definition, and retained-run distinctions used here
+apply these established separations to
+the five bounded cases. They are not a replacement vocabulary for the
+verification-and-validation or artifact-review literature. In particular, no
+ACM badge has been sought or awarded, and neither source availability nor this
+manuscript's inspection demonstrates functionality, reuse, reproduction,
+replication, or scientific validation.
+
+\paragraph{Provenance, citation, and exact source identity.}
+The PROV data model supplies a domain-independent vocabulary of entities,
+activities, and agents connected through such relations as derivation and
+attribution \citep{MoreauMissier2013PROVDM}. Its dated Recommendation has a
+known Section~1.4 XSD-namespace erratum; that erratum does not change the cited
+document's identity, but it reinforces that a provenance vocabulary is not a
+guarantee of completeness or truth. Software-citation principles add the need
+for persistent identification, accessibility, and version specificity
+\citep{SmithEtAl2016SoftwareCitationPrinciples}. Work on source-code artifacts
+further distinguishes resolvable references from intrinsic, content-derived
+identifiers that can support an integrity check of exact source
+\citep{DiCosmoGruenpeterZacchiroli2020SourceCodeArtifacts}. These mechanisms
+compose rather than collapse: a DOI, URL, commit identifier, and digest
+establish different properties. A URL can locate mutable content, a commit can
+select a repository tree, a digest can detect a change to exact bytes, and a DOI
+can resolve a registered scholarly object or version. Provenance can relate
+these identities without making them interchangeable. None alone proves
+authorization, rights,
+execution, buildability, correctness, provenance completeness, or scientific
+validity. The issue year for the cited source-code article is 2020; its 2019
+date is retained only as online-first metadata.
+
+\paragraph{Formal proof infrastructure.}
+Lean~4 combines an extensible interactive theorem prover with a programming
+language and metaprogramming infrastructure
+\citep{deMouraUllrich2021Lean4}. Mathlib is a large, shared, and evolving formal
+library whose organization and automation form part of the environment in which
+many Lean developments are elaborated
+\citep{MathlibCommunity2020LeanLibrary}. Consequently, exact prover and library
+revisions are material parts of a reported proof environment, rather than
+incidental implementation details. Toolchain pinning makes the reported
+environment more auditable, but it cannot repair a mismatch between an encoded
+theorem and an intended scientific claim. This context explains the revision
+pins used for the Formal case, but it does not verify that case; the owner
+evidence does. Kernel checking establishes the encoded proposition under its encoded
+assumptions. It does not by itself establish source fidelity, runtime binding,
+physical applicability, successful replay at another revision, or publication
+acceptance.
+
+\paragraph{LLM-assisted research and accountable oversight.}
+AI assistance in research can produce epistemic overconfidence and narrow the
+methods or viewpoints that remain visible, so increased output should not be
+confused with increased understanding
+\citep{MesseriCrockett2024IllusionsUnderstanding}. In software, historical
+empirical tests of a then-current code assistant found insecure generated code
+in the security scenarios examined, motivating independent review and
+appropriate tool-based checking rather than trust in generation alone
+\citep{PearceEtAl2022AsleepKeyboard}. More broadly, fluent language-model output
+is not grounded understanding, and responsible assessment must attend to data,
+documentation, deployment context, and downstream risk
+\citep{BenderEtAl2021StochasticParrots}. NIST's fixed AI Risk Management
+Framework~1.0 describes risk management as contextual and lifecycle-oriented,
+with governance, mapping, measurement, management, and accountable oversight
+\citep{Tabassi2023AIRMF}. These sources do not estimate current-model error
+rates, show that \projectkoios{} exhibits every cited risk, establish universal
+policy compliance or productivity benefit, or certify conformity with NIST.
+The framework family is evolving; the citation identifies AI RMF~1.0 rather
+than claiming permanent currency.
+
+Taken separately, prior work addresses computational reproducibility,
+verification and validation, artifact review, provenance and software identity,
+formal-proof infrastructure, and AI risk. The bounded contribution reported
+here is their documented integration into a workflow that assigns evidence
+classes and explicit authority and nonclaim boundaries across five repository
+cases. We do not claim to have invented those components, established novelty
+priority, demonstrated workflow superiority or effectiveness, improved
+productivity, or achieved scientific validation.
 
 \section{Audit-first method}
 \label{sec:method}
