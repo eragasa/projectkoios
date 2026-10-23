@@ -1,0 +1,33 @@
+% Reviewable vector source; included by Ragasa2026_pk_a.tex.
+\begin{tikzpicture}[
+  column/.style={draw, rounded corners=2pt, align=left, text width=0.39\linewidth,
+    inner sep=6pt, minimum height=50mm},
+  note/.style={draw, dashed, rounded corners=2pt, align=center,
+    text width=0.83\linewidth, inner sep=5pt, fill=orange!7},
+  arrow/.style={-{Latex[length=2mm]}, thick}
+]
+  \node[column, fill=blue!4] (evidence) {
+    \textbf{Evidence dimensions}\par\smallskip
+    $\bullet$ implementation conformance\par
+    $\bullet$ Lean theorem evidence\par
+    $\bullet$ exact checked certificate\par
+    $\bullet$ numerical verification\par
+    $\bullet$ scientific validation\par
+    $\bullet$ documented experience observation
+  };
+  \node[column, fill=green!5, right=10mm of evidence] (authority) {
+    \textbf{Authority dimensions}\par\smallskip
+    $\bullet$ claim acceptance\par
+    $\bullet$ scientific interpretation\par
+    $\bullet$ exception or model choice\par
+    $\bullet$ execution authorization\par
+    $\bullet$ release authorization\par
+    $\bullet$ submission/publication decision
+  };
+  \node[note, below=8mm of $(evidence.south)!0.5!(authority.south)$] (boundary) {
+    Evidence classes and authority states are recorded separately. Success in
+    one channel is not silently promoted into another.
+  };
+  \draw[arrow] (evidence.south) -- (boundary.north west);
+  \draw[arrow] (authority.south) -- (boundary.north east);
+\end{tikzpicture}

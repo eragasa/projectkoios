@@ -1,0 +1,44 @@
+% Reviewable vector source; included by Ragasa2026_pk_a.tex.
+\begin{tikzpicture}[
+  node distance=5mm and 7mm,
+  box/.style={
+    draw,
+    rounded corners=2pt,
+    align=center,
+    text width=0.25\linewidth,
+    minimum height=12mm,
+    fill=blue!4
+  },
+  boundary/.style={
+    draw,
+    rounded corners=2pt,
+    align=left,
+    text width=0.83\linewidth,
+    inner sep=5pt,
+    fill=orange!7
+  },
+  arrow/.style={-{Latex[length=2mm]}, thick}
+]
+  \node[box] (claim) {1. Freeze the claim\\scope, assumptions, nonclaims};
+  \node[box, right=of claim] (owner) {2. Resolve ownership\\implementation, science, decision};
+  \node[box, right=of owner] (bind) {3. Bind evidence\\commit, path, locator, identity};
+
+  \node[box, below=of claim] (assist) {4. Generate or inspect\\LLM proposals remain provisional};
+  \node[box, right=of assist] (check) {5. Use the proper check\\kernel, exact checker, comparator, protocol};
+  \node[box, right=of check] (report) {6. Report the boundary\\bounded conclusion and exclusions};
+
+  \draw[arrow] (claim) -- (owner);
+  \draw[arrow] (owner) -- (bind);
+  \draw[arrow] (bind) -- (report);
+  \draw[arrow] (assist) -- (check);
+  \draw[arrow] (check) -- (report);
+  \draw[arrow] (claim) -- (assist);
+
+  \node[boundary, below=8mm of check] (gate) {
+    \textbf{Human-governed gate.} Technical evidence can support a bounded
+    conclusion. It does not itself authorize scientific acceptance, release,
+    submission, or publication. Negative evidence and correction history remain
+    visible.
+  };
+  \draw[arrow] (report.south) -- (gate.north east);
+\end{tikzpicture}
